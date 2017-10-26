@@ -1,26 +1,51 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Homepage - {{ parent() }}{% endblock %}
+{% block title %}
+    Homepage - {{ parent() }}
+{% endblock %}
 
 {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
     {{ parent() }}
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
-
-        .title {
-            margin: 20px auto;
-            text-align: center;
-            font-size: 96px;
-        }
-    </style>
 {% endblock %}
 
 {% block body %}
-    <div class="title">NFQ Akademija</div>
+    <div class="introduction">
+        <div class="parallax-window" data-parallax="scroll"
+             data-image-src="{{ asset('images/parallax/1.jpg') }}" data-speed="0.1">
+        </div>
+        <div class="parallax-window">
+            <div class="parallax-slider">
+                <span class="message">something is coming...</span>
+            </div>
+        </div>
+        <div class="parallax-window" data-parallax="scroll"
+             data-image-src="{{ asset('images/parallax/2.jpg') }}" data-speed="0.1"></div>
+        <div class="parallax-window">
+            <div class="parallax-slider">
+                <span class="message">can you guess what?</span>
+            </div>
+        </div>
+        <div class="parallax-window" data-parallax="scroll"
+             data-image-src="{{ asset('images/parallax/3.jpg') }}" data-speed="0.1">
+        </div>
+        <div class="parallax-window">
+            <div class="parallax-slider">
+                <span class="message">it's secret "Secret box"</span>
+
+            </div>
+        </div>
+        <div class="parallax-window">
+            <div class="parallax-slider">
+                <span class="message">PREORDER</span>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ asset('js/parallax/parallax.min.js') }}"></script>
 {% endblock %}
