@@ -1,2 +1,65 @@
 //bootstrap
 @import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+html {
+  max-width: 1000px;
+  margin: auto;
+}
+
+body {
+  margin:0px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.parallax-window {
+  min-height: 550px;
+  background: transparent;
+  text-align: center;
+}
+
+
+.parallax-container {
+  height: 500px;
+  width: 100%;
+}
+
+.parallax-slider {
+  width:100%;
+}
+
+.message {
+  font-size: 50px;
+  width: 100%;
+  line-height: 550px;
+  text-align: center;
+  display: inline-block;
+}
+
+.introduction {
+  position: relative;
+  top: 40px;
+}
+
+.top-menu {
+  position: fixed;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  height: 40px;
+  /*text-align: right;*/
+  background-color: white;
+  z-index: 1;
+  -webkit-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
+  -moz-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
+  box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
+}
+
+.logo-text {
+  width: 80%;
+  line-height: 50px;
+  display: inline-block;
+  color: darkred;
+  font-size: xx-large;
+  font-family: 'Montserrat', sans-serif;
+}
