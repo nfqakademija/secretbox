@@ -1,6 +1,17 @@
 <span class="logo-text">Secret box</span>
 <div class="top-menu">
-    <span >Menu 1 | Menu 2 | Menu 3
-        <a href="#">LOGIN</a>
+    <span >
+
+        Menu 1 | Menu 2 | Menu 3
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            | Prisijunges kaip: {{ app.user.username }},
+            <a href="{{ logout_path() }}"><img class="fb-image" src="{{ asset('images/fb_icon.png') }}"> Atsijungti</a>
+        {% else %}
+             <a href="{{ path('app_facebook_connect') }}"><img class="fb-image" src="{{ asset('images/fb_icon.png') }}"> Prisijungti</a>
+        {% endif %}
+
+
+
     </span>
 </div>
+

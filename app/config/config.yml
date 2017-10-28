@@ -66,3 +66,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#knpu_oauth2 configuration
+knpu_oauth2_client:
+    clients:
+        facebook_main:
+            type: facebook
+            client_id: "%facebook_client_id%"
+            client_secret: "%facebook_client_secret%"
+            redirect_params: {}
+            graph_api_version: v2.8
+            redirect_route: connect_facebook_check
+

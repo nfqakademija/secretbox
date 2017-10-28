@@ -15,7 +15,7 @@ class HomeController extends Controller
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="app.homepage")
      */
     public function indexAction()
     {

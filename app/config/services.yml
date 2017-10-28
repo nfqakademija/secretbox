@@ -20,3 +20,6 @@ services:
 #    app.example:
 #        class: AppBundle\Service\ExampleService
 #        arguments: ["@doctrine.orm.entity_manager"]
+    facebook_authenticator:
+        class: AppBundle\Security\FacebookAuthenticator
+        autowire: true

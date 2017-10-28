@@ -29,7 +29,9 @@
         "doctrine/collections": "1.4.0",
         "doctrine/cache": "1.6.2",
         "doctrine/instantiator": "1.0.5",
-        "doctrine/dbal": "2.5.13"
+        "doctrine/dbal": "2.5.13",
+        "knpuniversity/oauth2-client-bundle": "^1.12",
+        "league/oauth2-facebook": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "*",
