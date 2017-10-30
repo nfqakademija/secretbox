@@ -18,5 +18,5 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            SuperSecretAcademyHashKeyDoNotTellAnyone
 #facebook parameters
-    facebook_client_id: 711322222391741
-    facebook_client_secret: 86d6ec1b86bd0c04dc11c87cdab61a52
+    facebook_client_id: ~
+    facebook_client_secret: ~

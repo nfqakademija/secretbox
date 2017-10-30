@@ -1,49 +1,48 @@
 {% extends "::base.html.twig" %}
 
 {% block title %}
-    Homepage - {{ parent() }}
+    Pradžia - {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans+Condensed:300" rel="stylesheet">
-    <link href="css/tmp.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/appearing-text.css') }}"/>
     {{ parent() }}
 {% endblock %}
 
 {% block body %}
-     <div class="introduction">
+     <div id="parallax" class="introduction">
         <div class="parallax-window" data-parallax="scroll"
-             data-image-src="{{ asset("images/parallax/1.jpg") }}" data-speed="0.1">
+             data-image-src="{{ asset("images/parallax/1.jpg") }}" data-speed="0.1" >
         </div>
-        <div class="parallax-window">
+        <div class="parallax-window parallax-text">
             <div class="parallax-slider">
-                <span class="message">something is coming...</span>
+                <div class="message">{{ 'intro.first'|trans }}</div>
             </div>
         </div>
         <div class="parallax-window" data-parallax="scroll"
              data-image-src="{{ asset('images/parallax/2.jpg') }}" data-speed="0.1"></div>
-        <div class="parallax-window">
-            <div class="parallax-slider">
-                <span class="message">can you guess what?</span>
+        <div class="parallax-window parallax-text">
+            <div class="parallax-slider" >
+                <div class="message">{{ 'intro.second'|trans }}</div>
             </div>
         </div>
         <div class="parallax-window" data-parallax="scroll"
              data-image-src="{{ asset('images/parallax/3.jpg') }}" data-speed="0.1">
         </div>
-        <div class="parallax-window">
+        <div class="parallax-window parallax-text">
             <div class="parallax-slider">
-                <span class="message">it's secret "Secret box"</span>
+                <div class="message">{{ 'intro.third'|trans }}</div>
             </div>
         </div>
         <div class="parallax-window">
             <div class="parallax-slider">
-                <span class="message">PREORDER</span>
+                <div class="message">{{ 'product.preorder'|trans }}</div>
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
+    {{ parent() }}
 {% endblock %}

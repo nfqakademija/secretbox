@@ -53,24 +53,14 @@ class FacebookAuthenticator extends SocialAuthenticator
         $facebookUser = $this->getFacebookClient()
             ->fetchUserFromToken($credentials);
 
-        $userArray = $facebookUser->toArray();
+        $facebookUserArray = $facebookUser->toArray();
 
-        //if user exist, return him
-        $existingUser = $this->em->getRepository('AppBundle:User')
-            ->findOneBy(['facebookId' => $facebookUser->getId()]);
+        $existingUser = $this->updateUser($facebookUserArray);
         if($existingUser){
             return $existingUser;
         }
 
-
-        $user = new User();
-
-        $user->setEmail($userArray['email']);
-        $user->setName($userArray['first_name']);
-        $user->setSurname($userArray['last_name']);
-        $user->setFacebookId($facebookUser->getId());
-        $this->em->persist($user);
-        $this->em->flush();
+        $user = $this->createNewUser($facebookUserArray);
 
         return $user;
     }
@@ -89,5 +79,53 @@ class FacebookAuthenticator extends SocialAuthenticator
     {
         // TODO: Implement start() method.
     }
+
+    /**
+     * @return datetime
+     */
+    private function getCurrentTime()
+    {
+        $now = date('Y-m-d H:i:s', time());
+        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', $now);
+        return $datetime;
+    }
+
+    private function createNewUser($userArray)
+    {
+        $user = new User();
+        $datetime = $this->getCurrentTime();
+        $user->setEmail($userArray['email']);
+        $user->setFirstName($userArray['first_name']);
+        $user->setLastName($userArray['last_name']);
+        $user->setFacebookId($userArray['id']);
+        $user->setPictureUrl($userArray['picture_url']);
+        $user->setRegisterDate($datetime);
+        $user->setLastLogin($datetime);
+        $this->em->persist($user);
+        $this->em->flush();
+        return $user;
+    }
+
+    private function updateUser($userArray)
+    {
+        $existingUser = $this->em->getRepository('AppBundle:User')
+            ->findOneBy(['facebookId' => $userArray['id']]);
+        if($existingUser){
+            $datetime = $this->getCurrentTime();
+            if($existingUser->getPictureUrl() != $userArray['picture_url']){
+                $existingUser->setPictureUrl($userArray['picture_url']);
+            }
+            $loginCount = $existingUser->getLoginCount();
+            $existingUser->setLoginCount($loginCount + 1);
+            $existingUser->setLastLogin($datetime);
+            //$user = clone $existingUser;
+//            var_dump($existingUser); die;
+            $this->em->persist($existingUser);
+            $this->em->flush();
+            return $existingUser;
+        }
+        return null;
+    }
+
 
 }

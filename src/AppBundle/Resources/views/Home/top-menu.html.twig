@@ -1,17 +1,72 @@
-<span class="logo-text">Secret box</span>
-<div class="top-menu">
-    <span >
+<nav class="navbar navbar-fixed-top top-nav">
+    <div class="container">
+        <div class="navbar-left">
+            <a class="navbar-brand" href="{{  path(app.request.attributes.get('_route'), { '_locale': 'lt' }) }}">
+                <span class="lang-lg" lang="lt"></span>
+            </a>
+            <a class="navbar-brand" href="{{  path(app.request.attributes.get('_route'), { '_locale': 'en' }) }}">
+                <span class="lang-lg" lang="en"></span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ path('app.homepage') }}"><span class="logo-text">{{ 'project.name'|trans }}</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active">
+                    <a href="{{ path('app.about') }}">{{ 'menu.about'|trans }}</a>
+                </li>
 
-        Menu 1 | Menu 2 | Menu 3
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            | Prisijunges kaip: {{ app.user.username }},
-            <a href="{{ logout_path() }}"><img class="fb-image" src="{{ asset('images/fb_icon.png') }}"> Atsijungti</a>
-        {% else %}
-             <a href="{{ path('app_facebook_connect') }}"><img class="fb-image" src="{{ asset('images/fb_icon.png') }}"> Prisijungti</a>
-        {% endif %}
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> 
+                            <strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <img class="icon-size" src="{{ app.user.pictureUrl }}"/>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></p>
+                                            <p class="text-left small">{{ app.user.username }}</p>
+                                            <p class="text-left">
+                                                <a href="{{ path('app.user.profile') }}" class="btn btn-primary btn-block btn-sm">{{ 'user.profile'|trans }}</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="navbar-login navbar-login-session">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p>
+                                                <a href="{{ logout_path() }}" class="btn btn-danger btn-block">{{ 'menu.logout'|trans }}</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
 
+                {% else %}
+                    <li class="active">
+                        <a id="fa-button" href="{{ path('app_facebook_connect') }}">
+                            <span id="fa-text">{{ 'menu.login.with'|trans }} <img class="fb-image" src="{{ asset('images/fb_icon.png') }}" /> </span>
+                        </a>
+                    </li>
+                {% endif %}
 
-
-    </span>
-</div>
-
+            </ul>
+        </div>
+    </div>
+</nav>

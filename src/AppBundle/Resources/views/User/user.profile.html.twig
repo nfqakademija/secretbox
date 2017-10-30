@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-user-profile">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+
+        <h1>{{ 'user.profile'|trans }}</h1>
+
+        {% else %}
+            <h1>{{ 'user.access.denied'|trans }}</h1>
+
+            {% endif %}
+    </div>
+{% endblock %}

@@ -16,7 +16,16 @@ gulp.task('sass', function() {
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dir.dist + 'css'));
+
+    gulp.src(dir.assets + 'style/languages.scss')
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(concat('languages.css'))
+        .pipe(gulp.dest(dir.dist + 'css'));
+
+    //new styles
 });
+
+
 
 gulp.task('scripts', function() {
     gulp.src([

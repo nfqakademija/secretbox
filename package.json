@@ -14,6 +14,7 @@
     "jquery": "2.2.*"
   },
   "dependencies": {
+    "bootstrap-social": "^5.1.1",
     "jquery-parallax.js": "^1.5.0"
   }
 }

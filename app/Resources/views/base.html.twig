@@ -2,11 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}{{ "My project" }}{% endblock %}</title>
+    <title>{% block title %}{{ "Secret box" }}{% endblock %}</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico')}}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/languages.css') }}"/>
+        {#<link rel="stylesheet" href="{{ asset('css/socialbuttons.css') }}"/>#}
+        <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat" rel="stylesheet">
+        {#<link href="{{ asset('css/tmp.css') }}" rel="stylesheet">#}
     {% endblock %}
     {% block canonical_meta %}{% endblock %}
 </head>
@@ -18,11 +22,17 @@
         {% endblock %}
         {% block body %}{% endblock %}
     {% endblock %}
+
+
 </div>
 {% block footer %}
-{% include "::inc/footer.html.twig" %}
+    {% include "::inc/footer.html.twig" %}
 {% endblock %}
+
 {% block javascripts %}
+    <script language="JavaScript">
+        var userWaiting = "{{ 'user.wait'|trans }}";
+    </script>
     <script src="{{ asset('js/script.js') }}"></script>
 {% endblock %}
 </body>

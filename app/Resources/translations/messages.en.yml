@@ -1,0 +1,18 @@
+intro.first: something is comming...
+intro.second: can you guess what?
+intro.third: it's secret "Secret box"
+
+content.about: About Secret box
+content.404: Secret box isn't here :)
+
+menu.about: About
+menu.login.with: Login with
+menu.logout: Logout
+
+user.profile: My profile
+user.access.denied: Access denied, please login first...
+user.wait: Please wait...
+
+product.preorder: Preorder
+
+project.name: Secret box
