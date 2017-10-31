@@ -54,16 +54,16 @@ class User implements UserInterface
     /**
      * @var datetime
      *
-     * @ORM\Column(name="register_date", type="datetime")
+     * @ORM\Column(name="registered_date", type="datetime")
      */
-    private $registerDate;
+    private $registeredDate;
 
     /**
      * @var datetime
      *
-     * @ORM\Column(name="last_login", type="datetime")
+     * @ORM\Column(name="logged_date", type="datetime")
      */
-    private $lastLogin;
+    private $loggedDate;
 
     /**
      * @var integer
@@ -86,6 +86,12 @@ class User implements UserInterface
      */
     private $role = array();
 
+
+    public function __construct()
+    {
+        $this->registeredDate = new \DateTime();
+        $this->loggedDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -212,36 +218,36 @@ class User implements UserInterface
     /**
      * @return datetime
      */
-    public function getRegisterDate()
+    public function getRegisteredDate()
     {
-        return $this->registerDate;
+        return $this->registeredDate;
     }
 
     /**
-     * @param datetime $registerDate
+     * @param datetime $registeredDate
      * @return User
      */
-    public function setRegisterDate($registerDate)
+    public function setRegisteredDate($registeredDate)
     {
-        $this->registerDate = $registerDate;
+        $this->registeredDate = $registeredDate;
         return $this;
     }
 
     /**
      * @return datetime
      */
-    public function getLastLogin()
+    public function getLoggedDate()
     {
-        return $this->lastLogin;
+        return $this->loggedDate;
     }
 
     /**
-     * @param datetime $lastLogin
+     * @param datetime $loggedDate
      * @return User
      */
-    public function setLastLogin($lastLogin)
+    public function setLoggedDate($loggedDate)
     {
-        $this->lastLogin = $lastLogin;
+        $this->loggedDate = $loggedDate;
         return $this;
     }
 

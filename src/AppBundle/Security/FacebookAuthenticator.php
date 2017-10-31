@@ -10,8 +10,7 @@
 namespace AppBundle\Security;
 
 
-use AppBundle\Entity\User;
-use Doctrine\ORM\EntityManager;
+use AppBundle\Service\UserService;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,19 +22,19 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 class FacebookAuthenticator extends SocialAuthenticator
 {
     private $clientRegistry;
-    private $em;
     private $router;
+    private $userService;
 
-    public function __construct(ClientRegistry $clientRegistry, EntityManager $em, RouterInterface $router)
+    public function __construct(ClientRegistry $clientRegistry, RouterInterface $router, UserService $userService)
     {
-        $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;
+        $this->userService = $userService;
     }
 
     public function getCredentials(Request $request)
     {
-        if($request->getPathInfo() != '/connect/facebook/check'){
+        if ($request->getPathInfo() != '/connect/facebook/check') {
             return;
         }
 
@@ -55,13 +54,13 @@ class FacebookAuthenticator extends SocialAuthenticator
 
         $facebookUserArray = $facebookUser->toArray();
 
-        $existingUser = $this->updateUser($facebookUserArray);
-        if($existingUser){
+        $existingUser = $this->userService->updateUser($facebookUserArray);
+
+        if ($existingUser) {
             return $existingUser;
         }
 
-        $user = $this->createNewUser($facebookUserArray);
-
+        $user = $this->userService->createUser($facebookUserArray);
         return $user;
     }
 
@@ -79,53 +78,5 @@ class FacebookAuthenticator extends SocialAuthenticator
     {
         // TODO: Implement start() method.
     }
-
-    /**
-     * @return datetime
-     */
-    private function getCurrentTime()
-    {
-        $now = date('Y-m-d H:i:s', time());
-        $datetime = \DateTime::createFromFormat('Y-m-d H:i:s', $now);
-        return $datetime;
-    }
-
-    private function createNewUser($userArray)
-    {
-        $user = new User();
-        $datetime = $this->getCurrentTime();
-        $user->setEmail($userArray['email']);
-        $user->setFirstName($userArray['first_name']);
-        $user->setLastName($userArray['last_name']);
-        $user->setFacebookId($userArray['id']);
-        $user->setPictureUrl($userArray['picture_url']);
-        $user->setRegisterDate($datetime);
-        $user->setLastLogin($datetime);
-        $this->em->persist($user);
-        $this->em->flush();
-        return $user;
-    }
-
-    private function updateUser($userArray)
-    {
-        $existingUser = $this->em->getRepository('AppBundle:User')
-            ->findOneBy(['facebookId' => $userArray['id']]);
-        if($existingUser){
-            $datetime = $this->getCurrentTime();
-            if($existingUser->getPictureUrl() != $userArray['picture_url']){
-                $existingUser->setPictureUrl($userArray['picture_url']);
-            }
-            $loginCount = $existingUser->getLoginCount();
-            $existingUser->setLoginCount($loginCount + 1);
-            $existingUser->setLastLogin($datetime);
-            //$user = clone $existingUser;
-//            var_dump($existingUser); die;
-            $this->em->persist($existingUser);
-            $this->em->flush();
-            return $existingUser;
-        }
-        return null;
-    }
-
 
 }
