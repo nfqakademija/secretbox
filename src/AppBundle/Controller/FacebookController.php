@@ -36,5 +36,4 @@ class FacebookController extends Controller
     {
         return $this->redirectToRoute('app.homepage');
     }
-
 }

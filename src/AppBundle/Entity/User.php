@@ -52,14 +52,14 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(name="registered_date", type="datetime")
      */
     private $registeredDate;
 
     /**
-     * @var datetime
+     * @var \DateTime
      *
      * @ORM\Column(name="logged_date", type="datetime")
      */
@@ -82,15 +82,20 @@ class User implements UserInterface
     /**
      * @var array
      *
-     * @ORM\Column(name="role", type="json_array")
+     * @ORM\Column(name="roles", type="json_array")
      */
-    private $role = array();
+    private $roles = array();
+
 
 
     public function __construct()
     {
         $this->registeredDate = new \DateTime();
         $this->loggedDate = new \DateTime();
+        $this->roles = [
+            'ROLE_USER'
+        ];
+
     }
 
     /**
@@ -216,7 +221,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return datetime
+     * @return \DateTime
      */
     public function getRegisteredDate()
     {
@@ -224,7 +229,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param datetime $registeredDate
+     * @param \DateTime $registeredDate
      * @return User
      */
     public function setRegisteredDate($registeredDate)
@@ -234,7 +239,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return datetime
+     * @return \DateTime
      */
     public function getLoggedDate()
     {
@@ -242,7 +247,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param datetime $loggedDate
+     * @param \DateTime $loggedDate
      * @return User
      */
     public function setLoggedDate($loggedDate)
@@ -271,8 +276,8 @@ class User implements UserInterface
 
     public function getRoles()
     {
-        $roles[] = 'ROLE_USER';
-        return $roles;
+//        $roles[] = 'ROLE_USER';
+        return $this->roles;
     }
 
     public function getPassword()
@@ -294,7 +299,4 @@ class User implements UserInterface
     {
         // TODO: Implement eraseCredentials() method.
     }
-
-
 }
-

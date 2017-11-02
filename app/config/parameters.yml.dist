@@ -20,3 +20,5 @@ parameters:
 #facebook parameters
     facebook_client_id: ~
     facebook_client_secret: ~
+
+    mail_from: ~

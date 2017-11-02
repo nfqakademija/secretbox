@@ -9,7 +9,6 @@
 
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 
@@ -23,7 +22,8 @@ class UserService
         $this->em = $em;
     }
 
-    public function createUser($userArray){
+    public function createUser($userArray)
+    {
         $user = new User();
         $user->setEmail($userArray['email']);
         $user->setFirstName($userArray['first_name']);
@@ -39,9 +39,9 @@ class UserService
     {
         $existingUser = $this->em->getRepository('AppBundle:User')
             ->findOneBy(['facebookId' => $userArray['id']]);
-        if($existingUser){
+        if ($existingUser) {
             $datetime = $this->getCurrentTime();
-            if($existingUser->getPictureUrl() != $userArray['picture_url']){
+            if ($existingUser->getPictureUrl() != $userArray['picture_url']) {
                 $existingUser->setPictureUrl($userArray['picture_url']);
             }
             $loginCount = $existingUser->getLoginCount();

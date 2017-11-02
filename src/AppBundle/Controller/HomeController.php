@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use GuzzleHttp\Psr7\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -10,8 +11,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  * @Route("/{_locale}", defaults={"_locale": "lt"}, requirements={"_locale" = "%app.locales%"})
  *
  */
-
-
 class HomeController extends Controller
 {
 
@@ -20,7 +19,10 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig', []);
+
+        return $this->render('AppBundle:Home:index.html.twig', [
+
+        ]);
     }
 
     /**
@@ -38,5 +40,4 @@ class HomeController extends Controller
     {
         return $this->render('AppBundle:User:user.profile.html.twig');
     }
-
 }

@@ -6,6 +6,7 @@
 
 
         <h1>{{ 'user.profile'|trans }}</h1>
+        <h2>{{ dump(app.user) }}</h2>
 
         {% else %}
             <h1>{{ 'user.access.denied'|trans }}</h1>

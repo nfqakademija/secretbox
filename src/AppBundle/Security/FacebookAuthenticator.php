@@ -9,7 +9,6 @@
 
 namespace AppBundle\Security;
 
-
 use AppBundle\Service\UserService;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
@@ -35,7 +34,7 @@ class FacebookAuthenticator extends SocialAuthenticator
     public function getCredentials(Request $request)
     {
         if ($request->getPathInfo() != '/connect/facebook/check') {
-            return;
+            return null;
         }
 
         return $this->fetchAccessToken($this->getFacebookClient());
@@ -78,5 +77,4 @@ class FacebookAuthenticator extends SocialAuthenticator
     {
         // TODO: Implement start() method.
     }
-
 }

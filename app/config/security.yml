@@ -29,4 +29,3 @@ security:
                     - 'facebook_authenticator'
             logout:
                 path: /logout
-
