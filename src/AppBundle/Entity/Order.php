@@ -200,7 +200,4 @@ class Order
         $this->deliveryAddress = $deliveryAddress;
         return $this;
     }
-
-
 }
-

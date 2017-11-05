@@ -102,7 +102,6 @@ class User implements UserInterface
         $this->roles = [
             'ROLE_USER'
         ];
-
     }
 
     /**

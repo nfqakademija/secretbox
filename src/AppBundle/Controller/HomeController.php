@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +20,6 @@ class HomeController extends Controller
      */
     public function indexAction()
     {
-
         return $this->render('AppBundle:Home:index.html.twig', [
 
         ]);
@@ -39,13 +37,12 @@ class HomeController extends Controller
      * @return Response
      * @Route("/order", name="app.order.now")
      */
-    public function orderNowAction(Request $request){
-        if($this->getUser()){
+    public function orderNowAction(Request $request)
+    {
+        if ($this->getUser()) {
             return $this->redirectToRoute('app.order.new');
         } else {
             return $this->redirectToRoute('app_facebook_connect');
         }
-
     }
-
 }

@@ -126,4 +126,3 @@ class Impression
         return $this->approved;
     }
 }
-

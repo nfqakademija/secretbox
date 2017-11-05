@@ -37,6 +37,4 @@ class OrderType extends AbstractType
     {
         return 'appbundle_order';
     }
-
-
 }

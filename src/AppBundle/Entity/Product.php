@@ -195,6 +195,4 @@ class Product
         $this->validTo = $validTo;
         return $this;
     }
-
-
 }

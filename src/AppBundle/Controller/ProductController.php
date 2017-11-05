@@ -20,8 +20,5 @@ class ProductController extends Controller
      */
     public function indexAction(Request $request)
     {
-
     }
-
-
 }

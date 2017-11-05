@@ -9,7 +9,6 @@
 
 namespace AppBundle\Service;
 
-
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
@@ -24,7 +23,8 @@ class OrderService
         $this->em = $em;
     }
 
-    public function createNewOrder(Order $order){
+    public function createNewOrder(Order $order)
+    {
         $this->em->persist($order);
         $this->em->flush();
     }
