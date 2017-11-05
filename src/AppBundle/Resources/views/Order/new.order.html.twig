@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:OrderController:newOrder{% endblock %}
+
+{% block body %}
+    <div class="body-order">
+        <h2>{{ 'order.secretbox' | trans }}</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                {{ 'user.name' | trans }}, {{ 'user.surname' | trans }}
+            </div>
+            <div class="panel-body">{{ app.user.firstName }} {{ app.user.lastName }}</div>
+        </div>
+        {{ form(form) }}
+    </div>
+
+{% endblock %}

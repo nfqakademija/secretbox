@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Order
  *
  * @ORM\Table(name="orders")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\OrdersRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderRepository")
  */
 class Order
 {
@@ -49,6 +49,21 @@ class Order
      */
     private $sellingPrice;
 
+    /**
+     * @ORM\Column(name="status", type="string")
+     */
+    private $status = "new";
+
+    /**
+     * @ORM\Column(name="delivery_address", type="string")
+     */
+    private $deliveryAddress;
+
+
+    public function __construct()
+    {
+        $this->orderDate = new \DateTime();
+    }
 
     /**
      * Get id
@@ -147,6 +162,42 @@ class Order
     public function setSellingPrice($sellingPrice)
     {
         $this->sellingPrice = $sellingPrice;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param string $status
+     * @return Order
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeliveryAddress()
+    {
+        return $this->deliveryAddress;
+    }
+
+    /**
+     * @param string $deliveryAddress
+     * @return Order
+     */
+    public function setDeliveryAddress($deliveryAddress)
+    {
+        $this->deliveryAddress = $deliveryAddress;
         return $this;
     }
 

@@ -2,11 +2,9 @@
 
 namespace AppBundle\Controller;
 
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class FacebookController extends Controller
 {
@@ -25,12 +23,13 @@ class FacebookController extends Controller
      */
     public function connectCheckAction(Request $request)
     {
+        //todo redirect to new order page if button clicked
         return $this->redirectToRoute('app.homepage');
     }
 
 
     /**
-//     * @Route("/")
+     * @Route("/")
      */
     public function noRoute()
     {

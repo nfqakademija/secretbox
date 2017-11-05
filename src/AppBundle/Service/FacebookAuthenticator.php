@@ -7,7 +7,7 @@
  * Time: 15.20
  */
 
-namespace AppBundle\Security;
+namespace AppBundle\Service;
 
 use AppBundle\Service\UserService;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;

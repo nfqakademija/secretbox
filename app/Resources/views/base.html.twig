@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="{{ asset('css/languages.css') }}"/>
         {#<link rel="stylesheet" href="{{ asset('css/socialbuttons.css') }}"/>#}
         <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat" rel="stylesheet">
-        {#<link href="{{ asset('css/tmp.css') }}" rel="stylesheet">#}
+        <link href="{{ asset('css/tmp.css') }}" rel="stylesheet">
     {% endblock %}
     {% block canonical_meta %}{% endblock %}
 </head>
@@ -20,7 +20,10 @@
         {% block header %}
             {% include "::inc/header.html.twig" %}
         {% endblock %}
-        {% block body %}{% endblock %}
+        <div class="body-content">
+            {% block body %}{% endblock %}
+        </div>
+
     {% endblock %}
 
 

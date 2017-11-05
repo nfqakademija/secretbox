@@ -36,7 +36,9 @@
         </div>
         <div class="parallax-window">
             <div class="parallax-slider">
-                <div class="message">{{ 'product.preorder'|trans }}</div>
+                <div class="message">
+                    <a class="btn btn-success button-order-now" href="{{ path('app.order.now') }}">{{ 'product.order'|trans }}</a>
+                </div>
             </div>
         </div>
     </div>

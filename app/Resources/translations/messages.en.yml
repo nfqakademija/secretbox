@@ -4,15 +4,29 @@ intro.third: it's secret "Secret box"
 
 content.about: About Secret box
 content.404: Secret box isn't here :)
+content.address: Address
 
 menu.about: About
 menu.login.with: Login with
 menu.logout: Logout
 
+user.page: My page
 user.profile: My profile
+user.orders: Secrets revealed
+user.impressions: My impressions
 user.access.denied: Access denied, please login first...
 user.wait: Please wait...
+user.registration.date: Registration date
+user.lastlogin.date: Last login
+user.secrets: My secrets
+user.name: Name
+user.surname: Surname
 
-product.preorder: Preorder
+product.order: Order now
 
 project.name: Secret box
+
+order.delivery.address: Delivery address
+order.secretbox: Order Secret box
+order.data: Secret box order date
+order.delivery.address: Devliver to

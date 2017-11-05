@@ -86,6 +86,13 @@ class User implements UserInterface
      */
     private $roles = array();
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="address", type="string")
+     */
+    private $address;
+
 
 
     public function __construct()
@@ -273,6 +280,26 @@ class User implements UserInterface
         $this->loginCount = $loginCount;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     * @return User
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+        return $this;
+    }
+
+
 
     public function getRoles()
     {

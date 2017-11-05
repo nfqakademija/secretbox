@@ -2,9 +2,11 @@
 
 namespace AppBundle\Controller;
 
-use GuzzleHttp\Psr7\Request;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class HomeController
@@ -34,10 +36,16 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/user_profile", name="app.user.profile")
+     * @return Response
+     * @Route("/order", name="app.order.now")
      */
-    public function userProfile()
-    {
-        return $this->render('AppBundle:User:user.profile.html.twig');
+    public function orderNowAction(Request $request){
+        if($this->getUser()){
+            return $this->redirectToRoute('app.order.new');
+        } else {
+            return $this->redirectToRoute('app_facebook_connect');
+        }
+
     }
+
 }

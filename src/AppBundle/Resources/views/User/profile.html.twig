@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="body-user-profile">
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+
+
+
+        <section style="background:#efefe9;">
+            <div class="container">
+                <div class="row">
+                    <div class="board">
+                        <div class="board-inner">
+                            <ul class="nav nav-tabs" id="myTab">
+                                <div class="liner"></div>
+
+                                <li class="active">
+                                    <a href="#secrets" data-toggle="tab" title="{{ 'user.secrets'|trans }}">
+                                        <span class="round-tabs one">
+                                             <i class="glyphicon glyphicon-question-sign"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#profile" data-toggle="tab" title="{{ 'user.profile'|trans }}">
+                                        <span class="round-tabs two">
+                                             <i class="glyphicon glyphicon-user"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#completed" data-toggle="tab" title="{{ 'user.orders' | trans }}">
+                                        <span class="round-tabs three">
+                                            <i class="glyphicon glyphicon-check"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="#impressions" data-toggle="tab" title="{{ 'user.impressions' | trans }}">
+                                        <span class="round-tabs four">
+                                            <i class="glyphicon glyphicon-comment"></i>
+                                        </span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="secrets">
+                                <h3 class="head">{{ 'user.secrets'|trans }}</h3>
+                                <table class="table small">
+                                    <thead>
+                                    <th>{{ 'order.date' | trans }}</th>
+                                    <th>{{ 'order.delivery.address' | trans }}</th>
+                                    </thead>
+
+                                    {% for secret in secrets %}
+                                        <tr>
+                                            <td>{{ secret.orderDate | date('Y-m-d') }}</td>
+                                            <td>{{ secret.deliveryAddress }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                            <div class="tab-pane fade " id="profile">
+                                <h3 class="head">{{ 'user.profile'|trans }}</h3>
+
+                                <div class="user-profile-info">
+                                    <div>
+                                        <h4>{{ app.user.firstName }} {{ app.user.lastName }}</h4>
+                                    </div>
+                                    <div>
+                                        <img src="{{ app.user.pictureUrl }}">
+                                    </div>
+
+                                </div>
+
+                                <div class="user-profile-info">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">{{ 'user.registration.date' | trans }}</h3>
+                                        </div>
+                                        <div class="panel-body">{{ app.user.registeredDate | date('Y-m-d') }}</div>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">{{ 'user.lastlogin.date' | trans }}</h3>
+                                        </div>
+                                        <div class="panel-body">{{ app.user.loggedDate | date('Y-m-d') }}</div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">{{ 'content.address' | trans }}</h3>
+                                        </div>
+                                        <div class="panel-body">{{ app.user.address }}
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="completed">
+                                <h3 class="head">{{ 'user.orders'|trans }}</h3>
+                                <table class="table small">
+                                    <thead>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </thead>
+                                    <tbody>
+                                    {#{{ dump(orders) }}#}
+                                        {% for order in orders %}
+                                            <tr>
+                                                <td>{{ order.orderDate | date }}</td>
+                                                <td>{{ order.title }}</td>
+                                                <td>{{ order.description }}</td>
+                                                <td>{{ order.supplier }}</td>
+
+                                                {#<td colspan="4">{{ dump(order) }}</td>#}
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+
+                            <div class="tab-pane fade" id="impressions">
+                                <h3 class="head text-center">{{ 'user.impressions' | trans }}</h3>
+
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    {% else %}
+            <h1>{{ 'user.access.denied'|trans }}</h1>
+
+            {% endif %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function(){
+            $('a[title]').tooltip();
+        });
+
+    </script>
+{% endblock %}

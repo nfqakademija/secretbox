@@ -20,4 +20,5 @@ security:
 
     access_control:
         - {path: ^/%locale%/user_profile, roles: ROLE_USER}
+        - {path: ^/%locale%/orders, roles: ROLE_USER}
         - {path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}

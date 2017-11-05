@@ -7,14 +7,29 @@ intro.third: paslapčių dėžutėje - tavo nuotykio pradžia
 #                {#užsisakyti paslapčiū dėžutę#}
 content.about: Apie paslapčių dėžutę
 content.404: Paslapčių dėžutė slepiasi ne čia :)
+content.address: Adresas
+
 menu.about: Apie
 menu.login.with: Prisijungti su
 menu.logout: Atsijungti
 
+user.page: Mano puslapis
 user.profile: Mano profilis
+user.orders: Atskleistos paslaptys
+user.impressions: Mano įspūdžiai
 user.access.denied: Šio puslapio negalite peržiūrėti, prašome iš pradžių prisijunkti
 user.wait: Prašome palaukti...
+user.registration.date: Registracijos data
+user.lastlogin.date: Paskutinis prisijungimas
+user.secrets: Mano paslaptys
+user.name: Vardas
+user.surname: Pavardė
 
-product.preorder: Užsisakyti
+product.order: Užsakyti dabar
 
 project.name: Paslapčių dėžutė
+
+order.delivery.address: Pristatymo adresas
+order.secretbox: Paslapčių dėžutės užsakymas
+order.date: Paslapčių dėžutės užsakymo data
+order.delivery.address: Pristatymas į

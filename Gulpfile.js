@@ -12,7 +12,11 @@ var dir = {
 };
 
 gulp.task('sass', function() {
-    gulp.src(dir.assets + 'style/main.scss')
+    gulp.src([
+        dir.assets + 'style/main.scss',
+        dir.assets + 'style/user-profile.scss',
+        dir.assets + 'style/parsley.scss'
+        ])
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dir.dist + 'css'));
@@ -33,7 +37,8 @@ gulp.task('scripts', function() {
             dir.npm + 'jquery/dist/jquery.min.js',
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
-
+            dir.npm + 'parsleyjs/dist/parsley.js',
+            dir.npm + 'parsleyjs/dist/i18n/lt.js',
             // Main JS file
             dir.assets + 'scripts/main.js'
         ])
