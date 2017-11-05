@@ -53,21 +53,24 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="secrets">
                                 <h3 class="head">{{ 'user.secrets'|trans }}</h3>
-                                <table class="table small">
-                                    <thead>
-                                    <th>{{ 'order.date' | trans }}</th>
-                                    <th>{{ 'order.delivery.address' | trans }}</th>
-                                    </thead>
+                                {% if secrets == null %}
+                                    {{ 'orders.no.secrets' | trans }}
+                                {% else %}
+                                    <table class="table small">
+                                        <thead>
+                                        <th>{{ 'order.date' | trans }}</th>
+                                        <th>{{ 'order.delivery.address' | trans }}</th>
+                                        </thead>
 
-                                    {% for secret in secrets %}
-                                        <tr>
-                                            <td>{{ secret.orderDate | date('Y-m-d') }}</td>
-                                            <td>{{ secret.deliveryAddress }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-
+                                        {% for secret in secrets %}
+                                            <tr>
+                                                <td>{{ secret.orderDate | date('Y-m-d') }}</td>
+                                                <td>{{ secret.deliveryAddress }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endif %}
 
                             </div>
 
@@ -115,27 +118,28 @@
 
                             <div class="tab-pane fade" id="completed">
                                 <h3 class="head">{{ 'user.orders'|trans }}</h3>
-                                <table class="table small">
-                                    <thead>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </thead>
-                                    <tbody>
-                                    {#{{ dump(orders) }}#}
-                                        {% for order in orders %}
-                                            <tr>
-                                                <td>{{ order.orderDate | date }}</td>
-                                                <td>{{ order.title }}</td>
-                                                <td>{{ order.description }}</td>
-                                                <td>{{ order.supplier }}</td>
-
-                                                {#<td colspan="4">{{ dump(order) }}</td>#}
-                                            </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
+                                {% if orders == null %}
+                                    {{ 'order.no.completed.orders' | trans }}
+                                {% else %}
+                                    <table class="table small">
+                                        <thead>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </thead>
+                                        <tbody>
+                                            {% for order in orders %}
+                                                <tr>
+                                                    <td>{{ order.orderDate | date }}</td>
+                                                    <td>{{ order.title }}</td>
+                                                    <td>{{ order.description }}</td>
+                                                    <td>{{ order.supplier }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% endif %}
 
 
                             </div>

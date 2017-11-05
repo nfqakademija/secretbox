@@ -33,3 +33,5 @@ order.delivery.address: Pristatymo adresas
 order.secretbox: Paslapčių dėžutės užsakymas
 order.date: Paslapčių dėžutės užsakymo data
 order.delivery.address: Pristatymas į
+orders.no.secrets: Neturite užsakytų paslapčių
+order.no.completed.orders: Neturite atskleistų paslapčių

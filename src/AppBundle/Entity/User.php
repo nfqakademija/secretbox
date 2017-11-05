@@ -91,7 +91,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="address", type="string")
      */
-    private $address;
+    private $address = "";
 
 
 
@@ -302,7 +302,6 @@ class User implements UserInterface
 
     public function getRoles()
     {
-//        $roles[] = 'ROLE_USER';
         return $this->roles;
     }
 

@@ -30,3 +30,5 @@ order.delivery.address: Delivery address
 order.secretbox: Order Secret box
 order.data: Secret box order date
 order.delivery.address: Devliver to
+orders.no.secrets: You have no secrets
+order.no.completed.orders: You have no revealed secrets
