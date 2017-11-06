@@ -38,13 +38,23 @@ gulp.task('scripts', function() {
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
             dir.npm + 'parsleyjs/dist/parsley.js',
-            dir.npm + 'parsleyjs/dist/i18n/lt.js',
             // Main JS file
             dir.assets + 'scripts/main.js'
         ])
         .pipe(concat('script.js'))
         .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js'));
+
+    // parsleyjs validation locales LT and EN
+    gulp.src(dir.npm + 'parsleyjs/dist/i18n/lt.js')
+        .pipe(concat('lt.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(dir.dist + 'js/pasleyjs-locale'));
+    gulp.src(dir.npm + 'parsleyjs/dist/i18n/en.js')
+        .pipe(concat('en.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(dir.dist + 'js/pasleyjs-locale'));
+
 });
 
 gulp.task('images', function() {

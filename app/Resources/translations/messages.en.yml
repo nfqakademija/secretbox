@@ -1,34 +1,35 @@
-intro.first: something is comming...
-intro.second: can you guess what?
-intro.third: it's secret "Secret box"
+intro.first: everywhere arround there are many secrets
+intro.second: and there are many clues to find them out
+intro.third: take Your secret SECRET BOX and start Your adventure
 
-content.about: About Secret box
+content.about: about project SECRET BOX
 content.404: Secret box isn't here :)
-content.address: Address
+content.address: address
 
-menu.about: About
-menu.login.with: Login with
-menu.logout: Logout
+menu.about: about
+menu.login: login
+menu.logout: logout
 
-user.page: My page
-user.profile: My profile
-user.orders: Secrets revealed
-user.impressions: My impressions
-user.access.denied: Access denied, please login first...
-user.wait: Please wait...
-user.registration.date: Registration date
-user.lastlogin.date: Last login
-user.secrets: My secrets
-user.name: Name
-user.surname: Surname
+user.page: my account
+user.profile: my profile
+user.orders: secrets revealed
+user.impressions: my impressions
+user.access.denied: access denied, please login first...
+user.wait: please wait...
+user.registration.date: registration date
+user.lastlogin.date: last login
+user.secrets: my secrets
+user.name: name
+user.surname: surname
 
-product.order: Order now
+product.order: order now
 
-project.name: Secret box
+project.name: secret box
 
-order.delivery.address: Delivery address
-order.secretbox: Order Secret box
-order.data: Secret box order date
-order.delivery.address: Devliver to
-orders.no.secrets: You have no secrets
-order.no.completed.orders: You have no revealed secrets
+order.delivery.address: delivery address
+order.secretbox: order Secret box
+order.date: ordered
+order.revealed: revealed
+order.delivery.address: devliver to
+orders.no.secrets: you have no secrets
+order.no.completed.orders: you have no revealed secrets

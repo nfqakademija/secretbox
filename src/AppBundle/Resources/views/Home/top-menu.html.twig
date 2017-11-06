@@ -9,7 +9,7 @@
             </a>
         </div>
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('app.homepage') }}"><span class="logo-text">{{ 'project.name'|trans }}</span></a>
+            <a class="navbar-brand" href="{{ path('app.homepage') }}"><span class="logo-text">{{ 'project.name'|trans | upper }}</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav navbar-right">
@@ -61,7 +61,7 @@
                 {% else %}
                     <li class="active">
                         <a id="fa-button" href="{{ path('app_facebook_connect') }}">
-                            <span id="fa-text">{{ 'menu.login.with'|trans }} <img class="fb-image" src="{{ asset('images/fb_icon.png') }}" /> </span>
+                            <span id="fa-text">{{ 'menu.login'|trans }} <img class="fb-image" src="{{ asset('images/fb_icon.png') }}" /> </span>
                         </a>
                     </li>
                 {% endif %}

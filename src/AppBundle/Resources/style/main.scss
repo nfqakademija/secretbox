@@ -122,4 +122,15 @@ body {
   min-width: 300px;
   max-width: 325px;
   font-size: 40px;
+  //background-color: #C24641;
+  background-color: #fffff8;
+  //color:  #42BEC2;
+  color: #483c32;
+  //border: 1px solid black;
+}
+
+.button-order-now:hover {
+
+  background-color: #483c32;
+  color: #fffff8;
 }

@@ -1,37 +1,34 @@
-intro.first: yra paslapčių, kurių niekada nepavyksta atskleisti, kitos paslaptys privalo būti atskleistos
-intro.second: tu turi apie tai sužinoti pats
-intro.third: paslapčių dėžutėje - tavo nuotykio pradžia
-#                {#tai ką rasi viduje - tavo nuotykio pradžia
-#                 nuo to prasideda tavo nuotykis#}
-#                {#paslapčių dėžutėje - tavo nuotykio pradžia#}
-#                {#užsisakyti paslapčiū dėžutę#}
-content.about: Apie paslapčių dėžutę
+intro.first: paslaptys. ar žinojai, kiek jų daug aplink Tave?
+intro.second: daug ir užuominų, kurios padės viską atskleisti
+intro.third: su SECRET BOX prasideda Tavo nuotykis. pradėk nuo to, ką rasi viduje
+content.about: apie projektą SECRET BOX
 content.404: Paslapčių dėžutė slepiasi ne čia :)
-content.address: Adresas
+content.address: adresas
 
-menu.about: Apie
-menu.login.with: Prisijungti su
-menu.logout: Atsijungti
+menu.about: apie
+menu.login: prisijungti
+menu.logout: atsijungti
 
-user.page: Mano puslapis
-user.profile: Mano profilis
-user.orders: Atskleistos paslaptys
-user.impressions: Mano įspūdžiai
+user.page: mano paskyra
+user.profile: mano profilis
+user.orders: atskleistos paslaptys
+user.impressions: mano įspūdžiai
 user.access.denied: Šio puslapio negalite peržiūrėti, prašome iš pradžių prisijunkti
-user.wait: Prašome palaukti...
-user.registration.date: Registracijos data
-user.lastlogin.date: Paskutinis prisijungimas
-user.secrets: Mano paslaptys
-user.name: Vardas
-user.surname: Pavardė
+user.wait: prašome palaukti...
+user.registration.date: registracijos data
+user.lastlogin.date: paskutinis prisijungimas
+user.secrets: mano paslaptys
+user.name: vardas
+user.surname: pavardė
 
-product.order: Užsakyti dabar
+product.order: užsakyti dabar
 
-project.name: Paslapčių dėžutė
+project.name: secret box
 
-order.delivery.address: Pristatymo adresas
-order.secretbox: Paslapčių dėžutės užsakymas
-order.date: Paslapčių dėžutės užsakymo data
-order.delivery.address: Pristatymas į
-orders.no.secrets: Neturite užsakytų paslapčių
-order.no.completed.orders: Neturite atskleistų paslapčių
+order.delivery.address: pristatymo adresas
+order.secretbox: paslapčių dėžutės užsakymas
+order.date: užsakyta
+order.revealed: atskleista
+order.delivery.address: pristatymas į
+orders.no.secrets: neturite užsakytų paslapčių
+order.no.completed.orders: neturite atskleistų paslapčių

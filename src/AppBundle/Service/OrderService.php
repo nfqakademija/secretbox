@@ -57,7 +57,9 @@ class OrderService
                 'orders.productId = products.id'
             )
             ->where('orders.userId = :user')
-            ->setParameter('user', $userId);
+            ->andWhere('orders.status = :status')
+            ->setParameter('user', $userId)
+            ->setParameter('status', 'revealed');
         $orders = $queryBuilder->getQuery()->getResult();
 
         return $orders;

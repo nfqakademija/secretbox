@@ -16,7 +16,7 @@
                                 <div class="liner"></div>
 
                                 <li class="active">
-                                    <a href="#secrets" data-toggle="tab" title="{{ 'user.secrets'|trans }}">
+                                    <a href="#secrets" data-toggle="tab" title="{{ 'user.secrets'| trans }}">
                                         <span class="round-tabs one">
                                              <i class="glyphicon glyphicon-question-sign"></i>
                                         </span>
@@ -24,7 +24,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#profile" data-toggle="tab" title="{{ 'user.profile'|trans }}">
+                                    <a href="#profile" data-toggle="tab" title="{{ 'user.profile'| trans }}">
                                         <span class="round-tabs two">
                                              <i class="glyphicon glyphicon-user"></i>
                                         </span>
@@ -52,7 +52,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="secrets">
-                                <h3 class="head">{{ 'user.secrets'|trans }}</h3>
+                                <h2>{{ 'user.secrets'|trans }}</h2>
                                 {% if secrets == null %}
                                     {{ 'orders.no.secrets' | trans }}
                                 {% else %}
@@ -75,7 +75,7 @@
                             </div>
 
                             <div class="tab-pane fade " id="profile">
-                                <h3 class="head">{{ 'user.profile'|trans }}</h3>
+                                <h2>{{ 'user.profile'|trans }}</h2>
 
                                 <div class="user-profile-info">
                                     <div>
@@ -111,19 +111,19 @@
                                     </div>
 
                                 </div>
-                                
 
 
                             </div>
 
                             <div class="tab-pane fade" id="completed">
-                                <h3 class="head">{{ 'user.orders'|trans }}</h3>
+                                <h2>{{ 'user.orders'| trans }}</h2>
                                 {% if orders == null %}
                                     {{ 'order.no.completed.orders' | trans }}
                                 {% else %}
                                     <table class="table small">
                                         <thead>
-                                            <th></th>
+                                            <th>{{ 'order.date' | trans }}</th>
+                                            <th>{{ 'order.revealed' | trans }}</th>
                                             <th></th>
                                             <th></th>
                                             <th></th>
@@ -131,7 +131,8 @@
                                         <tbody>
                                             {% for order in orders %}
                                                 <tr>
-                                                    <td>{{ order.orderDate | date }}</td>
+                                                    <td>{{ order.orderDate | date('Y-m-d') }}</td>
+                                                    <td></td>
                                                     <td>{{ order.title }}</td>
                                                     <td>{{ order.description }}</td>
                                                     <td>{{ order.supplier }}</td>
@@ -145,7 +146,7 @@
                             </div>
 
                             <div class="tab-pane fade" id="impressions">
-                                <h3 class="head text-center">{{ 'user.impressions' | trans }}</h3>
+                                <h2>{{ 'user.impressions' | trans }}</h2>
 
                             </div>
 

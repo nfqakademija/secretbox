@@ -32,9 +32,10 @@
 
 {% block javascripts %}
     <script language="JavaScript">
-        var userWaiting = "{{ 'user.wait'|trans }}";
+        var userWaiting = "{{ 'user.wait' | trans }}";
     </script>
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset( 'js/pasleyjs-locale/' ~ app.request.locale ~ '.js' ) }}"></script>
 {% endblock %}
 </body>
 </html>
