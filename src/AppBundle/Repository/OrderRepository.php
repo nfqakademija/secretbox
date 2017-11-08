@@ -2,6 +2,7 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Order;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -16,5 +17,41 @@ class OrderRepository extends EntityRepository
     {
         $orders = $this->findBy(array('userId' => $userId));
         return $orders;
+    }
+
+    public function saveOrder(Order $order)
+    {
+        $this->_em->persist($order);
+        $this->_em->flush();
+    }
+
+    public function getUserRevealedOrders($userId)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('orders.orderDate', 'products.title', 'products.description', 'products.supplier')
+            ->from('AppBundle:Order', 'orders')
+            ->innerJoin(
+                'AppBundle:Product',
+                'products',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'orders.productId = products.id'
+            )
+            ->where('orders.userId = :user')
+            ->andWhere('orders.status = :status')
+            ->setParameter('user', $userId)
+            ->setParameter('status', 'revealed');
+        $orders = $queryBuilder->getQuery()->getResult();
+
+        return $orders;
+    }
+
+    public function getUserSecrets($userId)
+    {
+        $userSecrets = $this->findBy([
+            'userId' =>  $userId,
+            'status' => 'new'
+        ]);
+        return $userSecrets;
     }
 }

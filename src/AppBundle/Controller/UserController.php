@@ -18,10 +18,10 @@ class UserController extends Controller
      */
     public function userPageAction()
     {
-        $orderService = $this->get(OrderService::class);
+        $userRepo = $this->getDoctrine()->getManager()->getRepository('AppBundle:Order');
         $user = $this->getUser();
-        $userOrders = $orderService->getUserOrders($user->getId());
-        $userSecrets = $orderService->getUserSecrets($user->getId());
+        $userOrders = $userRepo->getUserRevealedOrders($user->getId());
+        $userSecrets = $userRepo->getUserSecrets($user->getId());
         return $this->render('AppBundle:User:profile.html.twig', array(
             'orders' => $userOrders,
             'secrets' => $userSecrets,

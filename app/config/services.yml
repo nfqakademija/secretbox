@@ -1,6 +1,5 @@
 #parameters:
 
-
 services:
     _defaults:
         autowire: true
@@ -11,11 +10,7 @@ services:
         resource: '../../src/AppBundle/*'
         exclude: '../../src/AppBundle/{Controller,Entity,Repository,Tests}'
 
-
     facebook_authenticator:
-        class: AppBundle\Service\FacebookAuthenticator
+        class: AppBundle\Service\FacebookAuthenticatorService
         autowire: true
-
-#    AppBundle\Service\OrderService:
-#        autowire: true
 

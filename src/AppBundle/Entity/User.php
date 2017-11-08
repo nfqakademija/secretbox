@@ -93,6 +93,11 @@ class User implements UserInterface
      */
     private $address = "";
 
+    /**
+     * @ORM\Column(name="picture", type="blob", nullable=true)
+     */
+    private $picture;
+
 
 
     public function __construct()
@@ -297,6 +302,26 @@ class User implements UserInterface
         $this->address = $address;
         return $this;
     }
+
+    /**
+     * @return longblob
+     */
+    public function getPicture()
+    {
+        return stream_get_contents($this->picture);
+    }
+
+    /**
+     * @param mixed $picture
+     * @return User
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+        return $this;
+    }
+
+
 
 
 

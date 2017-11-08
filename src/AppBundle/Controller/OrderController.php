@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
 use AppBundle\Service\OrderService;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class OrderController extends Controller
      */
     public function newOrderAction(Request $request)
     {
-        $orderService = $this->get(OrderService::class);
+        $orderRepo = $this->getDoctrine()->getManager()->getRepository('AppBundle:Order');
         $order = new Order();
         $user = $this->getUser();
         $order->setDeliveryAddress($user->getAddress());
@@ -34,7 +35,7 @@ class OrderController extends Controller
             $order->setSellingPrice(19.99);
             //todo EventListener kad productId = random is products, kuris nera buves pas useri
             $order->setProductId(1);
-            $orderService->createNewOrder($order);
+            $orderRepo->saveOrder($order);
 
             return $this->redirectToRoute('app.user.profile');
         }
