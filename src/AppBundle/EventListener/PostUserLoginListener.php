@@ -13,8 +13,6 @@ use AppBundle\Event\UserLoginEvent;
 
 class PostUserLoginListener
 {
-    const NAME = 'listener.test';
-
     /**
      * @param UserLoginEvent $event
      */
