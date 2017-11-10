@@ -15,7 +15,6 @@ services:
         autowire: true
 
     AppBundle\EventListener\PostUserLoginListener:
-        class: AppBundle\EventListener\PostUserLoginListener
         tags:
             - {name: kernel.event_listener, event: user.login, method: onUserLoginSaveImage}
 
