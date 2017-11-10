@@ -34,7 +34,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return Response
+     *
      * @Route("/order", name="app.order.now")
      */
     public function orderNowAction(Request $request)

@@ -13,6 +13,11 @@ use AppBundle\Event\UserLoginEvent;
 
 class PostUserLoginListener
 {
+    const NAME = 'listener.test';
+
+    /**
+     * @param UserLoginEvent $event
+     */
     public function onUserLoginSaveImage(UserLoginEvent $event)
     {
         $pictureUrl = $event->getPictureUrl();

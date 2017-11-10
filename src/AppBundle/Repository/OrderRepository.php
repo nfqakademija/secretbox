@@ -13,18 +13,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class OrderRepository extends EntityRepository
 {
+    /**
+     * @param $userId
+     * @return array
+     */
     public function getUserOrders($userId)
     {
         $orders = $this->findBy(array('userId' => $userId));
         return $orders;
     }
 
+    /**
+     * @param Order $order
+     */
     public function saveOrder(Order $order)
     {
         $this->_em->persist($order);
         $this->_em->flush();
     }
 
+    /**
+     * @param $userId
+     * @return array
+     */
     public function getUserRevealedOrders($userId)
     {
         $queryBuilder = $this->_em->createQueryBuilder();
@@ -46,6 +57,10 @@ class OrderRepository extends EntityRepository
         return $orders;
     }
 
+    /**
+     * @param $userId
+     * @return array
+     */
     public function getUserSecrets($userId)
     {
         $userSecrets = $this->findBy([

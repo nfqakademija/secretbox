@@ -17,6 +17,10 @@ class UserLoginEvent extends Event
     const NAME = 'user.login';
     protected $user;
 
+    /**
+     * UserLoginEvent constructor.
+     * @param User $user
+     */
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -39,7 +43,7 @@ class UserLoginEvent extends Event
     }
 
     /**
-     * @param mixed $picture
+     * @param blob $picture
      */
     public function setPicture($picture)
     {

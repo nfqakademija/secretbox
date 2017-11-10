@@ -13,6 +13,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    /**
+     * @param User $user
+     */
     public function saveUser(User $user)
     {
         $this->_em->persist($user);

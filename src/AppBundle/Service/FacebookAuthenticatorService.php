@@ -10,7 +10,6 @@
 namespace AppBundle\Service;
 
 use AppBundle\Event\UserLoginEvent;
-use AppBundle\EventListener\PostUserLoginListener;
 use Doctrine\ORM\EntityManager;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
@@ -28,26 +27,35 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     private $router;
     private $userService;
     private $dispatcher;
-    private $listener;
 
 
+    /**
+     * FacebookAuthenticatorService constructor.
+     * @param EntityManager $em
+     * @param ClientRegistry $clientRegistry
+     * @param RouterInterface $router
+     * @param UserService $userService
+     * @param EventDispatcher $dispatcher
+     */
     public function __construct(
         EntityManager $em,
         ClientRegistry $clientRegistry,
         RouterInterface $router,
-                                UserService $userService,
-        EventDispatcher $dispatcher,
-                                PostUserLoginListener $listener
-    ) {
+        UserService $userService,
+        EventDispatcher $dispatcher
+        ) {
         $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;
         $this->userService = $userService;
         $this->dispatcher = $dispatcher;
-        $this->listener = $listener;
-        $this->dispatcher->addListener('user.login', array($this->listener, 'onUserLoginSaveImage'));
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return \League\OAuth2\Client\Token\AccessToken|null
+     */
     public function getCredentials(Request $request)
     {
         if ($request->getPathInfo() != '/connect/facebook/check') {
@@ -57,12 +65,21 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         return $this->fetchAccessToken($this->getFacebookClient());
     }
 
+    /**
+     * @return \KnpU\OAuth2ClientBundle\Client\OAuth2Client
+     */
     private function getFacebookClient()
     {
         return $this->clientRegistry
             ->getClient('facebook_main');
     }
 
+    /**
+     * @param \League\OAuth2\Client\Token\AccessToken $credentials     *
+     * @param UserProviderInterface $userProvider
+     *
+     * @return \AppBundle\Entity\User|null|object
+     */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         $facebookUser = $this->getFacebookClient()
@@ -80,7 +97,6 @@ class FacebookAuthenticatorService extends SocialAuthenticator
 
         $event = new UserLoginEvent($user);
         $this->dispatcher->dispatch(UserLoginEvent::NAME, $event);
-
         $this->em->getRepository('AppBundle:User')->saveUser($user);
 
         return $user;
