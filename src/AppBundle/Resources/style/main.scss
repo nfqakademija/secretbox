@@ -1,23 +1,52 @@
-//bootstrap
 @import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "./node_modules/bootstrap-social/bootstrap-social.scss";
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 html {
-  max-width: 100%;
-  margin: auto;
-  height: 100%;
+  position: relative;
+  min-height: 100%;
+  //max-width: 100%;
+  //margin: auto;
+  //height: 100%;
 }
 
 body {
-  max-width: 100%;
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  margin:0;
+  //max-width: 100%;
+  //min-height: 100%;
+  //display: grid;
+  //grid-template-rows: 1fr auto;
+  //margin:0;
+  //padding: 0;
+
   /*font-family: 'Open Sans Condensed', sans-serif;*/
+  //min-height: 100% !important;
+}
+
+.body-footer {
+  //grid-row-start: 2;
+  //grid-row-end: 3;
+  //margin: 0;
+  //height: 20px;
+  //color: white;
+  //background-color: black;
+  //text-align: center;
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #836d5e;
+}
+
+
+.body-parallax {
+  padding: 0;
+  padding-bottom: 50px;
 }
 
 .body-content {
   margin-top: 52px;
+  padding: 0;
 }
 
 .body-order {
@@ -25,15 +54,7 @@ body {
 }
 
 
-.body-footer {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin: 0;
-  height: 20px;
-  color: white;
-  background-color: black;
-  text-align: center;
-}
+
 
 
 /*parallax effect*/
@@ -45,36 +66,44 @@ body {
 
 .parallax-text {
   max-height: 300px;
-  width: 100%;
+  //width: 100%;
 }
 
 .parallax-slider {
-  position: relative;
-  width:100%;
+  //position: relative;
+  //width:100%;
 }
 
-.message {
+.message, .order-message {
   font-size: 45px;
   display: flex;
+  align-items: center;
+
+  //text-align: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
+  //flex-direction: column;
+  //width: 100%;
   height: 300px;
-  text-align: center;
+
+  //text-align: center;
   font-family: 'Dosis', sans-serif;
 
 }
+
+.order-message {
+  padding-top: 350px;
+}
 /*parallax end*/
 
-.introduction {
-  position: relative;
-
-}
+//.introduction {
+//  position: relative;
+//
+//}
 
 .logo-text {
-  padding-left: 50px;
+  padding-left: 40px;
   text-decoration: none;
-  color: darkred;
+  color: darkred !important;
   font-size: xx-large;
   font-family: 'Montserrat', sans-serif;
 }
@@ -98,10 +127,10 @@ body {
   padding: 10px 10px 0;
 }
 
-.navbar-login-session
-{
-  padding: 0 10px;
-}
+//.navbar-login-session
+//{
+//  padding: 0 10px;
+//}
 
 .icon-size
 {
@@ -111,9 +140,27 @@ body {
 .top-nav {
   background-color: white;
   z-index: 1;
-  -webkit-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
-  -moz-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
-  box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
+  -webkit-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+  -moz-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+  box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+}
+.navbar-default .navbar-nav > li > a {
+  font-size: 20px;
+}
+
+.menu-icon {
+  margin-top: -3px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #f3dfd4;
+  //font-weight: bold;
+  color: darkred;
+}
+
+.dropdown-menu {
+  width: 300px !important;
+  padding: 10px 10px 20px;
 }
 
 .button-order-now {
@@ -123,9 +170,9 @@ body {
   max-width: 325px;
   font-size: 40px;
   //background-color: #C24641;
-  background-color: #fffff8;
+  background-color: #f3dfd4;
   //color:  #42BEC2;
-  color: #483c32;
+  color: darkred;
   //border: 1px solid black;
 }
 

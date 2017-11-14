@@ -1,58 +1,55 @@
-<nav class="navbar navbar-fixed-top top-nav">
-    <div class="container">
-        <div class="navbar-left">
+<nav class="navbar navbar-fixed-top navbar-default top-nav">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-navbar" aria-expanded="false">
+                <span class="sr-only">KAS XIA DABR</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="{{  path(app.request.attributes.get('_route'), { '_locale': 'lt' }) }}">
                 <span class="lang-lg" lang="lt"></span>
             </a>
             <a class="navbar-brand" href="{{  path(app.request.attributes.get('_route'), { '_locale': 'en' }) }}">
                 <span class="lang-lg" lang="en"></span>
             </a>
+            <a class="navbar-brand logo-text" href="{{ path('app.homepage') }}">{{ 'project.name'|trans | upper }}</a>
         </div>
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{ path('app.homepage') }}"><span class="logo-text">{{ 'project.name'|trans | upper }}</span></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar">
+        <div class="collapse navbar-collapse" id="top-menu-navbar">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
+                <li>
                     <a href="{{ path('app.about') }}">{{ 'menu.about'|trans }}</a>
                 </li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span> 
+                        <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user menu-icon"></span> 
                             <strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong>
-                            <span class="glyphicon glyphicon-chevron-down"></span>
+                            <span class="glyphicon glyphicon-chevron-down menu-icon"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <div class="navbar-login">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <p class="text-center">
-                                                {#<img class="icon-size" src="{{ app.user.pictureUrl }}"/>#}
-                                                <img class="icon-size" src="{{ app.user.picture }}"/>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <p class="text-left"><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></p>
-                                            <p class="text-left small">{{ app.user.username }}</p>
-                                            <p class="text-left">
-                                                <a href="{{ path('app.user.profile') }}" class="btn btn-primary btn-block btn-sm">{{ 'user.page'|trans }}</a>
-                                            </p>
-                                        </div>
+                                <div class="row">
+                                    <div class="col-lg-4 text-center">
+                                        <img class="icon-size" src="{{ app.user.pictureUrl }}"/>
+                                    </div>
+                                    <div class="col-lg-8 text-center">
+                                        <p><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></p>
+                                        <p class="small">{{ app.user.username }}</p>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="navbar-login navbar-login-session">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <p>
-                                                    <a href="{{ logout_path() }}" class="btn btn-danger btn-block">{{ 'menu.logout'|trans }}</a>
-                                            </p>
-                                        </div>
+                                <hr class="row">
+                                <div class="row">
+                                    <div class="col-lg-10 col-lg-offset-1">
+                                        <a href="{{ path('app.user.profile') }}" class="btn btn-primary btn-block">{{ 'user.page'|trans }}</a>
+                                    </div>
+                                </div>
+                                <hr class="row">
+                                <div class="row">
+                                    <div class="col-lg-10 col-lg-offset-1">
+                                        <a href="{{ logout_path() }}" class="btn btn-danger btn-block">{{ 'menu.logout'|trans }}</a>
                                     </div>
                                 </div>
                             </li>
@@ -60,11 +57,28 @@
                     </li>
 
                 {% else %}
-                    <li class="active">
-                        <a id="fa-button" href="{{ path('app_facebook_connect') }}">
-                            <span id="fa-text">{{ 'menu.login'|trans }} <img class="fb-image" src="{{ asset('images/fb_icon.png') }}" /> </span>
-                        </a>
-                    </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-user menu-icon"></span>
+                        <span id="fa-text">{{ 'menu.login'|trans }}</span>
+                        <span class="glyphicon glyphicon-chevron-down menu-icon"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="col-lg-12 text-center">
+                                <h4>Prisijunkite prie SECRET BOX</h4>
+                            </div>
+                            <div class="col-lg-12 text-center">
+                                <a id="login-button"  class="btn btn-block btn-social btn-lg btn-facebook btn-md" href="{{ path('app.login.facebook') }}">
+                                    <i class="fa fa-facebook"></i>
+                                    {{ 'menu.login'|trans }}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
                 {% endif %}
 
             </ul>

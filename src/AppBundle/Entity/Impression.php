@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Impression
  *
  * @ORM\Table(name="impressions")
+ *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImpressionRepository")
  */
 class Impression
@@ -41,7 +42,14 @@ class Impression
      *
      * @ORM\Column(name="approved", type="smallint", nullable=true)
      */
-    private $approved;
+    private $approved = 1;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
 
 
     /**
@@ -125,4 +133,24 @@ class Impression
     {
         return $this->approved;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     *
+     * @return Impression
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
 }

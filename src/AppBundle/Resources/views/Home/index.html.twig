@@ -5,46 +5,70 @@
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/appearing-text.css') }}"/>
     {{ parent() }}
 {% endblock %}
 
 {% block body %}
-     <div id="parallax" class="introduction">
-        <div class="parallax-window" data-parallax="scroll"
-             data-image-src="{{ asset("images/parallax/1.jpg") }}" data-speed="0.1" >
-        </div>
-        <div class="parallax-window parallax-text">
-            <div class="parallax-slider">
-                <div class="message">{{ 'intro.first'|trans }}</div>
+    <div class="col-lg-12 body-parallax">
+        <div id="parallax">
+
+
+            <div class="parallax-window" data-parallax="scroll"
+                 data-image-src="{{ asset("images/parallax/1.jpg") }}" data-speed="0.1" >
             </div>
-        </div>
-        <div class="parallax-window" data-parallax="scroll"
-             data-image-src="{{ asset('images/parallax/2.jpg') }}" data-speed="0.1"></div>
-        <div class="parallax-window parallax-text">
-            <div class="parallax-slider" >
-                <div class="message">{{ 'intro.second'|trans }}</div>
-            </div>
-        </div>
-        <div class="parallax-window" data-parallax="scroll"
-             data-image-src="{{ asset('images/parallax/3.jpg') }}" data-speed="0.1">
-        </div>
-        <div class="parallax-window parallax-text">
-            <div class="parallax-slider">
-                <div class="message">{{ 'intro.third'|trans }}</div>
-            </div>
-        </div>
-        <div class="parallax-window">
-            <div class="parallax-slider">
-                <div class="message">
-                    <a class="btn button-order-now" href="{{ path('app.order.now') }}">{{ 'product.order'|trans }}</a>
+            <div class="parallax-window parallax-text">
+                <div class="parallax-slider">
+                        <div class="col-lg-10 col-lg-offset-1 message">
+                            {{ 'intro.first'|trans }}
+                        </div>
                 </div>
+            </div>
+            <div class="parallax-window" data-parallax="scroll"
+                 data-image-src="{{ asset('images/parallax/2.jpg') }}" data-speed="0.1"></div>
+            <div class="parallax-window parallax-text">
+                <div class="parallax-slider" >
+                    <div class="col-lg-10 col-lg-offset-1 message">{{ 'intro.second'|trans }}</div>
+                </div>
+            </div>
+            <div class="parallax-window" data-parallax="scroll"
+                 data-image-src="{{ asset('images/parallax/3.jpg') }}" data-speed="0.1">
+            </div>
+            <div class="parallax-window parallax-text">
+                <div class="parallax-slider">
+                    <div class="col-lg-10 col-lg-offset-1  message">{{ 'intro.third'|trans }}</div>
+                </div>
+            </div>
+            <div class="parallax-window" data-parallax="scroll"
+                 data-image-src="{{ asset("images/parallax/4.jpg") }}" data-speed="0.1" data-text="test" >
+                <div class="col-lg-10 col-lg-offset-1 order-message">
+                    <a id="order-button" class="btn button-order-now" href="{{ path('app.order.now') }}">
+                        <span id="order-button-text">{{ 'product.order'|trans }}</span>
+                    </a>
+                    {#</div>#}
+                </div>
+
+            {#<div class="parallax-window parallax-text" data-parallax="scroll>#}
+                {#<div class="parallax-slider">#}
+                    {#<div class="col-lg-10 col-lg-offset-1 message">#}
+                        {#<a class="btn button-order-now" href="{{ path('app.order.now') }}">{{ 'product.order'|trans }}</a>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+
             </div>
         </div>
     </div>
+
+
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+{#<script>#}
+    {#var typed = new Typed('.test', {#}
+        {#strings: ["{{ 'intro.first' | trans  }}"],#}
+        {#typeSpeed: 80#}
+    {#});#}
+{#</script>#}
 {% endblock %}

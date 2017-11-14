@@ -9,10 +9,13 @@
 
 namespace AppBundle\Service;
 
+use AppBundle\Entity\User;
 use AppBundle\Event\UserLoginEvent;
 use Doctrine\ORM\EntityManager;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use KnpU\OAuth2ClientBundle\Client\OAuth2Client;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
+use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
@@ -28,9 +31,9 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     private $userService;
     private $dispatcher;
 
-
     /**
      * FacebookAuthenticatorService constructor.
+     *
      * @param EntityManager $em
      * @param ClientRegistry $clientRegistry
      * @param RouterInterface $router
@@ -43,7 +46,8 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         RouterInterface $router,
         UserService $userService,
         EventDispatcher $dispatcher
-        ) {
+        )
+    {
         $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;
@@ -54,7 +58,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     /**
      * @param Request $request
      *
-     * @return \League\OAuth2\Client\Token\AccessToken|null
+     * @return AccessToken|null
      */
     public function getCredentials(Request $request)
     {
@@ -66,7 +70,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     }
 
     /**
-     * @return \KnpU\OAuth2ClientBundle\Client\OAuth2Client
+     * @return OAuth2Client
      */
     private function getFacebookClient()
     {
@@ -75,10 +79,10 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     }
 
     /**
-     * @param \League\OAuth2\Client\Token\AccessToken $credentials     *
+     * @param AccessToken $credentials     *
      * @param UserProviderInterface $userProvider
      *
-     * @return \AppBundle\Entity\User|null|object
+     * @return User|null|object
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {

@@ -59,12 +59,14 @@
                                     <table class="table small">
                                         <thead>
                                         <th>{{ 'order.date' | trans }}</th>
+                                        <th>{{ 'order.countdown' | trans }}</th>
                                         <th>{{ 'order.delivery.address' | trans }}</th>
                                         </thead>
 
                                         {% for secret in secrets %}
                                             <tr>
                                                 <td>{{ secret.orderDate | date('Y-m-d') }}</td>
+                                                <td>{{ secret.orderDate | date('Y-m-d h:m:s') }}</td>
                                                 <td>{{ secret.deliveryAddress }}</td>
                                             </tr>
                                         {% endfor %}
@@ -147,6 +149,22 @@
 
                             <div class="tab-pane fade" id="impressions">
                                 <h2>{{ 'user.impressions' | trans }}</h2>
+
+
+                                <table class="table small">
+                                    <thead>
+                                        <th>Data</th>
+                                        <th>{{ 'user.impression' | trans }}</th>
+                                    </thead>
+                                    <tbody>
+                                    {% for impression in impressions %}
+                                        <tr>
+                                            <td>{{ impression.created | date('Y-m-d h:m:s') }}</td>
+                                            <td>{{ impression.impression }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
 
                             </div>
 

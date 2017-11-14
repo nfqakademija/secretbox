@@ -17,6 +17,7 @@
   "dependencies": {
     "bootstrap-social": "^5.1.1",
     "jquery-parallax.js": "^1.5.0",
-    "parsleyjs": "^2.8.0"
+    "parsleyjs": "^2.8.0",
+    "typed.js": "^2.0.6"
   }
 }

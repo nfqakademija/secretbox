@@ -84,7 +84,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="roles", type="json_array")
      */
-    private $roles = array();
+    private $roles = [];
 
     /**
      * @var string
@@ -304,7 +304,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return longblob
+     * @return blob
      */
     public function getPicture()
     {

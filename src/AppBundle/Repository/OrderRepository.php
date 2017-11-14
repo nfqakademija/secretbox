@@ -14,12 +14,14 @@ use Doctrine\ORM\EntityRepository;
 class OrderRepository extends EntityRepository
 {
     /**
-     * @param $userId
+     * @param int $userId
+     *
      * @return array
      */
     public function getUserOrders($userId)
     {
         $orders = $this->findBy(array('userId' => $userId));
+
         return $orders;
     }
 
@@ -33,7 +35,8 @@ class OrderRepository extends EntityRepository
     }
 
     /**
-     * @param $userId
+     * @param int $userId
+     *
      * @return array
      */
     public function getUserRevealedOrders($userId)
@@ -58,7 +61,8 @@ class OrderRepository extends EntityRepository
     }
 
     /**
-     * @param $userId
+     * @param int $userId
+     *
      * @return array
      */
     public function getUserSecrets($userId)
@@ -66,7 +70,8 @@ class OrderRepository extends EntityRepository
         $userSecrets = $this->findBy([
             'userId' =>  $userId,
             'status' => 'new'
-        ]);
+        ], ['orderDate' => 'DESC']);
+
         return $userSecrets;
     }
 }

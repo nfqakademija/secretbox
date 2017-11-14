@@ -15,10 +15,12 @@ use Symfony\Component\EventDispatcher\Event;
 class UserLoginEvent extends Event
 {
     const NAME = 'user.login';
+
     protected $user;
 
     /**
      * UserLoginEvent constructor.
+     *
      * @param User $user
      */
     public function __construct(User $user)

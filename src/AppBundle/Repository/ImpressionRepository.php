@@ -2,6 +2,15 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Impression;
+
+//todo arrey pakeist i []
+//todo entity i Entity:class
+//todo transparent menu
+//todo kalbas i dropboxa
+//todo deploy pasidaryt su migracijomis
+//
+
 /**
  * ImpressionRepository
  *
@@ -10,4 +19,24 @@ namespace AppBundle\Repository;
  */
 class ImpressionRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param Impression $impression
+     */
+    public function saveImpression(Impression $impression)
+    {
+        $this->_em->persist($impression);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param $userId
+     *
+     * @return array
+     */
+    public function getImpressions($userId)
+    {
+        $impressions = $this->findBy(['userId' => $userId], ['created' => 'DESC']);
+
+        return $impressions;
+    }
 }
