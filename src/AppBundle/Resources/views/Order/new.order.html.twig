@@ -20,13 +20,25 @@
 
 
 
-            <div class="panel panel-default">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         {{ 'user.name' | trans }}, {{ 'user.surname' | trans }}
                     </div>
                     <div class="panel-body">{{ app.user.firstName }} {{ app.user.lastName }}</div>
                 </div>
-                {{ form(form) }}
+                {% if form is defined %}
+                    {{ form(form) }}
+                {% endif %}
+
+                {% if errors is defined %}
+                    <ul>
+                    {% for error in errors %}
+                        <li>{{ error.message | trans }}</li>
+                    {% endfor %}
+                {% endif %}
+                    </ul>
+
+
             </div>
         </div>
     </div>

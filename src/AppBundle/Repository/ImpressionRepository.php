@@ -3,13 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Impression;
-
-//todo arrey pakeist i []
-//todo entity i Entity:class
-//todo transparent menu
-//todo kalbas i dropboxa
-//todo deploy pasidaryt su migracijomis
-//
+use AppBundle\Entity\User;
 
 /**
  * ImpressionRepository
@@ -36,6 +30,26 @@ class ImpressionRepository extends \Doctrine\ORM\EntityRepository
     public function getImpressions($userId)
     {
         $impressions = $this->findBy(['userId' => $userId], ['created' => 'DESC']);
+
+        return $impressions;
+    }
+
+    public function getLastImpressions($limit)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('i.impression', 'i.created', 'u.firstName', 'u.lastName', 'u.pictureUrl')
+            ->from(Impression::class, 'i')
+            ->innerJoin(
+                User::class,
+                'u',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'i.userId = u.id'
+            )
+            ->where('i.approved = 1')
+            ->orderBy('i.created', 'DESC')
+            ->setMaxResults($limit);
+        $impressions = $queryBuilder->getQuery()->getResult();
 
         return $impressions;
     }

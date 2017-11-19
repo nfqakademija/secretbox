@@ -13,5 +13,3 @@ if(orderButton) {
         document.getElementById('order-button-text').innerHTML = userWaiting;
     }
 }
-
-// todo order countdown timer:

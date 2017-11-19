@@ -1,0 +1,36 @@
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.icon-size
+{
+  width: 80px;
+}
+
+.top-nav {
+  background-color: rgba(255,255,255, 0.7);
+  height: 100px;
+  padding-top: 25px;
+  z-index: 9;
+  -webkit-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+  -moz-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+  box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
+}
+
+.navbar-default .navbar-nav > li > a {
+  font-size: 20px;
+}
+
+.menu-icon {
+  margin-top: -3px;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  background-color: #f3dfd4;
+  color: darkred;
+}
+
+.dropdown-menu {
+  width: 300px !important;
+  padding: 10px 10px 20px;
+}

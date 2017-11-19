@@ -1,10 +1,64 @@
+///*impressions*/
+
+.impression {
+  justify-content: center;
+  display: flex;
+}
+
+.impression-box, .img-circle2, .impression-title {
+  border: 1px solid blue;
+  -webkit-box-shadow: 5px 5px 3px rgba(70,50,45,0.7);
+}
+
+#appbundle_impression_impression {
+  height: 200px;
+}
+
+.impression-box {
+  position: relative;
+  display: table-cell;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 80%;
+  height: auto;
+  padding: 40px 10px 10px 40px;
+  z-index: 3;
+  -webkit-border-radius: 25px;
+}
+
+.impression-title {
+  position: absolute;
+  top: -20px;
+  left: 25px;
+  width: 60%;
+  height: 40px;
+  z-index: 4;
+  background-color: white;
+}
+
+.img-circle2 {
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  overflow: hidden;
+  width: 100px;
+  border-radius: 50%;
+  z-index: 5;
+}
+///*impressions end*/
+
+
+
 /*user profile tabs*/
 @import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 /* written by riliwan balogun http://www.facebook.com/riliwan.rabo*/
 .board{
-  width: 75%;
+  width: 100%;
   margin: 60px auto;
-  height: 500px;
+  padding-left: 0;
+  padding-right: 0;
+  //background: rgba(255,255,255,0.5);
+  //height: 100%;
   background: #fff;
   /*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
 }
@@ -12,7 +66,7 @@
   position: relative;
   /* border-bottom: 0; */
   /* width: 80%; */
-  margin: 40px auto;
+  margin: 0 auto;
   margin-bottom: 0;
   box-sizing: border-box;
 
@@ -137,7 +191,7 @@ li.active span.round-tabs.five{
   left: 45%;
   opacity:1;
   margin: 0 auto;
-  bottom: 0px;
+  bottom: 0;
   border: 10px solid transparent;
   border-bottom-color: #ddd;
 
@@ -218,4 +272,34 @@ li.active span.round-tabs.five{
 .user-profile-info {
   display: inline-table;
 }
+
+
+/*countdown */
+.countdown-clock{
+  //position: relative !important;
+  //padding-top: 0;
+  //margin-left: -194px;
+  //height: 100px;
+  //width: 500px;
+  //transform-origin: 0 0;
+  transform: scale(0.6);
+  //-webkit-transform-origin: 0 0;
+  -webkit-transform: scale(0.6);
+}
+
+
+.flip-clock-divider.seconds .flip-clock-label,
+.flip-clock-divider.days .flip-clock-label,
+.flip-clock-divider.hours .flip-clock-label,
+.flip-clock-divider.minutes .flip-clock-label
+{
+  right: -120px;
+}
+
+.flip-clock-label {
+  font-size: 24px;
+}
+
+
+/*countdown end*/
 

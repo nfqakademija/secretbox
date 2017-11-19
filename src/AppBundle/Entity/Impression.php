@@ -25,8 +25,8 @@ class Impression
     /**
      * @var int
      *
-     * @ORM\Column(name="userId", type="integer")
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="impressions")
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="impressions")
      */
     private $userId;
 
@@ -42,7 +42,7 @@ class Impression
      *
      * @ORM\Column(name="approved", type="smallint", nullable=true)
      */
-    private $approved = 1;
+    private $approved;
 
     /**
      * @var \DateTime
@@ -51,6 +51,12 @@ class Impression
      */
     private $created;
 
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+        //todo administratorius turi tvirtinti
+        $this->approved = 1;
+    }
 
     /**
      * Get id
@@ -152,5 +158,4 @@ class Impression
         $this->created = $created;
         return $this;
     }
-
 }

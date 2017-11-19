@@ -14,10 +14,13 @@ var dir = {
 
 gulp.task('sass', function() {
     gulp.src([
-        dir.assets + 'style/main.scss',
-        dir.assets + 'style/user-profile.scss',
         dir.assets + 'style/parsley.scss',
-        dir.assets + 'style/languages.scss'
+        dir.assets + 'style/languages.scss',
+        dir.npm + 'flipclock/compiled/flipclock.css',
+        dir.npm + 'font-awesome/css/font-awesome.css',
+        dir.assets + 'style/user-profile.scss',
+        dir.assets + 'style/main.scss',
+        dir.assets + 'style/menu.scss'
         ])
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
@@ -33,7 +36,8 @@ gulp.task('scripts', function() {
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
             dir.npm + 'parsleyjs/dist/parsley.js',
-            dir.npm + 'typed.js/lib/typed.js',
+            // dir.npm + 'typed.js/lib/typed.js',
+            dir.npm + 'flipclock/compiled/flipclock.js',
             // Main JS file
             dir.assets + 'scripts/main.js'
         ])
@@ -62,7 +66,9 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
     gulp.src([
-        dir.npm + 'bootstrap-sass/assets/fonts/**'
+        dir.npm + 'bootstrap-sass/assets/fonts/**',
+        dir.npm + 'font-awesome/fonts/**'
+
         ])
         .pipe(gulp.dest(dir.dist + 'fonts'));
 });

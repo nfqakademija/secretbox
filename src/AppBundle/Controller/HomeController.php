@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Impression;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,13 +17,19 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class HomeController extends Controller
 {
+
     /**
      * @Route("/", name="app.homepage")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig', [
+        $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
+        $impressions = $impressionRepo->getLastImpressions(4);
 
+        return $this->render('AppBundle:Home:index.html.twig', [
+            'impressions' => $impressions
         ]);
     }
 
@@ -45,7 +52,6 @@ class HomeController extends Controller
     public function orderNowAction(Request $request, Session $session)
     {
         if ($this->getUser()) {
-
             return $this->redirectToRoute('app.order.new');
         } else {
             $session->set('routeFrom', $request->get('_route'));

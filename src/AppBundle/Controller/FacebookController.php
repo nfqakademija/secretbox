@@ -29,7 +29,7 @@ class FacebookController extends Controller
     public function connectCheckAction(Session $session)
     {
         $route = $session->get('routeFrom');
-        if($route == ""){
+        if ($route == "") {
             $route = "app.homepage";
         }
         return $this->redirectToRoute($route);

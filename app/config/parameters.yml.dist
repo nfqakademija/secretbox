@@ -22,3 +22,4 @@ parameters:
     facebook_client_secret: ~
 
     mail_from: ~
+    secret_reveal_time: ~

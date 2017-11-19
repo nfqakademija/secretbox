@@ -46,8 +46,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         RouterInterface $router,
         UserService $userService,
         EventDispatcher $dispatcher
-        )
-    {
+        ) {
         $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;

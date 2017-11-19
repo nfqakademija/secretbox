@@ -9,10 +9,6 @@ services:
     AppBundle\:
         resource: '../../src/AppBundle/*'
         exclude: '../../src/AppBundle/{Controller,Entity,Repository,Tests}'
-#todo pasikeist
-    facebook_authenticator:
-        class: AppBundle\Service\FacebookAuthenticatorService
-        autowire: true
 
     AppBundle\EventListener\PostUserLoginListener:
         tags:

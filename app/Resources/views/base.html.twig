@@ -7,8 +7,6 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
-        {#todo perkelti i styles.css#}
-        <link rel="stylesheet" href="{{ asset('css/languages.css') }}"/>
         <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat" rel="stylesheet">
     {% endblock %}
     {% block canonical_meta %}{% endblock %}
@@ -19,9 +17,9 @@
         {% block header %}
             {% include "::inc/header.html.twig" %}
         {% endblock %}
-        <div class="body-content">
+        {#<div class="body-content">#}
             {% block body %}{% endblock %}
-        </div>
+        {#</div>#}
 
     {% endblock %}
 
@@ -33,7 +31,7 @@
 
 {% block javascripts %}
     <script language="JavaScript">
-        var userWaiting = "{{ 'user.wait'|trans }}";
+        var userWaiting = "{{ 'user.wait' | trans }}";
     </script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset( 'js/pasleyjs-locale/' ~ app.request.locale ~ '.js' ) }}"></script>

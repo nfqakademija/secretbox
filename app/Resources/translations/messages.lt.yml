@@ -20,6 +20,7 @@ user.lastlogin.date: paskutinis prisijungimas
 user.secrets: mano paslaptys
 user.name: vardas
 user.surname: pavardė
+user.share.impression: Dalintis įspūdžiu
 
 product.order: užsakyti dabar
 
@@ -32,3 +33,16 @@ order.revealed: atskleista
 order.delivery.address: pristatymas į
 orders.no.secrets: neturite užsakytų paslapčių
 order.no.completed.orders: neturite atskleistų paslapčių
+order.countdown: Atskleisti paslapčiai turite
+
+content.years: Metai
+content.months: Mėnesiai
+content.days: Dienos
+content.hours: Valandos
+content.minutes: Minutės
+content.seconds: Sekundės
+content.close: Uždaryti
+content.save: Išsaugoti
+content.impresions: Įspūdžiai
+
+message.no.new.secrets: Jūs atskleidėte visas paslaptis, grįžkite neužilgo naujiems nuotykiams!

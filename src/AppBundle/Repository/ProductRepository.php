@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Product;
+
 /**
  * ProductRepository
  *
@@ -10,4 +12,29 @@ namespace AppBundle\Repository;
  */
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param array $usedProducts
+     *
+     * @param /Datetime $validDate
+     *
+     * @return array
+     */
+    public function getUniqueProducts($usedProducts, $validDate)
+    {
+        if (empty($usedProducts)) {
+            array_push($usedProducts, 0);
+        }
+
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('product.id')
+            ->from(Product::class, 'product')
+            ->where('product.id NOT IN (:usedProducts)')
+            ->andWhere('product.validTo > :validDate')
+            ->setParameter('usedProducts', $usedProducts)
+            ->setParameter('validDate', $validDate);
+        $products = $queryBuilder->getQuery()->getResult();
+
+        return $products;
+    }
 }

@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
+use AppBundle\Service\UniqueProductService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,9 @@ class OrderController extends Controller
      */
     public function newOrderAction(Request $request)
     {
+        $uniqueProductService = $this->get(UniqueProductService::class);
+
+
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
         $order = new Order();
         $user = $this->getUser();
@@ -35,20 +39,28 @@ class OrderController extends Controller
 
         $form->handleRequest($request);
 
-        //todo valdidationus
-
         if ($form->isSubmitted() && $form->isValid()) {
             $order->setUserId($user->getId());
             $order->setSellingPrice(19.99);
-            //todo service kad productId = random is products, kuris nera buves pas useri
-            $order->setProductId(1);
+            $uniqueProduct = $uniqueProductService->getUserUnusedProducts($user->getId(), $this->getParameter('secret_reveal_time'));
+            $order->setProductId($uniqueProduct);
+
+            $validator = $this->get('validator');
+            $errors = $validator->validate($order);
+
+            if (count($errors) > 0) {
+                return $this->render('AppBundle:Order:new.order.html.twig', [
+                    'errors' => $errors
+                ]);
+            }
+
             $orderRepo->saveOrder($order);
 
             return $this->redirectToRoute('app.user.profile');
         }
 
         return $this->render('AppBundle:Order:new.order.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 }

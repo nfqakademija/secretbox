@@ -2,34 +2,19 @@
 @import "./node_modules/bootstrap-social/bootstrap-social.scss";
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+
 html {
   position: relative;
   min-height: 100%;
-  //max-width: 100%;
-  //margin: auto;
-  //height: 100%;
 }
 
 body {
-  //max-width: 100%;
-  //min-height: 100%;
-  //display: grid;
-  //grid-template-rows: 1fr auto;
-  //margin:0;
-  //padding: 0;
-
-  /*font-family: 'Open Sans Condensed', sans-serif;*/
-  //min-height: 100% !important;
+  background-image: url("../images/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .body-footer {
-  //grid-row-start: 2;
-  //grid-row-end: 3;
-  //margin: 0;
-  //height: 20px;
-  //color: white;
-  //background-color: black;
-  //text-align: center;
   visibility: hidden;
   position: absolute;
   bottom: 0;
@@ -38,67 +23,49 @@ body {
   background-color: #836d5e;
 }
 
-
 .body-parallax {
   padding: 0;
-  padding-bottom: 50px;
+  padding-bottom: 0;
 }
 
-.body-content {
-  margin-top: 52px;
-  padding: 0;
-}
+//.body-content {
+//  margin-top: 52px;
+//  padding: 0;
+//}
 
 .body-order {
   padding-top: 50px;
 }
 
-
-
-
-
-/*parallax effect*/
 .parallax-window {
-  height: 625px;
+  height: 770px;
   background: transparent;
   text-align: center;
 }
 
 .parallax-text {
-  max-height: 300px;
-  //width: 100%;
+  max-height: 200px;
+  background-color: rgba(172,170,159,0.6);
 }
 
-.parallax-slider {
-  //position: relative;
-  //width:100%;
+.parallax-transparent {
+ background-color: rgba(240,240,240,0.3);
 }
 
 .message, .order-message {
   font-size: 45px;
+  font-weight: 700;
+  color: white;
   display: flex;
   align-items: center;
-
-  //text-align: center;
   justify-content: center;
-  //flex-direction: column;
-  //width: 100%;
-  height: 300px;
-
-  //text-align: center;
+  height: 200px;
   font-family: 'Dosis', sans-serif;
-
 }
 
 .order-message {
   padding-top: 350px;
 }
-/*parallax end*/
-
-//.introduction {
-//  position: relative;
-//
-//}
 
 .logo-text {
   padding-left: 40px;
@@ -108,59 +75,13 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.fb-image {
-  width: 20px;
-}
+//.fb-image {
+//  width: 20px;
+//}
 
 .body-about, .body-user-profile {
   margin-top: 100px;
   text-align: center;
-}
-
-.logged-user {
-  font-weight: bold;
-}
-
-.navbar-login
-{
-  width: 305px;
-  padding: 10px 10px 0;
-}
-
-//.navbar-login-session
-//{
-//  padding: 0 10px;
-//}
-
-.icon-size
-{
-  width: 80px;
-}
-
-.top-nav {
-  background-color: white;
-  z-index: 1;
-  -webkit-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
-  -moz-box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
-  box-shadow: 0 10px 55px 0 rgba(143,143,143,0.62);
-}
-.navbar-default .navbar-nav > li > a {
-  font-size: 20px;
-}
-
-.menu-icon {
-  margin-top: -3px;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-  background-color: #f3dfd4;
-  //font-weight: bold;
-  color: darkred;
-}
-
-.dropdown-menu {
-  width: 300px !important;
-  padding: 10px 10px 20px;
 }
 
 .button-order-now {
@@ -177,7 +98,12 @@ body {
 }
 
 .button-order-now:hover {
-
   background-color: #483c32;
   color: #fffff8;
+}
+
+.home-impressions {
+  background: rgba(255,255,255,0.95);
+  width:100%;
+  min-height: 770px;
 }

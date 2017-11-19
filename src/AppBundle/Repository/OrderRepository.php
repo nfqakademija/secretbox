@@ -16,13 +16,25 @@ class OrderRepository extends EntityRepository
     /**
      * @param int $userId
      *
+     * @param \DateTime $validDate
+     *
      * @return array
      */
-    public function getUserOrders($userId)
+    public function getUserRevealedProducts($userId, $validDate)
     {
-        $orders = $this->findBy(array('userId' => $userId));
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('orders.productId')
+            ->from(Order::class, 'orders')
+            ->where('orders.userId = :userId AND orders.status = :statusRevealed')
+            ->orWhere('orders.userId = :userId AND orders.status = :statusNew AND orders.orderDate > :validDate')
+            ->setParameter('userId', $userId)
+            ->setParameter('statusRevealed', 'revealed')
+            ->setParameter('statusNew', 'new')
+            ->setParameter('validDate', $validDate);
+        $products = $queryBuilder->getQuery()->getResult();
 
-        return $orders;
+        return $products;
     }
 
     /**
