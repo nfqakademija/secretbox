@@ -152,6 +152,7 @@ class Product
 
     /**
      * @param mixed $supplier
+     *
      * @return Product
      */
     public function setSupplier($supplier)

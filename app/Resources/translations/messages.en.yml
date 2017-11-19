@@ -21,6 +21,7 @@ user.lastlogin.date: last login
 user.secrets: my secrets
 user.name: name
 user.surname: surname
+user.share.impression: Share impression
 
 product.order: order now
 
@@ -33,3 +34,16 @@ order.revealed: revealed
 order.delivery.address: devliver to
 orders.no.secrets: you have no secrets
 order.no.completed.orders: you have no revealed secrets
+order.countdown: Time to reveal secret
+
+content.years: Years
+content.months: Months
+content.days: Days
+content.hours: Hours
+content.minutes: Minutes
+content.seconds: Seconds
+content.close: Close
+content.save: Save
+content.impresions: Impressions
+
+message.no.new.secrets: You revealed all secrets, come back soon for another!

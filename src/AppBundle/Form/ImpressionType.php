@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OrderType extends AbstractType
+class ImpressionType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,8 +16,13 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('deliveryAddress', TextareaType::class, ['label' => 'order.delivery.address'])
-            ->add('save', SubmitType::class, ['label' => 'product.order']);
+            ->add('impression', TextareaType::class, [
+                'label' => false,
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'content.save',
+                'attr' => ['class' => 'btn btn-primary']
+            ]);
     }
     
     /**
@@ -26,7 +31,7 @@ class OrderType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Order'
+            'data_class' => 'AppBundle\Entity\Impression'
         ]);
     }
 
@@ -35,6 +40,6 @@ class OrderType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_order';
+        return 'appbundle_impression';
     }
 }

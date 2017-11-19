@@ -4,29 +4,27 @@ var gulp    = require('gulp');
 var sass    = require('gulp-sass');
 var concat  = require('gulp-concat');
 var uglify  = require('gulp-uglify');
+var watch   = require('gulp-watch');
 
 var dir = {
     assets: './src/AppBundle/Resources/',
     dist: './web/',
-    npm: './node_modules/',
+    npm: './node_modules/'
 };
 
 gulp.task('sass', function() {
     gulp.src([
-        dir.assets + 'style/main.scss',
+        dir.assets + 'style/parsley.scss',
+        dir.assets + 'style/languages.scss',
+        dir.npm + 'flipclock/compiled/flipclock.css',
+        dir.npm + 'font-awesome/css/font-awesome.css',
         dir.assets + 'style/user-profile.scss',
-        dir.assets + 'style/parsley.scss'
+        dir.assets + 'style/main.scss',
+        dir.assets + 'style/menu.scss'
         ])
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dir.dist + 'css'));
-
-    gulp.src(dir.assets + 'style/languages.scss')
-        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-        .pipe(concat('languages.css'))
-        .pipe(gulp.dest(dir.dist + 'css'));
-
-    //new styles
 });
 
 
@@ -38,6 +36,8 @@ gulp.task('scripts', function() {
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
             dir.npm + 'parsleyjs/dist/parsley.js',
+            // dir.npm + 'typed.js/lib/typed.js',
+            dir.npm + 'flipclock/compiled/flipclock.js',
             // Main JS file
             dir.assets + 'scripts/main.js'
         ])
@@ -66,9 +66,20 @@ gulp.task('images', function() {
 
 gulp.task('fonts', function() {
     gulp.src([
-        dir.npm + 'bootstrap-sass/assets/fonts/**'
+        dir.npm + 'bootstrap-sass/assets/fonts/**',
+        dir.npm + 'font-awesome/fonts/**'
+
         ])
         .pipe(gulp.dest(dir.dist + 'fonts'));
 });
 
-gulp.task('default', ['sass', 'scripts', 'fonts', 'images']);
+
+// watcher
+gulp.task('watch', function () {
+    gulp.watch(dir.assets + 'style/*.scss', ['sass']);
+    gulp.watch(dir.assets + 'scripts/*', ['scripts']);
+    gulp.watch(dir.assets + 'images/*', ['images']);
+});
+
+
+gulp.task('default', ['sass', 'scripts', 'fonts', 'images', 'watch']);

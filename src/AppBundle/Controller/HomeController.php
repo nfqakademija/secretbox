@@ -2,13 +2,16 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Impression;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class HomeController
+ *
  * @Route("/{_locale}", defaults={"_locale": "lt"}, requirements={"_locale" = "%app.locales%"})
  *
  */
@@ -17,11 +20,16 @@ class HomeController extends Controller
 
     /**
      * @Route("/", name="app.homepage")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAction()
     {
-        return $this->render('AppBundle:Home:index.html.twig', [
+        $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
+        $impressions = $impressionRepo->getLastImpressions(4);
 
+        return $this->render('AppBundle:Home:index.html.twig', [
+            'impressions' => $impressions
         ]);
     }
 
@@ -34,15 +42,21 @@ class HomeController extends Controller
     }
 
     /**
-     *
      * @Route("/order", name="app.order.now")
+     *
+     * @param Request $request
+     * @param Session $session
+     *
+     * @return RedirectResponse
      */
-    public function orderNowAction(Request $request)
+    public function orderNowAction(Request $request, Session $session)
     {
         if ($this->getUser()) {
             return $this->redirectToRoute('app.order.new');
         } else {
-            return $this->redirectToRoute('app_facebook_connect');
+            $session->set('routeFrom', $request->get('_route'));
+
+            return $this->redirectToRoute('app.login.facebook');
         }
     }
 }

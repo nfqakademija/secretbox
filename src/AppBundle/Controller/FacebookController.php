@@ -4,12 +4,13 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class FacebookController extends Controller
 {
     /**
-     * @Route("/connect/facebook")
+     * @Route("/connect/facebook", name="app.login.facebook")
      */
     public function connectAction()
     {
@@ -19,17 +20,26 @@ class FacebookController extends Controller
     }
 
     /**
-     * @Route("/connect/facebook/check", name="connect_facebook_check")
+     * @Route("/connect/facebook/check", name="app.connect.facebook.check")
+     *
+     * @param Session $session
+     *
+     * @return RedirectResponse
      */
-    public function connectCheckAction(Request $request)
+    public function connectCheckAction(Session $session)
     {
-        //todo redirect to new order page if button clicked
-        return $this->redirectToRoute('app.homepage');
+        $route = $session->get('routeFrom');
+        if ($route == "") {
+            $route = "app.homepage";
+        }
+        return $this->redirectToRoute($route);
     }
 
 
     /**
      * @Route("/")
+     *
+     * @return RedirectResponse
      */
     public function noRoute()
     {

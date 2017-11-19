@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Impression
  *
  * @ORM\Table(name="impressions")
+ *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImpressionRepository")
  */
 class Impression
@@ -24,8 +25,8 @@ class Impression
     /**
      * @var int
      *
-     * @ORM\Column(name="userId", type="integer")
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="impressions")
+     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="impressions")
      */
     private $userId;
 
@@ -43,6 +44,19 @@ class Impression
      */
     private $approved;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+        //todo administratorius turi tvirtinti
+        $this->approved = 1;
+    }
 
     /**
      * Get id
@@ -124,5 +138,24 @@ class Impression
     public function getApproved()
     {
         return $this->approved;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime $created
+     *
+     * @return Impression
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
     }
 }

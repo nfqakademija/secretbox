@@ -59,6 +59,8 @@ class Order
      */
     private $deliveryAddress;
 
+    private $orderCountdown;
+
 
     public function __construct()
     {
@@ -199,5 +201,15 @@ class Order
     {
         $this->deliveryAddress = $deliveryAddress;
         return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getOrderCountdown()
+    {
+        $this->orderCountdown = $this->orderDate;
+        $this->orderCountdown->modify('+14 day');
+        return $this->orderCountdown;
     }
 }

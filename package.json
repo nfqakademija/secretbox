@@ -5,17 +5,20 @@
   "author": "Viktoras Bezubec",
   "repository": "",
   "devDependencies": {
+    "bootstrap-sass": "3.*",
     "gulp": "^3.9.0",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.0",
     "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.4.2",
-    "bootstrap-sass": "3.*",
+    "gulp-watch": "^4.3.11",
     "jquery": "2.2.*"
   },
   "dependencies": {
     "bootstrap-social": "^5.1.1",
+    "flipclock": "^0.7.8",
     "jquery-parallax.js": "^1.5.0",
-    "parsleyjs": "^2.8.0"
+    "parsleyjs": "^2.8.0",
+    "typed.js": "^2.0.6"
   }
 }

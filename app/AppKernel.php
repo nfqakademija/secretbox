@@ -16,7 +16,8 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
-            //nauji bundle virst AppBundle
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            //nauji bundle virs AppBundle
             new AppBundle\AppBundle(),
         );
 

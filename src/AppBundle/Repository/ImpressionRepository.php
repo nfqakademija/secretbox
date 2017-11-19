@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Impression;
+use AppBundle\Entity\User;
+
 /**
  * ImpressionRepository
  *
@@ -10,4 +13,44 @@ namespace AppBundle\Repository;
  */
 class ImpressionRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param Impression $impression
+     */
+    public function saveImpression(Impression $impression)
+    {
+        $this->_em->persist($impression);
+        $this->_em->flush();
+    }
+
+    /**
+     * @param $userId
+     *
+     * @return array
+     */
+    public function getImpressions($userId)
+    {
+        $impressions = $this->findBy(['userId' => $userId], ['created' => 'DESC']);
+
+        return $impressions;
+    }
+
+    public function getLastImpressions($limit)
+    {
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('i.impression', 'i.created', 'u.firstName', 'u.lastName', 'u.pictureUrl')
+            ->from(Impression::class, 'i')
+            ->innerJoin(
+                User::class,
+                'u',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'i.userId = u.id'
+            )
+            ->where('i.approved = 1')
+            ->orderBy('i.created', 'DESC')
+            ->setMaxResults($limit);
+        $impressions = $queryBuilder->getQuery()->getResult();
+
+        return $impressions;
+    }
 }

@@ -14,13 +14,27 @@ use Doctrine\ORM\EntityRepository;
 class OrderRepository extends EntityRepository
 {
     /**
-     * @param $userId
+     * @param int $userId
+     *
+     * @param \DateTime $validDate
+     *
      * @return array
      */
-    public function getUserOrders($userId)
+    public function getUserRevealedProducts($userId, $validDate)
     {
-        $orders = $this->findBy(array('userId' => $userId));
-        return $orders;
+        $queryBuilder = $this->_em->createQueryBuilder();
+        $queryBuilder
+            ->select('orders.productId')
+            ->from(Order::class, 'orders')
+            ->where('orders.userId = :userId AND orders.status = :statusRevealed')
+            ->orWhere('orders.userId = :userId AND orders.status = :statusNew AND orders.orderDate > :validDate')
+            ->setParameter('userId', $userId)
+            ->setParameter('statusRevealed', 'revealed')
+            ->setParameter('statusNew', 'new')
+            ->setParameter('validDate', $validDate);
+        $products = $queryBuilder->getQuery()->getResult();
+
+        return $products;
     }
 
     /**
@@ -33,7 +47,8 @@ class OrderRepository extends EntityRepository
     }
 
     /**
-     * @param $userId
+     * @param int $userId
+     *
      * @return array
      */
     public function getUserRevealedOrders($userId)
@@ -58,7 +73,8 @@ class OrderRepository extends EntityRepository
     }
 
     /**
-     * @param $userId
+     * @param int $userId
+     *
      * @return array
      */
     public function getUserSecrets($userId)
@@ -66,7 +82,8 @@ class OrderRepository extends EntityRepository
         $userSecrets = $this->findBy([
             'userId' =>  $userId,
             'status' => 'new'
-        ]);
+        ], ['orderDate' => 'DESC']);
+
         return $userSecrets;
     }
 }

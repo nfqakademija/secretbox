@@ -1,119 +1,87 @@
-//bootstrap
 @import "./node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "./node_modules/bootstrap-social/bootstrap-social.scss";
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 
 html {
-  max-width: 100%;
-  margin: auto;
-  height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  max-width: 100%;
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  margin:0;
-  /*font-family: 'Open Sans Condensed', sans-serif;*/
+  background-image: url("../images/bg2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.body-content {
-  margin-top: 52px;
+.body-footer {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #836d5e;
 }
+
+.body-parallax {
+  padding: 0;
+  padding-bottom: 0;
+}
+
+//.body-content {
+//  margin-top: 52px;
+//  padding: 0;
+//}
 
 .body-order {
   padding-top: 50px;
 }
 
-
-.body-footer {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin: 0;
-  height: 20px;
-  color: white;
-  background-color: black;
-  text-align: center;
-}
-
-
-/*parallax effect*/
 .parallax-window {
-  height: 625px;
+  height: 770px;
   background: transparent;
   text-align: center;
 }
 
 .parallax-text {
-  max-height: 300px;
-  width: 100%;
+  max-height: 200px;
+  background-color: rgba(172,170,159,0.6);
 }
 
-.parallax-slider {
-  position: relative;
-  width:100%;
+.parallax-transparent {
+ background-color: rgba(240,240,240,0.3);
 }
 
-.message {
+.message, .order-message {
   font-size: 45px;
+  font-weight: 700;
+  color: white;
   display: flex;
+  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 300px;
-  text-align: center;
+  height: 200px;
   font-family: 'Dosis', sans-serif;
-
 }
-/*parallax end*/
 
-.introduction {
-  position: relative;
-
+.order-message {
+  padding-top: 350px;
 }
 
 .logo-text {
-  padding-left: 50px;
+  padding-left: 40px;
   text-decoration: none;
-  color: darkred;
+  color: darkred !important;
   font-size: xx-large;
   font-family: 'Montserrat', sans-serif;
 }
 
-.fb-image {
-  width: 20px;
-}
+//.fb-image {
+//  width: 20px;
+//}
 
 .body-about, .body-user-profile {
   margin-top: 100px;
   text-align: center;
-}
-
-.logged-user {
-  font-weight: bold;
-}
-
-.navbar-login
-{
-  width: 305px;
-  padding: 10px 10px 0;
-}
-
-.navbar-login-session
-{
-  padding: 0 10px;
-}
-
-.icon-size
-{
-  width: 80px;
-}
-
-.top-nav {
-  background-color: white;
-  z-index: 1;
-  -webkit-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
-  -moz-box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
-  box-shadow: 0px 10px 55px 0px rgba(143,143,143,0.62);
 }
 
 .button-order-now {
@@ -123,14 +91,19 @@ body {
   max-width: 325px;
   font-size: 40px;
   //background-color: #C24641;
-  background-color: #fffff8;
+  background-color: #f3dfd4;
   //color:  #42BEC2;
-  color: #483c32;
+  color: darkred;
   //border: 1px solid black;
 }
 
 .button-order-now:hover {
-
   background-color: #483c32;
   color: #fffff8;
+}
+
+.home-impressions {
+  background: rgba(255,255,255,0.95);
+  width:100%;
+  min-height: 770px;
 }

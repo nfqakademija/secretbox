@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -84,7 +85,7 @@ class User implements UserInterface
      *
      * @ORM\Column(name="roles", type="json_array")
      */
-    private $roles = array();
+    private $roles = [];
 
     /**
      * @var string
@@ -98,6 +99,11 @@ class User implements UserInterface
      */
     private $picture;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Impression", mappedBy="userId")
+     */
+    private $impressions;
+
 
 
     public function __construct()
@@ -107,6 +113,7 @@ class User implements UserInterface
         $this->roles = [
             'ROLE_USER'
         ];
+        $this->impressions = new ArrayCollection();
     }
 
     /**
@@ -304,7 +311,7 @@ class User implements UserInterface
     }
 
     /**
-     * @return longblob
+     * @return blob
      */
     public function getPicture()
     {

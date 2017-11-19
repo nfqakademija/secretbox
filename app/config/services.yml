@@ -10,10 +10,6 @@ services:
         resource: '../../src/AppBundle/*'
         exclude: '../../src/AppBundle/{Controller,Entity,Repository,Tests}'
 
-    facebook_authenticator:
-        class: AppBundle\Service\FacebookAuthenticatorService
-        autowire: true
-
     AppBundle\EventListener\PostUserLoginListener:
         tags:
             - {name: kernel.event_listener, event: user.login, method: onUserLoginSaveImage}

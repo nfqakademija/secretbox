@@ -18,6 +18,7 @@ class UserService
 
     /**
      * UserService constructor.
+     *
      * @param EntityManager $em
      */
     public function __construct(EntityManager $em)
@@ -27,7 +28,7 @@ class UserService
     }
 
     /**
-     * @param $userArray
+     * @param array $userArray
      *
      * @return User
      */
@@ -44,13 +45,13 @@ class UserService
     }
 
     /**
-     * @param $userArray
+     * @param array $userArray
      *
      * @return User|null|object
      */
     public function updateUser($userArray)
     {
-        $existingUser = $this->em->getRepository('AppBundle:User')
+        $existingUser = $this->em->getRepository(User::class)
             ->findOneBy(['email' => $userArray['email']]);
         if ($existingUser) {
             if ($existingUser->getPictureUrl() != $userArray['picture_url']) {
