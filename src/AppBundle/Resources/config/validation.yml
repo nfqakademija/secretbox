@@ -11,3 +11,14 @@ AppBundle\Entity\Impression:
     properties:
         impression:
             - NotBlank: ~
+
+AppBundle\Entity\User:
+    properties:
+        address:
+            - NotNull: ~
+        email:
+            - NotBlank: ~
+            - Email:
+                checkHost: true
+                message: message.no.valid.email
+#    todo padaryt validationus visoms reiksmems, uzsakymas draugui

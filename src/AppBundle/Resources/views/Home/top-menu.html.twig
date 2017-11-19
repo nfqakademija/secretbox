@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu-navbar" aria-expanded="false">
-                <span class="sr-only">KAS XIA DABR</span>
+                <span class="sr-only"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -20,7 +20,14 @@
         <div class="collapse navbar-collapse" id="top-menu-navbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{{ path('app.about') }}">{{ 'menu.about'|trans }}</a>
+                    {#todo scrol to order#}
+                    <a href="{{ path('app.order.now') }}">{{ 'product.order' | trans }}</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#subscribe-newsletter">{{ 'menu.get.news' | trans }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('app.about') }}">{{ 'menu.about' | trans }}</a>
                 </li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -82,6 +89,8 @@
                 </li>
 
                 {% endif %}
+
+
 
             </ul>
         </div>

@@ -13,3 +13,7 @@ if(orderButton) {
         document.getElementById('order-button-text').innerHTML = userWaiting;
     }
 }
+
+$('#subscribe-newsletter').on('shown.bs.modal', function () {
+    $('#appbundle_user_email').focus()
+});

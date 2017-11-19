@@ -6,257 +6,293 @@
 
     <div class="row body-user-profile">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <div class="col-lg-10 col-sm-12 col-lg-offset-1" style="background: rgba(239,239,233,0.8); ">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-12 board" style="min-height: 600px;">
-                            <div class="board-inner">
-                                <ul class="nav nav-tabs" id="myTab">
-                                    <div class="liner"></div>
+            {#todo perkelti stule i css#}
+            <div class="col-lg-10 col-sm-12 col-lg-offset-1" style="background: rgba(239,239,233,0.8); padding-bottom: 15px;  ">
 
-                                    <li class="active">
-                                        <a href="#secrets" data-toggle="tab" title="{{ 'user.secrets'| trans }}">
-                                        <span class="round-tabs one">
-                                             <i class="glyphicon glyphicon-question-sign"></i>
-                                        </span>
-                                        </a>
-                                    </li>
 
-                                    <li>
-                                        <a href="#profile" data-toggle="tab" title="{{ 'user.profile'| trans }}">
-                                        <span class="round-tabs two">
-                                             <i class="glyphicon glyphicon-user"></i>
-                                        </span>
-                                        </a>
-                                    </li>
+                <div class="menu-container">
+                    <div id="fancyTabWidget" class="tabs t-tabs">
+                        <ul class="nav nav-tabs fancyTabs" role="tablist">
 
-                                    <li>
-                                        <a href="#completed" data-toggle="tab" title="{{ 'user.orders' | trans }}">
-                                        <span class="round-tabs three">
-                                            <i class="glyphicon glyphicon-check"></i>
-                                        </span>
-                                        </a>
-                                    </li>
+                            <li class="tab fancyTab active">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-desktop"></span><span class="hidden-xs">{{ 'user.secrets'| trans }}</span></a>
+                                <div class="whiteBlock"></div>
+                            </li>
 
-                                    <li>
-                                        <a href="#impressions" data-toggle="tab"
-                                           title="{{ 'user.impressions' | trans }}">
-                                        <span class="round-tabs four">
-                                            <i class="glyphicon glyphicon-comment"></i>
-                                        </span>
-                                        </a>
-                                    </li>
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-firefox"></span><span class="hidden-xs">{{ 'user.friends.secrets'| trans }}</span></a>
+                                <div class="whiteBlock"></div>
+                            </li>
 
-                                </ul>
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-envira"></span><span class="hidden-xs">{{ 'user.profile'| trans }}</span></a>
+                                <div class="whiteBlock"></div>
+                            </li>
+
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-mortar-board"></span><span class="hidden-xs">{{ 'user.orders' | trans }}</span></a>
+                                <div class="whiteBlock"></div>
+                            </li>
+
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-stack-overflow"></span><span class="hidden-xs">{{ 'user.impressions' | trans }}</span></a>
+                                <div class="whiteBlock"></div>
+                            </li>
+
+                            {#<li class="tab fancyTab">#}
+                                {#<div class="arrow-down"><div class="arrow-down-inner"></div></div>#}
+                                {#<a id="tab5" href="#tabBody5" role="tab" aria-controls="tabBody5" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-question-circle"></span><span class="hidden-xs">Order</span></a>#}
+                                {#<div class="whiteBlock"></div>#}
+                            {#</li>#}
+                        </ul>
+                        <div id="myTabContent" class="tab-content fancyTabContent" aria-live="polite">
+                            <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% if secrets == null %}
+                                            {{ 'orders.no.secrets' | trans }}
+                                        {% else %}
+                                            {#{% for secret in secrets %}#}
+                                            {#<div class="row">#}
+                                            {#<div class="col-lg-4">{{ secret.orderDate | date('Y-m-d h:m:s') }}</div>#}
+                                            {#<div class="col-lg-7">#}
+                                            {#<div class="countdown-clock" data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>#}
+                                            {#</div>#}
+                                            {#<div class="col-lg-1">{{ secret.deliveryAddress }}</div>#}
+                                            {#</div>#}
+
+                                            {#{% endfor %}#}
+
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                <th>{{ 'order.date' | trans }}</th>
+                                                <th class="text-center">{{ 'order.countdown' | trans }}</th>
+                                                <th class="text-center">{{ 'order.delivery.address' | trans }}</th>
+                                                </thead>
+                                                <tbody>
+                                                {% for secret in secrets %}
+                                                    <tr>
+                                                        <td>{{ secret.orderDate | date('Y-m-d h:m:s') }}</td>
+                                                        <td class="text-center">
+                                                            <div class="countdown-clock"
+                                                                 data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <button type="button" class="btn" data-toggle="popover"
+                                                                    data-placement="left" title="Adresas"
+                                                                    data-content="{{ secret.deliveryAddress }}">
+                                                                <i class="fa fa-home icon-address"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% endif %}
+                                        <div class="col-md-12">
+                                            <a id="order-button" class="btn btn-primary" href="{{ path('app.order.now') }}">
+                                                <span id="order-button-text">{{ 'product.order'|trans }}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            <div class="tab-content">
-                                <div class="tab-pane fade in active" id="secrets">
-                                    <h2>{{ 'user.secrets'|trans }}</h2>
-                                    {% if secrets == null %}
-                                        {{ 'orders.no.secrets' | trans }}
-                                    {% else %}
-                                        {#{% for secret in secrets %}#}
-                                        {#<div class="row">#}
-                                        {#<div class="col-lg-4">{{ secret.orderDate | date('Y-m-d h:m:s') }}</div>#}
-                                        {#<div class="col-lg-7">#}
-                                        {#<div class="countdown-clock" data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>#}
-                                        {#</div>#}
-                                        {#<div class="col-lg-1">{{ secret.deliveryAddress }}</div>#}
-                                        {#</div>#}
-
-                                        {#{% endfor %}#}
-
-                                        <table class="table table-striped table-hover">
-                                            <thead>
-                                            <th>{{ 'order.date' | trans }}</th>
-                                            <th class="text-center">{{ 'order.countdown' | trans }}</th>
-                                            <th class="text-center">{{ 'order.delivery.address' | trans }}</th>
-                                            </thead>
-                                            <tbody>
-                                            {% for secret in secrets %}
-                                                <tr>
-                                                    <td>{{ secret.orderDate | date('Y-m-d h:m:s') }}</td>
-                                                    <td class="text-center">
-                                                        <div class="countdown-clock"
-                                                             data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>
-                                                    </td>
-                                                    <td class="text-center">
-                                                        <button type="button" class="btn" data-toggle="popover"
-                                                                data-placement="left" title="Adresas"
-                                                                data-content="{{ secret.deliveryAddress }}">
-                                                            <i class="fa fa-home icon-address"></i>
-                                                        </button>
-
-
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    {% endif %}
-
+                            <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {#todo userio draugu paslaptys#}
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12">
+                                                    <div class="well well-sm">
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-md-3">
+                                                                <img src="{{ app.user.pictureUrl }}" alt="" class="img-rounded img-responsive" />
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-7">
+                                                                <h3 class="font-weight-bold">{{ app.user.firstName }} {{ app.user.lastName }}</h3>
+                                                                {% if  app.user.address  %}
+                                                                    {% set address = app.user.address %}
+                                                                {% else %}
+                                                                    {% set address = 'user.no.address' | trans %}
+                                                                {% endif %}
+                                                                <div class="user-info">
+                                                                        <p title="{{ 'content.email.address' | trans }}">
+                                                                            <i class="glyphicon glyphicon-envelope"></i>{{ app.user.email }}
+                                                                        </p>
+                                                                        <p class="newsletter">
+                                                                            {% if app.user.newsletter %}
+                                                                                <span>{{ 'user.newsletter' | trans }} {{ 'user.subscribed' | trans }}</span>
+                                                                                <a href="{{ path('app.user.subscription') }}" class="color-red">
+                                                                                    <i class="glyphicon glyphicon-remove-circle">{{ 'content.unsubscribe' | trans }}</i>
+                                                                                </a>
+                                                                            {% else %}
+                                                                                <span>{{ 'user.newsletter' | trans }} {{ 'user.unsubscribed' | trans }}</span>
+                                                                                <a href="{{ path('app.user.subscription') }}" class="color-green">
+                                                                                    <i class="glyphicon glyphicon-ok-circle">{{ 'content.subscribe' | trans }}</i>
+                                                                                </a>
+                                                                            {% endif %}
+                                                                        </p>
 
-                                <div class="tab-pane fade " id="profile">
-                                    <h2>{{ 'user.profile'|trans }}</h2>
-
-                                    <div class="user-profile-info">
-                                        <div>
-                                            <h4>{{ app.user.firstName }} {{ app.user.lastName }}</h4>
-                                        </div>
-                                        <div>
-                                            <img src="{{ app.user.pictureUrl }}">
-                                        </div>
-
-                                    </div>
-
-                                    <div class="user-profile-info">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">{{ 'user.registration.date' | trans }}</h3>
-                                            </div>
-                                            <div class="panel-body">{{ app.user.registeredDate | date('Y-m-d') }}</div>
-                                        </div>
-
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">{{ 'user.lastlogin.date' | trans }}</h3>
-                                            </div>
-                                            <div class="panel-body">{{ app.user.loggedDate | date('Y-m-d') }}</div>
-                                        </div>
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <h3 class="panel-title">{{ 'content.address' | trans }}</h3>
-                                            </div>
-                                            <div class="panel-body">{{ app.user.address }}
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-
-                                <div class="tab-pane fade" id="completed">
-                                    <h2>{{ 'user.orders'| trans }}</h2>
-                                    {% if orders == null %}
-                                        {{ 'order.no.completed.orders' | trans }}
-                                    {% else %}
-                                        <table class="table small">
-                                            <thead>
-                                            <th>{{ 'order.date' | trans }}</th>
-                                            <th>{{ 'order.revealed' | trans }}</th>
-                                            <th><i class="fa fa-glass"></i></th>
-                                            <th></th>
-                                            <th></th>
-                                            </thead>
-                                            <tbody>
-                                            {% for order in orders %}
-                                                <tr>
-                                                    <td>{{ order.orderDate | date('Y-m-d') }}</td>
-                                                    <td></td>
-                                                    <td>{{ order.title }}</td>
-                                                    <td>{{ order.description }}</td>
-                                                    <td>{{ order.supplier }}</td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    {% endif %}
-
-
-                                </div>
-
-                                <div class="tab-pane fade" id="impressions">
-                                    <h2>{{ 'user.impressions' | trans }}</h2>
-                                    <div class="row ">
-                                        {% for impression in impressions %}
-                                        <div class="col-lg-6 impression">
-                                            <div class="impression-box">
-                                                <img class="img-circle2" src="{{ app.user.pictureUrl }}"/>
-                                                <div class="impression-title">{{ impression.created | date('Y-m-d h:m:s') }}</div>
-                                                {{ impression.impression }}
-                                            </div>
-                                        </div>
-                                        {% endfor %}
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-
-
-                                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
-
-
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="modal fade" id="new-impression" tabindex="-1" role="dialog" aria-labelledby="new-impressionLabel">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                {{ form_start(form) }}
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="gridSystemModalLabel">
-                                                        {{ form_label(form.impression, 'user.share.impression' | trans) }}
-                                                    </h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            {{ form_row(form.impression, {'attr': {'id': 'impression-input'}}) }}
+                                                                    <p title="{{ 'user.lastlogin.date' | trans }}">
+                                                                        <i class="glyphicon glyphicon-log-in"></i>
+                                                                        <i class="glyphicon glyphicon-user"></i>
+                                                                        {{ app.user.loggedDate | date('Y-m-d') }}
+                                                                    </p>
+                                                                    <p title="{{ 'user.registration.date' | trans }}">
+                                                                        <i class="glyphicon glyphicon-registration-mark"></i>
+                                                                        <i class="glyphicon glyphicon-user"></i>
+                                                                        {{ app.user.registeredDate | date('Y-m-d') }}
+                                                                    </p>
+                                                                    <span title="{{ 'content.address' | trans }}">{{ address }}
+                                                                        <i class="glyphicon glyphicon-map-marker"></i>
+                                                                    </span>
+                                                                    <a href="#" data-toggle="modal" data-target="#edit-address">
+                                                                        <i class="glyphicon glyphicon-edit">{{ 'content.change' | trans }}</i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
-                                                <div class="modal-footer">
-                                                    {{ form_widget(form.save) }}
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
-                                                </div>
-                                                {{ form_end(form) }}
-                                            </div><!-- /.modal-content -->
-                                        </div><!-- /.modal-dialog -->
-                                    </div><!-- /.modal -->
-
-
-
-
-
-
-
-                                    {#<table class="table small">#}
-                                        {#<thead>#}
-                                        {#<th>Data</th>#}
-                                        {#<th>{{ 'user.impression' | trans }}</th>#}
-                                        {#</thead>#}
-                                        {#<tbody>#}
-                                        {#{% for impression in impressions %}#}
-                                            {#<tr>#}
-                                                {#<td>{{ impression.created | date('Y-m-d h:m:s') }}</td>#}
-                                                {#<td>{{ impression.impression }}</td>#}
-                                            {#</tr>#}
-                                        {#{% endfor %}#}
-                                        {#</tbody>#}
-                                    {#</table>#}
-
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="clearfix"></div>
                             </div>
+                            <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        {% if orders == null %}
+                                            {{ 'order.no.completed.orders' | trans }}
+                                        {% else %}
+                                            <table class="table small">
+                                                <thead>
+                                                <th>{{ 'order.date' | trans }}</th>
+                                                <th>{{ 'order.revealed' | trans }}</th>
+                                                <th><i class="fa fa-glass"></i></th>
+                                                <th></th>
+                                                <th></th>
+                                                </thead>
+                                                <tbody>
+                                                {% for order in orders %}
+                                                    <tr>
+                                                        <td>{{ order.orderDate | date('Y-m-d') }}</td>
+                                                        <td></td>
+                                                        <td>{{ order.title }}</td>
+                                                        <td>{{ order.description }}</td>
+                                                        <td>{{ order.supplier }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button style="margin-bottom: 50px;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
+                                    </div>
+                                    <div class="col-md-12">
+                                        {% for impression in impressions %}
+                                            <div class="col-lg-6 impression">
+                                                <div class="impression-box">
+                                                    <img class="img-circle2" src="{{ app.user.pictureUrl }}"/>
+                                                    <div class="impression-title">{{ impression.created | date('Y-m-d h:m:s') }}</div>
+                                                    {{ impression.impression }}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {#<div class="tab-pane  fade" id="tabBody5" role="tabpanel" aria-labelledby="tab5" aria-hidden="true" tabindex="0">#}
+                                {#<div class="row">#}
+                                    {#<div class="col-md-12">#}
+                                        {#<h2>This is the content of tab six.</h2>#}
+                                        {#<p>This field is a rich HTML field with a content editor like others used in Sitefinity. It accepts images, video, tables, text, etc. Street art polaroid microdosing la croix taxidermy. Jean shorts kinfolk distillery lumbersexual pinterest XOXO semiotics. Tilde meggings asymmetrical literally pork belly, heirloom food truck YOLO. Meh echo park lyft typewriter. </p>#}
 
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
                         </div>
+
                     </div>
                 </div>
+
+
+
+
             </div>
 
 
+            {#modals:#}
+            <div class="modal fade" id="new-impression" tabindex="-1" role="dialog" aria-labelledby="new-impressionLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        {{ form_start(formImpression) }}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gridSystemModalLabel">
+                                {{ form_label(formImpression.impression, 'user.share.impression' | trans) }}
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {{ form_row(formImpression.impression, {'attr': {'id': 'impression-input'}}) }}
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_widget(formImpression.save) }}
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
+                        </div>
+                        {{ form_end(formImpression) }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
+            <div class="modal fade" id="edit-address" tabindex="-1" role="dialog" aria-labelledby="edit-addressLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        {{ form_start(formAddress) }}
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gridSystemModalLabel">
+                                {{ form_label(formAddress.address, 'content.address' | trans) }}
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    {{ form_row(formAddress.address, {'attr': {'id': 'address-input'}}) }}
+                                </div>
+                            </div>
 
+                        </div>
+                        <div class="modal-footer">
+                            {{ form_widget(formAddress.save) }}
+                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
+                        </div>
+                        {{ form_end(formAddress) }}
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
 
 
         {% else %}
@@ -269,66 +305,18 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {#//    </script>#}
-    <script>
-
-
-        //        $(function(){
-        //            $('a[title]').tooltip();
-        //        });
-
-
-        //        function show(target){
-        //            document.getElementById(target).style.display = 'block';
-        //            document.getElementById("clickMeId").style.display = 'none';
-        //        }
-        //        function hide(target){
-        //            document.getElementById(target).style.display = 'none';
-        //            document.getElementById("clickMeId").style.display = 'block';
-        //        }
-
-
-        //        $(function () {
-
-        //            var dateNow = Date.now();
-        ////            console.log(typeof dateNow);
-        //
-        //           $('[data-countdown]').each(function () {
-        //               var finalDate = $(this).data('countdown');
-        ////                    console.log(finalDate);
-        //                if(Date.parse(finalDate) < dateNow)
-        //                    $(this).html('laikas baigesi');
-        ////               console.log(date + "     " + dateNow);
-        //                else
-        //               $(this).countdown("2017-12-31", function (event) {
-        ////                   console.log(finalDate);
-        //                   $(this).html(event.strftime('%D days %H:%M:%S'));
-        //               })
-        //           });
-        //        });
-
-
-    </script>
-
-
     <script type="text/javascript">
 
 
         $('#new-impression').on('shown.bs.modal', function () {
             $('#appbundle_impression_impression').focus()
         });
+        $('#edit-address').on('shown.bs.modal', function () {
+            $('#appbundle_user_address').focus()
+        });
 
         var clocks = [];
 
-
-        //        (function($) {
-
-        /**
-         * FlipClock English Language Pack
-         *
-         * This class will used to translate tokens into the English language.
-         *
-         */
 
         FlipClock.Lang.Mixed = {
 
@@ -341,42 +329,22 @@
 
         };
 
-        /* Create various aliases for convenience */
 
         FlipClock.Lang['mix'] = FlipClock.Lang.Mixed;
-        //            FlipClock.Lang['lt-LT']   = FlipClock.Lang.Lithuanian;
-        //            FlipClock.Lang['lithuanian'] = FlipClock.Lang.Lithuanian;
-
-        //        }(jQuery));
 
         $(document).ready(function () {
+
+//            fancy tabs
+            $("li.fancyTab").width('20%');
+
+            //end fancy tabs
+
+
+
+
             $('[data-toggle="popover"]').popover();
 
-
-            // Grab the current date
             var currentDate = new Date();
-
-            // Set some date in the past. In this case, it's always been since Jan 1
-            // var pastDate  = new Date(currentDate.getFullYear(), 0, 1);
-
-
-            // Calculate the difference in seconds between the future and current date
-            // var diff = currentDate.getTime() / 1000 - pastDate.getTime() / 1000;
-
-
-            // console.log(diff);
-
-            // clocks.push($('.clock-1').FlipClock(diff, {
-            // 	clockFace: 'DailyCounter',
-            // 	countdown: true
-            // }));
-
-            // clocks.push($('.clock-2').FlipClock({
-            //     clockFace: 'HourlyCounter'
-            // }));
-            // // clocks.setCountdown(true);
-
-
             $('[data-countdown]').each(function () {
                 var finalDate = Date.parse($(this).data('countdown'));
                 console.log('this is final:' + finalDate);
@@ -394,19 +362,28 @@
                     $(this).html('laikas pasibaiges');
                 }
 
-
-//                 if(Date.parse(finalDate) < dateNow)
-//                     $(this).html('laikas baigesi');
-// //               console.log(date + "     " + dateNow);
-//                 else
-//                $(this).countdown("2017-12-31", function (event) {
-// //                   console.log(finalDate);
-//                    $(this).html(event.strftime('%D days %H:%M:%S'));
-//                })
             });
 
 
         });
+
+        //more fancy tabs:
+        $(window).load(function() {
+
+            $('.fancyTabs').each(function() {
+
+                var highestBox = 0;
+                $('.fancyTab a', this).each(function() {
+
+                    if ($(this).height() > highestBox)
+                        highestBox = $(this).height();
+                });
+
+                $('.fancyTab a', this).height(highestBox);
+
+            });
+        });
+        //end fancy tabs
 
 
     </script>

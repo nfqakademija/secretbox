@@ -27,7 +27,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook_id", type="string", length=255, unique=true)
+     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
      */
     private $facebookId;
 
@@ -41,14 +41,14 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=255)
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
      */
     private $lastName;
 
@@ -100,10 +100,14 @@ class User implements UserInterface
     private $picture;
 
     /**
+     * @ORM\Column(name="newsletter", type="boolean", options={"default": false})
+     */
+    private $newsletter;
+
+    /**
      * @ORM\OneToMany(targetEntity="Impression", mappedBy="userId")
      */
     private $impressions;
-
 
 
     public function __construct()
@@ -113,6 +117,7 @@ class User implements UserInterface
         $this->roles = [
             'ROLE_USER'
         ];
+        $this->newsletter = false;
         $this->impressions = new ArrayCollection();
     }
 
@@ -328,9 +333,24 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return boolean
+     */
+    public function getNewsletter()
+    {
+        return $this->newsletter;
+    }
 
-
-
+    /**
+     * @param boolean $newsletter
+     *
+     * @return User
+     */
+    public function setNewsletter($newsletter)
+    {
+        $this->newsletter = $newsletter;
+        return $this;
+    }
 
     public function getRoles()
     {

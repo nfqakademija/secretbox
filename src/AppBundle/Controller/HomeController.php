@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Impression;
+use AppBundle\Entity\User;
+use AppBundle\Form\UserEmailType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +25,34 @@ class HomeController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
+        $userRepo = $this->getDoctrine()->getRepository(User::class);
         $impressions = $impressionRepo->getLastImpressions(4);
 
+        //todo jeigu useris prisijunges, permeta ji i userprofile
+        $user = new User();
+        $formUserEmail = $this->createForm(UserEmailType::class, $user, ['attr' => ['data-parsley-validate' => ' ']]);
+        $formUserEmail->handleRequest($request);
+
+        if ($formUserEmail->isSubmitted() && $formUserEmail->isValid()) {
+
+            //todo reikia patikrinti ar toks useris dar neegzituoja
+            $user->setLoginCount(0);
+            $user->setNewsletter(true);
+            $userRepo->saveUser($user);
+            unset($user);
+
+            return $this->redirectToRoute('app.homepage', [
+                //todo atidaro modala ir parodo info, reikia javascriptui perduot
+            ]);
+        }
+
+
         return $this->render('AppBundle:Home:index.html.twig', [
-            'impressions' => $impressions
+            'impressions' => $impressions,
+            'formUserEmail' => $formUserEmail->createView()
         ]);
     }
 

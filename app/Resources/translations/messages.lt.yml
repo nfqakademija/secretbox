@@ -4,10 +4,12 @@ intro.third: su SECRET BOX prasideda Tavo nuotykis. pradėk nuo to, ką rasi vid
 content.about: apie projektą SECRET BOX
 content.404: Paslapčių dėžutė slepiasi ne čia :)
 content.address: adresas
+content.email.address: el. pašto adresas
 
 menu.about: apie
 menu.login: prisijungti
 menu.logout: atsijungti
+menu.get.news: gauti naujienas
 
 user.page: mano paskyra
 user.profile: mano profilis
@@ -20,9 +22,16 @@ user.lastlogin.date: paskutinis prisijungimas
 user.secrets: mano paslaptys
 user.name: vardas
 user.surname: pavardė
-user.share.impression: Dalintis įspūdžiu
+user.share.impression: dalintis įspūdžiu
+user.friends.secrets: draugų paslaptys
+user.no.address: adresas neįvestas
+user.newsletter: naujienlaiškis
+user.subscribed: užsakytas
+user.unsubscribed: neužsakytas
+user.email.subscription: naujienlaiškio užsakymas
+user.input.your.email: įveskite savo el. pašto adresą
 
-product.order: užsakyti dabar
+product.order: pradėti nuotykį
 
 project.name: secret box
 
@@ -35,14 +44,18 @@ orders.no.secrets: neturite užsakytų paslapčių
 order.no.completed.orders: neturite atskleistų paslapčių
 order.countdown: Atskleisti paslapčiai turite
 
-content.years: Metai
-content.months: Mėnesiai
-content.days: Dienos
-content.hours: Valandos
-content.minutes: Minutės
-content.seconds: Sekundės
-content.close: Uždaryti
-content.save: Išsaugoti
-content.impresions: Įspūdžiai
+content.years: metai
+content.months: mėnesiai
+content.days: dienos
+content.hours: valandos
+content.minutes: minutės
+content.seconds: sekundės
+content.close: uždaryti
+content.save: išsaugoti
+content.impresions: įspūdžiai
+content.change: keisti
+content.unsubscribe: atsisakyti
+content.subscribe: užsakyti
 
-message.no.new.secrets: Jūs atskleidėte visas paslaptis, grįžkite neužilgo naujiems nuotykiams!
+message.no.new.secrets: jūs atskleidėte visas paslaptis, grįžkite neužilgo naujiems nuotykiams!
+message.no.valid.email: įvestas el. pašto adresas netinkamas

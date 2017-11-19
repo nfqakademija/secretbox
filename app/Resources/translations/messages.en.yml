@@ -5,10 +5,12 @@ intro.third: take Your secret SECRET BOX and start Your adventure
 content.about: about project SECRET BOX
 content.404: Secret box isn't here :)
 content.address: address
+content.email.address: email address
 
 menu.about: about
 menu.login: login
 menu.logout: logout
+menu.get.news: get latest news
 
 user.page: my account
 user.profile: my profile
@@ -21,9 +23,16 @@ user.lastlogin.date: last login
 user.secrets: my secrets
 user.name: name
 user.surname: surname
-user.share.impression: Share impression
+user.share.impression: share impression
+user.friends.secrets: friends secretes
+user.no.address: no address info
+user.newsletter: newsletter
+user.subscribed: subscribed
+user.unsubscribed: unbscribed
+user.email.subscription: order newspaper
+user.input.your.email: enter your email address
 
-product.order: order now
+product.order: begin adventure
 
 project.name: secret box
 
@@ -36,14 +45,18 @@ orders.no.secrets: you have no secrets
 order.no.completed.orders: you have no revealed secrets
 order.countdown: Time to reveal secret
 
-content.years: Years
-content.months: Months
-content.days: Days
-content.hours: Hours
-content.minutes: Minutes
-content.seconds: Seconds
-content.close: Close
-content.save: Save
-content.impresions: Impressions
+content.years: years
+content.months: months
+content.days: days
+content.hours: hours
+content.minutes: minutes
+content.seconds: seconds
+content.close: close
+content.save: save
+content.impresions: impressions
+content.change: change
+content.unsubscribe: unsubscribe
+content.subscribe: subscribe
 
-message.no.new.secrets: You revealed all secrets, come back soon for another!
+message.no.new.secrets: you revealed all secrets, come back soon for another!
+message.no.valid.email: you entered invalid email address
