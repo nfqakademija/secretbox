@@ -9,9 +9,7 @@ html {
 }
 
 body {
-  background-image: url("../images/bg2.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: url("../images/bg.jpg") no-repeat fixed;
 }
 
 .body-footer {
@@ -25,7 +23,6 @@ body {
 
 .body-parallax {
   padding: 0;
-  padding-bottom: 0;
 }
 
 //.body-content {
