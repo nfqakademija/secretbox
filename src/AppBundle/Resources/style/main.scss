@@ -30,10 +30,6 @@ body {
 //  padding: 0;
 //}
 
-.body-order {
-  padding-top: 50px;
-}
-
 .parallax-window {
   height: 770px;
   background: transparent;
@@ -76,9 +72,14 @@ body {
 //  width: 20px;
 //}
 
-.body-about, .body-user-profile {
+.body-about, .body-user-profile, .body-order {
   margin-top: 100px;
   text-align: center;
+}
+
+.content-bg {
+  background: rgba(239,239,233,0.8);
+  padding-bottom: 15px;
 }
 
 .button-order-now {

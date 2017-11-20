@@ -42,7 +42,11 @@ order.revealed: atskleista
 order.delivery.address: pristatymas į
 orders.no.secrets: neturite užsakytų paslapčių
 order.no.completed.orders: neturite atskleistų paslapčių
-order.countdown: Atskleisti paslapčiai turite
+order.countdown: atskleisti paslapčiai turite
+order.begin.first.message: užsisakykite unikalų SECRET BOX nuotykį
+order.begin.second.message: paštu Jums pristatysime paslaptį su Jums skirtomis užuominomis
+order.begin.third.message: įveikite užduotį ir mėgaukitės puikiu atlygiu
+
 
 content.years: metai
 content.months: mėnesiai

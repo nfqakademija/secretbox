@@ -44,6 +44,9 @@ order.delivery.address: devliver to
 orders.no.secrets: you have no secrets
 order.no.completed.orders: you have no revealed secrets
 order.countdown: Time to reveal secret
+order.begin.first.message: TRANSLATION NOT READY
+order.begin.second.message: TRANSLATION NOT READY
+order.begin.third.message: TRANSLATION NOT READY
 
 content.years: years
 content.months: months

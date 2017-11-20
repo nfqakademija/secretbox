@@ -3,9 +3,6 @@ AppBundle\Entity\Order:
         deliveryAddress:
             - NotBlank: ~
         productId:
-            - NotEqualTo:
-                value: 0
-                message: message.no.new.secrets
             - NotNull:
                 message: message.no.new.secrets
 

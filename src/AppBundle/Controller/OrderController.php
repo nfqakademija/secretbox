@@ -39,7 +39,7 @@ class OrderController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $order->setUserId($user->getId());
             $order->setSellingPrice(19.99);
             $uniqueProduct = $uniqueProductService->getUserUnusedProducts($user->getId(), $this->getParameter('secret_reveal_time'));
@@ -62,5 +62,15 @@ class OrderController extends Controller
         return $this->render('AppBundle:Order:new.order.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/begin", name="app.order.begin")
+     *
+     * @return Response
+     */
+    public function beginOrderAction()
+    {
+        return $this->render('AppBundle:Order:begin.order.html.twig');
     }
 }

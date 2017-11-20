@@ -20,7 +20,8 @@ gulp.task('sass', function() {
         dir.npm + 'font-awesome/css/font-awesome.css',
         dir.assets + 'style/user-profile.scss',
         dir.assets + 'style/main.scss',
-        dir.assets + 'style/menu.scss'
+        dir.assets + 'style/menu.scss',
+        dir.assets + 'style/order.scss'
         ])
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
