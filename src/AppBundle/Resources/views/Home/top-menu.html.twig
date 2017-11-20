@@ -21,14 +21,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     {#todo scrol to order#}
-                    <a href="{{ path('app.order.now') }}">{{ 'product.order' | trans }}</a>
+                    <a href="{{ path('app.order.begin') }}">{{ 'product.order' | trans }}</a>
                 </li>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#subscribe-newsletter">{{ 'menu.get.news' | trans }}</a>
                 </li>
-                <li>
-                    <a href="{{ path('app.about') }}">{{ 'menu.about' | trans }}</a>
-                </li>
+                {#<li>#}
+                    {#<a href="{{ path('app.about') }}">{{ 'menu.about' | trans }}</a>#}
+                {#</li>#}
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
