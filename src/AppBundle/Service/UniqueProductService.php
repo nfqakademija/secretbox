@@ -31,7 +31,7 @@ class UniqueProductService
      * @param integer $userId
      * @param integer $daysToRevealSecret
      *
-     * @return integer
+     * @return null|integer
      */
     public function getUserUnusedProducts($userId, $daysToRevealSecret)
     {
@@ -43,8 +43,13 @@ class UniqueProductService
         $validProductDate->modify('+' . $daysToRevealSecret . ' days');
         $newProducts = $this->em->getRepository(Product::class)->getUniqueProducts($revealedProducts, $validProductDate);
 
-        $uniqueProduct = $newProducts[array_rand($newProducts, 1)];
+        if(empty($newProducts)){
 
-        return $uniqueProduct['id'];
+            return null;
+        } else {
+            $uniqueProduct = $newProducts[array_rand($newProducts, 1)];
+
+            return $uniqueProduct['id'];
+        }
     }
 }

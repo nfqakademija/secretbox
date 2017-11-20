@@ -6,6 +6,8 @@ AppBundle\Entity\Order:
             - NotEqualTo:
                 value: 0
                 message: message.no.new.secrets
+            - NotNull:
+                message: message.no.new.secrets
 
 AppBundle\Entity\Impression:
     properties:

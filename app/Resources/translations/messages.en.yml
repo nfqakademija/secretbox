@@ -58,5 +58,4 @@ content.change: change
 content.unsubscribe: unsubscribe
 content.subscribe: subscribe
 
-message.no.new.secrets: you revealed all secrets, come back soon for another!
-message.no.valid.email: you entered invalid email address
+
