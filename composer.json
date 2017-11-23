@@ -32,7 +32,8 @@
         "doctrine/dbal": "2.5.13",
         "knpuniversity/oauth2-client-bundle": "^1.12",
         "league/oauth2-facebook": "^2.0",
-        "doctrine/doctrine-migrations-bundle": "^1.0"
+        "doctrine/doctrine-migrations-bundle": "^1.0",
+        "facebook/graph-sdk": "^5.6"
     },
     "require-dev": {
         "fzaninotto/faker": "*",

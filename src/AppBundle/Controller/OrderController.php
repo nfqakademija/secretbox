@@ -4,7 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Form\OrderType;
-use AppBundle\Service\UniqueProductService;
+use AppBundle\Service\ProductSelectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +28,7 @@ class OrderController extends Controller
      */
     public function newOrderAction(Request $request)
     {
-        $uniqueProductService = $this->get(UniqueProductService::class);
+        $productSelectionService = $this->get(ProductSelectionService::class);
 
 
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
@@ -39,11 +39,11 @@ class OrderController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() ) {
+        if ($form->isSubmitted()) {
             $order->setUserId($user->getId());
             $order->setSellingPrice(19.99);
-            $uniqueProduct = $uniqueProductService->getUserUnusedProducts($user->getId(), $this->getParameter('secret_reveal_time'));
-            $order->setProductId($uniqueProduct);
+            $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
+            $order->setProductId($suitableProduct);
 
             $validator = $this->get('validator');
             $errors = $validator->validate($order);

@@ -18,6 +18,7 @@ use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -30,6 +31,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     private $router;
     private $userService;
     private $dispatcher;
+    private $session;
 
     /**
      * FacebookAuthenticatorService constructor.
@@ -39,19 +41,22 @@ class FacebookAuthenticatorService extends SocialAuthenticator
      * @param RouterInterface $router
      * @param UserService $userService
      * @param EventDispatcher $dispatcher
+     * @param Session $session
      */
     public function __construct(
         EntityManager $em,
         ClientRegistry $clientRegistry,
         RouterInterface $router,
         UserService $userService,
-        EventDispatcher $dispatcher
+        EventDispatcher $dispatcher,
+        Session $session
         ) {
         $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;
         $this->userService = $userService;
         $this->dispatcher = $dispatcher;
+        $this->session = $session;
     }
 
     /**
@@ -87,6 +92,8 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     {
         $facebookUser = $this->getFacebookClient()
             ->fetchUserFromToken($credentials);
+
+        $this->session->set('facebook_user_access_token', $credentials->getToken());
 
         $facebookUserArray = $facebookUser->toArray();
 

@@ -22,7 +22,8 @@ class UserEmailType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'content.save',
                 'attr' => ['class' => 'btn btn-primary']
-            ]);;
+            ]);
+        ;
     }
     
     /**
@@ -42,6 +43,4 @@ class UserEmailType extends AbstractType
     {
         return 'appbundle_user';
     }
-
-
 }

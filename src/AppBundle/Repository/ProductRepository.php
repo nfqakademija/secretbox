@@ -27,7 +27,7 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder
-            ->select('product.id')
+            ->select('product.id', 'product.facebookName as name', 'product.gender', 'product.ageRange')
             ->from(Product::class, 'product')
             ->where('product.id NOT IN (:usedProducts)')
             ->andWhere('product.validTo > :validDate')

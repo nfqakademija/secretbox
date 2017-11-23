@@ -31,9 +31,30 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(name="facebook_name", type="string", length=255)
+     */
+    private $facebookName;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gender", type="string")
+     */
+    private $gender;
+
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="age_range", type="json_array")
+     */
+    private $ageRange;
 
     /**
      * @var string
@@ -59,6 +80,13 @@ class Product
      */
     private $supplierPrice;
 
+    public function __construct()
+    {
+        $this->ageRange = [
+            'min' => 10,
+            'max' => 99
+        ];
+    }
 
     /**
      * Get id
@@ -194,6 +222,63 @@ class Product
     public function setValidTo($validTo)
     {
         $this->validTo = $validTo;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookName()
+    {
+        return $this->facebookName;
+    }
+
+    /**
+     * @param string $facebookName
+     *
+     * @return Product
+     */
+    public function setFacebookName($facebookName)
+    {
+        $this->facebookName = $facebookName;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param mixed $gender
+     *
+     * @return Product
+     */
+    public function setGender($gender)
+    {
+        $this->gender = $gender;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAgeRange()
+    {
+        return $this->ageRange;
+    }
+
+    /**
+     * @param array $ageRange
+     *
+     * @return Product
+     */
+    public function setAgeRange($ageRange)
+    {
+        $this->ageRange = $ageRange;
         return $this;
     }
 }

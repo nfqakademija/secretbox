@@ -42,6 +42,4 @@ class UserAddressType extends AbstractType
     {
         return 'appbundle_user';
     }
-
-
 }

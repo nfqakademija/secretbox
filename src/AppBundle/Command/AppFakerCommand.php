@@ -104,10 +104,12 @@ class AppFakerCommand extends ContainerAwareCommand
     {
         $product = new Product();
         $product->setTitle($this->fk->sentence(2));
+        $product->setFacebookName($this->fk->sentence(2));
         $product->setDescription($this->fk->sentence(8));
         $product->setSupplierPrice($this->fk->randomFloat(2, 5, 14.99));
         $product->setSupplier($this->fk->company);
-
+//        $product->setAgeRange();
+        $product->setGender($this->fk->randomElement(['male','female','unisex']));
         $validFrom = $this->fk->dateTimeBetween('-2 years', '-7 days');
 
         $product->setValidFrom($validFrom);
