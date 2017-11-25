@@ -12,36 +12,41 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class ProductSelectionService
 {
+    /**
+     * @var EntityManager
+     */
     private $em;
-    private $container;
+    /**
+     * @var FacebookInfoService
+     */
     private $facebook;
+    /**
+     * @var int
+     */
     private $hoursToRevealSecret;
-
 
     /**
      * ProductSelectionService constructor.
      *
+     * @param $secret_reveal_time
      * @param EntityManager $em
-     * @param ContainerInterface $container
-     * @param Session $session
      * @param FacebookInfoService $facebook
      */
-    public function __construct(EntityManager $em, ContainerInterface $container, FacebookInfoService $facebook)
-    {
+    public function __construct(
+        $secret_reveal_time,
+        EntityManager $em,
+        FacebookInfoService $facebook
+        ) {
         $this->em = $em;
-        $this->container = $container;
-        $this->facebook =  $facebook;
-        $this->hoursToRevealSecret = $container->getParameter('secret_reveal_time') * 24;
+        $this->facebook = $facebook;
+        $this->hoursToRevealSecret = $secret_reveal_time * 24;
     }
 
     /**
      * @param integer $userId
-     * @param integer $daysToRevealSecret
      *
      * @return null|array
      */
@@ -58,13 +63,14 @@ class ProductSelectionService
         $validProductDate->modify('+' . $this->hoursToRevealSecret . ' hours');
         $newProducts = $this->em->getRepository(Product::class)->getUniqueProducts($revealedProducts, $validProductDate);
 
-        if (empty($newProducts)) {
-            return null;
-        } else {
-            return $newProducts;
-        }
+        return !empty($newProducts) ? $newProducts : null;
     }
 
+    /**
+     * @param integer $userId
+     *
+     * @return null|integer
+     */
     public function selectProperProduct($userId)
     {
         $unusedProducts = $this->getUserUnusedProducts($userId);
@@ -77,7 +83,7 @@ class ProductSelectionService
             $matchInEvents = $this->matchesInArrays($unusedProducts, $userEvents, 'name');
             $productsMatch = array_merge($matchInLikes, $matchInEvents);
 
-
+            //todo refactor this huge if block
             if (!empty($productsMatch)) {
                 $personInfo = $this->facebook->getPersonInfo('gender,birthday');
                 $age = $this->getUserAge($personInfo['birthday'])->y;
@@ -135,6 +141,13 @@ class ProductSelectionService
         }
     }
 
+    /**
+     * @param array $first
+     * @param array $second
+     * @param string $fieldName
+     *
+     * @return array
+     */
     private function matchesInArrays(array $first, array $second, $fieldName)
     {
         $matches = [];
@@ -147,7 +160,6 @@ class ProductSelectionService
         return $matches;
     }
 
-
     /**
      * @param \DateTime $birthDay
      *
@@ -157,6 +169,7 @@ class ProductSelectionService
     {
         $today = new \DateTime();
         $age = $today->diff($birthDay);
+
         return $age;
     }
 }

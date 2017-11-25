@@ -19,17 +19,22 @@ class AppFakerCommand extends ContainerAwareCommand
      * @var EntityManager
      */
     private $em;
-
     /**
      * @var \Faker\Generator
      */
-    private $fk;
+    private $faker;
 
+    /**
+     * AppFakerCommand constructor.
+     *
+     * @param null $name
+     * @param EntityManager $em
+     */
     public function __construct($name = null, EntityManager $em)
     {
         parent::__construct($name);
         $this->em = $em;
-        $this->fk = \Faker\Factory::create();
+        $this->faker = \Faker\Factory::create();
     }
 
     protected function configure()
@@ -71,16 +76,16 @@ class AppFakerCommand extends ContainerAwareCommand
 
     private function generateUser()
     {
-        $registeredDate = $this->fk->dateTimeBetween('-2 years', 'now');
+        $registeredDate = $this->faker->dateTimeBetween('-2 years', 'now');
 
         $user = new User();
-        $user->setFacebookId($this->fk->randomNumber(8, true));
-        $user->setEmail($this->fk->freeEmail());
-        $user->setFirstName($this->fk->firstName);
-        $user->setLastName($this->fk->lastName);
+        $user->setFacebookId($this->faker->randomNumber(8, true));
+        $user->setEmail($this->faker->freeEmail());
+        $user->setFirstName($this->faker->firstName);
+        $user->setLastName($this->faker->lastName);
         $user->setRegisteredDate($registeredDate);
-        $user->setLoggedDate($this->fk->dateTimeBetween($registeredDate, 'now'));
-        $user->setLoginCount($this->fk->numberBetween(1, 20));
+        $user->setLoggedDate($this->faker->dateTimeBetween($registeredDate, 'now'));
+        $user->setLoginCount($this->faker->numberBetween(1, 20));
         $this->em->persist($user);
     }
 
@@ -91,38 +96,38 @@ class AppFakerCommand extends ContainerAwareCommand
             2 => "revealed"
         );
         $order = new Order();
-        $order->setUserId($this->fk->numberBetween(1, 100));
-        $order->setProductId($this->fk->numberBetween(1, 100));
-        $order->setOrderDate($this->fk->dateTimeBetween('-2 years', 'now'));
+        $order->setUserId($this->faker->numberBetween(1, 100));
+        $order->setProductId($this->faker->numberBetween(1, 100));
+        $order->setOrderDate($this->faker->dateTimeBetween('-2 years', 'now'));
         $order->setSellingPrice(19.99);
-        $order->setStatus($status[$this->fk->numberBetween(1, 2)]);
-        $order->setDeliveryAddress($this->fk->streetAddress);
+        $order->setStatus($status[$this->faker->numberBetween(1, 2)]);
+        $order->setDeliveryAddress($this->faker->streetAddress);
         $this->em->persist($order);
     }
 
     private function generateProduct()
     {
         $product = new Product();
-        $product->setTitle($this->fk->sentence(2));
-        $product->setFacebookName($this->fk->sentence(2));
-        $product->setDescription($this->fk->sentence(8));
-        $product->setSupplierPrice($this->fk->randomFloat(2, 5, 14.99));
-        $product->setSupplier($this->fk->company);
+        $product->setTitle($this->faker->sentence(2));
+        $product->setFacebookName($this->faker->sentence(2));
+        $product->setDescription($this->faker->sentence(8));
+        $product->setSupplierPrice($this->faker->randomFloat(2, 5, 14.99));
+        $product->setSupplier($this->faker->company);
 //        $product->setAgeRange();
-        $product->setGender($this->fk->randomElement(['male','female','unisex']));
-        $validFrom = $this->fk->dateTimeBetween('-2 years', '-7 days');
+        $product->setGender($this->faker->randomElement(['male','female','unisex']));
+        $validFrom = $this->faker->dateTimeBetween('-2 years', '-7 days');
 
         $product->setValidFrom($validFrom);
-        $product->setValidTo($this->fk->dateTimeBetween($validFrom, '+ 1 year'));
+        $product->setValidTo($this->faker->dateTimeBetween($validFrom, '+ 1 year'));
         $this->em->persist($product);
     }
 
     private function generateImpression()
     {
         $impression = new Impression();
-        $impression->setUserId($this->fk->numberBetween(1, 100));
-        $impression->setImpression($this->fk->realText(50, 2));
-        $impression->setCreated($this->fk->dateTimeBetween('-2 years', '-5 days'));
+        $impression->setUserId($this->faker->numberBetween(1, 100));
+        $impression->setImpression($this->faker->realText(50, 2));
+        $impression->setCreated($this->faker->dateTimeBetween('-2 years', '-5 days'));
         $this->em->persist($impression);
     }
 }

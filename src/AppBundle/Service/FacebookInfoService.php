@@ -12,27 +12,42 @@ namespace AppBundle\Service;
 use Facebook\Exceptions\FacebookResponseException;
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * Class FacebookInfoService
+ * @package AppBundle\Service
+ */
 class FacebookInfoService
 {
+    /**
+     * @var Facebook
+     */
     private $facebook;
+    /**
+     * @var string
+     */
     private $accessToken;
 
     /**
      * FacebookInfoService constructor.
      *
-     * @param ContainerInterface $container
+     * @param integer $facebook_client_id
+     * @param string $facebook_client_secret
+     * @param string $facebook_graph_api
      * @param Session $session
      */
-    public function __construct(ContainerInterface $container, Session $session)
-    {
+    public function __construct(
+        $facebook_client_id,
+        $facebook_client_secret,
+        $facebook_graph_api,
+        Session $session
+        ) {
         $this->accessToken = $session->get('facebook_user_access_token');
         $this->facebook =  new Facebook([
-            'app_id' => $container->getParameter('facebook_client_id'),
-            'app_secret' => $container->getParameter('facebook_client_secret'),
-            'default_graph_version' => $container->getParameter('facebook_graph_api')
+            'app_id' => $facebook_client_id,
+            'app_secret' => $facebook_client_secret,
+            'default_graph_version' => $facebook_graph_api,
         ]);
         $this->facebook->setDefaultAccessToken($this->accessToken);
     }

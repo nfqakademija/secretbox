@@ -171,7 +171,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSupplier()
     {
@@ -179,7 +179,7 @@ class Product
     }
 
     /**
-     * @param mixed $supplier
+     * @param string $supplier
      *
      * @return Product
      */
@@ -190,7 +190,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getValidFrom()
     {
@@ -198,7 +198,7 @@ class Product
     }
 
     /**
-     * @param mixed $validFrom
+     * @param \DateTime $validFrom
      * @return Product
      */
     public function setValidFrom($validFrom)
@@ -208,7 +208,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getValidTo()
     {
@@ -216,7 +216,7 @@ class Product
     }
 
     /**
-     * @param mixed $validTo
+     * @param \DateTime $validTo
      * @return Product
      */
     public function setValidTo($validTo)
@@ -245,7 +245,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getGender()
     {
@@ -253,7 +253,7 @@ class Product
     }
 
     /**
-     * @param mixed $gender
+     * @param string $gender
      *
      * @return Product
      */
