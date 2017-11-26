@@ -1,0 +1,14 @@
+parameters:
+    price: 19.99
+    orderStatuses:
+        - 'new'
+        - 'revealed'
+
+AppBundle\Entity\Order:
+    order{1..100}:
+        user: '90%? @user* : @admin'
+        product: '@product*'
+        orderedAt: '<dateTimeBetween("-1 month", "now")>'
+        sellingPrice: '$price'
+        status: '<randomElement($orderStatuses)>'
+        deliveryAddress: '<lt_LT:address()>'

@@ -1,0 +1,23 @@
+parameters:
+    facebookRealNames:
+        - 'Hearthstone'
+        - 'Pirktukas.lt'
+        - 'Žagarės Vyšnių Festivalis 2017'
+        - 'Spektaklio „Shalom, Bellissima!“ premjera'
+        - 'Sporto klubas „Legionas“'
+    genders:
+        - 'unisex'
+        - 'male'
+        - 'female'
+
+AppBundle\Entity\Product:
+    product{1..100}:
+        title: '<sentence(2)>'
+        facebookName: '50%? <text(20)> : <randomElement($facebookRealNames)>'
+        description: '<sentences(3, true)>'
+        gender: '<randomElement($genders)>'
+        ageRange: ['<numberBetween(10, 17)>', '<numberBetween(18,90)>']
+        supplier: '<company()>'
+        validFrom: '<dateTimeBetween("-5 months", "now")>'
+        validTo: '<dateTimeBetween($validFrom, "+3 months")>'
+        supplierPrice: '<randomFloat(2,10,15)>'
