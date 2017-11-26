@@ -3,6 +3,7 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Order;
+use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -18,16 +19,17 @@ class OrderRepository extends EntityRepository
      *
      * @param \DateTime $validDate
      *
-     * @return array
+     * @return Product[]
      */
     public function getUserRevealedProducts($userId, $validDate)
     {
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder
-            ->select('orders.productId')
+            ->select('product')
             ->from(Order::class, 'orders')
-            ->where('orders.userId = :userId AND orders.status = :statusRevealed')
-            ->orWhere('orders.userId = :userId AND orders.status = :statusNew AND orders.orderDate > :validDate')
+            ->join(Product::class, 'product')
+            ->where('orders.user = :userId AND orders.status = :statusRevealed')
+            ->orWhere('orders.user = :userId AND orders.status = :statusNew AND orders.orderedAt > :validDate')
             ->setParameter('userId', $userId)
             ->setParameter('statusRevealed', 'revealed')
             ->setParameter('statusNew', 'new')
@@ -49,21 +51,21 @@ class OrderRepository extends EntityRepository
     /**
      * @param int $userId
      *
-     * @return array
+     * @return Order[]
      */
     public function getUserRevealedOrders($userId)
     {
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder
-            ->select('orders.orderDate', 'products.title', 'products.description', 'products.supplier')
+            ->select('orders.orderedAt', 'products.title', 'products.description', 'products.supplier')
             ->from('AppBundle:Order', 'orders')
             ->innerJoin(
                 'AppBundle:Product',
                 'products',
                 \Doctrine\ORM\Query\Expr\Join::WITH,
-                'orders.productId = products.id'
+                'orders.product = products.id'
             )
-            ->where('orders.userId = :user')
+            ->where('orders.user = :user')
             ->andWhere('orders.status = :status')
             ->setParameter('user', $userId)
             ->setParameter('status', 'revealed');
@@ -75,14 +77,14 @@ class OrderRepository extends EntityRepository
     /**
      * @param int $userId
      *
-     * @return array
+     * @return Order[]
      */
     public function getUserSecrets($userId)
     {
         $userSecrets = $this->findBy([
-            'userId' =>  $userId,
+            'user' =>  $userId,
             'status' => 'new'
-        ], ['orderDate' => 'DESC']);
+        ], ['orderedAt' => 'DESC']);
 
         return $userSecrets;
     }

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
+use AppBundle\Entity\Product;
 use AppBundle\Form\OrderType;
 use AppBundle\Service\ProductSelectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,8 +31,10 @@ class OrderController extends Controller
     {
         $productSelectionService = $this->get(ProductSelectionService::class);
 
-
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
+        //todo pakeisti, kad slectProperproduct grazintu ne ID o visa Product objekta
+        $productRepo = $this->getDoctrine()->getManager()->getRepository(Product::class);
+
         $order = new Order();
         $user = $this->getUser();
         $order->setDeliveryAddress($user->getAddress());
@@ -39,11 +42,13 @@ class OrderController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
-            $order->setUserId($user->getId());
+        if ($form->isSubmitted() && $form->isValid()) {
+            $order->setUser($user);
             $order->setSellingPrice(19.99);
-            $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
-            $order->setProductId($suitableProduct);
+            $suitableProductId = $productSelectionService->selectProperProduct($user->getId());
+            $suitableProduct = $productRepo->findOneBy(['id' => $suitableProductId]);
+
+            $order->setProduct($suitableProduct);
 
             $validator = $this->get('validator');
             $errors = $validator->validate($order);

@@ -12,16 +12,25 @@ namespace AppBundle\Event;
 use AppBundle\Entity\User;
 use Symfony\Component\EventDispatcher\Event;
 
+/**
+ * Class UserLoginEvent
+ * @package AppBundle\Event
+ */
 class UserLoginEvent extends Event
 {
     const NAME = 'user.login';
 
+    /**
+     * @var User
+     */
     protected $user;
 
     /**
      * UserLoginEvent constructor.
      *
      * @param User $user
+     *
+     * @internal param $client
      */
     public function __construct(User $user)
     {
@@ -45,10 +54,18 @@ class UserLoginEvent extends Event
     }
 
     /**
-     * @param blob $picture
+     * @param string $picture
      */
-    public function setPicture($picture)
+    public function setPictureUrl($picture)
     {
-        $this->user->setPicture($picture);
+        $this->user->setPictureUrl($picture);
+    }
+
+    /**
+     * @return integer
+     */
+    public function getFacebookId()
+    {
+        return $this->user->getFacebookId();
     }
 }

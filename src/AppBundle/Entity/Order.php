@@ -22,25 +22,22 @@ class Order
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="user_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
      */
-    private $userId;
+    private $user;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="product_id", type="integer")
+     * @ORM\ManyToOne(targetEntity="Product")
      */
-    private $productId;
+    private $product;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="order_date", type="datetime")
+     * @ORM\Column(name="ordered_at", type="datetime")
      */
-    private $orderDate;
+    private $orderedAt;
 
     /**
      * @var float
@@ -64,7 +61,7 @@ class Order
 
     public function __construct()
     {
-        $this->orderDate = new \DateTime();
+        $this->orderedAt = new \DateTime();
     }
 
     /**
@@ -78,63 +75,15 @@ class Order
     }
 
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     *
-     * @return Order
-     */
-    public function setUserId($userId)
-    {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    /**
-     * Get userId
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    /**
-     * Set productId
-     *
-     * @param integer $productId
-     *
-     * @return Order
-     */
-    public function setProductId($productId)
-    {
-        $this->productId = $productId;
-
-        return $this;
-    }
-
-    /**
-     * Get productId
-     *
-     * @return int
-     */
-    public function getProductId()
-    {
-        return $this->productId;
-    }
-
-    /**
      * Set orderDate
      *
-     * @param \DateTime $orderDate
+     * @param \DateTime $orderedAt
      *
      * @return Order
      */
-    public function setOrderDate($orderDate)
+    public function setOrderedAt($orderedAt)
     {
-        $this->orderDate = $orderDate;
+        $this->orderedAt = $orderedAt;
 
         return $this;
     }
@@ -144,9 +93,9 @@ class Order
      *
      * @return \DateTime
      */
-    public function getOrderDate()
+    public function getOrderedAt()
     {
-        return $this->orderDate;
+        return $this->orderedAt;
     }
 
     /**
@@ -204,11 +153,49 @@ class Order
     }
 
     /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Order
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+        return $this;
+    }
+
+    /**
+     * @return Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return Order
+     */
+    public function setProduct(Product $product)
+    {
+        $this->product = $product;
+        return $this;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getOrderCountdown()
     {
-        $this->orderCountdown = $this->orderDate;
+        $this->orderCountdown = $this->orderedAt;
         $this->orderCountdown->modify('+14 day');
         return $this->orderCountdown;
     }

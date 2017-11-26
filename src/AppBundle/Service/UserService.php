@@ -35,11 +35,12 @@ class UserService
     public function createUser($userArray)
     {
         $user = new User();
-        $user->setEmail($userArray['email']);
-        $user->setFirstName($userArray['first_name']);
-        $user->setLastName($userArray['last_name']);
-        $user->setFacebookId($userArray['id']);
-        $user->setPictureUrl($userArray['picture_url']);
+        $user
+            ->setEmail($userArray['email'])
+            ->setFirstName($userArray['first_name'])
+            ->setLastName($userArray['last_name'])
+            ->setFacebookId($userArray['id'])
+            ->setPictureUrl($userArray['picture_url']);
 
         return $user;
     }
@@ -47,16 +48,13 @@ class UserService
     /**
      * @param array $userArray
      *
-     * @return User|null|object
+     * @return User|null
      */
     public function updateUser($userArray)
     {
         $existingUser = $this->em->getRepository(User::class)
             ->findOneBy(['email' => $userArray['email']]);
         if ($existingUser) {
-            if ($existingUser->getPictureUrl() != $userArray['picture_url']) {
-                $existingUser->setPictureUrl($userArray['picture_url']);
-            }
             $loginCount = $existingUser->getLoginCount();
             $existingUser->setLoginCount($loginCount + 1);
             $existingUser->setLoggedDate(new \DateTime());

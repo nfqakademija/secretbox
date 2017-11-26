@@ -34,7 +34,7 @@ class AppFakerCommand extends ContainerAwareCommand
     {
         parent::__construct($name);
         $this->em = $em;
-        $this->faker = \Faker\Factory::create();
+        $this->faker = \Faker\Factory::create('lt_LT');
     }
 
     protected function configure()
@@ -98,7 +98,7 @@ class AppFakerCommand extends ContainerAwareCommand
         $order = new Order();
         $order->setUserId($this->faker->numberBetween(1, 100));
         $order->setProductId($this->faker->numberBetween(1, 100));
-        $order->setOrderDate($this->faker->dateTimeBetween('-2 years', 'now'));
+        $order->setOrderedAt($this->faker->dateTimeBetween('-2 years', 'now'));
         $order->setSellingPrice(19.99);
         $order->setStatus($status[$this->faker->numberBetween(1, 2)]);
         $order->setDeliveryAddress($this->faker->streetAddress);
@@ -127,7 +127,7 @@ class AppFakerCommand extends ContainerAwareCommand
         $impression = new Impression();
         $impression->setUserId($this->faker->numberBetween(1, 100));
         $impression->setImpression($this->faker->realText(50, 2));
-        $impression->setCreated($this->faker->dateTimeBetween('-2 years', '-5 days'));
+        $impression->setCreatedAt($this->faker->dateTimeBetween('-2 years', '-5 days'));
         $this->em->persist($impression);
     }
 }

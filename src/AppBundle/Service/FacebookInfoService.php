@@ -113,4 +113,25 @@ class FacebookInfoService
 
         return $dataArray;
     }
+
+    /**
+     * @return string
+     */
+    public function getPersonPictureUrl()
+    {
+        try {
+            $response = $this->facebook->get(
+                '/me/picture?type=large&redirect=false'
+            );
+        } catch (FacebookResponseException $e) {
+            echo 'Graph returned an error: ' . $e->getMessage();
+            exit;
+        } catch (FacebookSDKException $e) {
+            echo 'Facebook SDK returned an error: ' . $e->getMessage();
+            exit;
+        }
+        $pictureDataArray = $response->getGraphNode()->asArray();
+
+        return $pictureDataArray['url'];
+    }
 }

@@ -27,7 +27,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
+     * @ORM\Column(name="facebook_id", type="string")
      */
     private $facebookId;
 
@@ -85,19 +85,14 @@ class User implements UserInterface
      *
      * @ORM\Column(name="roles", type="json_array")
      */
-    private $roles = [];
+    private $roles;
 
     /**
      * @var string
      *
      * @ORM\Column(name="address", type="string")
      */
-    private $address = "";
-
-    /**
-     * @ORM\Column(name="picture", type="blob", nullable=true)
-     */
-    private $picture;
+    private $address;
 
     /**
      * @ORM\Column(name="newsletter", type="boolean", options={"default": false})
@@ -105,11 +100,20 @@ class User implements UserInterface
     private $newsletter;
 
     /**
-     * @ORM\OneToMany(targetEntity="Impression", mappedBy="userId")
+     * @ORM\OneToMany(targetEntity="Impression", mappedBy="user")
+     * @ORM\OrderBy({"createdAt"="DESC"})
      */
     private $impressions;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user")
+     * @ORM\OrderBy({"orderedAt"="DESC"})
+     */
+    private $orders;
 
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->registeredDate = new \DateTime();
@@ -118,7 +122,9 @@ class User implements UserInterface
             'ROLE_USER'
         ];
         $this->newsletter = false;
+        $this->address = "";
         $this->impressions = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     /**
@@ -316,24 +322,6 @@ class User implements UserInterface
     }
 
     /**
-     * @return blob
-     */
-    public function getPicture()
-    {
-        return stream_get_contents($this->picture);
-    }
-
-    /**
-     * @param mixed $picture
-     * @return User
-     */
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-        return $this;
-    }
-
-    /**
      * @return boolean
      */
     public function getNewsletter()
@@ -352,26 +340,68 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return array
+     */
     public function getRoles()
     {
         return $this->roles;
     }
 
+    /**
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection|Impression[]
+     */
+    public function getImpressions()
+    {
+        return $this->impressions;
+    }
+
+    /**
+     * @return ArrayCollection|Order[]
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     *
+     */
     public function getPassword()
     {
         // TODO: Implement getPassword() method.
     }
 
+    /**
+     *
+     */
     public function getSalt()
     {
         // TODO: Implement getSalt() method.
     }
 
+    /**
+     * @return string
+     */
     public function getUsername()
     {
         return $this->email;
     }
 
+    /**
+     *
+     */
     public function eraseCredentials()
     {
         // TODO: Implement eraseCredentials() method.

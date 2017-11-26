@@ -23,9 +23,9 @@
                     {#todo scrol to order#}
                     <a href="{{ path('app.order.begin') }}">{{ 'product.order' | trans }}</a>
                 </li>
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#subscribe-newsletter">{{ 'menu.get.news' | trans }}</a>
-                </li>
+                {#<li>#}
+                    {#<a href="#" data-toggle="modal" data-target="#subscribe-newsletter">{{ 'menu.get.news' | trans }}</a>#}
+                {#</li>#}
                 {#<li>#}
                     {#<a href="{{ path('app.about') }}">{{ 'menu.about' | trans }}</a>#}
                 {#</li>#}
@@ -42,7 +42,7 @@
                             <li>
                                 <div class="row">
                                     <div class="col-lg-4 text-center">
-                                        <img class="icon-size" src="{{ app.user.pictureUrl }}"/>
+                                        <img class="icon-size" src="{{ asset(app.user.pictureUrl) }}"/>
                                     </div>
                                     <div class="col-lg-8 text-center">
                                         <p><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></p>

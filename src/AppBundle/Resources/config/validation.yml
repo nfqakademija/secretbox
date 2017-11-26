@@ -2,7 +2,7 @@ AppBundle\Entity\Order:
     properties:
         deliveryAddress:
             - NotBlank: ~
-        productId:
+        product:
             - NotNull:
                 message: message.no.new.secrets
 

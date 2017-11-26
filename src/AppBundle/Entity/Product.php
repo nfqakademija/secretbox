@@ -31,13 +31,6 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="facebook_name", type="string", length=255)
-     */
-    private $facebookName;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
@@ -62,6 +55,13 @@ class Product
      * @ORM\Column(name="supplier", type="string")
      */
     private $supplier;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook_name", type="string", length=255)
+     */
+    private $facebookName;
 
     /**
      * @ORM\Column(name="valid_from", type="datetime")

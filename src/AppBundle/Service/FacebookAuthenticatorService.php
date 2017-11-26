@@ -93,6 +93,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         $facebookUser = $this->getFacebookClient()
             ->fetchUserFromToken($credentials);
 
+
         $this->session->set('facebook_user_access_token', $credentials->getToken());
 
         $facebookUserArray = $facebookUser->toArray();

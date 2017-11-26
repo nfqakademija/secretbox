@@ -66,10 +66,10 @@
                             {% for impression in impressions  %}
                             <div class="col-lg-6 impression">
                                 <div class="impression-box">
-                                    <img class="img-circle2" src="{{ impression.pictureUrl }}"/>
+                                    <img class="img-circle2" src="{{ impression.user.pictureUrl }}"/>
                                     <div class="impression-title">
-                                        <div class="font-weight-bold">{{ impression.firstName }} {{ impression.lastName }}</div>
-                                        <div>{{ impression.created | date('Y-m-d h:m:s') }}</div>
+                                        <div class="font-weight-bold">{{ impression.user.firstName }} {{ impression.user.lastName }}</div>
+                                        <div>{{ impression.createdAt|date('Y-m-d h:m:s') }}</div>
                                     </div>
                                     {{ impression.impression }}
                                 </div>

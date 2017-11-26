@@ -23,12 +23,10 @@ class Impression
     private $id;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="user_id", type="integer")
      * @ORM\ManyToOne(targetEntity="User", inversedBy="impressions")
+     * @ORM\JoinColumn(nullable=false, onDelete="cascade")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var string
@@ -47,13 +45,13 @@ class Impression
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime")
      */
-    private $created;
+    private $createdAt;
 
     public function __construct()
     {
-        $this->created = new \DateTime();
+        $this->createdAt = new \DateTime();
         //todo administratorius turi tvirtinti
         $this->approved = 1;
     }
@@ -69,27 +67,22 @@ class Impression
     }
 
     /**
-     * Set userId
-     *
-     * @param integer $userId
-     *
-     * @return Impression
+     * @return User
      */
-    public function setUserId($userId)
+    public function getUser()
     {
-        $this->userId = $userId;
-
-        return $this;
+        return $this->user;
     }
 
     /**
-     * Get userId
+     * @param User $user
      *
-     * @return int
+     * @return Impression
      */
-    public function getUserId()
+    public function setUser(User $user)
     {
-        return $this->userId;
+        $this->user = $user;
+        return $this;
     }
 
     /**
@@ -143,19 +136,19 @@ class Impression
     /**
      * @return \DateTime
      */
-    public function getCreated()
+    public function getCreatedAt()
     {
-        return $this->created;
+        return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $created
+     * @param \DateTime $createdAt
      *
      * @return Impression
      */
-    public function setCreated($created)
+    public function setCreatedAt($createdAt)
     {
-        $this->created = $created;
+        $this->createdAt = $createdAt;
         return $this;
     }
 }
