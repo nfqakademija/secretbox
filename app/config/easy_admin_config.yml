@@ -1,0 +1,54 @@
+easy_admin:
+    site_name: Secret box <i>Admin Panel</i>
+    design:
+        menu:
+#            - label: 'User'
+#              icon: 'users'
+            - User
+            - Product
+            - Order
+            - Impression
+            - { label: 'menu.public', route: 'app.homepage' }
+        brand_color: '#81b9ba'
+        color_scheme: 'light'
+        assets:
+            css: ['css/admin.css']
+    list:
+        title: '%%entity_label%%'
+#        actions: ['show']
+        actions:
+            - {name: edit, icon: edit, label: ''}
+            - {name: show, icon: info-circle, label: ''}
+    entities:
+        User:
+            class: AppBundle\Entity\User
+            list:
+                fields:
+                    - { property: 'firstName', label: 'users.firstName' }
+                    - { property: 'lastName', label: 'users.lastName' }
+            label: 'entity.user'
+        Product:
+            class: AppBundle\Entity\Product
+            label: 'entity.product'
+            list:
+                title: 'product.list'
+                actions: ['show', '-edit', '-delete']
+            help: 'test'
+        Order:
+            class: AppBundle\Entity\Order
+        Impression:
+            class: AppBundle\Entity\Impression
+            list:
+                actions: ['-show', 'edit', '-delete']
+                fields:
+                    - id
+                    - { property: createdAt, format: 'Y-m-d h:m'}
+                    - impression
+                    - user
+                    - isApproved
+                sort: ['createdAt', 'DESC']
+#            disabled_actions: ['show']
+
+
+
+

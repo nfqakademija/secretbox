@@ -2,5 +2,5 @@ AppBundle\Entity\Impression:
     impression{1..100}:
         user: '90%? @user* : @admin'
         impression: '<paragraph(2, true)>'
-        approved: '<boolean(75)>'
+        isApproved: '<boolean(75)>'
         createdAt: '<dateTimeBetween("-5 months", "now")>'

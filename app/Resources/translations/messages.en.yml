@@ -62,3 +62,9 @@ content.unsubscribe: unsubscribe
 content.subscribe: subscribe
 
 
+#Easy admin bundle
+action.new: New
+
+entity.user: Clients
+entity.products: Products | Services
+product.list: Products list

@@ -31,6 +31,7 @@ class HomeController extends Controller
         $userRepo = $this->getDoctrine()->getRepository(User::class);
         $impressions = $impressionRepo->getLastImpressions(4);
 
+
         //todo jeigu useris prisijunges, permeta ji i userprofile
         $user = new User();
         $formUserEmail = $this->createForm(UserEmailType::class, $user, ['attr' => ['data-parsley-validate' => ' ']]);

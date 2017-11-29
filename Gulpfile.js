@@ -28,6 +28,15 @@ gulp.task('sass', function() {
         .pipe(gulp.dest(dir.dist + 'css'));
 });
 
+gulp.task('admin-sass', function () {
+    gulp.src([
+        dir.assets + 'style/admin.scss'
+        ])
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(concat('admin.css'))
+        .pipe(gulp.dest(dir.dist + 'css'));
+});
+
 
 
 gulp.task('scripts', function() {
@@ -83,4 +92,4 @@ gulp.task('fonts', function() {
 // });
 
 
-gulp.task('default', ['sass', 'scripts', 'fonts', 'images']);
+gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images']);

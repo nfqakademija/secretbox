@@ -281,4 +281,9 @@ class Product
         $this->ageRange = $ageRange;
         return $this;
     }
+
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
 }

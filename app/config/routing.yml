@@ -3,3 +3,8 @@ app:
     type: annotation
 logout:
     path: /logout
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /%locale%/admin

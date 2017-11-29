@@ -57,6 +57,9 @@ class Order
     private $deliveryAddress;
 
 
+    /**
+     * Order constructor.
+     */
     public function __construct()
     {
         $this->orderedAt = new \DateTime();
@@ -186,5 +189,22 @@ class Order
     {
         $this->product = $product;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getOrderedAt()->format('Y-m-d h:m') . ' ' . $this->getProduct();
+    }
+
+
+    //todo remove this nesamone
+    public function getOrderCountdown()
+    {
+        $orderCountdown = $this->orderedAt;
+        $orderCountdown->modify('+14 day');
+        return $orderCountdown;
     }
 }

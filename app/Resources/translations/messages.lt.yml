@@ -61,4 +61,9 @@ content.change: keisti
 content.unsubscribe: atsisakyti
 content.subscribe: užsakyti
 
+#Easy admin bundle:
+action.new: Naujas
 
+entity.user: Klientai
+entity.product: Produktai | Paslaugos
+product.list: Produkt7 sarasas

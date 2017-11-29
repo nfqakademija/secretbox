@@ -38,9 +38,9 @@ class Impression
     /**
      * @var int
      *
-     * @ORM\Column(name="approved", type="smallint", nullable=true)
+     * @ORM\Column(name="is_approved", type="boolean")
      */
-    private $approved;
+    private $isApproved;
 
     /**
      * @var \DateTime
@@ -49,11 +49,14 @@ class Impression
      */
     private $createdAt;
 
+    /**
+     * Impression constructor.
+     */
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         //todo administratorius turi tvirtinti
-        $this->approved = 1;
+        $this->isApproved = false;
     }
 
     /**
@@ -112,13 +115,13 @@ class Impression
     /**
      * Set approved
      *
-     * @param integer $approved
+     * @param integer $isApproved
      *
      * @return Impression
      */
-    public function setApproved($approved)
+    public function setIsApproved($isApproved)
     {
-        $this->approved = $approved;
+        $this->isApproved = $isApproved;
 
         return $this;
     }
@@ -128,9 +131,9 @@ class Impression
      *
      * @return int
      */
-    public function getApproved()
+    public function getIsApproved()
     {
-        return $this->approved;
+        return $this->isApproved;
     }
 
     /**
@@ -150,5 +153,13 @@ class Impression
     {
         $this->createdAt = $createdAt;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getImpression();
     }
 }
