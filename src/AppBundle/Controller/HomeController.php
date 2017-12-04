@@ -27,9 +27,9 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
+//        $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
         $userRepo = $this->getDoctrine()->getRepository(User::class);
-        $impressions = $impressionRepo->getLastImpressions(4);
+//        $impressions = $impressionRepo->getLastImpressions(4);
 
 
         //todo jeigu useris prisijunges, permeta ji i userprofile
@@ -53,7 +53,6 @@ class HomeController extends Controller
 
 
         return $this->render('AppBundle:Home:index.html.twig', [
-            'impressions' => $impressions,
             'formUserEmail' => $formUserEmail->createView(),
             'contentLink' => $contentLink
         ]);
