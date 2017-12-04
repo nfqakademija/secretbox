@@ -85,11 +85,11 @@ gulp.task('fonts', function() {
 
 
 // watcher
-gulp.task('watch', function () {
-    gulp.watch(dir.assets + 'style/*.scss', ['sass']);
-    gulp.watch(dir.assets + 'scripts/*', ['scripts']);
-    gulp.watch(dir.assets + 'images/*', ['images']);
-});
+// gulp.task('watch', function () {
+//     gulp.watch(dir.assets + 'style/*.scss', ['sass']);
+//     gulp.watch(dir.assets + 'scripts/*', ['scripts']);
+//     gulp.watch(dir.assets + 'images/*', ['images']);
+// });
 
 
-gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images', 'watch']);
+gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images']);
