@@ -28,9 +28,22 @@ user.friends.secrets: friends secretes
 user.no.address: no address info
 user.newsletter: newsletter
 user.subscribed: subscribed
-user.unsubscribed: unbscribed
+user.unsubscribed: unsubscribed
 user.email.subscription: order newspaper
 user.input.your.email: enter your email address
+user.friends: friends
+user.invite.friend: invite more friends!
+user.no.secrets: you have no secrets
+user.no.impressions: you have no impressions
+
+friend.secrets: friend secrets
+friend.profile: friend profile
+friend.orders: friend revealed
+friend.impressions: friend impressions
+friend.no.secrets: friend has no secrets
+friend.product.order: begin adventure for your friend
+friend.no.impressions: friend did not share any impression
+friend.no.completed.orders: friend has no revealed secrets
 
 product.order: begin adventure
 
@@ -41,7 +54,7 @@ order.secretbox: order Secret box
 order.date: ordered
 order.revealed: revealed
 order.delivery.address: devliver to
-orders.no.secrets: you have no secrets
+
 order.no.completed.orders: you have no revealed secrets
 order.countdown: Time to reveal secret
 order.begin.first.message: TRANSLATION NOT READY

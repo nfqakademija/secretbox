@@ -4,6 +4,7 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -23,6 +24,7 @@ class OrderRepository extends EntityRepository
      */
     public function getUserRevealedProducts($userId, $validDate)
     {
+        //todo fix this, negrazina koreikia
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder
             ->select('product')
@@ -35,8 +37,9 @@ class OrderRepository extends EntityRepository
             ->setParameter('statusNew', 'new')
             ->setParameter('validDate', $validDate);
         $products = $queryBuilder->getQuery()->getResult();
+        $products = $this->_em->getRepository(User::class)->findOneBy(['id' => $userId]);
 
-        return $products;
+        return $products->getOrders();
     }
 
     /**

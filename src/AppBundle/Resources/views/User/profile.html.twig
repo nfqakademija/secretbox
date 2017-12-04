@@ -6,41 +6,65 @@
 
     <div class="row body-user-profile">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            {#todo perkelti stule i css#}
             <div class="col-lg-10 col-sm-12 col-lg-offset-1 content-bg">
-
-
                 <div class="content-container">
                     <div id="fancyTabWidget" class="tabs t-tabs">
                         <ul class="nav nav-tabs fancyTabs" role="tablist">
 
                             <li class="tab fancyTab active">
                                 <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-user-secret"></span><span class="hidden-xs">{{ 'user.secrets'| trans }}</span></a>
+                                <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0">
+                                    <span class="fa fa-user-secret"></span>
+                                    <span class="hidden-xs">
+                                        {{ isUserProfile ? 'user.secrets'|trans : 'friend.secrets'|trans }}
+                                    </span>
+                                </a>
+                                <div class="whiteBlock"></div>
+                            </li>
+
+                            {% if friends is defined %}
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0">
+                                    <span class="fa fa-users"></span>
+                                    <span class="hidden-xs">
+                                        {{ 'user.friends'|trans }}
+                                    </span>
+                                </a>
+                                <div class="whiteBlock"></div>
+                            </li>
+                            {% endif %}
+
+                            <li class="tab fancyTab">
+                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0">
+                                    <span class="fa fa-user-circle"></span>
+                                    <span class="hidden-xs">
+                                        {{ isUserProfile ? 'user.profile'|trans : 'friend.profile'|trans }}
+                                    </span>
+                                </a>
                                 <div class="whiteBlock"></div>
                             </li>
 
                             <li class="tab fancyTab">
                                 <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-users"></span><span class="hidden-xs">{{ 'user.friends.secrets'| trans }}</span></a>
+                                <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0">
+                                    <span class="fa fa-trophy"></span>
+                                    <span class="hidden-xs">
+                                        {{ isUserProfile ? 'user.orders'|trans : 'friend.orders' | trans }}
+                                    </span>
+                                </a>
                                 <div class="whiteBlock"></div>
                             </li>
 
                             <li class="tab fancyTab">
                                 <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-user-circle"></span><span class="hidden-xs">{{ 'user.profile'| trans }}</span></a>
-                                <div class="whiteBlock"></div>
-                            </li>
-
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-trophy"></span><span class="hidden-xs">{{ 'user.orders' | trans }}</span></a>
-                                <div class="whiteBlock"></div>
-                            </li>
-
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0"><span class="fa fa-commenting-o"></span><span class="hidden-xs">{{ 'user.impressions' | trans }}</span></a>
+                                <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0">
+                                    <span class="fa fa-commenting-o"></span>
+                                    <span class="hidden-xs">
+                                        {{ isUserProfile ? 'user.impressions'|trans : 'friend.impressions'|trans }}
+                                    </span>
+                                </a>
                                 <div class="whiteBlock"></div>
                             </li>
 
@@ -55,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         {% if secrets == null %}
-                                            {{ 'orders.no.secrets' | trans }}
+                                            <h3>{{ isUserProfile ? 'user.no.secrets'|trans : 'friend.no.secrets'|trans }}</h3>
                                         {% else %}
                                             {#{% for secret in secrets %}#}
                                             {#<div class="row">#}
@@ -77,7 +101,7 @@
                                                 <tbody>
                                                 {% for secret in secrets %}
                                                     <tr>
-                                                        <td>{{ secret.orderDate | date('Y-m-d h:m:s') }}</td>
+                                                        <td>{{ secret.orderedAt | date('Y-m-d h:m:s') }}</td>
                                                         <td class="text-center">
                                                             <div class="countdown-clock"
                                                                  data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>
@@ -95,20 +119,43 @@
                                             </table>
                                         {% endif %}
                                         <div class="col-md-12">
-                                            <a id="order-button" class="btn btn-primary" href="{{ path('app.order.begin') }}">
-                                                <span id="order-button-text">{{ 'product.order'|trans }}</span>
+                                            <a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.new', {'friendId' : user.facebookId}) }}">
+                                                <span id="order-button-text">
+                                                    {{ isUserProfile ? 'product.order'|trans : 'friend.product.order'|trans  }}
+                                                </span>
                                             </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {% if friends is defined %}
+
                             <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        {#todo userio draugu paslaptys#}
+                                        <a href="#" class="btn btn-primary btn-default btn-lg" onclick="sendRequestViaMultiFriendSelector(); return false;">{{ 'user.invite.friend' | trans }}</a>
                                     </div>
                                 </div>
+                                <div class="row">
+
+                                        {% for friend in friends %}
+                                            <div class="row">
+                                                <div class="col-lg-4 col-lg-offset-4">
+                                                    <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
+                                                        <img class="img-circle" src="{{ friend.picture.url }}"/>
+                                                        <span class="friend-line">
+                                                            {{ friend.name }}
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                </div>
                             </div>
+
+                            {% endif %}
+
                             <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -118,49 +165,55 @@
                                                     <div class="well well-sm">
                                                         <div class="row">
                                                             <div class="col-sm-6 col-md-3">
-                                                                <img src="{{ app.user.pictureUrl }}" alt="" class="img-rounded img-responsive" />
+                                                                <img src="{{ asset(user.pictureUrl) }}" alt="" class="img-rounded img-responsive" />
                                                             </div>
                                                             <div class="col-sm-6 col-md-7">
-                                                                <h3 class="font-weight-bold">{{ app.user.firstName }} {{ app.user.lastName }}</h3>
-                                                                {% if  app.user.address  %}
-                                                                    {% set address = app.user.address %}
+                                                                <h3 class="font-weight-bold">{{ user.firstName }} {{ user.lastName }}</h3>
+                                                                {% if  user.address  %}
+                                                                    {% set address = user.address %}
                                                                 {% else %}
                                                                     {% set address = 'user.no.address' | trans %}
                                                                 {% endif %}
                                                                 <div class="user-info">
                                                                         <p title="{{ 'content.email.address' | trans }}">
-                                                                            <i class="glyphicon glyphicon-envelope"></i>{{ app.user.email }}
+                                                                            <i class="glyphicon glyphicon-envelope"></i>{{ user.email }}
                                                                         </p>
                                                                         <p class="newsletter">
-                                                                            {% if app.user.newsletter %}
+                                                                            {% if user.newsletter %}
                                                                                 <span>{{ 'user.newsletter' | trans }} {{ 'user.subscribed' | trans }}</span>
-                                                                                <a href="{{ path('app.user.subscription') }}" class="color-red">
-                                                                                    <i class="glyphicon glyphicon-remove-circle">{{ 'content.unsubscribe' | trans }}</i>
-                                                                                </a>
+                                                                                {% if isUserProfile %}
+                                                                                    <a href="{{ path('app.user.subscription') }}" class="color-red">
+                                                                                        <i class="glyphicon glyphicon-remove-circle">{{ 'content.unsubscribe' | trans }}</i>
+                                                                                    </a>
+                                                                                {% endif %}
                                                                             {% else %}
                                                                                 <span>{{ 'user.newsletter' | trans }} {{ 'user.unsubscribed' | trans }}</span>
-                                                                                <a href="{{ path('app.user.subscription') }}" class="color-green">
-                                                                                    <i class="glyphicon glyphicon-ok-circle">{{ 'content.subscribe' | trans }}</i>
-                                                                                </a>
+                                                                                {% if isUserProfile %}
+                                                                                    <a href="{{ path('app.user.subscription') }}" class="color-green">
+                                                                                        <i class="glyphicon glyphicon-ok-circle">{{ 'content.subscribe' | trans }}</i>
+                                                                                    </a>
+                                                                                {% endif %}
                                                                             {% endif %}
                                                                         </p>
 
                                                                     <p title="{{ 'user.lastlogin.date' | trans }}">
                                                                         <i class="glyphicon glyphicon-log-in"></i>
                                                                         <i class="glyphicon glyphicon-user"></i>
-                                                                        {{ app.user.loggedDate | date('Y-m-d') }}
+                                                                        {{ user.loggedDate | date('Y-m-d') }}
                                                                     </p>
                                                                     <p title="{{ 'user.registration.date' | trans }}">
                                                                         <i class="glyphicon glyphicon-registration-mark"></i>
                                                                         <i class="glyphicon glyphicon-user"></i>
-                                                                        {{ app.user.registeredDate | date('Y-m-d') }}
+                                                                        {{ user.registeredDate | date('Y-m-d') }}
                                                                     </p>
                                                                     <span title="{{ 'content.address' | trans }}">{{ address }}
                                                                         <i class="glyphicon glyphicon-map-marker"></i>
                                                                     </span>
-                                                                    <a href="#" data-toggle="modal" data-target="#edit-address">
-                                                                        <i class="glyphicon glyphicon-edit">{{ 'content.change' | trans }}</i>
-                                                                    </a>
+                                                                    {% if isUserProfile %}
+                                                                        <a href="#" data-toggle="modal" data-target="#edit-address">
+                                                                            <i class="glyphicon glyphicon-edit">{{ 'content.change' | trans }}</i>
+                                                                        </a>
+                                                                    {% endif %}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -174,8 +227,8 @@
                             <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        {% if orders == null %}
-                                            {{ 'order.no.completed.orders' | trans }}
+                                        {% if orders|length == 0 %}
+                                            <h3>{{ isUserProfile ? 'order.no.completed.orders'|trans : 'friend.no.completed.orders'|trans }}</h3>
                                         {% else %}
                                             <table class="table small">
                                                 <thead>
@@ -188,7 +241,8 @@
                                                 <tbody>
                                                 {% for order in orders %}
                                                     <tr>
-                                                        <td>{{ order.orderDate | date('Y-m-d') }}</td>
+                                                        {#todo pakeisti i order.product.[value] po to, kai pakeisiu repositorijoje#}
+                                                        <td>{{ order.orderedAt | date('Y-m-d') }}</td>
                                                         <td></td>
                                                         <td>{{ order.title }}</td>
                                                         <td>{{ order.description }}</td>
@@ -204,18 +258,26 @@
                             <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button style="margin-bottom: 50px;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
+                                        {% if isUserProfile %}
+                                            <button style="margin-bottom: 50px;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
+                                        {% endif %}
                                     </div>
                                     <div class="col-md-12">
-                                        {% for impression in impressions %}
-                                            <div class="col-lg-6 impression">
-                                                <div class="impression-box">
-                                                    <img class="img-circle2" src="{{ app.user.pictureUrl }}"/>
-                                                    <div class="impression-title">{{ impression.created | date('Y-m-d h:m:s') }}</div>
-                                                    {{ impression.impression }}
+                                        {% if impressions|length == 0 %}
+                                            <h3>{{ isUserProfile ? 'user.no.impressions'|trans : 'friend.no.impressions'|trans }}</h3>
+                                        {% else %}
+                                            {% for impression in impressions %}
+                                                <div class="col-lg-6 impression">
+                                                    <div class="impression-box">
+                                                        <img class="img-circle2" src="{{ asset(user.pictureUrl) }}"/>
+                                                        <div class="impression-title">{{ impression.createdAt | date('Y-m-d h:m:s') }}</div>
+                                                        {{ impression.impression }}
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        {% endfor %}
+                                            {% endfor %}
+
+                                        {% endif %}
+
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +300,7 @@
 
             </div>
 
-
+            {% if formImpression is defined %}
             {#modals:#}
             <div class="modal fade" id="new-impression" tabindex="-1" role="dialog" aria-labelledby="new-impressionLabel">
                 <div class="modal-dialog" role="document">
@@ -266,7 +328,9 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+            {% endif %}
 
+        {% if formAddress is defined %}
             <div class="modal fade" id="edit-address" tabindex="-1" role="dialog" aria-labelledby="edit-addressLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -293,7 +357,7 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
-
+        {% endif %}
 
         {% else %}
             <h1>{{ 'user.access.denied' | trans }}</h1>
@@ -304,6 +368,50 @@
 
 {% block javascripts %}
     {{ parent() }}
+
+    {#facebook API#}
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script>
+        FB.init({
+//            todo pakeisti APP is parameters
+            appId  : '711322222391741',
+            frictionlessRequests: true
+        });
+
+
+
+
+        function sendRequestToRecipients() {
+            var user_ids = document.getElementsByName("user_ids")[0].value;
+            FB.ui({method: 'apprequests',
+                message: 'Awesome Application try it once',
+                to: user_ids
+            }, requestCallback);
+        }
+
+        function sendRequestViaMultiFriendSelector() {
+            FB.ui({method: 'apprequests',
+                message: 'Awesome application try it once'
+            }, requestCallback);
+        }
+
+        function requestCallback(response) {
+            // Handle callback here
+        }
+
+
+
+        FB.api(
+            "/me/apprequests"
+        );
+//function test(){
+//    FB.ui({
+//        method: 'send',
+//        link: 'http://sercretbox.projektai.nfqakademija.lt'
+//    });
+//}
+
+    </script>
 
     <script type="text/javascript">
 

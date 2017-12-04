@@ -17,6 +17,7 @@ use KnpU\OAuth2ClientBundle\Client\OAuth2Client;
 use KnpU\OAuth2ClientBundle\Security\Authenticator\SocialAuthenticator;
 use League\OAuth2\Client\Token\AccessToken;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\RouterInterface;
@@ -40,7 +41,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
      * @param ClientRegistry $clientRegistry
      * @param RouterInterface $router
      * @param UserService $userService
-     * @param EventDispatcher $dispatcher
+     * @param EventDispatcherInterface $dispatcher
      * @param Session $session
      */
     public function __construct(
@@ -48,7 +49,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         ClientRegistry $clientRegistry,
         RouterInterface $router,
         UserService $userService,
-        EventDispatcher $dispatcher,
+        EventDispatcherInterface $dispatcher,
         Session $session
         ) {
         $this->em = $em;

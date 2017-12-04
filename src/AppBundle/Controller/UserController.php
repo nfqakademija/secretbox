@@ -7,9 +7,13 @@ use AppBundle\Entity\Order;
 use AppBundle\Entity\User;
 use AppBundle\Form\ImpressionType;
 use AppBundle\Form\UserAddressType;
+use AppBundle\Service\FacebookFriendsService;
+use AppBundle\Service\FacebookInfoService;
+use AppBundle\Service\GeolocationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
@@ -40,29 +44,32 @@ class UserController extends Controller
         $formAddress->handleRequest($request);
 
         if ($formImpression->isSubmitted() && $formImpression->isValid()) {
-            $impression->setUserId($user->getId());
+            $impression->setUser($user);
             $impressionRepo->saveImpression($impression);
-            unset($impression);
 
             return $this->redirectToRoute('app.user.profile');
-//            return $this->render()
         }
 
         if ($formAddress->isSubmitted() && $formAddress->isValid()) {
             $userRepo->saveUser($user);
-//            unset($userRepo);
+
             return $this->redirectToRoute('app.user.profile');
-//            return $this->render()
         }
 
-        $userImpressions = $impressionRepo->getImpressions($user->getId());
+        $userImpressions = $user->getImpressions();
+
+
+        $friendList = $this->get(FacebookInfoService::class)->getUserDataByReference('friends?fields=id,name,picture');
 
         return $this->render('AppBundle:User:profile.html.twig', [
+            'user' => $user,
             'orders' => $userOrders,
             'secrets' => $userSecrets,
             'impressions' => $userImpressions,
             'formImpression' => $formImpression->createView(),
-            'formAddress' => $formAddress->createView()
+            'formAddress' => $formAddress->createView(),
+            'friends' => $friendList,
+            'isUserProfile' => true
         ]);
     }
 
@@ -74,7 +81,7 @@ class UserController extends Controller
         $user = $this->getUser();
         $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
 
-        if($user->getNewsletter()){
+        if ($user->getNewsletter()) {
             $user->setNewsletter(false);
         } else {
             $user->setNewsletter(true);
@@ -83,5 +90,64 @@ class UserController extends Controller
         $userRepo->saveUser($user);
 
         return $this->redirectToRoute('app.user.profile');
+    }
+
+    /**
+     * @Route("/profile/friends", name="app.user.friends")
+     */
+    public function userFriends(Request $request)
+    {
+        $friendList = $this->get(FacebookFriendsService::class)->getMyFriends($this->getUser());
+        var_dump($friendList);
+        die;
+        return new Response('test');
+    }
+
+    /**
+     * @Route("/friend/{facebookId}", defaults={"facebookId"=0}, name="app.user.friend")
+     */
+    public function getUserFriendAction($facebookId)
+    {
+        $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
+        $impressionRepo = $this->getDoctrine()->getManager()->getRepository(Impression::class);
+        $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
+
+        $user = $this->getUser();
+
+        $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($facebookId);
+//        var_dump($id, $isMyFriend);die;
+        if (!$isMyFriend) {
+            return $this->redirectToRoute('app.user.profile');
+        }
+
+        $user = $userRepo->findOneBy(['facebookId' => $facebookId]);
+//        var_dump($user);die;
+
+        $userOrders = $orderRepo->getUserRevealedOrders($user->getId());
+        $userSecrets = $orderRepo->getUserSecrets($user->getId());
+        $userImpressions = $user->getImpressions();
+
+//        if(in_array($id, $friendsFacebookIds))
+
+        return $this->render('AppBundle:User:profile.html.twig', [
+            'orders' => $userOrders,
+            'secrets' => $userSecrets,
+            'impressions' => $userImpressions,
+            'user' => $user,
+            'isUserProfile' => false
+//            'formImpression' => $formImpression->createView(),
+//            'formAddress' => $formAddress->createView(),
+//            'friends' => $friendList
+        ]);
+    }
+
+    /**
+     * @Route("/geo", name="app.user.geo")
+     */
+    public function testGEO()
+    {
+        $a = $this->get(GeolocationService::class)->getParcelMachines('https://www.omniva.lt/locations.json');
+
+        return new Response('test');
     }
 }

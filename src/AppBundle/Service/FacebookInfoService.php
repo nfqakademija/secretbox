@@ -134,4 +134,21 @@ class FacebookInfoService
 
         return $pictureDataArray['url'];
     }
+
+    /**
+     * @param $facebookId
+     *
+     * @return bool
+     */
+    public function isMyFriend($facebookId)
+    {
+        $friendsIds = $this->getUserDataByReference('friends?fields=id');
+        foreach ($friendsIds as $id) {
+            if ($id['id'] == $facebookId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

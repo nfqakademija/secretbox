@@ -18,6 +18,9 @@ class AppKernel extends Kernel
             new KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Ivory\SerializerBundle\IvorySerializerBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
             new AppBundle\AppBundle(),
         );
 

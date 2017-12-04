@@ -30,20 +30,33 @@ user.subscribed: užsakytas
 user.unsubscribed: neužsakytas
 user.email.subscription: naujienlaiškio užsakymas
 user.input.your.email: įveskite savo el. pašto adresą
+user.friends: draugai
+user.invite.friend: pakviesti daugiau draugų
+user.no.secrets: neturite užsakytų paslapčių
+user.no.impressions: neturite parašytų įspūdžių
+
+friend.secrets: draugo paslaptys
+friend.profile: draugo profilis
+friend.orders: draugas atskleidė
+friend.impressions: draugo įspūdžiai
+friend.no.secrets: draugas neturi jokių paslapčių
+friend.product.order: pradėti draugui nuotykį
+friend.no.impressions: draugas nepasidalino jokiu įspūdžių
+friend.no.completed.orders: draugas neturi atskleitstų paslapčių
+
 
 product.order: pradėti nuotykį
 
 project.name: secret box
 
 order.delivery.address: pristatymo adresas
-order.secretbox: paslapčių dėžutės užsakymas
+order.secretbox: užsisakykite SECRET BOX
 order.date: užsakyta
 order.revealed: atskleista
 order.delivery.address: pristatymas į
-orders.no.secrets: neturite užsakytų paslapčių
 order.no.completed.orders: neturite atskleistų paslapčių
 order.countdown: atskleisti paslapčiai turite
-order.begin.first.message: užsisakykite unikalų SECRET BOX nuotykį
+order.begin.first.message: pradėkite unikalų SECRET BOX nuotykį, kurį įveikę tikrai mėgausitės rezultatu...
 order.begin.second.message: paštu Jums pristatysime paslaptį su Jums skirtomis užuominomis
 order.begin.third.message: įveikite užduotį ir mėgaukitės puikiu atlygiu
 

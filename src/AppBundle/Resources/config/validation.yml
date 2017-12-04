@@ -1,10 +1,10 @@
-AppBundle\Entity\Order:
-    properties:
-        deliveryAddress:
-            - NotBlank: ~
-        product:
-            - NotNull:
-                message: message.no.new.secrets
+#AppBundle\Entity\Order:
+#    properties:
+#        deliveryAddress:
+#            - NotBlank: ~
+#        product:
+#            - NotNull:
+#                message: message.no.new.secrets
 
 AppBundle\Entity\Impression:
     properties:

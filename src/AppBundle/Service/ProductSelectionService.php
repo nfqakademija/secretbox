@@ -59,6 +59,8 @@ class ProductSelectionService
             $validOrderDate
         );
 
+//        var_dump($revealedProducts);
+
         $validProductDate = new \DateTime();
         $validProductDate->modify('+' . $this->hoursToRevealSecret . ' hours');
         $newProducts = $this->em->getRepository(Product::class)->getUniqueProducts($revealedProducts, $validProductDate);
@@ -71,9 +73,10 @@ class ProductSelectionService
      *
      * @return null|integer
      */
-    public function selectProperProduct($userId)
+    public function selectProperProductId($userId)
     {
         $unusedProducts = $this->getUserUnusedProducts($userId);
+//        var_dump($unusedProducts);die;
 
         if ($unusedProducts) {
             $userLikes = $this->facebook->getUserDataByReference('likes');
@@ -99,7 +102,7 @@ class ProductSelectionService
                 if (!empty($productsByGender)) {
                     $productsByAge = [];
                     foreach ($productsByGender as $product) {
-                        if (($age > $product['ageRange']['min']) && ($age < $product['ageRange']['max'])) {
+                        if (($age > $product['ageRange'][0]) && ($age < $product['ageRange'][1])) {
                             array_push($productsByAge, $product);
                         }
                     }
@@ -139,6 +142,15 @@ class ProductSelectionService
         } else {
             return null;
         }
+    }
+
+    public function selectProperProduct($userId)
+    {
+        $productId = $this->selectProperProductId($userId);
+//        var_dump($productId);die;
+        $suitableProduct = $this->em->getRepository(Product::class)->findOneBy(['id' => $productId]);
+
+        return $suitableProduct;
     }
 
     /**

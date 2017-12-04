@@ -11,6 +11,18 @@ AppBundle\Entity\User:
         roles: 	'[ROLE_USER, ROLE_ADMIN]'
         address: '<lt_LT:address()>'
         newsletter: 'true'
+    dovile:
+        facebook_id: '10209907055380683'
+        email: 'dovile.kriukelyte@gmail.com'
+        first_name: 'Dovilė'
+        last_name: 'Bezubec'
+        registered_date: '<dateTimeBetween("-1 year", "now")>'
+        logged_date: '<dateTimeBetween($registered_date, "now")>'
+        login_count: '<numberBetween(1, 100)>'
+        picture_url: 'uploads/facebook_images/$facebook_id.jpg'
+        roles: 	'[ROLE_USER]'
+        address: '<lt_LT:address()>'
+        newsletter: 'false'
     user{1..100}:
         facebook_id (unique): '<numberBetween(9999, 9999999)>'
         email (unique): '<lt_LT:email()>'

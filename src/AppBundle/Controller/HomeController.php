@@ -49,11 +49,13 @@ class HomeController extends Controller
                 //todo atidaro modala ir parodo info, reikia javascriptui perduot
             ]);
         }
+        $contentLink = $request->get('content');
 
 
         return $this->render('AppBundle:Home:index.html.twig', [
             'impressions' => $impressions,
-            'formUserEmail' => $formUserEmail->createView()
+            'formUserEmail' => $formUserEmail->createView(),
+            'contentLink' => $contentLink
         ]);
     }
 

@@ -9,57 +9,183 @@
 {% endblock %}
 
 {% block body %}
+    {#todo imest i css#}
+    <style>
+        .scrollable-dropdown-list {
+            height: auto;
+            max-height: 200px;
+            overflow-x: hidden;
+        }
+
+        /*.tabs-left > .nav-tabs {*/
+            /*border-bottom: 0;*/
+        /*}*/
+
+        /*.tab-content > .tab-pane,*/
+        /*.pill-content > .pill-pane {*/
+            /*display: none;*/
+        /*}*/
+
+        /*.tab-content > .active,*/
+        /*.pill-content > .active {*/
+            /*display: block;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li {*/
+            /*float: none;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li > a {*/
+            /*width: 20vw;*/
+            /*margin-right: 0;*/
+            /*margin-bottom: 3px;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs {*/
+            /*float: left;*/
+            /*margin-right: 19px;*/
+            /*border-right: 1px solid #ddd;*/
+            /*font-size: 25px;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li > a {*/
+            /*margin-right: -1px;*/
+            /*-webkit-border-radius: 4px 0 0 4px;*/
+            /*-moz-border-radius: 4px 0 0 4px;*/
+            /*border-radius: 4px 0 0 4px;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li > a:hover,*/
+        /*.tabs-left > .nav-tabs > li > a:focus {*/
+
+            /*border-color: #eeeeee #dddddd #eeeeee #eeeeee;*/
+
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li > a:focus {*/
+            /*color: darkred;*/
+        /*}*/
+
+        /*.tabs-left > .nav-tabs > li > a:hover{*/
+            /*background-color: #f3dfd4;*/
+
+        /*}*/
+
+
+        /*.tabs-left > .nav-tabs .active > a,*/
+        /*.tabs-left > .nav-tabs .active > a:hover,*/
+        /*.tabs-left > .nav-tabs .active > a:focus {*/
+            /*border-color: #ddd transparent #ddd #ddd;*/
+            /**border-right-color: #ffffff;*/
+            /*color: darkred;*/
+        /*}*/
+
+        /*#myCarousel .carousel-caption {*/
+            /*left:0;*/
+            /*right:0;*/
+            /*bottom:0;*/
+            /*text-align:left;*/
+            /*padding:10px;*/
+            /*background:rgba(0,0,0,0.6);*/
+            /*text-shadow:none;*/
+            /*padding-left: 25%;*/
+        /*}*/
+
+        /*#myCarousel .item {*/
+            /*padding-left:25%;*/
+        /*}*/
+
+        /*#myCarousel .list-group {*/
+            /*position:absolute;*/
+            /*top:0;*/
+            /*left:0;*/
+            /*width: 25%;*/
+            /*!*margin-right: 33.3333%;*!*/
+        /*}*/
+        /*#myCarousel .list-group-item {*/
+            /*border-radius:0px;*/
+            /*cursor:pointer;*/
+        /*}*/
+        /*#myCarousel .list-group .active {*/
+            /*background-color:#eee;*/
+        /*}*/
+
+        /*@media (min-width: 992px) {*/
+            /*#myCarousel {padding-left:33.3333%;}*/
+            /*#myCarousel .carousel-controls {display:none;}*/
+        /*}*/
+        /*@media (max-width: 991px) {*/
+            /*.carousel-caption p,*/
+            /*#myCarousel .list-group {display:none;}*/
+        /*}*/
+
+
+    </style>
+
     <div class="row body-order">
         <div class="col-lg-10 col-sm-12 col-lg-offset-1 content-bg">
-            <div class=".content-container">
-                <div class="order-container" style="margin: 30px 0 0; background: white; height: 600px; padding-top: 30px;">
-                    <h2>{{ 'SECRET BOX uzsakymas'  }}</h2>
+            <div class="content-container">
+                <div class="order-container" style="margin: 30px 0 0; background: white; min-height: 80vh; padding-top: 30px;">
+                    {#<h2>{{ 'SECRET BOX uzsakymas'  }}</h2>#}
 
-                    <div class="container">
-                        <div class="col-lg-12 text-center">
-                            <ul  class="nav nav-pills">
-                                <li class="active">
-                                    <a  href="#user" data-toggle="tab">Mano užsakymas</a>
-                                </li>
-                                <li>
-                                    <a href="#friend" data-toggle="tab">Užsakyti draugui</a>
-                                </li>
-                            </ul>
-
-                            <div class="tab-content clearfix">
-                                <div class="tab-pane active" id="user">
-                                    <div class="col-md-6 col-md-offset-3">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                {{ 'user.name' | trans }}, {{ 'user.surname' | trans }}
-                                            </div>
-                                            <div class="panel-body">{{ app.user.firstName }} {{ app.user.lastName }}</div>
-                                        </div>
-                                        {% if form is defined %}
-                                            {{ form(form) }}
-                                        {% endif %}
-
-                                        {% if errors is defined %}
-                                        <ul>
-                                            {% for error in errors %}
-                                                <li>{{ error.message | trans }}</li>
-                                            {% endfor %}
-                                            {% endif %}
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="friend">
-                                    <h3>Under construction</h3>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>{{ isUserOrder ? 'product.order'|trans : 'friend.product.order'|trans }}</h2>
+                        </div>
+                    </div>
+                    {{ form_start(form) }}
+                    <div class="row" style="padding-top: 50px;">
+                        <div class="col-xs-5 col-sm-offset-1">
+                            <p class="h3"><b>vardas:</b> {{ user.firstName }}</p>
+                            <p class="h3"><b>pavardė:</b> {{ user.lastName }}</p>
+                        </div>
+                        <div class="col-xs-5 col-sm-offset-1" style="font-size: 30px; color: darkred;">
+                            19.99 EUR
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            {#<h2>{{ isUserOrder ? 'product.order'|trans : 'friend.product.order'|trans }}</h2>#}
+                            <h4>pasirinkite pristatymo būdą</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="homeAddressBox" class="col-xs-5 col-sm-offset-1" style="border: 1px solid darkgrey; padding: 10px;">
+                            {{ form_row(form.deliveryAddress) }}
                         </div>
 
+                        <div id="parcelAddressBox" class="col-xs-5" style="border: 1px solid darkgrey; margin-left: 10px; padding: 10px;">
+                            {{ form_row(form.parcelMachineDeliveryAddress) }}
+                            <div id="geoLinksBox" style="visibility: hidden; position: absolute;">
+                                <h4>
+                                    <a id="getLocations" href="#" >Rasti artimiausią paštomatą pagal mano koordinates</a><br>
+                                    <a href="#">Rasti artimiausią paštomatą nuo mano namų</a>
+
+                                </h4>
+                            </div>
+                            <div id="map" style="width: 450px; height: 280px; border: 1px solid darkslateblue; visibility: hidden; position: absolute; top: 150px;"></div>
+
+                        </div>
                     </div>
-
-
-
-
-
+                    <div class="row">
+                        <div id="paymentBox" class="col-xs-5 col-sm-offset-1" style="border: 1px solid darkgrey; padding: 10px; margin-top: 20px; position: absolute">
+                            <h4>pasirinkite apmokėjimo būdą</h4>
+                            <div class="col-xs-4">Bank link</div>
+                            <div class="col-xs-4">Paysera</div>
+                            <div class="col-xs-4">Paypal</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12" style="margin-top: 120px;">
+                            {{ form_widget(form.save) }}
+                        </div>
+                        {% if errors is defined %}
+                            {% for error in errors %}
+                                {{ error }}<br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    {{ form_end(form) }}
 
 
                 </div>
@@ -68,10 +194,147 @@
         </div>
     </div>
 
-
 {% endblock %}
 
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDN6ZdfiZcUgrrBBVZK2ZpW1WU0VWNK1Dg"></script>
+
+    <script>
+        $("#homeAddressBox").click(function() {
+           document.getElementById("homeAddressBox").style.border = "2px solid forestgreen";
+           document.getElementById("parcelAddressBox").style.border = "1px solid darkgrey";
+            document.getElementById("geoLinksBox").style.visibility = "hidden";
+            document.getElementById("parcelAddressBox").style.paddingBottom = "10px";
+        });
+
+        $("#parcelAddressBox").click(function() {
+            document.getElementById("parcelAddressBox").style.border = "2px solid forestgreen";
+            document.getElementById("homeAddressBox").style.border = "1px solid darkgrey";
+            document.getElementById("geoLinksBox").style.visibility = "visible";
+            document.getElementById("parcelAddressBox").style.paddingBottom = "350px";
+        });
+
+        $("#getLocations").click(function() {
+            $('#paymentBox').animate({top: "400px"}, 1000);
+            getClientLocation();
+            document.getElementById("map").style.visibility = "visible";
+        });
+
+
+
+        function getClientLocation(){
+            var geo = navigator.geolocation;
+            if(geo){
+                geo.getCurrentPosition(displayLocation);
+            }
+            else {
+                alert('deja Jūsų koordinačių nustatyti nepavyko');
+            }
+        }
+
+        function displayLocation(position){
+            var x = position.coords.latitude;
+            var y = position.coords.longitude;
+            sendData(x, y, position);
+
+        }
+
+        function sendData(x, y, position){
+            var datasend = x + "" + y;
+            jQuery.ajax({
+                url: "{{ path('app.order.locations') }}",
+                type: "GET",
+                data: {
+                    "data": datasend,
+                    "coordinateX": x,
+                    "coordinateY": y,
+                    "coordinates": "iksas ir ygrikas"
+                },
+                success: function(data){
+                    createParcelMachinesList(data.parcelMachines);
+                    displayMap(position.coords, data.parcelMachines);
+                },
+                error: function(data) {
+                    alert('eruor found');
+                }
+
+            })
+        }
+
+        function createParcelMachinesList(parcelMachines){
+            $('#appbundle_order_parcelMachineDeliveryAddress').empty();
+            parcelMachines.forEach(function (entry) {
+
+                $('#appbundle_order_parcelMachineDeliveryAddress').append($('<option></option>').val(entry['name']).html(
+                    entry['distanceText'] + ' | '  + entry['address'] + ', ' + entry['city']
+
+                ));
+
+
+
+
+            });
+
+
+        }
+
+        var map;
+        function displayMap(coords, parcelMachines) {
+            var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+
+            var mapOptions = {
+                zoom: 15,
+                center: googleLatAndLong,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            };
+
+            var mapDiv = document.getElementById('map');
+            map = new google.maps.Map(mapDiv, mapOptions);
+
+            var title = 'Your Location';
+            var content = 'You are here: ' + coords.latitude + ', ' + coords.longitude;
+            addMarker(map, googleLatAndLong, title, content, null);
+
+            var image = 'https://www.omniva.lt/theme/post24/img/logo.png';
+            parcelMachines.forEach(function (entry) {
+                googleLatAndLong = new google.maps.LatLng(entry['y'], entry['x']);
+                addMarker(map, googleLatAndLong, 'test', 'content', image);
+
+
+            });
+
+
+
+        }
+
+        function addMarker (map, latlong, title, content, image) {
+            var markerOptions = {
+                position: latlong,
+                map: map,
+                title: title,
+                clickable: true,
+                icon: image
+            };
+
+            var marker = new google.maps.Marker(markerOptions);
+
+            var infoWindowOptions = {
+                content: content,
+                position: latlong
+            };
+
+            var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open(map);
+            });
+        }
+
+    </script>
+
+
+
+
 {% endblock %}

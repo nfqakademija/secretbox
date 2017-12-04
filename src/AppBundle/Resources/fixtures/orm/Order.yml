@@ -5,10 +5,11 @@ parameters:
         - 'revealed'
 
 AppBundle\Entity\Order:
-    order{1..100}:
+    order{1..2}:
         user: '90%? @user* : @admin'
         product: '@product*'
         orderedAt: '<dateTimeBetween("-1 month", "now")>'
         sellingPrice: '$price'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'
+        parcelMachineDeliveryAddress: '<lt_LT:address()>'

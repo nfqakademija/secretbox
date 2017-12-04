@@ -1,0 +1,14 @@
+httplug:
+    classes:
+        client: Http\Adapter\Guzzle6\Client
+        message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
+    clients:
+        acme:
+            factory: httplug.factory.guzzle6
+
+ivory_google_map:
+    distance_matrix:
+        client: httplug.client.default
+        message_factory: httplug.message_factory.default
+        format: json
+        api_key: "%google_api_key%"

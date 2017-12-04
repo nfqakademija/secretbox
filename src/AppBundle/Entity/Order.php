@@ -56,6 +56,10 @@ class Order
      */
     private $deliveryAddress;
 
+    /**
+     * @ORM\Column(name="parcel_machine_delivery_address", type="string")
+     */
+    private $parcelMachineDeliveryAddress;
 
     /**
      * Order constructor.
@@ -143,6 +147,7 @@ class Order
         return $this->deliveryAddress;
     }
 
+
     /**
      * @param string $deliveryAddress
      * @return Order
@@ -152,6 +157,7 @@ class Order
         $this->deliveryAddress = $deliveryAddress;
         return $this;
     }
+
 
     /**
      * @return User
@@ -190,6 +196,27 @@ class Order
         $this->product = $product;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getParcelMachineDeliveryAddress()
+    {
+        return $this->parcelMachineDeliveryAddress;
+    }
+
+    /**
+     * @param mixed $parcelMachineDeliveryAddress
+     *
+     * @return Order
+     */
+    public function setParcelMachineDeliveryAddress($parcelMachineDeliveryAddress)
+    {
+        $this->parcelMachineDeliveryAddress = $parcelMachineDeliveryAddress;
+        return $this;
+    }
+
+
 
     /**
      * @return string

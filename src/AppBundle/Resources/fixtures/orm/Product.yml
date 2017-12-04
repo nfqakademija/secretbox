@@ -11,7 +11,7 @@ parameters:
         - 'female'
 
 AppBundle\Entity\Product:
-    product{1..100}:
+    product{1..500}:
         title: '<sentence(2)>'
         facebookName: '50%? <text(20)> : <randomElement($facebookRealNames)>'
         description: '<sentences(3, true)>'
