@@ -23,7 +23,7 @@ class ParcelMachine
     private $distanceValueToCustomer;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -31,7 +31,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      *
      * @return ParcelMachine
      */
@@ -42,7 +42,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCountryCode()
     {
@@ -50,7 +50,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $countryCode
+     * @param string $countryCode
      *
      * @return ParcelMachine
      */
@@ -61,7 +61,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getCity()
     {
@@ -69,7 +69,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $city
+     * @param string $city
      *
      * @return ParcelMachine
      */
@@ -80,7 +80,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAddress()
     {
@@ -88,7 +88,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $address
+     * @param string $address
      *
      * @return ParcelMachine
      */
@@ -99,7 +99,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getZipCode()
     {
@@ -107,7 +107,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $zipCode
+     * @param string $zipCode
      *
      * @return ParcelMachine
      */
@@ -118,7 +118,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getCoordinateX()
     {
@@ -126,7 +126,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $coordinateX
+     * @param float $coordinateX
      *
      * @return ParcelMachine
      */
@@ -137,7 +137,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return float
      */
     public function getCoordinateY()
     {
@@ -145,7 +145,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $coordinateY
+     * @param float $coordinateY
      *
      * @return ParcelMachine
      */
@@ -156,7 +156,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getComment()
     {
@@ -164,7 +164,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $comment
+     * @param string $comment
      *
      * @return ParcelMachine
      */
@@ -175,7 +175,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDistanceTextToCustomer()
     {
@@ -183,7 +183,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $distanceTextToCustomer
+     * @param string $distanceTextToCustomer
      *
      * @return ParcelMachine
      */
@@ -194,7 +194,7 @@ class ParcelMachine
     }
 
     /**
-     * @return mixed
+     * @return integer
      */
     public function getDistanceValueToCustomer()
     {
@@ -202,7 +202,7 @@ class ParcelMachine
     }
 
     /**
-     * @param mixed $distanceValueToCustomer
+     * @param integer $distanceValueToCustomer
      *
      * @return ParcelMachine
      */
@@ -212,9 +212,9 @@ class ParcelMachine
         return $this;
     }
 
-
-
-
+    /**
+     * @return array
+     */
     public function getMachineArray()
     {
         return [
@@ -228,8 +228,4 @@ class ParcelMachine
             'comment' => $this->comment
         ];
     }
-
-//    private function getDistanceToCustomer($customerCoordinateX, $customerCoordinateY){
-//        return '100' . 'm';
-//    }
 }

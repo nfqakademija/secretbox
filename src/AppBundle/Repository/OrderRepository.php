@@ -4,8 +4,8 @@ namespace AppBundle\Repository;
 
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
-use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * OrderRepository
@@ -24,22 +24,23 @@ class OrderRepository extends EntityRepository
      */
     public function getUserRevealedProducts($userId, $validDate)
     {
-        //todo fix this, negrazina koreikia
-        $queryBuilder = $this->_em->createQueryBuilder();
-        $queryBuilder
-            ->select('product')
-            ->from(Order::class, 'orders')
-            ->join(Product::class, 'product')
-            ->where('orders.user = :userId AND orders.status = :statusRevealed')
-            ->orWhere('orders.user = :userId AND orders.status = :statusNew AND orders.orderedAt > :validDate')
+        $rsm = new ResultSetMapping();
+//        todo pakeisti NEW i DELIVERED ar panasiai
+        $query = $this->_em->createQuery(
+            "SELECT p.id FROM AppBundle:Order AS o
+                  LEFT JOIN AppBundle:Product AS p
+                  WITH o.product = p.id
+                  WHERE o.user=:userId AND
+	                (o.status='revealed' OR 
+                    (o.status='new' AND o.orderedAt > :validDate))",
+            $rsm
+        );
+        $query
             ->setParameter('userId', $userId)
-            ->setParameter('statusRevealed', 'revealed')
-            ->setParameter('statusNew', 'new')
             ->setParameter('validDate', $validDate);
-        $products = $queryBuilder->getQuery()->getResult();
-        $products = $this->_em->getRepository(User::class)->findOneBy(['id' => $userId]);
+        $products = $query->getResult();
 
-        return $products->getOrders();
+        return $products;
     }
 
     /**

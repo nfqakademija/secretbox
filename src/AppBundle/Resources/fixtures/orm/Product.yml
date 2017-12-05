@@ -21,3 +21,4 @@ AppBundle\Entity\Product:
         validFrom: '<dateTimeBetween("-5 months", "now")>'
         validTo: '<dateTimeBetween($validFrom, "+3 months")>'
         supplierPrice: '<randomFloat(2,10,15)>'
+        marketValue: '<randomFloat(2,30,50)>'

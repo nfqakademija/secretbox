@@ -7,13 +7,10 @@ use AppBundle\Entity\Order;
 use AppBundle\Entity\User;
 use AppBundle\Form\ImpressionType;
 use AppBundle\Form\UserAddressType;
-use AppBundle\Service\FacebookFriendsService;
 use AppBundle\Service\FacebookInfoService;
-use AppBundle\Service\GeolocationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
@@ -93,41 +90,26 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/profile/friends", name="app.user.friends")
-     */
-    public function userFriends(Request $request)
-    {
-        $friendList = $this->get(FacebookFriendsService::class)->getMyFriends($this->getUser());
-        var_dump($friendList);
-        die;
-        return new Response('test');
-    }
-
-    /**
      * @Route("/friend/{facebookId}", defaults={"facebookId"=0}, name="app.user.friend")
      */
     public function getUserFriendAction($facebookId)
     {
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
-        $impressionRepo = $this->getDoctrine()->getManager()->getRepository(Impression::class);
+//        $impressionRepo = $this->getDoctrine()->getManager()->getRepository(Impression::class);
         $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
 
-        $user = $this->getUser();
+//        $user = $this->getUser();
 
         $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($facebookId);
-//        var_dump($id, $isMyFriend);die;
         if (!$isMyFriend) {
             return $this->redirectToRoute('app.user.profile');
         }
 
         $user = $userRepo->findOneBy(['facebookId' => $facebookId]);
-//        var_dump($user);die;
 
         $userOrders = $orderRepo->getUserRevealedOrders($user->getId());
         $userSecrets = $orderRepo->getUserSecrets($user->getId());
         $userImpressions = $user->getImpressions();
-
-//        if(in_array($id, $friendsFacebookIds))
 
         return $this->render('AppBundle:User:profile.html.twig', [
             'orders' => $userOrders,
@@ -135,19 +117,6 @@ class UserController extends Controller
             'impressions' => $userImpressions,
             'user' => $user,
             'isUserProfile' => false
-//            'formImpression' => $formImpression->createView(),
-//            'formAddress' => $formAddress->createView(),
-//            'friends' => $friendList
         ]);
-    }
-
-    /**
-     * @Route("/geo", name="app.user.geo")
-     */
-    public function testGEO()
-    {
-        $a = $this->get(GeolocationService::class)->getParcelMachines('https://www.omniva.lt/locations.json');
-
-        return new Response('test');
     }
 }

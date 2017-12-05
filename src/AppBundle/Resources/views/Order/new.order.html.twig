@@ -9,123 +9,10 @@
 {% endblock %}
 
 {% block body %}
-    {#todo imest i css#}
-    <style>
-        .scrollable-dropdown-list {
-            height: auto;
-            max-height: 200px;
-            overflow-x: hidden;
-        }
-
-        /*.tabs-left > .nav-tabs {*/
-            /*border-bottom: 0;*/
-        /*}*/
-
-        /*.tab-content > .tab-pane,*/
-        /*.pill-content > .pill-pane {*/
-            /*display: none;*/
-        /*}*/
-
-        /*.tab-content > .active,*/
-        /*.pill-content > .active {*/
-            /*display: block;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li {*/
-            /*float: none;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li > a {*/
-            /*width: 20vw;*/
-            /*margin-right: 0;*/
-            /*margin-bottom: 3px;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs {*/
-            /*float: left;*/
-            /*margin-right: 19px;*/
-            /*border-right: 1px solid #ddd;*/
-            /*font-size: 25px;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li > a {*/
-            /*margin-right: -1px;*/
-            /*-webkit-border-radius: 4px 0 0 4px;*/
-            /*-moz-border-radius: 4px 0 0 4px;*/
-            /*border-radius: 4px 0 0 4px;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li > a:hover,*/
-        /*.tabs-left > .nav-tabs > li > a:focus {*/
-
-            /*border-color: #eeeeee #dddddd #eeeeee #eeeeee;*/
-
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li > a:focus {*/
-            /*color: darkred;*/
-        /*}*/
-
-        /*.tabs-left > .nav-tabs > li > a:hover{*/
-            /*background-color: #f3dfd4;*/
-
-        /*}*/
-
-
-        /*.tabs-left > .nav-tabs .active > a,*/
-        /*.tabs-left > .nav-tabs .active > a:hover,*/
-        /*.tabs-left > .nav-tabs .active > a:focus {*/
-            /*border-color: #ddd transparent #ddd #ddd;*/
-            /**border-right-color: #ffffff;*/
-            /*color: darkred;*/
-        /*}*/
-
-        /*#myCarousel .carousel-caption {*/
-            /*left:0;*/
-            /*right:0;*/
-            /*bottom:0;*/
-            /*text-align:left;*/
-            /*padding:10px;*/
-            /*background:rgba(0,0,0,0.6);*/
-            /*text-shadow:none;*/
-            /*padding-left: 25%;*/
-        /*}*/
-
-        /*#myCarousel .item {*/
-            /*padding-left:25%;*/
-        /*}*/
-
-        /*#myCarousel .list-group {*/
-            /*position:absolute;*/
-            /*top:0;*/
-            /*left:0;*/
-            /*width: 25%;*/
-            /*!*margin-right: 33.3333%;*!*/
-        /*}*/
-        /*#myCarousel .list-group-item {*/
-            /*border-radius:0px;*/
-            /*cursor:pointer;*/
-        /*}*/
-        /*#myCarousel .list-group .active {*/
-            /*background-color:#eee;*/
-        /*}*/
-
-        /*@media (min-width: 992px) {*/
-            /*#myCarousel {padding-left:33.3333%;}*/
-            /*#myCarousel .carousel-controls {display:none;}*/
-        /*}*/
-        /*@media (max-width: 991px) {*/
-            /*.carousel-caption p,*/
-            /*#myCarousel .list-group {display:none;}*/
-        /*}*/
-
-
-    </style>
 
     <div class="row body-order">
         <div class="col-lg-10 col-sm-12 col-lg-offset-1 content-bg">
-            <div class="content-container">
-                <div class="order-container" style="margin: 30px 0 0; background: white; min-height: 80vh; padding-top: 30px;">
+                <div class="order-container">
                     {#<h2>{{ 'SECRET BOX uzsakymas'  }}</h2>#}
 
                     <div class="row">
@@ -190,7 +77,6 @@
 
                 </div>
 
-            </div>
         </div>
     </div>
 
@@ -221,8 +107,6 @@
             getClientLocation();
             document.getElementById("map").style.visibility = "visible";
         });
-
-
 
         function getClientLocation(){
             var geo = navigator.geolocation;
@@ -256,8 +140,8 @@
                     createParcelMachinesList(data.parcelMachines);
                     displayMap(position.coords, data.parcelMachines);
                 },
-                error: function(data) {
-                    alert('eruor found');
+                error: function() {
+                    alert('Error found :(');
                 }
 
             })
@@ -269,15 +153,8 @@
 
                 $('#appbundle_order_parcelMachineDeliveryAddress').append($('<option></option>').val(entry['name']).html(
                     entry['distanceText'] + ' | '  + entry['address'] + ', ' + entry['city']
-
                 ));
-
-
-
-
             });
-
-
         }
 
         var map;
@@ -287,7 +164,7 @@
             var mapOptions = {
                 zoom: 15,
                 center: googleLatAndLong,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
 
             var mapDiv = document.getElementById('map');
@@ -301,12 +178,7 @@
             parcelMachines.forEach(function (entry) {
                 googleLatAndLong = new google.maps.LatLng(entry['y'], entry['x']);
                 addMarker(map, googleLatAndLong, 'test', 'content', image);
-
-
             });
-
-
-
         }
 
         function addMarker (map, latlong, title, content, image) {
@@ -331,10 +203,6 @@
                 infoWindow.open(map);
             });
         }
-
     </script>
-
-
-
 
 {% endblock %}

@@ -4,12 +4,13 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
- * @ORM\Table(name="users")
+ * @ORM\Table(name="users", indexes={@Index(name="search_idx", columns={"id", "facebook_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  *
  */

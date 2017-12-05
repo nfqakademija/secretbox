@@ -32,9 +32,9 @@ class FacebookController extends Controller
         if ($route == "") {
             $route = "app.homepage";
         }
+
         return $this->redirectToRoute($route);
     }
-
 
     /**
      * @Route("/")

@@ -3,11 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * Impression
  *
- * @ORM\Table(name="impressions")
+ * @ORM\Table(name="impressions", indexes={@Index(name="search_idx", columns={"id", "user_id"})})
  *
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ImpressionRepository")
  */
@@ -55,7 +56,6 @@ class Impression
     public function __construct()
     {
         $this->createdAt = new \DateTime();
-        //todo administratorius turi tvirtinti
         $this->isApproved = false;
     }
 

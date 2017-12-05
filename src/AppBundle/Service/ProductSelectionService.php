@@ -52,8 +52,7 @@ class ProductSelectionService
      */
     private function getUserUnusedProducts($userId)
     {
-        $validOrderDate = new \DateTime();
-        $validOrderDate->modify('-' . $this->hoursToRevealSecret . ' hours');
+        $validOrderDate = (new \DateTime())->modify('-' . $this->hoursToRevealSecret . ' hours');
         $revealedProducts = $this->em->getRepository(Order::class)->getUserRevealedProducts(
             $userId,
             $validOrderDate
@@ -64,6 +63,7 @@ class ProductSelectionService
         $validProductDate = new \DateTime();
         $validProductDate->modify('+' . $this->hoursToRevealSecret . ' hours');
         $newProducts = $this->em->getRepository(Product::class)->getUniqueProducts($revealedProducts, $validProductDate);
+//        var_dump($newProducts);die;
 
         return !empty($newProducts) ? $newProducts : null;
     }
@@ -76,7 +76,6 @@ class ProductSelectionService
     public function selectProperProductId($userId)
     {
         $unusedProducts = $this->getUserUnusedProducts($userId);
-//        var_dump($unusedProducts);die;
 
         if ($unusedProducts) {
             $userLikes = $this->facebook->getUserDataByReference('likes');
@@ -119,7 +118,7 @@ class ProductSelectionService
                 } else {
                     $productsByAge = [];
                     foreach ($productsMatch as $product) {
-                        if (($age > $product['ageRange']['min']) && ($age < $product['ageRange']['max'])) {
+                        if (($age > $product['ageRange']['0']) && ($age < $product['ageRange']['1'])) {
                             array_push($productsByAge, $product);
                         }
                     }
@@ -144,10 +143,14 @@ class ProductSelectionService
         }
     }
 
+    /**
+     * @param integer $userId
+     *
+     * @return Product|null|object
+     */
     public function selectProperProduct($userId)
     {
         $productId = $this->selectProperProductId($userId);
-//        var_dump($productId);die;
         $suitableProduct = $this->em->getRepository(Product::class)->findOneBy(['id' => $productId]);
 
         return $suitableProduct;

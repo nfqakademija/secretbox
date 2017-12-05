@@ -2,13 +2,11 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Impression;
-use AppBundle\Entity\User;
-use AppBundle\Form\UserEmailType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -19,55 +17,24 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class HomeController extends Controller
 {
-
     /**
      * @Route("/", name="app.homepage")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     *
+     * @return Response
      */
     public function indexAction(Request $request)
     {
-//        $impressionRepo = $this->getDoctrine()->getRepository(Impression::class);
-        $userRepo = $this->getDoctrine()->getRepository(User::class);
-//        $impressions = $impressionRepo->getLastImpressions(4);
-
-
-        //todo jeigu useris prisijunges, permeta ji i userprofile
-        $user = new User();
-        $formUserEmail = $this->createForm(UserEmailType::class, $user, ['attr' => ['data-parsley-validate' => ' ']]);
-        $formUserEmail->handleRequest($request);
-
-        if ($formUserEmail->isSubmitted() && $formUserEmail->isValid()) {
-
-            //todo reikia patikrinti ar toks useris dar neegzituoja
-            $user->setLoginCount(0);
-            $user->setNewsletter(true);
-            $userRepo->saveUser($user);
-            unset($user);
-
-            return $this->redirectToRoute('app.homepage', [
-                //todo atidaro modala ir parodo info, reikia javascriptui perduot
-            ]);
-        }
         $contentLink = $request->get('content');
 
-
         return $this->render('AppBundle:Home:index.html.twig', [
-            'formUserEmail' => $formUserEmail->createView(),
             'contentLink' => $contentLink
         ]);
     }
 
     /**
-     * @Route("/about", name="app.about")
-     */
-    public function aboutAction()
-    {
-        return $this->render('AppBundle:Home:about.html.twig');
-    }
-
-    /**
-     * @Route("/order", name="app.order.now")
+     * @Route("/loginCheck", name="app.order.now")
      *
      * @param Request $request
      * @param Session $session
@@ -84,4 +51,7 @@ class HomeController extends Controller
             return $this->redirectToRoute('app.login.facebook');
         }
     }
+    //todo jeigu nera route redirectina i app.homepage
+//todo panaiginti noRoure facebook controleryje
+//https://stackoverflow.com/questions/26464624/redirect-with-event-listener-for-all-no-route-found-404-not-found-notfoundhtt
 }

@@ -23,12 +23,23 @@ class GeolocationService
     private $container;
     private $session;
 
+    /**
+     * GeolocationService constructor.
+     *
+     * @param ContainerInterface $container
+     * @param Session $session
+     */
     public function __construct(ContainerInterface $container, Session $session)
     {
         $this->container = $container;
         $this->session = $session;
     }
 
+    /**
+     * @param string $locale
+     *
+     * @return array ParcelMachine
+     */
     public function getParcelMachines($locale)
     {
         $availableCountries= ['LT'];
@@ -41,13 +52,10 @@ class GeolocationService
         $parcelMachines = [];
 
         $data = \GuzzleHttp\json_decode($response->getBody()->getContents(), true);
-//        echo $response->getStatusCode();
-//        var_dump($data);die;
         $commentLang = $locale == 'lt' ? 'comment_lit' : 'comment_eng';
 
         foreach ($data as $key => $item) {
             if (in_array($item['A0_NAME'], $availableCountries)) {
-//                unset($data[$key]);
                 $machine = (new ParcelMachine())
                     ->setName($item['NAME'])
                     ->setCountryCode($item['A0_NAME'])
@@ -59,40 +67,30 @@ class GeolocationService
                     ->setComment($item[$commentLang]);
                 array_push($parcelMachines, $machine);
             }
-
-//            echo $item['A0_NAME'] . PHP_EOL;
         }
-//        var_dump($parcelMachines);die;
-        return $parcelMachines;
 
-//        var_dump(\GuzzleHttp\json_decode($body->getContents()));die;
-//        isJson()
-//        $request->getBody();
-//        var_dump($request->getBody(); die;
+        return $parcelMachines;
     }
 
+    /**
+     * @param array ParcelMachine $parcelMachines
+     * @param float $customerCoordinateX
+     * @param float $customerCoordinateY
+     *
+     * @return array ParcelMachine
+     */
     public function addDistanceToMachines($parcelMachines, $customerCoordinateX, $customerCoordinateY)
     {
+        //todo padaryti, kad origin imtu ir adresa
         $origin = [new CoordinateLocation(new Coordinate((float) $customerCoordinateX, (float) $customerCoordinateY))];
         $destinations = $this->getCoordinatesLocations($parcelMachines);
-//        var_dump($origin);die;
 
         $request = new DistanceMatrixRequest(
-//            [new Coordinate('58.4926417741916', '26.6822723174854')] ,
-//            [new Coordinate('54.923076099999996', '23.8207749')]
-//            [new AddressLocation('Mickeviciaus g 11, Kaunas')],
-            [new CoordinateLocation(new Coordinate((float) $customerCoordinateX, (float) $customerCoordinateY))],
+            $origin,
             $destinations
-//            [new AddressLocation('Birzisku 3, Kaunas')]
         );
         $request->setLanguage('lt');
-//        $request->addOrigins(
-//            [new Coordinate('58.4926417741916', '26.6822723174854')]
-//        );
         $response = $this->container->get('ivory.google_map.distance_matrix')->process($request);
-
-
-//        var_dump($response->getStatus());die;
 
         reset($parcelMachines);
         foreach ($response->getRows() as $row) {
@@ -100,42 +98,44 @@ class GeolocationService
                 current($parcelMachines)
                     ->setDistanceTextToCustomer($element->getDistance()->getText())
                     ->setDistanceValueToCustomer($element->getDistance()->getValue());
-//                var_dump(current($parcelMachines));
                 next($parcelMachines);
-//                var_dump($element);
             }
         }
-//        var_dump($parcelMachines);die;
 
         return $parcelMachines;
     }
 
+    /**
+     * @param string $locale
+     *
+     * @return array
+     */
     public function getOnlyNames($locale)
     {
         $parcelMachines = $this->getParcelMachines($locale);
         $onlyNames = [];
         foreach ($parcelMachines as $machine) {
-//            array_push($onlyNames, $machine->getName());
-            $onlyNames[$machine->getName()] = $machine->getName() . 'lalalalalaal';
+            $onlyNames[$machine->getName()] = $machine->getName();
         }
 
         return $onlyNames;
     }
 
+    /**
+     * @param array ParcelMachine $parcelMachines
+     *
+     * @return array CoordinateLocation
+     */
     private function getCoordinatesLocations($parcelMachines)
     {
-//        $parcelMachines = $this->session->get('parcelMachines');
-        $array = [];
+        $locations = [];
+
+        /** @var ParcelMachine $machine */
         foreach ($parcelMachines as $machine) {
             $coordinateLocation = new CoordinateLocation(new Coordinate($machine->getCoordinateY(), $machine->getCoordinateX()));
-            array_push($array, $coordinateLocation);
+            array_push($locations, $coordinateLocation);
         }
 
-
-//        foreach ($coordinatesArray as $coordinate){
-//            $new = new CoordinateLocation(new Coordinate($coordinate['y'], $coordinate['x']));
-//            array_push($array, $new);
-//        }
-        return $array;
+        return $locations;
     }
 }

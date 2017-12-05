@@ -3,11 +3,12 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Index;
 
 /**
  * Order
  *
- * @ORM\Table(name="orders")
+ * @ORM\Table(name="orders", indexes={@Index(name="search_idx", columns={"id", "user_id", "product_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\OrderRepository")
  */
 class Order
@@ -216,8 +217,6 @@ class Order
         return $this;
     }
 
-
-
     /**
      * @return string
      */
@@ -226,12 +225,13 @@ class Order
         return (string) $this->getOrderedAt()->format('Y-m-d h:m') . ' ' . $this->getProduct();
     }
 
-
-    //todo remove this nesamone
+    /**
+     * @return \DateTime
+     */
     public function getOrderCountdown()
     {
-        $orderCountdown = $this->orderedAt;
-        $orderCountdown->modify('+14 day');
+        $orderCountdown = $this->orderedAt->modify('+336 hours'); //14 days
+
         return $orderCountdown;
     }
 }

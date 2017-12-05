@@ -20,23 +20,18 @@
         <div class="collapse navbar-collapse" id="top-menu-navbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    {#todo scrol to order#}
-                    <a href="{{ path('app.order.new') }}">{{ 'product.order' | trans }}</a>
+                    <a href="{{ path('app.order.now') }}">{{ 'product.order' | trans }}</a>
                 </li>
-                {#<li>#}
-                    {#<a href="#" data-toggle="modal" data-target="#subscribe-newsletter">{{ 'menu.get.news' | trans }}</a>#}
-                {#</li>#}
                 <li>
                     {% if app.request.get('_route') == 'app.homepage' %}
                         <a href="#" id="menu-button-about">{{ 'menu.about'|trans }}</a>
                     {% else %}
                         <a href="{{ path('app.homepage') }}?content=about" id="menu-button-about">{{ 'menu.about'|trans }}</a>
                     {% endif %}
-
                 </li>
 
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
+                    {#todo sumazinus nerodo backgroundo #}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user menu-icon"></span> 
@@ -94,8 +89,6 @@
                 </li>
 
                 {% endif %}
-
-
 
             </ul>
         </div>

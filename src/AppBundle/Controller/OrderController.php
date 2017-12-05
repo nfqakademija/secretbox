@@ -3,12 +3,11 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
-use AppBundle\Entity\Product;
 use AppBundle\Entity\User;
 use AppBundle\Form\OrderType;
 use AppBundle\Service\GeolocationService;
+use AppBundle\Service\ParcelMachine;
 use AppBundle\Service\ProductSelectionService;
-use function MongoDB\BSON\toJSON;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,48 +29,40 @@ class OrderController extends Controller
      *
      * @param integer $friendId
      * @param Request $request
-     *
      * @param Session $session
      *
      * @return Response
      */
     public function newOrderAction($friendId, Request $request, Session $session)
     {
-        $geolocationService = $this->get(GeolocationService::class);
-
+        $geoLocationService = $this->get(GeolocationService::class);
         $productSelectionService = $this->get(ProductSelectionService::class);
 
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
-        $productRepo = $this->getDoctrine()->getManager()->getRepository(Product::class);
-
-
 
         $locale = $request->getLocale();
-//        $parcelMachines = $this->get(GeolocationService::class)->getDisatance();
         $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($locale);
         $session->set('parcelMachines', $parcelMachines);
 
-//        $parcelMachineNames = array_column(array_map(create_function('$object', 'return $object->getName();'), $parcelMachines), 'name');
-//        var_dump(array_column($parcelMachines, 'name'));die;
-        $parcelMachineNames = $geolocationService->getOnlyNames($locale);
-        //var_dump($parcelMachineNames);die;
-        //var_dump(array_column($parcelMachineNames, 0));die;
+        $parcelMachineNames = $geoLocationService->getOnlyNames($locale);
 
         $order = new Order();
 
-//        var_dump($friendId);die;
 
         if ($friendId == null) {
             $user = $this->getUser();
             $isUserOrder = true;
         } else {
-//            var_dump($friendId);die;
             $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
             $user = $userRepo->findOneBy(['facebookId' => $friendId]);
             $isUserOrder = false;
         }
 
-//        var_dump($user);die;
+        //todo kai paspaudzia pradeti nuotyki mygtuka, divas per visa ekrana: ieskomas nuotykis
+        $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
+        if ($suitableProduct == null) {
+            return $this->redirectToRoute('app.order.no.orders');
+        }
 
         $order->setDeliveryAddress($user->getAddress());
         $form = $this->createForm(OrderType::class, $order, [
@@ -80,12 +71,9 @@ class OrderController extends Controller
         ]);
         $form->handleRequest($request);
 
-
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $order->setUser($user);
             $order->setSellingPrice(19.99);
-            //todo patikrint ar suitable product ne null
-            $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
             $order->setProduct($suitableProduct);
 
             $validator = $this->get('validator');
@@ -99,9 +87,9 @@ class OrderController extends Controller
 
             $orderRepo->saveOrder($order);
 
+            //todo jeigu uzsakymas draugui - grazinti i draugo profili
             return $this->redirectToRoute('app.user.profile');
         }
-
 
         return $this->render('AppBundle:Order:new.order.html.twig', [
             'form' => $form->createView(),
@@ -112,13 +100,13 @@ class OrderController extends Controller
     }
 
     /**
-     * @Route("/begin", name="app.order.begin")
+     * @Route("/allDone", name="app.order.no.orders")
      *
      * @return Response
      */
-    public function beginOrderAction()
+    public function allDoneAction()
     {
-        return $this->render('AppBundle:Order:begin.order.html.twig');
+        return $this->render('@App/Order/no.orders.html.twig');
     }
 
     /**
@@ -135,28 +123,9 @@ class OrderController extends Controller
             $customerCoordinateX = 54.9231038;
             $customerCoordinateY = 23.8208222;
         }
-//        var_dump($request->request->get('data'));die;
-//        dump($request->query->get('data'));
-//        die;
-//        $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines('https://www.omniva.lt/locations.json');
-
-        $customerCoordinateX = $request->get('coordinateX');
-        $customerCoordinateY = $request->get('coordinateY');
-
-//        $customerCoordinateX = 54.923072999999995;
-//        $customerCoordinateY = 23.820887199999998;
-//        var_dump($customerCoordinateX, $customerCoordinateY);die;
 
         $parcelMachines = $session->get('parcelMachines');
         $machinesArray = [];
-//        $coordinatesArray = [];
-//
-//        foreach ($parcelMachines as $machine){
-        ////            array_push($machinesArray, )
-//            $coordinate = ['x' => $machine->getCoordinateX(), 'y' => $machine->getCoordinateY()];
-//            array_push($coordinatesArray, $coordinate);
-//        }
-//        var_dump($coordinatesArray);die;
 
         $parcelMachines = $this->get(GeolocationService::class)->addDistanceToMachines(
             $parcelMachines,
@@ -164,21 +133,14 @@ class OrderController extends Controller
             $customerCoordinateY
         );
 
-
-
+        /** @var ParcelMachine $machine */
         foreach ($parcelMachines as $machine) {
-//            array_push($machinesArray, )
             array_push($machinesArray, $machine->getMachineArray());
         }
-//        var_dump($machinesArray);die;
         usort($machinesArray, function ($a, $b) {
             return $a['distanceValue'] <=> $b['distanceValue'];
         });
 
-//        var_dump($machinesArray);die;
-//        var_dump($parcelMachines); die;
-//        var_dump($parcelMachines);
-//        return new JsonResponse($request->request->get('data'));
         return new JsonResponse(
             [
             'parcelMachines' =>  $machinesArray,

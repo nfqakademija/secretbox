@@ -80,11 +80,16 @@ class Product
      */
     private $supplierPrice;
 
+    /**
+     * @ORM\Column(name="market_value", type="float")
+     */
+    private $marketValue;
+
     public function __construct()
     {
         $this->ageRange = [
-            'min' => 10,
-            'max' => 99
+            '0' => 10,
+            '1' => 99
         ];
     }
 
@@ -169,6 +174,27 @@ class Product
     {
         return $this->supplierPrice;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMarketValue()
+    {
+        return $this->marketValue;
+    }
+
+    /**
+     * @param mixed $marketValue
+     *
+     * @return Product
+     */
+    public function setMarketValue($marketValue)
+    {
+        $this->marketValue = $marketValue;
+        return $this;
+    }
+
+
 
     /**
      * @return string
