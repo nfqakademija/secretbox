@@ -35,6 +35,17 @@ class OrderController extends Controller
      */
     public function newOrderAction($friendId, Request $request, Session $session)
     {
+//todo perskaityt clean code knygute uncle bob
+//todo        tiekejus i atskira lenetele
+        //todo overflow auto, skrilinamas tekstas
+        //todo pinterest
+        //todo dizaino variantai: graphic river
+        //todo svg iconos
+        //todo html image map
+        //todo  frontende: pabandyk pats, draugams, giftas?
+        //todo paaiskint ka gaus
+        //todo tam paciam puslapi orderis
+        //todo 1 click login
         $geoLocationService = $this->get(GeolocationService::class);
         $productSelectionService = $this->get(ProductSelectionService::class);
 
@@ -70,10 +81,13 @@ class OrderController extends Controller
             'parcelMachines' => $parcelMachineNames,
         ]);
         $form->handleRequest($request);
-
+//todo kitas action
         if ($form->isSubmitted() && $form->isValid()) {
             $order->setUser($user);
-            $order->setSellingPrice(19.99);
+
+            $price = $this->getDoctrine()->getRepository('AppBundle:Price')->getCurrentPrice();
+
+            $order->setSellingPrice($price->getPrice());
             $order->setProduct($suitableProduct);
 
             $validator = $this->get('validator');

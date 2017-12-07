@@ -1,0 +1,5 @@
+AppBundle\Entity\Price:
+    price:
+        price: '19.99'
+        vatRate: '0.21'
+        validFrom: '<dateTimeBetween("-5 years", "-3 years")>'

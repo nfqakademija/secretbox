@@ -51,7 +51,4 @@ class HomeController extends Controller
             return $this->redirectToRoute('app.login.facebook');
         }
     }
-    //todo jeigu nera route redirectina i app.homepage
-//todo panaiginti noRoure facebook controleryje
-//https://stackoverflow.com/questions/26464624/redirect-with-event-listener-for-all-no-route-found-404-not-found-notfoundhtt
 }

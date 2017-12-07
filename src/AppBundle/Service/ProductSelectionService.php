@@ -101,7 +101,7 @@ class ProductSelectionService
                 if (!empty($productsByGender)) {
                     $productsByAge = [];
                     foreach ($productsByGender as $product) {
-                        if (($age > $product['ageRange'][0]) && ($age < $product['ageRange'][1])) {
+                        if (($age > $product['ageMin']) && ($age < $product['ageMax'])) {
                             array_push($productsByAge, $product);
                         }
                     }
@@ -118,7 +118,7 @@ class ProductSelectionService
                 } else {
                     $productsByAge = [];
                     foreach ($productsMatch as $product) {
-                        if (($age > $product['ageRange']['0']) && ($age < $product['ageRange']['1'])) {
+                        if (($age > $product['ageMin']) && ($age < $product['ageMax'])) {
                             array_push($productsByAge, $product);
                         }
                     }

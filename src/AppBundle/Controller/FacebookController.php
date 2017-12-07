@@ -35,14 +35,4 @@ class FacebookController extends Controller
 
         return $this->redirectToRoute($route);
     }
-
-    /**
-     * @Route("/")
-     *
-     * @return RedirectResponse
-     */
-    public function noRoute()
-    {
-        return $this->redirectToRoute('app.homepage');
-    }
 }

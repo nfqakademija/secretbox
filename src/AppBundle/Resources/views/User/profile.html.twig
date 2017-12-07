@@ -87,7 +87,7 @@
                                                         <td>{{ secret.orderedAt | date('Y-m-d h:m:s') }}</td>
                                                         <td class="text-center">
                                                             <div class="countdown-clock"
-                                                                 data-countdown="{{ secret.orderCountdown | date('Y-m-d h:m:s') }}"></div>
+                                                                 data-countdown="{{ secret.orderRevealUntil | date('Y-m-d h:m:s') }}"></div>
                                                         </td>
                                                         <td class="text-center">
                                                             <button type="button" class="btn" data-toggle="popover"

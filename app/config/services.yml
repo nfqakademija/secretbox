@@ -10,10 +10,6 @@ services:
         resource: '../../src/AppBundle/*'
         exclude: '../../src/AppBundle/{Controller,Entity,Repository,Tests}'
 
-    AppBundle\EventListener\PostUserLoginListener:
-        tags:
-            - {name: kernel.event_listener, event: user.login, method: onUserLoginSaveImage}
-
     AppBundle\Service\FacebookInfoService:
         arguments:
             - "%facebook_client_id%"
@@ -23,3 +19,11 @@ services:
     AppBundle\Service\ProductSelectionService:
         arguments:
             - "%secret_reveal_time%"
+
+    AppBundle\EventListener\PostUserLoginListener:
+        tags:
+            - {name: kernel.event_listener, event: user.login, method: onUserLoginSaveImage}
+
+    AppBundle\EventListener\RouteErrorRedirectListener:
+        tags:
+           - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

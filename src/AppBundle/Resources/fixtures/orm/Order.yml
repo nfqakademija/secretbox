@@ -3,13 +3,18 @@ parameters:
     orderStatuses:
         - 'new'
         - 'revealed'
+    deliveryTypes:
+        - 'home'
+        - 'parcel_machine'
 
 AppBundle\Entity\Order:
     order{1..100}:
         user: '90%? @user* : @admin'
         product: '@product*'
         orderedAt: '<dateTimeBetween("-1 month", "now")>'
+        orderRevealUntil: '<dateTimeBetween($orderedAt, "+336 hours")>'
         sellingPrice: '$price'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'
         parcelMachineDeliveryAddress: '<lt_LT:address()>'
+        deliveryType: '<randomElement($deliveryTypes)>'

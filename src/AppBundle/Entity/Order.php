@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Index;
 
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping\Index;
  */
 class Order
 {
+    const ORDER_REVEAL_TIME = 1209600; //seconds, 14 days
     /**
      * @var int
      *
@@ -41,14 +43,21 @@ class Order
     private $orderedAt;
 
     /**
-     * @var float
+     * @var \DateTime
      *
-     * @ORM\Column(name="selling_price", type="float")
+     * @ORM\Column(name="order_reveal_until", type="datetime")
+     */
+    private $orderRevealUntil;
+
+    /**
+     * @var DecimalType
+     *
+     * @ORM\Column(name="selling_price", type="decimal", precision=10, scale=2)
      */
     private $sellingPrice;
 
     /**
-     * @ORM\Column(name="status", type="string")
+     * @ORM\Column(name="status", type="enum_order_status")
      */
     private $status = "new";
 
@@ -63,11 +72,17 @@ class Order
     private $parcelMachineDeliveryAddress;
 
     /**
+     * @ORM\Column(name="delivery_type", type="enum_delivery_type")
+     */
+    private $deliveryType;
+
+    /**
      * Order constructor.
      */
     public function __construct()
     {
         $this->orderedAt = new \DateTime();
+        $this->orderRevealUntil = (new \DateTime())->modify('+' . self::ORDER_REVEAL_TIME . ' seconds');
     }
 
     /**
@@ -105,7 +120,7 @@ class Order
     }
 
     /**
-     * @return float
+     * @return DecimalType
      */
     public function getSellingPrice()
     {
@@ -113,7 +128,7 @@ class Order
     }
 
     /**
-     * @param float $sellingPrice
+     * @param DecimalType $sellingPrice
      * @return Order
      */
     public function setSellingPrice($sellingPrice)
@@ -218,20 +233,50 @@ class Order
     }
 
     /**
+     * @return \DateTime
+     */
+    public function getOrderRevealUntil(): \DateTime
+    {
+        return $this->orderRevealUntil;
+    }
+
+    /**
+     * @param \DateTime $orderRevealUntil
+     *
+     * @return Order
+     */
+    public function setOrderRevealUntil(\DateTime $orderRevealUntil): Order
+    {
+        $this->orderRevealUntil = $orderRevealUntil;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDeliveryType()
+    {
+        return $this->deliveryType;
+    }
+
+    /**
+     * @param string $deliveryType
+     *
+     * @return Order
+     */
+    public function setDeliveryType($deliveryType)
+    {
+        $this->deliveryType = $deliveryType;
+        return $this;
+    }
+
+
+
+    /**
      * @return string
      */
     public function __toString()
     {
         return (string) $this->getOrderedAt()->format('Y-m-d h:m') . ' ' . $this->getProduct();
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getOrderCountdown()
-    {
-        $orderCountdown = $this->orderedAt->modify('+336 hours'); //14 days
-
-        return $orderCountdown;
     }
 }

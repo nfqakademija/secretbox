@@ -16,7 +16,8 @@ AppBundle\Entity\Product:
         facebookName: '50%? <text(20)> : <randomElement($facebookRealNames)>'
         description: '<sentences(3, true)>'
         gender: '<randomElement($genders)>'
-        ageRange: ['<numberBetween(10, 17)>', '<numberBetween(18,90)>']
+        ageMin: '<numberBetween(10, 17)>'
+        ageMax: '<numberBetween(18,90)>'
         supplier: '<company()>'
         validFrom: '<dateTimeBetween("-5 months", "now")>'
         validTo: '<dateTimeBetween($validFrom, "+3 months")>'

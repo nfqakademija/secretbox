@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,18 +37,23 @@ class Product
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="gender", type="string")
+     * @ORM\Column(name="gender", type="enum_gender")
      */
     private $gender;
 
     /**
-     * @var array
+     * @var integer
      *
-     * @ORM\Column(name="age_range", type="json_array")
+     * @ORM\Column(name="age_min", type="integer", length=3)
      */
-    private $ageRange;
+    private $ageMin = 10;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="age_max", type="integer", length=3)
+     */
+    private $ageMax = 99;
 
     /**
      * @var string
@@ -64,34 +70,32 @@ class Product
     private $facebookName;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="valid_from", type="datetime")
      */
     private $validFrom;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="valid_to", type="datetime")
      */
     private $validTo;
 
     /**
-     * @var float
+     * @var DecimalType
      *
-     * @ORM\Column(name="supplier_price", type="float")
+     * @ORM\Column(name="supplier_price", type="decimal", precision=10, scale=2)
      */
     private $supplierPrice;
 
     /**
-     * @ORM\Column(name="market_value", type="float")
+     * @var DecimalType
+     *
+     * @ORM\Column(name="market_value", type="decimal", precision=10, scale=2)
      */
     private $marketValue;
-
-    public function __construct()
-    {
-        $this->ageRange = [
-            '0' => 10,
-            '1' => 99
-        ];
-    }
 
     /**
      * Get id
@@ -168,7 +172,7 @@ class Product
     /**
      * Get price
      *
-     * @return float
+     * @return DecimalType
      */
     public function getSupplierPrice()
     {
@@ -176,7 +180,7 @@ class Product
     }
 
     /**
-     * @return mixed
+     * @return DecimalType
      */
     public function getMarketValue()
     {
@@ -184,7 +188,7 @@ class Product
     }
 
     /**
-     * @param mixed $marketValue
+     * @param DecimalType $marketValue
      *
      * @return Product
      */
@@ -193,8 +197,6 @@ class Product
         $this->marketValue = $marketValue;
         return $this;
     }
-
-
 
     /**
      * @return string
@@ -225,6 +227,7 @@ class Product
 
     /**
      * @param \DateTime $validFrom
+     *
      * @return Product
      */
     public function setValidFrom($validFrom)
@@ -243,6 +246,7 @@ class Product
 
     /**
      * @param \DateTime $validTo
+     *
      * @return Product
      */
     public function setValidTo($validTo)
@@ -290,23 +294,44 @@ class Product
     }
 
     /**
-     * @return array
+     * @return int
      */
-    public function getAgeRange()
+    public function getAgeMin(): int
     {
-        return $this->ageRange;
+        return $this->ageMin;
     }
 
     /**
-     * @param array $ageRange
+     * @param int $ageMin
      *
      * @return Product
      */
-    public function setAgeRange($ageRange)
+    public function setAgeMin(int $ageMin): Product
     {
-        $this->ageRange = $ageRange;
+        $this->ageMin = $ageMin;
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function getAgeMax(): int
+    {
+        return $this->ageMax;
+    }
+
+    /**
+     * @param int $ageMax
+     *
+     * @return Product
+     */
+    public function setAgeMax(int $ageMax): Product
+    {
+        $this->ageMax = $ageMax;
+        return $this;
+    }
+
+
 
     public function __toString()
     {
