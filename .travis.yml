@@ -8,13 +8,23 @@ env:
     - SYMFONY_VERSION="3.4.*" DB=mysql
 before-install:
     - composer self-update
-before_script:
-# Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
+
+
+install:
     - composer config -g github-oauth.github.com token
-    - composer install
     - cp app/config/parameters.yml.travis app/config/parameters.yml
+#    - composer install
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
     - php bin/console doctrine:fixtures:load -n --env=test
-script:
-  - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src
+
+#before_script:
+## Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
+#    - composer config -g github-oauth.github.com token
+#    - composer install
+#    - cp app/config/parameters.yml.travis app/config/parameters.yml
+#    - php bin/console doctrine:database:create --env=test
+#    - php bin/console doctrine:schema:create --env=test
+#    - php bin/console doctrine:fixtures:load -n --env=test
+#script:
+#  - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src
