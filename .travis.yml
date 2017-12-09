@@ -11,7 +11,7 @@ before-install:
 before_script:
 # Get the token from github and put it in travis repo under GITHUB_COMPOSER_AUTH ENV variable, then uncomment line below.
     - composer config -g github-oauth.github.com token
-    - composer install --no-interaction --prefer-dist
+    - composer install
     - cp app/config/parameters.yml.travis app/config/parameters.yml
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
