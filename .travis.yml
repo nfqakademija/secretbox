@@ -9,11 +9,10 @@ env:
 before-install:
     - composer self-update
 
-
 install:
     - composer config -g github-oauth.github.com token
     - cp app/config/parameters.yml.travis app/config/parameters.yml
-#    - composer install
+    - composer install
     - php bin/console doctrine:database:create --env=test
     - php bin/console doctrine:schema:create --env=test
     - php bin/console doctrine:fixtures:load -n --env=test
@@ -28,3 +27,5 @@ install:
 #    - php bin/console doctrine:fixtures:load -n --env=test
 #script:
 #  - vendor/bin/phpcs -p --standard=PSR2 --extensions=php ./src
+notifications:
+    email: viktoras.bezubec@gmail.com
