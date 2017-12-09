@@ -35,8 +35,8 @@ class OrderController extends Controller
      */
     public function newOrderAction($friendId, Request $request, Session $session)
     {
-//todo perskaityt clean code knygute uncle bob
-//todo        tiekejus i atskira lenetele
+        //todo perskaityt clean code knygute uncle bob
+        //todo        tiekejus i atskira lenetele
         //todo overflow auto, skrilinamas tekstas
         //todo pinterest
         //todo dizaino variantai: graphic river
@@ -76,12 +76,16 @@ class OrderController extends Controller
         }
 
         $order->setDeliveryAddress($user->getAddress());
-        $form = $this->createForm(OrderType::class, $order, [
+        $form = $this->createForm(
+            OrderType::class,
+            $order,
+            [
             'attr' => ['data-parsley-validate' => ' '],
             'parcelMachines' => $parcelMachineNames,
-        ]);
+            ]
+        );
         $form->handleRequest($request);
-//todo kitas action
+        //todo kitas action
         if ($form->isSubmitted() && $form->isValid()) {
             $order->setUser($user);
 
@@ -94,9 +98,12 @@ class OrderController extends Controller
             $errors = $validator->validate($order);
 
             if (count($errors) > 0) {
-                return $this->render('AppBundle:Order:new.order.html.twig', [
+                return $this->render(
+                    'AppBundle:Order:new.order.html.twig',
+                    [
                     'errors' => $errors
-                ]);
+                    ]
+                );
             }
 
             $orderRepo->saveOrder($order);
@@ -105,12 +112,15 @@ class OrderController extends Controller
             return $this->redirectToRoute('app.user.profile');
         }
 
-        return $this->render('AppBundle:Order:new.order.html.twig', [
+        return $this->render(
+            'AppBundle:Order:new.order.html.twig',
+            [
             'form' => $form->createView(),
             'parcelMachines' => $parcelMachines,
             'user' => $user,
             'isUserOrder' => $isUserOrder,
-        ]);
+            ]
+        );
     }
 
     /**
@@ -147,13 +157,18 @@ class OrderController extends Controller
             $customerCoordinateY
         );
 
-        /** @var ParcelMachine $machine */
+        /**
+ * @var ParcelMachine $machine
+*/
         foreach ($parcelMachines as $machine) {
             array_push($machinesArray, $machine->getMachineArray());
         }
-        usort($machinesArray, function ($a, $b) {
-            return $a['distanceValue'] <=> $b['distanceValue'];
-        });
+        usort(
+            $machinesArray,
+            function ($a, $b) {
+                return $a['distanceValue'] <=> $b['distanceValue'];
+            }
+        );
 
         return new JsonResponse(
             [

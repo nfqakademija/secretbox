@@ -27,10 +27,10 @@ class AppFakerCommand extends ContainerAwareCommand
     /**
      * AppFakerCommand constructor.
      *
-     * @param null $name
+     * @param null          $name
      * @param EntityManager $em
      */
-    public function __construct($name = null, EntityManager $em)
+    public function __construct(EntityManager $em, $name = null)
     {
         parent::__construct($name);
         $this->em = $em;
@@ -46,8 +46,7 @@ class AppFakerCommand extends ContainerAwareCommand
             ->addOption('users', null, InputOption::VALUE_NONE, 'Option description')
             ->addOption('orders', null, InputOption::VALUE_NONE, 'Option description')
             ->addOption('products', null, InputOption::VALUE_NONE, 'Option description')
-            ->addOption('impressions', null, InputOption::VALUE_NONE, 'Option description')
-        ;
+            ->addOption('impressions', null, InputOption::VALUE_NONE, 'Option description');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -113,7 +112,7 @@ class AppFakerCommand extends ContainerAwareCommand
         $product->setDescription($this->faker->sentence(8));
         $product->setSupplierPrice($this->faker->randomFloat(2, 5, 14.99));
         $product->setSupplier($this->faker->company);
-//        $product->setAgeRange();
+        //        $product->setAgeRange();
         $product->setGender($this->faker->randomElement(['male','female','unisex']));
         $validFrom = $this->faker->dateTimeBetween('-2 years', '-7 days');
 

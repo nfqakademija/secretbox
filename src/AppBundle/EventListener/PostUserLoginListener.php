@@ -15,6 +15,7 @@ use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * Class PostUserLoginListener
+ *
  * @package AppBundle\EventListener
  */
 class PostUserLoginListener

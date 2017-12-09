@@ -17,13 +17,21 @@ class UserAddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('address', TextareaType::class, [
-            'label' => false,
-            ])
-            ->add('save', SubmitType::class, [
+            ->add(
+                'address',
+                TextareaType::class,
+                [
+                'label' => false,
+                ]
+            )
+            ->add(
+                'save',
+                SubmitType::class,
+                [
                 'label' => 'content.save',
                 'attr' => ['class' => 'btn btn-primary']
-            ]);
+                ]
+            );
     }
     
     /**
@@ -31,9 +39,11 @@ class UserAddressType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => User::class,
-        ]);
+            ]
+        );
     }
 
     /**

@@ -115,7 +115,4 @@ class Price
     {
         $this->validFrom = $validFrom;
     }
-
-
 }
-

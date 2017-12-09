@@ -47,7 +47,8 @@
         "squizlabs/php_codesniffer": "^2.0",
         "hautelook/alice-bundle": "2.0.0-beta.3@beta",
         "theofidry/alice-data-fixtures": "v1.0.0-beta.4@beta",
-        "doctrine/data-fixtures": "^1.2"
+        "doctrine/data-fixtures": "^1.2",
+        "phpmd/phpmd": "^2.6"
     },
     "scripts": {
         "post-install-cmd": [

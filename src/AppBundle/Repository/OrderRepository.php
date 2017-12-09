@@ -16,7 +16,7 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class OrderRepository extends EntityRepository
 {
     /**
-     * @param int $userId
+     * @param int       $userId
      *
      * @param \DateTime $validDate
      *
@@ -25,7 +25,7 @@ class OrderRepository extends EntityRepository
     public function getUserRevealedProducts($userId, $validDate)
     {
         $rsm = new ResultSetMapping();
-//        todo pakeisti NEW i DELIVERED ar panasiai
+        //        todo pakeisti NEW i DELIVERED ar panasiai
         $query = $this->_em->createQuery(
             "SELECT p.id FROM AppBundle:Order AS o
                   LEFT JOIN AppBundle:Product AS p
@@ -85,10 +85,13 @@ class OrderRepository extends EntityRepository
      */
     public function getUserSecrets($userId)
     {
-        $userSecrets = $this->findBy([
+        $userSecrets = $this->findBy(
+            [
             'user' =>  $userId,
             'status' => 'new'
-        ], ['orderedAt' => 'DESC']);
+            ],
+            ['orderedAt' => 'DESC']
+        );
 
         return $userSecrets;
     }

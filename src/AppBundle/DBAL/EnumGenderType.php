@@ -9,7 +9,6 @@
 
 namespace AppBundle\DBAL;
 
-
 class EnumGenderType extends EnumType
 {
     protected $name = 'enum_gender';

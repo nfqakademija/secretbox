@@ -9,7 +9,6 @@
 
 namespace AppBundle\DBAL;
 
-
 class EnumOrderStatusType extends EnumType
 {
     protected $name = 'enum_order_status';

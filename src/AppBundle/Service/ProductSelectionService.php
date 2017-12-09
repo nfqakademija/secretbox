@@ -32,14 +32,14 @@ class ProductSelectionService
      * ProductSelectionService constructor.
      *
      * @param $secret_reveal_time
-     * @param EntityManager $em
+     * @param EntityManager       $em
      * @param FacebookInfoService $facebook
      */
     public function __construct(
         $secret_reveal_time,
         EntityManager $em,
         FacebookInfoService $facebook
-        ) {
+    ) {
         $this->em = $em;
         $this->facebook = $facebook;
         $this->hoursToRevealSecret = $secret_reveal_time * 24;
@@ -58,12 +58,12 @@ class ProductSelectionService
             $validOrderDate
         );
 
-//        var_dump($revealedProducts);
 
         $validProductDate = new \DateTime();
         $validProductDate->modify('+' . $this->hoursToRevealSecret . ' hours');
-        $newProducts = $this->em->getRepository(Product::class)->getUniqueProducts($revealedProducts, $validProductDate);
-//        var_dump($newProducts);die;
+        $newProducts = $this->em
+            ->getRepository(Product::class)
+            ->getUniqueProducts($revealedProducts, $validProductDate);
 
         return !empty($newProducts) ? $newProducts : null;
     }
@@ -157,8 +157,8 @@ class ProductSelectionService
     }
 
     /**
-     * @param array $first
-     * @param array $second
+     * @param array  $first
+     * @param array  $second
      * @param string $fieldName
      *
      * @return array

@@ -37,7 +37,6 @@ class RouteErrorRedirectListener
         $exception = $event->getException();
 
         if ($exception instanceof NotFoundHttpException) {
-
             $route = 'app.homepage';
 
             if ($route === $event->getRequest()->get('_route')) {
@@ -47,7 +46,6 @@ class RouteErrorRedirectListener
             $url = $this->router->generate($route);
             $response = new RedirectResponse($url);
             $event->setResponse($response);
-
         }
     }
 }

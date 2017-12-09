@@ -12,7 +12,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="users", indexes={@Index(name="search_idx", columns={"id", "facebook_id"})})
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
- *
  */
 class User implements UserInterface
 {
@@ -223,7 +222,7 @@ class User implements UserInterface
     /**
      * Set email
      *
-     * @param string $email
+     * @param  string $email
      * @return User
      */
     public function setEmail($email)

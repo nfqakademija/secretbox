@@ -9,7 +9,6 @@
 
 namespace AppBundle\DBAL;
 
-
 class EnumDeliveryType extends EnumType
 {
     protected $name = 'enum_delivery_type';

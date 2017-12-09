@@ -27,7 +27,7 @@ class GeolocationService
      * GeolocationService constructor.
      *
      * @param ContainerInterface $container
-     * @param Session $session
+     * @param Session            $session
      */
     public function __construct(ContainerInterface $container, Session $session)
     {
@@ -74,8 +74,8 @@ class GeolocationService
 
     /**
      * @param array ParcelMachine $parcelMachines
-     * @param float $customerCoordinateX
-     * @param float $customerCoordinateY
+     * @param float               $customerCoordinateX
+     * @param float               $customerCoordinateY
      *
      * @return array ParcelMachine
      */
@@ -130,9 +130,16 @@ class GeolocationService
     {
         $locations = [];
 
-        /** @var ParcelMachine $machine */
+        /**
+ * @var ParcelMachine $machine
+*/
         foreach ($parcelMachines as $machine) {
-            $coordinateLocation = new CoordinateLocation(new Coordinate($machine->getCoordinateY(), $machine->getCoordinateX()));
+            $coordinateLocation = new CoordinateLocation(
+                new Coordinate(
+                    $machine->getCoordinateY(),
+                    $machine->getCoordinateX()
+                )
+            );
             array_push($locations, $coordinateLocation);
         }
 

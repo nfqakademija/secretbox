@@ -37,12 +37,12 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     /**
      * FacebookAuthenticatorService constructor.
      *
-     * @param EntityManager $em
-     * @param ClientRegistry $clientRegistry
-     * @param RouterInterface $router
-     * @param UserService $userService
+     * @param EntityManager            $em
+     * @param ClientRegistry           $clientRegistry
+     * @param RouterInterface          $router
+     * @param UserService              $userService
      * @param EventDispatcherInterface $dispatcher
-     * @param Session $session
+     * @param Session                  $session
      */
     public function __construct(
         EntityManager $em,
@@ -51,7 +51,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
         UserService $userService,
         EventDispatcherInterface $dispatcher,
         Session $session
-        ) {
+    ) {
         $this->em = $em;
         $this->clientRegistry = $clientRegistry;
         $this->router = $router;
@@ -84,7 +84,7 @@ class FacebookAuthenticatorService extends SocialAuthenticator
     }
 
     /**
-     * @param AccessToken $credentials     *
+     * @param AccessToken           $credentials  *
      * @param UserProviderInterface $userProvider
      *
      * @return User|null|object

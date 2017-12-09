@@ -35,7 +35,14 @@ class UserController extends Controller
         $userSecrets = $orderRepo->getUserSecrets($user->getId());
 
         $impression = new Impression();
-        $formImpression = $this->createForm(ImpressionType::class, $impression, ['attr' => ['data-parsley-validate' => ' ']]);
+        $formImpression = $this->createForm(
+            ImpressionType::class,
+            $impression,
+            [
+                'attr' => ['data-parsley-validate' => ' ']
+            ]
+        );
+
         $formAddress = $this->createForm(UserAddressType::class, $user, ['attr' => ['data-parsley-validate' => ' ']]);
         $formImpression->handleRequest($request);
         $formAddress->handleRequest($request);
@@ -58,7 +65,9 @@ class UserController extends Controller
 
         $friendList = $this->get(FacebookInfoService::class)->getUserDataByReference('friends?fields=id,name,picture');
 
-        return $this->render('AppBundle:User:profile.html.twig', [
+        return $this->render(
+            'AppBundle:User:profile.html.twig',
+            [
             'user' => $user,
             'orders' => $userOrders,
             'secrets' => $userSecrets,
@@ -67,7 +76,8 @@ class UserController extends Controller
             'formAddress' => $formAddress->createView(),
             'friends' => $friendList,
             'isUserProfile' => true
-        ]);
+            ]
+        );
     }
 
     /**
@@ -95,10 +105,10 @@ class UserController extends Controller
     public function getUserFriendAction($facebookId)
     {
         $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
-//        $impressionRepo = $this->getDoctrine()->getManager()->getRepository(Impression::class);
+        //        $impressionRepo = $this->getDoctrine()->getManager()->getRepository(Impression::class);
         $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
 
-//        $user = $this->getUser();
+        //        $user = $this->getUser();
 
         $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($facebookId);
         if (!$isMyFriend) {
@@ -111,12 +121,15 @@ class UserController extends Controller
         $userSecrets = $orderRepo->getUserSecrets($user->getId());
         $userImpressions = $user->getImpressions();
 
-        return $this->render('AppBundle:User:profile.html.twig', [
+        return $this->render(
+            'AppBundle:User:profile.html.twig',
+            [
             'orders' => $userOrders,
             'secrets' => $userSecrets,
             'impressions' => $userImpressions,
             'user' => $user,
             'isUserProfile' => false
-        ]);
+            ]
+        );
     }
 }

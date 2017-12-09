@@ -14,6 +14,7 @@ use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class UserLoginEvent
+ *
  * @package AppBundle\Event
  */
 class UserLoginEvent extends Event

@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class FacebookInfoService
+ *
  * @package AppBundle\Service
  */
 class FacebookInfoService
@@ -33,8 +34,8 @@ class FacebookInfoService
      * FacebookInfoService constructor.
      *
      * @param integer $facebook_client_id
-     * @param string $facebook_client_secret
-     * @param string $facebook_graph_api
+     * @param string  $facebook_client_secret
+     * @param string  $facebook_graph_api
      * @param Session $session
      */
     public function __construct(
@@ -42,13 +43,15 @@ class FacebookInfoService
         $facebook_client_secret,
         $facebook_graph_api,
         Session $session
-        ) {
+    ) {
         $this->accessToken = $session->get('facebook_user_access_token');
-        $this->facebook =  new Facebook([
+        $this->facebook =  new Facebook(
+            [
             'app_id' => $facebook_client_id,
             'app_secret' => $facebook_client_secret,
             'default_graph_version' => $facebook_graph_api,
-        ]);
+            ]
+        );
         $this->facebook->setDefaultAccessToken($this->accessToken);
     }
 

@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
  * Class HomeController
  *
  * @Route("/{_locale}", defaults={"_locale": "lt"}, requirements={"_locale" = "%app.locales%"})
- *
  */
 class HomeController extends Controller
 {
@@ -28,9 +27,12 @@ class HomeController extends Controller
     {
         $contentLink = $request->get('content');
 
-        return $this->render('AppBundle:Home:index.html.twig', [
+        return $this->render(
+            'AppBundle:Home:index.html.twig',
+            [
             'contentLink' => $contentLink
-        ]);
+            ]
+        );
     }
 
     /**

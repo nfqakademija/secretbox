@@ -17,13 +17,21 @@ class ImpressionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('impression', TextareaType::class, [
+            ->add(
+                'impression',
+                TextareaType::class,
+                [
                 'label' => false,
-            ])
-            ->add('save', SubmitType::class, [
+                ]
+            )
+            ->add(
+                'save',
+                SubmitType::class,
+                [
                 'label' => 'content.save',
                 'attr' => ['class' => 'btn btn-primary']
-            ]);
+                ]
+            );
     }
     
     /**
@@ -31,9 +39,11 @@ class ImpressionType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => Impression::class,
-        ]);
+            ]
+        );
     }
 
     /**

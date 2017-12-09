@@ -17,13 +17,21 @@ class UserEmailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
+            ->add(
+                'email',
+                EmailType::class,
+                [
                 'label' => 'user.input.your.email'
-            ])
-            ->add('save', SubmitType::class, [
+                ]
+            )
+            ->add(
+                'save',
+                SubmitType::class,
+                [
                 'label' => 'content.save',
                 'attr' => ['class' => 'btn btn-primary']
-            ]);
+                ]
+            );
         ;
     }
     
@@ -32,9 +40,11 @@ class UserEmailType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults(
+            [
             'data_class' => User::class,
-        ]);
+            ]
+        );
     }
 
     /**

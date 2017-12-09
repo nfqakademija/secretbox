@@ -13,7 +13,7 @@ use AppBundle\Entity\Product;
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * @param array $usedProducts
+     * @param array     $usedProducts
      *
      * @param /Datetime $validDate
      *
