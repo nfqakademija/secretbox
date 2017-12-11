@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Impression;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,8 +12,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * Class HomeController
- *
- * @Route("/{_locale}", defaults={"_locale": "lt"}, requirements={"_locale" = "%app.locales%"})
  */
 class HomeController extends Controller
 {
@@ -26,11 +25,13 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
         $contentLink = $request->get('content');
+        $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
         return $this->render(
             'AppBundle:Home:index.html.twig',
             [
-            'contentLink' => $contentLink
+            'contentLink' => $contentLink,
+            'impressions' => $impressions
             ]
         );
     }
@@ -46,11 +47,36 @@ class HomeController extends Controller
     public function orderNowAction(Request $request, Session $session)
     {
         if ($this->getUser()) {
+
             return $this->redirectToRoute('app.order.new');
         } else {
             $session->set('routeFrom', $request->get('_route'));
 
             return $this->redirectToRoute('app.login.facebook');
         }
+    }
+
+    /**
+     * @Route("/changeLocale/{locale}", name="app.change.locale")
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function changeLocaleAction($locale, Request $request)
+    {
+        $request->getSession()->set('_locale', $locale);
+
+        return $this->redirectToRoute('app.homepage');
+    }
+
+    /**
+     * @Route("/test")
+     */
+    public function testAction()
+    {
+        $impression = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
+        var_dump($impression);
+        return new Response('test');
     }
 }

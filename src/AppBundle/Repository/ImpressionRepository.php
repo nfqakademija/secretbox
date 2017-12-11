@@ -5,6 +5,7 @@ namespace AppBundle\Repository;
 use AppBundle\Entity\Impression;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * ImpressionRepository
@@ -42,22 +43,43 @@ class ImpressionRepository extends EntityRepository
      */
     public function getLastImpressions($limit)
     {
-        $queryBuilder = $this->_em->createQueryBuilder();
-        $queryBuilder
-            ->select('i.impression', 'i.createdAt', 'u.firstName', 'u.lastName', 'u.pictureUrl')
-            ->from(Impression::class, 'i')
-            ->innerJoin(
-                User::class,
-                'u',
-                \Doctrine\ORM\Query\Expr\Join::WITH,
-                'i.user = u.id'
-            )
-            ->where('i.isApproved = :isApproved')
-            ->orderBy('i.createdAt', 'DESC')
+
+
+//
+//        $queryBuilder = $this->_em->createQueryBuilder();
+//        $queryBuilder
+//            ->select('i')
+//            ->from(Impression::class, 'i')
+////            ->innerJoin(
+////                User::class,
+////                'u',
+////                \Doctrine\ORM\Query\Expr\Join::WITH,
+////                'i.user = u.id'
+////            )
+//            ->where('i.isApproved = :isApproved')
+//            ->orderBy('i.createdAt', 'DESC')
+//            ->setParameter('isApproved', true)
+//            ->setMaxResults($limit);
+//        $impressions = $queryBuilder->getQuery()->execute();
+
+
+
+        $rsm = new ResultSetMapping();
+        $query = $this->_em->createQuery(
+            "SELECT i.id, i.impression, u.firstName, u.lastName, u.pictureUrl FROM AppBundle:Impression AS i
+                  LEFT JOIN AppBundle:User AS u
+                  WITH i.user = u.id
+                  WHERE i.isApproved = :isApproved
+                  ORDER BY i.createdAt",
+            $rsm
+        );
+        $query
             ->setParameter('isApproved', true)
             ->setMaxResults($limit);
-        $impressions = $queryBuilder->getQuery()->execute();
+        $impressions = $query->getResult();
 
+
+//        $impressions = $this->findBy(['id' => 1701]);
         return $impressions;
     }
 }

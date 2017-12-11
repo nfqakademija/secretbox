@@ -45,7 +45,7 @@ friend.no.impressions: draugas nepasidalino jokiu įspūdžių
 friend.no.completed.orders: draugas neturi atskleitstų paslapčių
 
 
-product.order: pradėti nuotykį
+product.order: pradėti
 
 project.name: secret box
 
@@ -73,6 +73,11 @@ content.impresions: įspūdžiai
 content.change: keisti
 content.unsubscribe: atsisakyti
 content.subscribe: užsakyti
+content.adventure.moments: nuotykių akimirkos
+content.customers.review: klientų atsiliepimai
+content.what.customers.say: ką sako klientai
+
+page.menu: Meniu
 
 #Easy admin bundle:
 action.new: Naujas

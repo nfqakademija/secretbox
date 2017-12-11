@@ -19,8 +19,7 @@ security:
                 path: /logout
 
     access_control:
-        - {path: ^/%locale%/admin, roles: ROLE_ADMIN}
-        - {path: ^/%locale%/user, roles: ROLE_USER}
-        - {path: ^/%locale%/order, roles: ROLE_USER}
-        - {path: ^/%locale%/, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - {path: ^/admin, roles: ROLE_ADMIN}
+        - {path: ^/user, roles: ROLE_USER}
+        - {path: ^/order, roles: ROLE_USER}
         - {path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY}

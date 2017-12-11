@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
  *
  * @package AppBundle\Controller
  *
- * @Route("/{_locale}/order", defaults={"_locale": "lt"}, requirements={"_locale" = "%app.locales%"})
+ * @Route("/order")
  */
 class OrderController extends Controller
 {

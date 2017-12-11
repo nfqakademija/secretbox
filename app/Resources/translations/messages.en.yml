@@ -45,7 +45,7 @@ friend.product.order: begin adventure for your friend
 friend.no.impressions: friend did not share any impression
 friend.no.completed.orders: friend has no revealed secrets
 
-product.order: begin adventure
+product.order: begin
 
 project.name: secret box
 
@@ -74,6 +74,11 @@ content.change: change
 content.unsubscribe: unsubscribe
 content.subscribe: subscribe
 
+content.adventure.moments: adventure moments
+content.customers.review: customers review
+content.what.customers.say: what customers say
+
+page.menu: Menu
 
 #Easy admin bundle
 action.new: New
@@ -81,3 +86,5 @@ action.new: New
 entity.user: Clients
 entity.products: Products | Services
 product.list: Products list
+
+

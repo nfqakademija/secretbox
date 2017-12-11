@@ -9,110 +9,1122 @@
 {% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div id="introCarousel" class="carousel slide col-lg-6" data-ride="carousel" data-interval="6000">
-            <ol class="carousel-indicators">
-                <li data-target="#introCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#introCarousel" data-slide-to="1"></li>
-                <li data-target="#introCarousel" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img class="first-slide" src="{{ asset('images/parallax/1.jpg') }}" alt="First slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <div class="message">
-                                {{ 'intro.first'|trans }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="second-slide" src="{{ asset('images/parallax/2.jpg') }}" alt="Second slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <div class="message">{{ 'intro.second'|trans }}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <img class="third-slide" src="{{ asset('images/parallax/3.jpg') }}" alt="Third slide">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <div class="message">{{ 'intro.third'|trans }}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a class="left carousel-control" href="#introCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#introCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <div style="background-color: white; height: 50vh"></div>
-            <div style="background-color: black; height: 50vh"></div>
-        </div>
-    </div>
+    <div class="page-body">
 
-    <div id="aboutScrollTo" class="scroll-element"></div>
 
-    <div class="row">
-        <div class="col-lg-10 col-sm-12 col-lg-offset-1 content-bg body-about">
-            <div class="about-container" >
-                    <div class="row about-content">
-                        <div id="about1" class="col-lg-3" align="center">
-                            <img src="{{ asset('images/order_box.png') }}" width="140" height="140">
-                            <h2 class="about-heading">{{ 'order.secretbox'|trans }}</h2>
-                            <h4>{{ 'order.begin.first.message'|trans }}</h4>
-                        </div>
-                        <div id="about2" class="col-lg-3 col-lg-offset-1" align="center">
-                            <img class="img-circle" src="{{ asset('images/treasure-map.png') }}" width="140" height="140">
-                            <h2 class="about-heading">Įveikite visas užuominas</h2>
-                            <h4>{{ 'order.begin.second.message'|trans }}</h4>
-                        </div>
-                        <div id="about3" class="col-lg-3 col-lg-offset-1" align="center">
-                            <img class="img-circle" src="{{ asset('images/chest.png') }}" width="140" height="140">
-                            <h2 class="about-heading">Mėgaukitės rezultatu</h2>
-                            <h4>{{ 'order.begin.third.message'|trans }}</h4>
-                        </div>
-                    </div>
-            </div>
-        </div>
-    </div>
+        <!-- Main Content
+        ================================================================ -->
+        <div class="main-content">
+            <!-- Main Content Container -->
+            <div class="main-content-container">
+
+
+                <!-- gfort Section -->
+                <div id="parallax-main" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px" id="section-0">
+                    <!--<div style="position: absolute; width: 100vw; height: 70vh; background-color: blue;">-->
+
+
+
+
+                    <!--</div>-->
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-lg-6 -->
+                                <div class="col-lg-6 col-md-5">
+
+
+                                    <!-- GAP 100px -->
+                                    <div class="gap gap-100 hidden-sm hidden-xs"></div>
+
+
+                                    <!-- Section Title -->
+                                    <div class="section-title intro-section-title light-color text-center">
+
+                                        <h2 class="section-main-title border-text">TAVO ATRADIMAI PRASIDEDA SU <br>SECRET BOX</h2>
+
+                                        <p class="section-subtitle"></p>
+
+                                        {#<div class="hr-divider hr-divider-style-1"></div>#}
+
+                                        {#<div class="section-button">#}
+                                            {#<a href="#section-5" class="btn btn-gfort-o" data-scroll>{{ 'product.order'|trans }}</a>#}
+                                            {#<a href="#section-1" class="btn btn-gfort-o" data-scroll>Daugiau</a>#}
+                                        {#</div>#}
+
+                                    </div><!-- /End Section Title -->
+
+
+                                    <!-- GAP 30px -->
+                                    <div class="gap gap-30"></div>
+
+
+                                </div><!-- /End col-lg-6 -->
+
+
+                                <!-- col-lg-6 -->
+                                <div class="col-lg-6 col-md-7">
+                                    {#<!-- Image Block -->#}
+                                    {#<div class="gfort-block gfort-block-style-6 wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.5s">#}
+                                        {#<!-- gfort Block Container -->#}
+                                        {#<div class="gfort-block-container" style="width: 800px; height: 500px; background-color: rgba(255,255,255,0.5); padding: 20px;">#}
+
+
+                                            {#<!-- gfort Block Head -->#}
+                                            {#<div class="gfort-block-head" >#}
+                                                {#<img src="images/index/app/002.png" alt="Intro Image" style="opacity: 0.5;"/>#}
+
+                                            {#</div><!-- /End gfort Block Head -->#}
+                                            {#<div>Ar tikrai viską paragavai, įsigijai ir aplankei geriausio? Ar tikrai kur ir kaip leidi laiką su draugais yra šauniausia vieta ir pramoga?#}
+                                                {#Mes sakome – tikrai dar ne – ir siūlome leistis į žaismingą atradimų kelionę, kurios pabaigoje – dovana tau, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.#}
+                                            {#</div>#}
+
+                                        {#</div><!-- /End gfort Block Container -->#}
+                                    {#</div><!-- /End Image Block -->#}
+                                    {#<div class="col-md-4">#}
+
+                                        <div class="gfort-block text-block gfort-block-style-1" >
+
+                                            <div class="gfort-block-container" style="background-color: rgba(227,227,227,0.6)">
+
+                                                <div class="gfort-block-body">
+
+                                                    {#<div class="gfort-block-title">#}
+                                                        {#<h2>Mūsų tikslas</h2>#}
+                                                    {#</div>#}
+
+                                                    <div class="gfort-block-content">
+                                                        <h4>
+                                                            <span class="accent">Ar</span> tikrai viską <span class="accent">paragavai</span>, <span class="accent">įsigijai</span> ir <span class="accent">aplankei</span> geriausio?
+                                                        </h4>
+                                                        <h4>
+                                                            Ar tikrai kur leidi laiką su draugais yra šauniausia vieta ir pramogad  ?
+                                                        </h4>
+                                                        <h4>
+                                                            Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.
+                                                        </h4>
+
+                                                        {#<div class="gfort-block-btn">#}
+                                                            {#<a href="#section-1" class="btn btn-gfort btn-gfort-md" data-scroll>Daugiau</a>#}
+                                                        {#</div>#}
+                                                        <div class="section-button">
+                                                            <a href="#section-5" class="btn btn-gfort-o" data-scroll>{{ 'product.order'|trans }}</a>
+                                                            <a href="#section-1" class="btn btn-gfort-o" data-scroll>Daugiau</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {#</div>#}
+                                </div><!-- /End col-lg-6 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section" id="section-1">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Section Title -->
+                                    <div class="section-title text-center">
+
+                                        <h2 class="section-main-title">APIE</h2>
+
+                                        <p class="section-subtitle">
+                                            “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo Tau ir Tavo draugams.
+                                            Kas slepiasi projekte „Secret box“? – tai mūsų kartu su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių, nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
+                                        </p>
+
+                                        <div class="hr-divider hr-divider-style-1"></div>
+
+                                    </div><!-- /End Section Title -->
+                                </div><!-- /End col-md-12 -->
+
+
+                                {#<!-- col-md-8 -->#}
+                                {#<div class="col-md-8 col-md-offset-2">#}
+                                    {#<!-- Multimedia Block -->#}
+                                    {#<div class="gfort-block multimedia-block">#}
+                                        {#<!-- gfort Block Container -->#}
+                                        {#<div class="gfort-block-container">#}
+
+
+                                            {#<!-- gfort Block Head -->#}
+                                            {#<div class="gfort-block-head">#}
+                                                {#<iframe src="https://player.vimeo.com/video/47505825?color=2791d8&title=0&byline=0&portrait=0" allowfullscreen></iframe>#}
+                                            {#</div><!-- /End gfort Block Head -->#}
+
+
+                                        {#</div><!-- /End gfort Block Container -->#}
+                                    {#</div><!-- /End Multimedia Block -->#}
+                                {#</div><!-- /End col-md-8 -->#}
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- GAP 30px -->
+                                    <div class="gap gap-30"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-4 -->
+                                <div class="col-md-3">
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-desktop"></i>
+                                                <i class="fa fa-desktop"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>Registracija ir užsakymas</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+                                                    <p>
+                                                        Užsiregistruok naudodamas savo FB paskyrą, pasirink vieną iš trijų „Secret box“ verčių ir pasirinkęs pristatymo adresą įvykdyk mokėjimą.
+                                                    </p>
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+                                </div><!-- /End col-md-4 -->
+
+
+                                <!-- col-md-4 -->
+                                <div class="col-md-3">
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-code"></i>
+                                                <i class="fa fa-code"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>Tavo "Secret box"</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+
+                                                    <p>
+                                                        Gauk „Secret box“ pagal pasirinktą pristatymo adresą ir radęs viduje užuominą, pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką sužinosi „kas ir kur tai?“.
+                                                    </p>
+
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+                                </div><!-- /End col-md-4 -->
+
+
+                                <!-- col-md-4 -->
+                                <div class="col-md-3">
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-cog"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>Tavo paskyra</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+
+                                                    <p>
+                                                        Savo paskyroje gali matyti konkrečios „Secret box“ statusą, likusį laiką atskleisti paslapčiai ir draugų, kuriems dobanojai „Secret box“ progresą iki paslapties atskleidimo.
+                                                    </p>
+
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+                                </div><!-- /End col-md-4 -->
+
+                                <!-- col-md-4 -->
+                                <div class="col-md-3">
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-cog"></i>
+                                                <i class="fa fa-cog"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>Dalinkis įspūdžiais</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+
+                                                    <p>
+                                                        Mums ir visiems, dalyvaujantiems „Secret box“ atradimuose, svarbūs Tavo atradimų akimirkos ir atsiliepimai – dalinkis džaugsmo akimirkų nuotraukomis ir komentuok, patark, siūlyk.
+                                                    </p>
+
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+                                </div><!-- /End col-md-4 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section pt-0 pb-0">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-6 -->
+                                <div class="col-md-6">
+
+
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-1">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-font-awesome"></i>
+                                                <i class="fa fa-font-awesome"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>FONT AWESOME ICONS</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+                                                    <p>In neque enim, congue ac mattis sed, ultricies pretium leo. Fusce el, nulla lobortis interdum tincidunt, purus el semper, vitae orci lectus id velit sollicitudin.</p>
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+
+
+                                    <!-- GAP 10px -->
+                                    <div class="gap gap-10"></div>
+
+
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-1">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-flash"></i>
+                                                <i class="fa fa-flash"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>FANCYBOX</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+                                                    <p>Mauris ultrices nisl in diam fermentum, id venenatis odio egestas. Sed et odio id libero pulvinar pretium vel at libero. Donec tempor placerat elit, vel lobortis nunc pellentesque in pellentesque sit amet erat.</p>
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+
+
+                                    <!-- GAP 10px -->
+                                    <div class="gap gap-10"></div>
+
+
+                                    <!-- Icon Block -->
+                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-1">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <i class="fa fa-filter"></i>
+                                                <i class="fa fa-filter"></i>
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Title -->
+                                                <div class="gfort-block-title">
+                                                    <h4>ISOTOPE FILTER</h4>
+                                                </div><!-- /End gfort Block Title -->
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+                                                    <p>Etiam porta quam at dictum laoreet. Donec vel sit massa sagittis egestas. Curabitur eget urna tortor. Pellentesque bibendum tortor eu leo mattis, accumsan.</p>
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Icon Block -->
+
+
+                                    <!-- GAP 10px -->
+                                    <div class="gap gap-10"></div>
+
+
+                                    <!-- Button Block -->
+                                    <div class="gfort-block btn-block">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-001.jpg" alt="APP Store" />
+                                                    </a>
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-002.jpg" alt="Play Store" />
+                                                    </a>
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-003.jpg" alt="Windows Store" />
+                                                    </a>
+
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Button Block -->
+
+
+                                </div><!-- /End col-md-6 -->
+
+
+                                <!-- col-md-6 -->
+                                <div class="col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                                    <!-- Image Block -->
+                                    <div class="gfort-block image-block gfort-block-style-6 wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.25s">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <img src="images/index/app/003.png" alt="APP Image" />
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Image Block -->
+                                </div><!-- /End col-md-6 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section pt-0 pb-0">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-6 -->
+                                <div class="col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1">
+                                    <!-- Image Block -->
+                                    <div class="gfort-block image-block gfort-block-style-6 wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.25s">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <img src="images/index/app/004.png" alt="APP Image" />
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Image Block -->
+                                </div><!-- /End col-md-6 -->
+
+
+                                <!-- col-md-6 -->
+                                <div class="col-md-6">
+
+
+                                    <!-- gfort Accordion -->
+                                    <div class="gfort-accordion">
+                                        <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+
+
+                                            <!-- Panel 1 -->
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading" role="tab" id="heading1">
+                                                    <h4 class="panel-title">
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse1" aria-expanded="true" aria-controls="collapse1">WORKING AJAX FORM</a>
+                                                    </h4>
+                                                </div>
+
+                                                <div id="collapse1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading1">
+                                                    <div class="panel-body">
+
+                                                        <p>Efficiently enable enabled sources and cost effective products. Quickly maximize timely deliverables for real time schemas. Competently parallel task fully researched data and enterprise process improvements.</p>
+
+                                                        <p>Maecenas dictum, enim in vulputate mattis, nibh quam nulla, vitae rutrum ligula felis et quam. Suspendisse vehicula egestas purus sed sollicitudin.</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div><!-- /End Panel 1 -->
+
+
+                                            <!-- Panel 2 -->
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading" role="tab" id="heading2">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse2" aria-expanded="false" aria-controls="collapse2">MAILCHIMP NEWSLETTER</a>
+                                                    </h4>
+                                                </div>
+
+                                                <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
+                                                    <div class="panel-body">
+
+                                                        <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</p>
+
+                                                        <p>Curabitur porta pellentesque massa, et sodales nisl lacinia vitae. Cras a aliquam lacus, id blandit metus. Pellentesque faucibus orci lorem, vel aliquet nulla tempus sed.</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div><!-- /End Panel 2 -->
+
+
+                                            <!-- Panel 3 -->
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading" role="tab" id="heading3">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse3" aria-expanded="false" aria-controls="collapse3">TWITTER FEED</a>
+                                                    </h4>
+                                                </div>
+
+                                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
+                                                    <div class="panel-body">
+
+                                                        <p>Override the digital divide with additional clickthroughs from DevOps. Leverage agile frameworks to provide a robust synopsis for high level overviews. Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.</p>
+
+                                                        <p>Morbi lectus elit, lacinia eget odio id, fermentum placerat velit. Sed faucibus congue nunc vitae porttitor. Integer auctor felis justo, vitae ullamcorper leo cursus in.</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div><!-- /End Panel 3 -->
+
+                                        </div>
+                                    </div><!-- /End gfort Accordion -->
+
+
+                                    <!-- Button Block -->
+                                    <div class="gfort-block btn-block">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Body -->
+                                            <div class="gfort-block-body">
+
+
+                                                <!-- gfort Block Content -->
+                                                <div class="gfort-block-content">
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-001.jpg" alt="APP Store" />
+                                                    </a>
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-002.jpg" alt="Play Store" />
+                                                    </a>
+
+                                                    <a href="#" class="btn-image">
+                                                        <img src="images/download-buttons/download-buttons-003.jpg" alt="Windows Store" />
+                                                    </a>
+
+                                                </div><!-- /End gfort Block Content -->
+
+
+                                            </div><!-- /End gfort Block Body -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Button Block -->
+
+
+                                </div><!-- /End col-md-6 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                {#<div class="gfort-section parallax-section" style="background-image: url(images/index/app/001.jpg);" id="section-2">#}
+                    {#<!-- Section Container -->#}
+                    {#<div class="section-container">#}
+                        {#<!-- container -->#}
+                        {#<div class="container">#}
+                            {#<!-- row -->#}
+                            {#<div class="row">#}
+
+
+                                {#<!-- col-md-12 -->#}
+                                {#<div class="col-md-12">#}
+                                    {#<!-- Section Title -->#}
+                                    {#<div class="section-title text-center light-color">#}
+
+                                        {#<h2 class="section-main-title">SUBSCRIBE NOW AND STAY INFORMED</h2>#}
+
+                                        {#<div class="hr-divider hr-divider-style-1"></div>#}
+
+                                    {#</div><!-- /End Section Title -->#}
+                                {#</div><!-- /End col-md-12 -->#}
+
+
+                                {#<!-- col-md-8 col-md-offset-2 -->#}
+                                {#<div class="col-md-8 col-md-offset-2">#}
+                                    {#<!-- Subscribe Form Block (Mailchimp) -->#}
+                                    {#<div class="form-block subscribe-form-block mailchimp-form-block light-color" data-form-url="//Graphicfort.us11.list-manage.com/subscribe/post?u=dffe9a5d2b472dbe0cc471e1b&amp;id=4150cd2f12">#}
+                                        {#<!-- Form Block Container -->#}
+                                        {#<div class="form-block-container">#}
+                                            {#<!-- Form -->#}
+                                            {#<form method="post" action="#">#}
+
+
+                                                {#<!-- Email Address -->#}
+                                                {#<div class="col-md-12">#}
+                                                    {#<!-- Form Group -->#}
+                                                    {#<div class="form-group">#}
+
+                                                        {#<label>Email Address</label>#}
+                                                        {#<input type="email" class="form-control subscribe-email" name="EMAIL">#}
+
+                                                    {#</div><!-- /End Form Group -->#}
+                                                {#</div><!-- /End Email Address -->#}
+
+
+                                                {#<!-- Submit Button -->#}
+                                                {#<div class="col-md-12">#}
+                                                    {#<!-- Form Group -->#}
+                                                    {#<div class="form-group">#}
+
+                                                        {#<button type="submit" class="btn btn-gfort-o">SUBSCRIBE</button>#}
+
+                                                    {#</div><!-- /End Form Group -->#}
+                                                {#</div><!-- /End Submit Button -->#}
+
+
+                                            {#</form><!-- /End Form -->#}
+                                        {#</div><!-- /End Form Block Container -->#}
+                                    {#</div><!-- /End Subscribe Form Block (Mailchimp) -->#}
+                                {#</div><!-- /End col-md-8 col-md-offset-2 -->#}
+
+
+                            {#</div><!-- /End row -->#}
+                        {#</div><!-- /End container -->#}
+                    {#</div><!-- /End Section Container -->#}
+                {#</div><!-- /End gfort Section -->#}
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section" id="section-3">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Section Title -->
+                                    <div class="section-title text-center">
+
+                                        <h2 class="section-main-title">{{ 'content.adventure.moments'|trans|upper }}</h2>
+
+                                        <p class="section-subtitle">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</p>
+
+                                        <div class="hr-divider hr-divider-style-1"></div>
+
+                                    </div><!-- /End Section Title -->
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Gallery items Wrapper -->
+                                    <div class="gallery-items-wrapper gallery-col-4 gallery-gap-30 isotope-masonry">
+
+
+                                        <!-- Gallery item -->
+                                        <div class="gallery-item isotope-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.25s">
+                                            <a href="{{ asset('images/galery/1.jpg') }}" class="scale-hover overlay-hover-2x" data-gfort-lightbox data-gfort-lightbox-group="gallery-1" title="APP Screenshot">
+                                                <img src="{{ asset('images/galery/1.jpg') }}" alt="APP Screenshot" />
+                                            </a>
+                                        </div><!-- /End Gallery item -->
+
+
+                                        <!-- Gallery item -->
+                                        <div class="gallery-item isotope-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                                            <a href="{{ asset('images/galery/2.jpg') }}" class="scale-hover overlay-hover-2x" data-gfort-lightbox data-gfort-lightbox-group="gallery-1" title="APP Screenshot">
+                                                <img src="{{ asset('images/galery/2.jpg') }}" alt="APP Screenshot" />
+                                            </a>
+                                        </div><!-- /End Gallery item -->
+
+
+                                        <!-- Gallery item -->
+                                        <div class="gallery-item isotope-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.75s">
+                                            <a href="{{ asset('images/galery/3.jpg') }}" class="scale-hover overlay-hover-2x" data-gfort-lightbox data-gfort-lightbox-group="gallery-1" title="APP Screenshot">
+                                                <img src="{{ asset('images/galery/3.jpg') }}" alt="APP Screenshot" />
+                                            </a>
+                                        </div><!-- /End Gallery item -->
+
+
+                                        <!-- Gallery item -->
+                                        <div class="gallery-item isotope-item wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="1s">
+                                            <a href="{{ asset('images/galery/4.jpg') }}" class="scale-hover overlay-hover-2x" data-gfort-lightbox data-gfort-lightbox-group="gallery-1" title="APP Screenshot">
+                                                <img src="{{ asset('images/galery/4.jpg') }}" alt="APP Screenshot" />
+                                            </a>
+                                        </div><!-- /End Gallery item -->
+
+
+                                    </div><!-- /End Gallery items Wrapper -->
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section pt-0 pb-0">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section" id="section-4">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Section Title -->
+                                    <div class="section-title text-center">
+
+                                        <h2 class="section-main-title">{{ 'content.what.customers.say'|trans|upper }}</h2>
+
+                                        <p class="section-subtitle">Capitalise on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps.</p>
+
+                                        <div class="hr-divider hr-divider-style-1"></div>
+
+                                    </div><!-- /End Section Title -->
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- gfort owl Slider -->
+                                    <div class="gfort-owl-slider owl-carousel owl-theme" data-slider-items="1" data-slider-arrows="true" data-slider-arrows-type="arrow" data-slider-dots="true" data-slider-autoplay="true">
+
+
+                                        {% for impression in impressions %}
+                                            <div class="gfort-owl-slider-item">
+                                                <div class="testimonials-item testimonials-item-style-2">
+                                                    <div class="testimonials-item-container">
+                                                        <div class="testimonials-item-body">
+                                                            <p>{{ impression.impression }}</p>
+                                                        </div>
+                                                        <div class="testimonials-item-footer">
+                                                            <div class="testimonials-item-avatar">
+                                                                <img src="{{ asset(impression.pictureUrl) }}" alt="Client Avatar" />
+                                                            </div>
+                                                            <div class="testimonials-item-meta">
+                                                                <div class="testimonials-item-meta-container">
+                                                                    <h5 class="testimonials-item-name">{{ impression.firstName }} {{ impression.lastName }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+
+
+
+
+                                    </div><!-- /End gfort owl Slider -->
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section pt-0 pb-0">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+                <!-- gfort Section -->
+                <div class="gfort-section pb-0" id="section-5">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Section Title -->
+                                    <div class="section-title text-center">
+
+                                        <h2 class="section-main-title">BEGIN YOU ADVENTURE NOW</h2>
+
+                                        <div class="hr-divider hr-divider-style-1"></div>
+
+                                    </div><!-- /End Section Title -->
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                {#<div class="col-md-12">#}
+                                    {#<!-- Button Block -->#}
+                                    {#<div class="gfort-block btn-block text-center">#}
+                                        {#<!-- gfort Block Container -->#}
+                                        {#<div class="gfort-block-container">#}
+
+
+                                            {#<!-- gfort Block Body -->#}
+                                            {#<div class="gfort-block-body">#}
+
+
+                                                {#<!-- gfort Block Content -->#}
+                                                {#<div class="gfort-block-content">#}
+
+                                                    {#<a href="#" class="btn-image">#}
+                                                        {#<img src="images/download-buttons/download-buttons-001.jpg" alt="APP Store" />#}
+                                                    {#</a>#}
+
+                                                    {#<a href="#" class="btn-image">#}
+                                                        {#<img src="images/download-buttons/download-buttons-002.jpg" alt="Play Store" />#}
+                                                    {#</a>#}
+
+                                                    {#<a href="#" class="btn-image">#}
+                                                        {#<img src="images/download-buttons/download-buttons-003.jpg" alt="Windows Store" />#}
+                                                    {#</a>#}
+
+                                                {#</div><!-- /End gfort Block Content -->#}
+
+
+                                            {#</div><!-- /End gfort Block Body -->#}
+
+
+                                        {#</div><!-- /End gfort Block Container -->#}
+                                    {#</div><!-- /End Button Block -->#}
+                                {#</div><!-- /End col-md-12 -->#}
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- GAP 30px -->
+                                    <div class="gap gap-30"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Image Block -->
+                                    <div class="gfort-block image-block gfort-block-style-6 mb-0 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">
+                                        <!-- gfort Block Container -->
+                                        <div class="gfort-block-container">
+
+
+                                            <!-- gfort Block Head -->
+                                            <div class="gfort-block-head">
+                                                <img src="images/index/app/009.png" alt="Intro Image">
+                                            </div><!-- /End gfort Block Head -->
+
+
+                                        </div><!-- /End gfort Block Container -->
+                                    </div><!-- /End Image Block -->
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
+
+            </div><!-- /End Main Content Container -->
+        </div><!-- /End Main Content -->
+
+
+    </div><!-- /End Page Body -->
+
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $("#menu-button-about").click(function() {
-            goToElement("#aboutScrollTo");
+    <script type="text/javascript">
+        var pictureNo = 1;
+
+        $(document).ready(function() {
+
+            setTimeout(changeParallaxBackground, 5000);
+
         });
 
-        $(document).ready(function () {
-            var contentLink = '{{ contentLink|raw }}';
-            if(contentLink){
-                goToElement("#aboutScrollTo");
+        function changeParallaxBackground()
+        {
+            pictureNo++;
+            if(pictureNo > 3){
+                pictureNo = 1;
             }
-        });
 
-        function goToElement(element) {
-            $('html, body').animate({
-                scrollTop: $(element).offset().top
-            }, 500);
-            var about1 = $("#about1");
-            var about2 = $("#about2");
-            var about3 = $("#about3");
-            about1.fadeOut(1);
-            about2.fadeOut(1);
-            about3.fadeOut(1);
-            about1.fadeIn(2500);
-            about2.fadeIn(3500);
-            about3.fadeIn(5000);
+            $("#parallax-main").css('background-image', 'url({{ asset('images/parallax/') }}' + pictureNo + '.jpg)');
+            setTimeout(changeParallaxBackground, 9000);
         }
+
     </script>
 {% endblock %}
