@@ -98,10 +98,9 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js/pasleyjs-locale'));
 
-    gulp.src(dir.assets + 'scripts/plugins/wow/*')
-        // .pipe(concat('wow.js'))
-        // .pipe(uglify())
-        .pipe(gulp.dest(dir.dist + 'js/plugins/wow'));
+    //copy all plugins
+    gulp.src(dir.assets + 'scripts/plugins/**')
+        .pipe(gulp.dest(dir.dist + 'js/plugins'));
 
     gulp.src(dir.assets + 'scripts/template-scripts.js')
         .pipe(concat('template-scripts.js'))
