@@ -18,14 +18,29 @@ gulp.task('sass', function() {
         dir.assets + 'style/languages.scss',
         dir.npm + 'flipclock/compiled/flipclock.css',
         dir.npm + 'font-awesome/css/font-awesome.css',
+        dir.assets + 'style/vendor/animate/animate.css',
+        dir.npm + 'animsition/dist/css/animsition.css',
+        dir.npm + 'chosen-js/chosen.css',
+        dir.npm + 'fancybox/dist/css/jquery.fancybox.css',
+        dir.npm + 'owl.carousel/dist/assets/owl.carousel.css',
+        dir.npm + 'owl.carousel/dist/assets/owl.theme.default.css',
         dir.assets + 'style/user-profile.scss',
         dir.assets + 'style/main.scss',
         dir.assets + 'style/menu.scss',
         dir.assets + 'style/order.scss'
-        ])
+    ])
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(concat('style.css'))
         .pipe(gulp.dest(dir.dist + 'css'));
+
+    gulp.src([
+        dir.assets + 'style/template/template-style.css',
+        dir.assets + 'style/template/responsive.css'
+    ])
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(concat('template-style.css'))
+        .pipe(gulp.dest(dir.dist + 'css'));
+
 });
 
 gulp.task('admin-sass', function () {
@@ -48,7 +63,25 @@ gulp.task('scripts', function() {
             dir.npm + 'parsleyjs/dist/parsley.js',
             // dir.npm + 'typed.js/lib/typed.js',
             dir.npm + 'flipclock/compiled/flipclock.js',
+            dir.npm + 'animsition/dist/js/animsition.js',
+            dir.npm + 'chosen-js/chosen.jquery.js',
+            dir.npm + 'js-cookie/src/js.cookie.js',
+            dir.npm + 'jquery-countto/jquery.countTo.js',
+            dir.npm + 'fancybox/dist/js/jquery.fancybox.pack.js',
+            dir.npm + 'fancybox/dist/helpers/js/jquery.fancybox-media.js',
+            dir.npm + 'isotope-layout/dist/isotope.pkgd.js',
+            dir.npm + 'jquery-match-height/dist/jquery.matchHeight.js',
+            dir.npm + 'owl.carousel/dist/owl.carousel.js',
+            dir.npm + 'jquery.scrollto/jquery.scrollTo.js',
+            dir.npm + 'jquery-validation/dist/jquery.validate.js',
+            dir.npm + 'waypoints/lib/jquery.waypoints.js',
+            dir.npm + 'waypoints/lib/shortcuts/sticky.js',
+            //plugins
+            dir.assets + 'scripts/plugins/downCount/jquery.downCount.js',
+            dir.assets + 'scripts/plugins/pace/pace.min.js',
+
             // Main JS file
+
             dir.assets + 'scripts/main.js'
         ])
         .pipe(concat('script.js'))
@@ -64,6 +97,21 @@ gulp.task('scripts', function() {
         .pipe(concat('en.js'))
         .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js/pasleyjs-locale'));
+
+    gulp.src(dir.assets + 'scripts/plugins/wow/*')
+        // .pipe(concat('wow.js'))
+        // .pipe(uglify())
+        .pipe(gulp.dest(dir.dist + 'js/plugins/wow'));
+
+    gulp.src(dir.assets + 'scripts/template-scripts.js')
+        .pipe(concat('template-scripts.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(dir.dist + 'js/'));
+
+    gulp.src(dir.assets + 'scripts/modernizr-custom.js')
+        .pipe(concat('modernizr-custom.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(dir.dist + 'js/'));
 
 });
 
@@ -92,4 +140,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images', 'watch']);
+gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images']);

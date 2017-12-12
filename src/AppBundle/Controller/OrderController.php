@@ -178,4 +178,14 @@ class OrderController extends Controller
             200
         );
     }
+
+    /**
+     * @Route("/payment", name="app.order.payment")
+     *
+     * @return Response
+     */
+    public function paymentAction()
+    {
+        return $this->render('@App/Order/payment.html.twig');
+    }
 }

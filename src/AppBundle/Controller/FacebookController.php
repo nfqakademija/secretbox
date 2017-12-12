@@ -14,6 +14,9 @@ class FacebookController extends Controller
      */
     public function connectAction()
     {
+//        $session->set('routeFrom', $request->get('_route'));
+////        $session->set('pageSection', $pageSection);
+
         return $this->get('oauth2.registry')
             ->getClient('facebook_main')
             ->redirect();

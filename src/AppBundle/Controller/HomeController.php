@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Impression;
+use AppBundle\Service\GeolocationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,16 +23,25 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, Session $session)
     {
         $contentLink = $request->get('content');
+        if(!$contentLink){
+            $contentLink = $session->get('content');
+        }
+        $session->set('content', '');
+
+        $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($request->getLocale());
+
+//        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
         return $this->render(
             'AppBundle:Home:index.html.twig',
             [
             'contentLink' => $contentLink,
-            'impressions' => $impressions
+            'impressions' => $impressions,
+            'parcelMachines' => $parcelMachines,
             ]
         );
     }
@@ -46,14 +56,19 @@ class HomeController extends Controller
      */
     public function orderNowAction(Request $request, Session $session)
     {
-        if ($this->getUser()) {
+        $session->set('content', $request->get('content'));
+//        var_dump($content);die;
 
-            return $this->redirectToRoute('app.order.new');
-        } else {
-            $session->set('routeFrom', $request->get('_route'));
+        return $this->redirectToRoute('app.login.facebook');
 
-            return $this->redirectToRoute('app.login.facebook');
-        }
+//        if ($this->getUser()) {
+//
+//            return $this->redirectToRoute('app.order.new');
+//        } else {
+//            $session->set('routeFrom', $request->get('_route'));
+//
+//            return $this->redirectToRoute('app.login.facebook');
+//        }
     }
 
     /**
@@ -80,3 +95,4 @@ class HomeController extends Controller
         return new Response('test');
     }
 }
+//todo acc prisijungus rodo ne emaila

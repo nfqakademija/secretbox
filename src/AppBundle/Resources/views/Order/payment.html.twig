@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>PAYMENT PROCCESSING...</title>
+    </head>
+    <body style="text-align: center; background-color: rgb(227,227,227)">
+        <div id="payment-status" style="color: green; font-size: x-large; font-weight: 700;">
+            <img style="width: 200px;" src="{{ asset('images/payment/processing.webp') }}">
+        </div>
+        <div id="message" style="display: none;">
+            <h3>You will be redirected in <span id="countDown">5</span> seconds!</h3>
+        </div>
+
+    <script language="JavaScript">
+        setTimeout(function () {
+            document.getElementById("payment-status").innerHTML = "<h1>PAYMENT COMPLETED</h1>";
+            document.getElementById("message").style.display = "block";
+            var count = 5;
+            setInterval(function(){
+                count--;
+                document.getElementById('countDown').innerHTML = count;
+                if (count < 1) {
+                    window.location = '{{ path('app.homepage') }}';
+                }
+            },1000);
+        }, 5000)
+    </script>
+    </body>
+</html>

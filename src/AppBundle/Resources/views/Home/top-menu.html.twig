@@ -21,7 +21,7 @@
 
                                 <!-- Navbar Header / Logo -->
                                 <div class="navbar-header">
-                                    <a href="#top-page" class="navbar-brand" title="SECRET BOX">
+                                    <a href="{{ path('app.homepage') }}" class="navbar-brand" title="SECRET BOX">
                                         <span class="secretbox-logo">SECRET BOX</span>
                                     </a>
                                     <ul class="header-btns">
@@ -67,7 +67,7 @@
                                         </li>
 
                                         <li>
-                                            <a href="#">{{ 'content.impresions'|trans }}</a>
+                                            <a class="noclick" >{{ 'content.impresions'|trans }}</a>
                                             <ul class="submenu">
                                                 <li>
                                                     <a href="#section-3" data-scroll>{{ 'content.adventure.moments'|trans }}</a>
@@ -82,15 +82,13 @@
 
 
                                         <li class="btn-header-menu">
-                                            <a href="#section-5" data-scroll>{{ 'product.order'|trans }}</a>
+                                            <a href="#begin-adventure" data-scroll>{{ 'product.order'|trans }}</a>
                                         </li>
 
 
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                         <li>
-                                            <a href="#" class="fa-login" style="padding: 10px 0;">
-                                                {#<i class="fa fa-facebook-square"></i>#}
-                                                {#Me#}
+                                            <a href="#" class="fa-login noclick" style="padding: 10px 0;">
                                                 <img class="img-circle" style="width: 60px; " src="{{ asset(app.user.pictureUrl) }}"/>
                                             </a>
                                             <ul class="submenu" style="padding: 10px;">
