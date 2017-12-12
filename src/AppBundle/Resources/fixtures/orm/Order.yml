@@ -16,5 +16,5 @@ AppBundle\Entity\Order:
         sellingPrice: '$price'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'
-        parcelMachineDeliveryAddress: '<lt_LT:address()>'
+#        parcelMachineDeliveryAddress: '<lt_LT:address()>'
         deliveryType: '<randomElement($deliveryTypes)>'

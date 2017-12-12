@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Impression;
+use AppBundle\Entity\Order;
+use AppBundle\Form\OrderType;
 use AppBundle\Service\GeolocationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -33,8 +35,21 @@ class HomeController extends Controller
 
         $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($request->getLocale());
 
+        $parcelMachineNames = $this->get(GeolocationService::class)->getOnlyNames($request->getLocale());
+
 //        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
+
+//        $order = new Order();
+//        $orderForm = $this->createForm(
+//            OrderType::class,
+//            $order,
+//            [
+//                'attr' => ['data-parsley-validate' => ' '],
+//                'parcelMachines' => $parcelMachineNames,
+//            ]
+//        );
+
 
         return $this->render(
             'AppBundle:Home:index.html.twig',
@@ -42,6 +57,7 @@ class HomeController extends Controller
             'contentLink' => $contentLink,
             'impressions' => $impressions,
             'parcelMachines' => $parcelMachines,
+//            'orderForm' => $orderForm->createView()
             ]
         );
     }

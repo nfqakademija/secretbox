@@ -95,6 +95,13 @@ class User implements UserInterface
     private $address;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_no", type="string", length=15)
+     */
+    private $phoneNo;
+
+    /**
      * @ORM\Column(name="newsletter", type="boolean", options={"default": false})
      */
     private $newsletter;
@@ -123,6 +130,7 @@ class User implements UserInterface
         ];
         $this->newsletter = false;
         $this->address = "";
+        $this->phoneNo = "";
         $this->impressions = new ArrayCollection();
         $this->orders = new ArrayCollection();
     }
@@ -320,6 +328,27 @@ class User implements UserInterface
         $this->address = $address;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNo()
+    {
+        return $this->phoneNo;
+    }
+
+    /**
+     * @param string $phoneNo
+     *
+     * @return User
+     */
+    public function setPhoneNo($phoneNo)
+    {
+        $this->phoneNo = $phoneNo;
+        return $this;
+    }
+
+
 
     /**
      * @return boolean

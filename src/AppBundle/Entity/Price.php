@@ -37,6 +37,11 @@ class Price
     private $vatRate;
 
     /**
+     * @ORM\Column(name="box_size", type="enum_price_box_size")
+     */
+    private $boxSize;
+
+    /**
      * @ORM\Column(name="valid_from", type="datetime")
      */
     private $validFrom;
@@ -101,7 +106,28 @@ class Price
     }
 
     /**
-     * @return mixed
+     * @return string
+     */
+    public function getBoxSize()
+    {
+        return $this->boxSize;
+    }
+
+    /**
+     * @param string $boxSize
+     *
+     * @return Price
+     */
+    public function setBoxSize($boxSize)
+    {
+        $this->boxSize = $boxSize;
+        return $this;
+    }
+
+
+
+    /**
+     * @return \DateTime
      */
     public function getValidFrom()
     {
@@ -109,10 +135,14 @@ class Price
     }
 
     /**
-     * @param mixed $validFrom
+     * @param \DateTime $validFrom
+     *
+     * @return Price
      */
     public function setValidFrom($validFrom)
     {
         $this->validFrom = $validFrom;
+
+        return $this;
     }
 }

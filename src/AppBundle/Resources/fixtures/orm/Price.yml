@@ -1,5 +1,22 @@
+parameters:
+    boxSizes:
+        - 'small'
+        - 'medium'
+        - 'big'
+
 AppBundle\Entity\Price:
-    price:
+    priceSmall{1..3}:
         price: '19.99'
         vatRate: '0.21'
         validFrom: '<dateTimeBetween("-5 years", "-3 years")>'
+        boxSize: 'small'
+    priceMedium{1..3}:
+        price: '39.99'
+        vatRate: '0.21'
+        validFrom: '<dateTimeBetween("-5 years", "-3 years")>'
+        boxSize: 'medium'
+    priceBig{1..3}:
+        price: '49.99'
+        vatRate: '0.21'
+        validFrom: '<dateTimeBetween("-5 years", "-3 years")>'
+        boxSize: 'big'

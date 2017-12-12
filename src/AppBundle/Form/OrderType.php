@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Order;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,11 +17,9 @@ class OrderType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        //        var_dump($options['parcelMachines']);die;
         $builder
-        //            ->add('deliveryAddress', TextareaType::class, ['label' => 'order.delivery.address'])
             ->add(
-                'parcelMachineDeliveryAddress',
+                'deliveryAddress',
                 ChoiceType::class,
                 [
                 //                todo padaryt translationus
@@ -30,6 +29,19 @@ class OrderType extends AbstractType
                 ]
             )
             ->add('deliveryAddress', TextType::class, ['label' => 'kurjeris pristatys nurodytu adresu'])
+            ->add('deliveryType', ChoiceType::class, [
+                'choices' => [
+                    '0' => 'home',
+                    '1' => 'parcel_machine',
+                    'choices_as_values' => true,'multiple'=>false,'expanded'=>true
+                ]
+
+
+
+            ])
+
+
+
             ->add(
                 'save',
                 SubmitType::class,
@@ -45,9 +57,9 @@ class OrderType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        //        $resolver->setDefaults([
-        //            'data_class' => Order::class,
-        //        ]);
+//                $resolver->setDefaults([
+//                    'data_class' => Order::class,
+//                ]);
         $resolver
             ->setDefault('parcelMachines', null)
             ->setRequired('parcelMachines')

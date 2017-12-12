@@ -1182,9 +1182,12 @@
 
         var paymentTypeSelected = false;
 
+//    todo: jeigu pazymi parcel masine ir nepasirenki pastomato, raudonai pazymi pastomato pasirinkimo selection
+//    todo kai paspaudi apmoketi, turi kazkoks divas islyst, kad palaukite ar pan
+
 
         $("#btn-payment-type").on('click', function () {
-            if ($("#select-parcelMachine").val() || ($("[name='deliveryType']:checked").val() == 0)){
+            if ($("#select-parcelMachine").val() || ($("[name='deliveryType']:checked").val() == "home")){
                 $(this).addClass('disabled');
                 animateEffect($("#order-address"), "fadeOutLeft");
                 animateEffect($("#payment-type"), "fadeInRight");

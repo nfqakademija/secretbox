@@ -59,6 +59,7 @@ doctrine:
             enum_gender: AppBundle\DBAL\EnumGenderType
             enum_order_status: AppBundle\DBAL\EnumOrderStatusType
             enum_delivery_type: AppBundle\DBAL\EnumDeliveryType
+            enum_price_box_size: AppBundle\DBAL\EnumPriceBoxSize
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: "%kernel.root_dir%/data/data.db3"

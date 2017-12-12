@@ -66,10 +66,10 @@ class Order
      */
     private $deliveryAddress;
 
-    /**
-     * @ORM\Column(name="parcel_machine_delivery_address", type="string")
-     */
-    private $parcelMachineDeliveryAddress;
+//    /**
+//     * @ORM\Column(name="parcel_machine_delivery_address", type="string")
+//     */
+//    private $parcelMachineDeliveryAddress;
 
     /**
      * @ORM\Column(name="delivery_type", type="enum_delivery_type")
@@ -120,7 +120,7 @@ class Order
     }
 
     /**
-     * @return DecimalType
+     * @return string
      */
     public function getSellingPrice()
     {
@@ -128,7 +128,7 @@ class Order
     }
 
     /**
-     * @param DecimalType $sellingPrice
+     * @param string $sellingPrice
      * @return Order
      */
     public function setSellingPrice($sellingPrice)
@@ -213,24 +213,24 @@ class Order
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getParcelMachineDeliveryAddress()
-    {
-        return $this->parcelMachineDeliveryAddress;
-    }
-
-    /**
-     * @param mixed $parcelMachineDeliveryAddress
-     *
-     * @return Order
-     */
-    public function setParcelMachineDeliveryAddress($parcelMachineDeliveryAddress)
-    {
-        $this->parcelMachineDeliveryAddress = $parcelMachineDeliveryAddress;
-        return $this;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getParcelMachineDeliveryAddress()
+//    {
+//        return $this->parcelMachineDeliveryAddress;
+//    }
+//
+//    /**
+//     * @param mixed $parcelMachineDeliveryAddress
+//     *
+//     * @return Order
+//     */
+//    public function setParcelMachineDeliveryAddress($parcelMachineDeliveryAddress)
+//    {
+//        $this->parcelMachineDeliveryAddress = $parcelMachineDeliveryAddress;
+//        return $this;
+//    }
 
     /**
      * @return \DateTime

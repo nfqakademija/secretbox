@@ -15,18 +15,20 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class PriceRepository extends EntityRepository
 {
     /**
-     * @return Price
+     * @return array
      */
-    public function getCurrentPrice()
+    public function getCurrentPrices()
     {
-        $now = new \DateTime();
-        $rsm = new ResultSetMapping();
-        $query = $this->_em
-            ->createQuery('SELECT p FROM AppBundle:Price AS p WHERE p.validFrom < :now ORDER BY p.validFrom DESC', $rsm)
-            ->setParameter(':now', $now)
-            ->setMaxResults(1);
+        $result = $this->_em->getConnection()->executeQuery
+        ('
+            SELECT p1.box_size, p1.price FROM prices AS p1
+            WHERE valid_from IN 
+            (
+              SELECT MAX(p2.valid_from) FROM prices AS p2 
+              WHERE p2.box_size = p1.box_size AND p2.valid_from < NOW()
+            )
+        ')->fetchAll();
 
-        $result = $query->getResult();
-        return $result[0];
+        return $result;
     }
 }

@@ -10,6 +10,7 @@ AppBundle\Entity\User:
         picture_url: 'uploads/facebook_images/$facebook_id.jpg'
         roles: 	'[ROLE_USER, ROLE_ADMIN]'
         address: '<lt_LT:address()>'
+        phoneNo: '+37065224499'
         newsletter: 'true'
     dovile:
         facebook_id: '10209907055380683'
@@ -22,6 +23,7 @@ AppBundle\Entity\User:
         picture_url: 'uploads/facebook_images/$facebook_id.jpg'
         roles: 	'[ROLE_USER]'
         address: '<lt_LT:address()>'
+        phoneNo: '<lt_LT:e164PhoneNumber()>'
         newsletter: 'false'
     user{1..100}:
         facebook_id (unique): '<numberBetween(9999, 9999999)>'
@@ -34,3 +36,4 @@ AppBundle\Entity\User:
         picture_url: 'uploads/facebook_images/$facebook_id.jpg'
         roles: 	'[ROLE_USER]'
         address: '<lt_LT:address()>'
+        phoneNo: '<lt_LT:e164PhoneNumber()>'
