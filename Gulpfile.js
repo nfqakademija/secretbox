@@ -77,8 +77,8 @@ gulp.task('scripts', function() {
             dir.npm + 'waypoints/lib/jquery.waypoints.js',
             dir.npm + 'waypoints/lib/shortcuts/sticky.js',
             //plugins
-            dir.assets + 'scripts/plugins/downCount/jquery.downCount.js',
-            dir.assets + 'scripts/plugins/pace/pace.min.js',
+            dir.assets + 'scripts/downCount/jquery.downCount.js',
+            dir.assets + 'scripts/pace/pace.min.js',
 
             // Main JS file
 
@@ -98,10 +98,8 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js/pasleyjs-locale'));
 
-    gulp.src(dir.assets + 'scripts/plugins/wow/*')
-        // .pipe(concat('wow.js'))
-        // .pipe(uglify())
-        .pipe(gulp.dest(dir.dist + 'js/plugins/wow'));
+    gulp.src(dir.assets + 'scripts/plugins/*')
+        .pipe(gulp.dest(dir.dist + 'js/plugins'));
 
     gulp.src(dir.assets + 'scripts/template-scripts.js')
         .pipe(concat('template-scripts.js'))
