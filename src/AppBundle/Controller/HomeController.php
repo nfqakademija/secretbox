@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function indexAction(Request $request, Session $session)
     {
         $contentLink = $request->get('content');
-        if(!$contentLink){
+        if (!$contentLink) {
             $contentLink = $session->get('content');
         }
         $session->set('content', '');

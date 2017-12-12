@@ -11095,7 +11095,10 @@ hr {
     vertical-align: middle;
     border: 2px solid #666666;
 }
-.gfort-radio { border-radius: 50%; }
+.gfort-radio {
+    border-radius: 50%;
+    display: none;
+}
 
 .gfort-radio::before,
 .gfort-checkbox::before {

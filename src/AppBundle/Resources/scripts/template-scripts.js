@@ -71,7 +71,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortMegaMenufn() {
+    function gfortMegaMenufn()
+    {
         if (jQuery(window).width() > 991) {
             jQuery('.megamenu').each(function () {
                 jQuery('> .submenu > li', this).matchHeight();
@@ -100,7 +101,6 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (pagePreLoader === true) {
-
         if (pagePreLoaderStyle >= 1 && pagePreLoaderStyle <= 6) {
             jQuery('body').addClass('page-preloader-style-' + pagePreLoaderStyle);
         }
@@ -108,7 +108,6 @@ jQuery(document).ready(function () {
         if (pagePreLoaderText !== '') {
             jQuery('.gfort-page-preloader-text').attr('data-progress-text', pagePreLoaderText);
         }
-
     } else {
         jQuery('.pace').css({display: 'none'});
     }
@@ -195,18 +194,16 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortCollapseMenufn() {
+    function gfortCollapseMenufn()
+    {
         if (!jQuery('.header-section').hasClass('sidebar-header')) {
             if (jQuery(window).width() <= 991) {
-
                 if (!jQuery('body').hasClass('mobile-navbar-collapse')) {
-
                     jQuery('.navbar-nav ul').each(function () {
                         jQuery(this).slideUp();
                     });
 
                     if (jQuery(window).width() > 767) {
-
                         jQuery('.navbar-collapse').on({
                             mouseenter: function () {
                                 jQuery('body').addClass('stopScroll');
@@ -215,7 +212,6 @@ jQuery(document).ready(function () {
                                 jQuery('body').removeClass('stopScroll');
                             }
                         });
-
                     }
 
                     jQuery('.parent-list').each(function () {
@@ -223,11 +219,8 @@ jQuery(document).ready(function () {
                     });
 
                     jQuery('body').addClass('mobile-navbar-collapse');
-
                 }
-
             } else {
-
                 jQuery('.navbar-nav ul').each(function () {
                     jQuery(this).slideDown();
                 });
@@ -242,7 +235,6 @@ jQuery(document).ready(function () {
                 });
 
                 jQuery('body').removeClass('mobile-navbar-collapse');
-
             }
         }
     }
@@ -280,7 +272,6 @@ jQuery(document).ready(function () {
     Sidebar Header
     ========================================================================= */
     if (jQuery('.header-section').hasClass('sidebar-header')) {
-
         if (jQuery('.header-section').hasClass('fixed-header')) {
             jQuery('body').addClass('fixed-sidebar-header');
         }
@@ -328,7 +319,6 @@ jQuery(document).ready(function () {
             e.preventDefault();
             jQuery(this).parent('.sidebar-header').removeClass('sidebar_header_correctPosition');
         });
-
     }
 
 
@@ -337,7 +327,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortFixedHeaderfn() {
+    function gfortFixedHeaderfn()
+    {
         var headerEl = jQuery('.fixed-header .header-menu-container');
         headerEl = new Waypoint.Sticky({
             element: headerEl[0],
@@ -427,7 +418,8 @@ jQuery(document).ready(function () {
 
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortNBCookiefn() {
+    function gfortNBCookiefn()
+    {
         jQuery('.notification-block').each(function () {
 
             var el = jQuery(this),
@@ -465,7 +457,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortScrollTofn() {
+    function gfortScrollTofn()
+    {
         jQuery('body').on('click', '[data-scroll]', function (e) {
 
             e.preventDefault();
@@ -612,7 +605,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortFormValidationfn() {
+    function gfortFormValidationfn()
+    {
         jQuery('.form-block').each(function () {
 
             var el = jQuery(this),
@@ -623,7 +617,6 @@ jQuery(document).ready(function () {
             }
 
             if (!el.hasClass('search-form-block') && !el.hasClass('header-search-form-block')) {
-
                 if (!el.hasClass('account-form-block')) {
                     elForm.append('<div class="gfort-form-alert-message col-md-12"></div>');
                 }
@@ -794,11 +787,9 @@ jQuery(document).ready(function () {
                             /* Success Message
                             ----------------------------------------------------- */
                             if (response.match('success-message') !== null) {
-
                                 if (formReditect !== undefined && formReditect !== 'undefined' && formReditect !== '') {
                                     window.location = formReditect;
                                 } else {
-
                                     if (elForm.find('.gfort-recaptcha').length > 0) {
                                         elForm.find('.gfort-recaptcha').remove();
                                         elForm.find('.gfort-recaptcha-wrapper').prepend('<div class="gfort-recaptcha" id="' + recaptchaID + '" data-sitekey="' + gfortRecaptchaSiteKey + '" data-callback="recaptchaCallback"></div>');
@@ -812,12 +803,10 @@ jQuery(document).ready(function () {
                                     elForm.find('.gfort-form-alert-message .alert').remove();
                                     elForm.find('.gfort-form-alert-message').append('<div class="alert alert-gfort alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><div class="form-respones-message"></div></div>');
                                     elForm.find('.gfort-form-alert-message .form-respones-message').html(response);
-
                                 }
 
                                 elForm.find('.form-control').val('');
                                 elForm.find('input[type="checkbox"]').attr('checked', false);
-
                             }
 
                             /* reCaptcha Error Message
@@ -847,7 +836,6 @@ jQuery(document).ready(function () {
                 jQuery.validator.methods.email = function (value, element) {
                     return this.optional(element) || (/\S+@\S+\.\S+/).test(value);
                 };
-
             }
 
         });
@@ -900,7 +888,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortCloseSearchFormfn() {
+    function gfortCloseSearchFormfn()
+    {
         clearTimeout(searchInputTimer);
         jQuery('.header-menu').removeClass('open-header-search-form-block');
     }
@@ -951,13 +940,11 @@ jQuery(document).ready(function () {
             /* Mailchimp Integration
             ----------------------------------------------------------------- */
             if (el.hasClass('mailchimp-form-block')) {
-
                 responseMessage = 'msg';
                 responseStatus = 'error';
                 responseResult = 'result';
 
                 el.find('form').attr('action', jQuery(this).attr('data-form-url').replace('/post?', '/post-json?').concat('&c=?'));
-
             }
 
             /* Submition
@@ -1004,7 +991,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Fuction
     ------------------------------------------------------------------------- */
-    function gfortOWLSliderfn(gfortOWLSliderID) {
+    function gfortOWLSliderfn(gfortOWLSliderID)
+    {
 
         var el = jQuery(gfortOWLSliderID),
             rtlDirection = false,
@@ -1064,7 +1052,6 @@ jQuery(document).ready(function () {
         /* Thumbs Slider
         --------------------------------------------------------------------- */
         if (sliderThumbs === 'true') {
-
             sliderPagination = false;
 
             thumbsSlider = '<div class="gfort-owl-thumbs-slider gfort-owl-slider owl-carousel owl-theme">';
@@ -1077,7 +1064,6 @@ jQuery(document).ready(function () {
 
             el.wrap('<div class="gfort-thumbs-owl-slider"></div>');
             el.parent().append(thumbsSlider);
-
         }
 
         /* undefined Items Values Normal Slider
@@ -1171,7 +1157,6 @@ jQuery(document).ready(function () {
             },
             onTranslate: function (event) {
                 if (sliderThumbs === 'true') {
-
                     thumbsSliderActiveItem = event.item.index - el.find('.owl-item.cloned').length / 2;
 
                     if (thumbsSliderActiveItem === -1) {
@@ -1181,7 +1166,6 @@ jQuery(document).ready(function () {
                     el.parent().find('.gfort-owl-thumbs-slider').trigger('to.owl.carousel', [thumbsSliderActiveItem, 300, true]);
                     el.parent().find('.gfort-owl-thumbs-slider').find('.gfort-owl-slider-item a').removeClass('gfort-owl-slider-active-item');
                     el.parent().find('.gfort-owl-thumbs-slider').find('.gfort-owl-slider-item a[data-slider-jump-to="' + thumbsSliderActiveItem + '"]').addClass('gfort-owl-slider-active-item');
-
                 }
             }
         });
@@ -1221,7 +1205,8 @@ jQuery(document).ready(function () {
 
     }
 
-    function gfortOWLSliderinitfn() {
+    function gfortOWLSliderinitfn()
+    {
         jQuery('.gfort-owl-slider').each(function (index) {
             var gfortOWLSliderID = jQuery(this).attr('id', 'gfort-owl-slider-' + index);
             gfortOWLSliderfn(gfortOWLSliderID);
@@ -1250,7 +1235,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Fuction
     ------------------------------------------------------------------------- */
-    function gfortInstafn() {
+    function gfortInstafn()
+    {
         jQuery('.instagram-feed-block').each(function () {
 
             jQuery(this).gfortInsta({
@@ -1279,7 +1265,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Fuction
     ------------------------------------------------------------------------- */
-    function gfortTwitterfn() {
+    function gfortTwitterfn()
+    {
         jQuery('.twitter-feed-block').each(function (index) {
 
             var el = jQuery(this),
@@ -1308,7 +1295,6 @@ jQuery(document).ready(function () {
                 /* Slider
                 ------------------------------------------------------------- */
                 if (el.hasClass('twitter-slider')) {
-
                     /* Slider Attibutes
                     --------------------------------------------------------- */
                     if (sliderNavigation === undefined || sliderNavigation < 0 || sliderNavigation === 'undefined') {
@@ -1367,7 +1353,6 @@ jQuery(document).ready(function () {
                     --------------------------------------------------------- */
                     elTwitterSliderID = jQuery('#' + el.find('.gfort-owl-slider').attr('id'));
                     gfortOWLSliderfn(elTwitterSliderID);
-
                 }
 
             });
@@ -1412,7 +1397,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortFancyBoxfn() {
+    function gfortFancyBoxfn()
+    {
 
         /* Soundcloud
         --------------------------------------------------------------------- */
@@ -1566,7 +1552,8 @@ jQuery(document).ready(function () {
     /* Main Function
     ------------------------------------------------------------------------- */
     // FitVid
-    function gfortFitVidfn() {
+    function gfortFitVidfn()
+    {
         jQuery('#main-wrapper').fitVids();
         jQuery('iframe').each(function () {
             jQuery(this).css({width: '100%'});
@@ -1574,7 +1561,8 @@ jQuery(document).ready(function () {
     }
 
     // HTML5 Video
-    function gfortHTML5Videofn() {
+    function gfortHTML5Videofn()
+    {
         jQuery('video').each(function (index) {
 
             jQuery(this).attr('id', 'gfort-html-video-' + index).addClass('video-js');
@@ -1617,7 +1605,8 @@ jQuery(document).ready(function () {
     /* Main Function
     ------------------------------------------------------------------------- */
     /* HTML5 Video */
-    function gfortHTMLBGVideofn() {
+    function gfortHTMLBGVideofn()
+    {
         jQuery('.background-video-block video').each(function () {
 
             var elWidth = 16,
@@ -1653,7 +1642,8 @@ jQuery(document).ready(function () {
 
     /* Youtube Video */
     // Resize Function
-    function gfortYoutubeVideoSizefn() {
+    function gfortYoutubeVideoSizefn()
+    {
         jQuery('.background-video-block div[data-youtube-video-url] iframe.gfort-youtube-iframe').each(function () {
 
             var elWidth = 16,
@@ -1682,7 +1672,8 @@ jQuery(document).ready(function () {
         });
     }
     // Main Function
-    function gfortYouTubeVideofn() {
+    function gfortYouTubeVideofn()
+    {
 
         var gfortYTPlayer = [];
 
@@ -1843,7 +1834,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortHTML5Audiofn() {
+    function gfortHTML5Audiofn()
+    {
         jQuery('audio').each(function (index) {
 
             var el = jQuery(this);
@@ -1975,7 +1967,6 @@ jQuery(document).ready(function () {
     isotope Filter
     ========================================================================= */
     if (jQuery('.isotope-filter').length) {
-
         jQuery('.isotope-filter a').each(function () {
 
             var isotopeItemsCount,
@@ -2004,7 +1995,6 @@ jQuery(document).ready(function () {
             });
 
         });
-
     }
 
 
@@ -2091,7 +2081,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Parallax Function
     ------------------------------------------------------------------------- */
-    function gfortParallaxfn() {
+    function gfortParallaxfn()
+    {
         jQuery('.parallax-section').each(function () {
             jQuery(this).parallax('50%', 0.3);
             jQuery(this).addClass('parallax-section-effect');
@@ -2104,7 +2095,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Markers Function
     ------------------------------------------------------------------------- */
-    function mapMarkersfn(currentMapIndex) {
+    function mapMarkersfn(currentMapIndex)
+    {
 
         var mapMarkers = [],
             infoWindowContent,
@@ -2161,7 +2153,8 @@ jQuery(document).ready(function () {
 
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortGoogleMapfn() {
+    function gfortGoogleMapfn()
+    {
         jQuery('.google-map-block').each(function (index) {
 
             var elMapOptions,
@@ -2226,7 +2219,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortTextAnumationfn() {
+    function gfortTextAnumationfn()
+    {
         jQuery('.text-animation').each(function () {
 
             var el = jQuery(this);
@@ -2260,7 +2254,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortPrettyPrintfn() {
+    function gfortPrettyPrintfn()
+    {
         jQuery('.prettyprint').each(function () {
             jQuery(this).html(jQuery(this).html().replace(/</g, '&lt;').replace(/>/g, '&gt;'));
         });
@@ -2279,7 +2274,8 @@ jQuery(document).ready(function () {
     /* =========================================================================
     Select Box
     ========================================================================= */
-    function gfortSelectfn() {
+    function gfortSelectfn()
+    {
         jQuery('select').each(function () {
 
             var el = jQuery(this),
@@ -2303,7 +2299,8 @@ jQuery(document).ready(function () {
     /* =========================================================================
     Counter Block
     ========================================================================= */
-    function gfortCounterfn() {
+    function gfortCounterfn()
+    {
         jQuery('.counter-block').each(function () {
 
             var el = jQuery(this),
@@ -2335,7 +2332,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortDowntimeCounterfn() {
+    function gfortDowntimeCounterfn()
+    {
         jQuery('.downtime-counter-block').each(function () {
 
             var el = jQuery(this),
@@ -2371,7 +2369,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortPieBlockfn(elAnimation) {
+    function gfortPieBlockfn(elAnimation)
+    {
         jQuery('.gfort-pie-block-circle').each(function () {
 
             var el = jQuery(this),
@@ -2449,7 +2448,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortProgressBlockfn() {
+    function gfortProgressBlockfn()
+    {
         jQuery('.progress-block').each(function () {
 
             var el = jQuery(this),
@@ -2475,7 +2475,8 @@ jQuery(document).ready(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortAnimationfn() {
+    function gfortAnimationfn()
+    {
         var wow = new WOW({
             mobile: false
         });
@@ -2505,7 +2506,6 @@ jQuery(document).ready(function () {
     Check if it's a Mobile Device conditions
     ========================================================================= */
     if (!isMobile.any()) {
-
         /* =====================================================================
         Desktop Devices
         ===================================================================== */
@@ -2548,9 +2548,7 @@ jQuery(document).ready(function () {
                 });
             });
         }
-
     } else {
-
         /* =====================================================================
         Mobile Devices
         ===================================================================== */
@@ -2562,7 +2560,6 @@ jQuery(document).ready(function () {
         jQuery('a').each(function () {
             jQuery(this).addClass('no-transition');
         });
-
     }
 
 
@@ -2582,7 +2579,8 @@ jQuery(window).resize(function () {
     /* =========================================================================
     isotope
     ========================================================================= */
-    function gfortisotopeLayoutfn() {
+    function gfortisotopeLayoutfn()
+    {
         jQuery('.isotope-masonry').each(function () {
             jQuery(this).isotope('layout');
         });
@@ -2614,7 +2612,8 @@ jQuery(window).load(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortSubMenufn() {
+    function gfortSubMenufn()
+    {
         jQuery('.navbar-nav > li:not(.megamenu)').each(function () {
 
             var el = jQuery(this),
@@ -2625,7 +2624,6 @@ jQuery(window).load(function () {
             if (windowWidth > 1199) {
                 if (!jQuery('.header-section').hasClass('sidebar-header')) {
                     if (el.children('.submenu').length) {
-
                         var subMenu = el.children('.submenu'),
                             subMenuTemp = subMenu;
 
@@ -2642,7 +2640,6 @@ jQuery(window).load(function () {
                         if (windowWidth < (subMenu.width() + subMenu.offset().left)) {
                             el.addClass('subMenu_correctPosition');
                         }
-
                     }
                 }
             } else {
@@ -2666,7 +2663,8 @@ jQuery(window).load(function () {
     ========================================================================= */
     /* Main Function
     ------------------------------------------------------------------------- */
-    function gfortisotopefn() {
+    function gfortisotopefn()
+    {
 
         var isotopeDirection = true;
 

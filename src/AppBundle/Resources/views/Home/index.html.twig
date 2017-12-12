@@ -11,259 +11,134 @@
 {% block body %}
     <div class="page-body">
 
-
-        <!-- Main Content
-        ================================================================ -->
         <div class="main-content">
-            <!-- Main Content Container -->
             <div class="main-content-container">
 
-
-                <!-- gfort Section -->
-                <div id="parallax-main" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px" id="section-0">
-                    <!--<div style="position: absolute; width: 100vw; height: 70vh; background-color: blue;">-->
-
-
-
-
-                    <!--</div>-->
-                    <!-- Section Container -->
+                <!-- homepage section -->
+                <div id="section-main" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px">
                     <div class="section-container">
-                        <!-- container -->
                         <div class="container">
-                            <!-- row -->
                             <div class="row">
-
-
-                                <!-- col-lg-6 -->
                                 <div class="col-lg-6 col-md-5">
-
-
                                     <!-- GAP 100px -->
                                     <div class="gap gap-100 hidden-sm hidden-xs"></div>
-
-
-                                    <!-- Section Title -->
                                     <div class="section-title intro-section-title light-color text-center">
-
                                         <h2 class="section-main-title border-text">TAVO ATRADIMAI PRASIDEDA SU <br>SECRET BOX</h2>
-
                                         <p class="section-subtitle"></p>
-
-                                        {#<div class="hr-divider hr-divider-style-1"></div>#}
-
-                                        {#<div class="section-button">#}
-                                            {#<a href="#section-5" class="btn btn-gfort-o" data-scroll>{{ 'product.order'|trans }}</a>#}
-                                            {#<a href="#section-1" class="btn btn-gfort-o" data-scroll>Daugiau</a>#}
-                                        {#</div>#}
-
-                                    </div><!-- /End Section Title -->
-
-
+                                    </div>
                                     <!-- GAP 30px -->
                                     <div class="gap gap-30"></div>
-
-
-                                </div><!-- /End col-lg-6 -->
-
-
-                                <!-- col-lg-6 -->
+                                </div>
                                 <div class="col-lg-6 col-md-7">
-                                    {#<!-- Image Block -->#}
-                                    {#<div class="gfort-block gfort-block-style-6 wow fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.5s">#}
-                                        {#<!-- gfort Block Container -->#}
-                                        {#<div class="gfort-block-container" style="width: 800px; height: 500px; background-color: rgba(255,255,255,0.5); padding: 20px;">#}
-
-
-                                            {#<!-- gfort Block Head -->#}
-                                            {#<div class="gfort-block-head" >#}
-                                                {#<img src="images/index/app/002.png" alt="Intro Image" style="opacity: 0.5;"/>#}
-
-                                            {#</div><!-- /End gfort Block Head -->#}
-                                            {#<div>Ar tikrai viską paragavai, įsigijai ir aplankei geriausio? Ar tikrai kur ir kaip leidi laiką su draugais yra šauniausia vieta ir pramoga?#}
-                                                {#Mes sakome – tikrai dar ne – ir siūlome leistis į žaismingą atradimų kelionę, kurios pabaigoje – dovana tau, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.#}
-                                            {#</div>#}
-
-                                        {#</div><!-- /End gfort Block Container -->#}
-                                    {#</div><!-- /End Image Block -->#}
-                                    {#<div class="col-md-4">#}
-
-                                        <div class="gfort-block text-block gfort-block-style-1" >
-
-                                            <div class="gfort-block-container" style="background-color: rgba(227,227,227,0.6)">
-
-                                                <div class="gfort-block-body">
-
-                                                    {#<div class="gfort-block-title">#}
-                                                        {#<h2>Mūsų tikslas</h2>#}
-                                                    {#</div>#}
-
-                                                    <div class="gfort-block-content">
-                                                        <h4>
-                                                            <span class="accent">Ar</span> tikrai viską <span class="accent">paragavai</span>, <span class="accent">įsigijai</span> ir <span class="accent">aplankei</span> geriausio?
-                                                        </h4>
-                                                        <h4>
-                                                            Ar tikrai kur leidi laiką su draugais yra šauniausia vieta ir pramoga?
-                                                        </h4>
-                                                        <h4>
-                                                            Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.
-                                                        </h4>
-
-                                                        {#<div class="gfort-block-btn">#}
-                                                            {#<a href="#section-1" class="btn btn-gfort btn-gfort-md" data-scroll>Daugiau</a>#}
-                                                        {#</div>#}
-                                                        <div class="section-button">
-                                                            <a href="#begin-adventure" class="btn btn-gfort-o" data-scroll>{{ 'product.order'|trans }}</a>
-                                                            <a href="#section-1" class="btn btn-gfort-o" data-scroll>Daugiau</a>
-                                                        </div>
+                                    <div class="gfort-block text-block gfort-block-style-1" >
+                                        <div class="gfort-block-container" style="background-color: rgba(227,227,227,0.6)">
+                                            <div class="gfort-block-body">
+                                                <div class="gfort-block-content">
+                                                    <h4>
+                                                        <span class="accent">Ar</span> tikrai viską <span class="accent">
+                                                            paragavai</span>, <span class="accent">įsigijai</span> ir
+                                                        <span class="accent">aplankei</span> geriausio?
+                                                    </h4>
+                                                    <h4>
+                                                        Ar tikrai kur leidi laiką su draugais yra šauniausia
+                                                        vieta ir pramoga?
+                                                    </h4>
+                                                    <h4>
+                                                        Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span>
+                                                        leistis į <span class="accent">žaismingą atradimų kelionę</span>,
+                                                        kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų,
+                                                        smalsumo ir išradingumo.
+                                                    </h4>
+                                                    <div class="section-button">
+                                                        <a href="#begin-adventure" class="btn btn-gfort-o" data-scroll>
+                                                            {{ 'product.order'|trans }}
+                                                        </a>
+                                                        <a href="#section-about" class="btn btn-gfort-o" data-scroll>Daugiau</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    {#</div>#}
-                                </div><!-- /End col-lg-6 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-
-                            </div><!-- /End row -->
-                        </div><!-- /End container -->
-                    </div><!-- /End Section Container -->
-                </div><!-- /End gfort Section -->
-
-
-                <!-- gfort Section -->
-                <div class="gfort-section" id="section-1">
-                    <!-- Section Container -->
+                <!-- about section -->
+                <div class="gfort-section" id="section-about">
                     <div class="section-container">
-                        <!-- container -->
                         <div class="container">
-                            <!-- row -->
                             <div class="row">
-
-
-                                <!-- col-md-12 -->
                                 <div class="col-md-12">
-                                    <!-- Section Title -->
                                     <div class="section-title text-center">
-
                                         <h2 class="section-main-title">APIE</h2>
-
                                         <p class="section-subtitle">
-                                            “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo Tau ir Tavo draugams.
-                                            Kas slepiasi projekte „Secret box“? – tai mūsų kartu su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių, nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
+                                            “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo
+                                            Tau ir Tavo draugams. Kas slepiasi projekte „Secret box“? – tai mūsų kartu
+                                            su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam
+                                            asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir
+                                            atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo
+                                            degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių,
+                                            nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame
+                                            netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį
+                                            žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
                                         </p>
-
                                         <div class="hr-divider hr-divider-style-1"></div>
+                                    </div>
+                                </div>
 
-                                    </div><!-- /End Section Title -->
-                                </div><!-- /End col-md-12 -->
-
-
-                                {#<!-- col-md-8 -->#}
-                                {#<div class="col-md-8 col-md-offset-2">#}
-                                    {#<!-- Multimedia Block -->#}
-                                    {#<div class="gfort-block multimedia-block">#}
-                                        {#<!-- gfort Block Container -->#}
-                                        {#<div class="gfort-block-container">#}
-
-
-                                            {#<!-- gfort Block Head -->#}
-                                            {#<div class="gfort-block-head">#}
-                                                {#<iframe src="https://player.vimeo.com/video/47505825?color=2791d8&title=0&byline=0&portrait=0" allowfullscreen></iframe>#}
-                                            {#</div><!-- /End gfort Block Head -->#}
-
-
-                                        {#</div><!-- /End gfort Block Container -->#}
-                                    {#</div><!-- /End Multimedia Block -->#}
-                                {#</div><!-- /End col-md-8 -->#}
-
-
-                                <!-- col-md-12 -->
+                                <!-- 4 about blocks section -->
                                 <div class="col-md-12">
                                     <!-- GAP 30px -->
                                     <div class="gap gap-30"></div>
-                                </div><!-- /End col-md-12 -->
+                                </div>
 
-
-                                <!-- col-md-4 -->
+                                <!-- 1st about block -->
                                 <div class="col-md-3">
-                                    <!-- Icon Block -->
                                     <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <!-- gfort Block Container -->
                                         <div class="gfort-block-container">
-
-
-                                            <!-- gfort Block Head -->
                                             <div class="gfort-block-head">
                                                 <i class="fa fa-check-square-o "></i>
                                                 <i class="fa fa-check-square-o "></i>
-                                            </div><!-- /End gfort Block Head -->
-
-
-                                            <!-- gfort Block Body -->
+                                            </div>
                                             <div class="gfort-block-body">
-
-
-                                                <!-- gfort Block Title -->
                                                 <div class="gfort-block-title">
                                                     <h4>Registracija ir užsakymas</h4>
-                                                </div><!-- /End gfort Block Title -->
-
-
-                                                <!-- gfort Block Content -->
+                                                </div>
                                                 <div class="gfort-block-content">
                                                     <p>
-                                                        Užsiregistruok naudodamas savo FB paskyrą, pasirink vieną iš trijų „Secret box“ verčių ir pasirinkęs pristatymo adresą įvykdyk mokėjimą.
+                                                        Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
+                                                        „Secret box“ verčių, pasirink pristatymo adresą ir įvykdyk mokėjimą.
                                                     </p>
-                                                </div><!-- /End gfort Block Content -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-
-                                            </div><!-- /End gfort Block Body -->
-
-
-                                        </div><!-- /End gfort Block Container -->
-                                    </div><!-- /End Icon Block -->
-                                </div><!-- /End col-md-4 -->
-
-
-                                <!-- col-md-4 -->
+                                <!-- 2nd about block -->
                                 <div class="col-md-3">
-                                    <!-- Icon Block -->
                                     <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <!-- gfort Block Container -->
                                         <div class="gfort-block-container">
-
-
-                                            <!-- gfort Block Head -->
                                             <div class="gfort-block-head">
                                                 <i class="fa fa-gift"></i>
                                                 <i class="fa fa-gift"></i>
-                                            </div><!-- /End gfort Block Head -->
-
-
-                                            <!-- gfort Block Body -->
+                                            </div>
                                             <div class="gfort-block-body">
-
-
-                                                <!-- gfort Block Title -->
                                                 <div class="gfort-block-title">
                                                     <h4>Tavo "Secret box"</h4>
-                                                </div><!-- /End gfort Block Title -->
-
-
-                                                <!-- gfort Block Content -->
+                                                </div>
                                                 <div class="gfort-block-content">
-
                                                     <p>
-                                                        Gauk „Secret box“ pagal pasirinktą pristatymo adresą ir radęs viduje užuominą, pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką sužinosi „kas ir kur tai?“.
+                                                        Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
+                                                        pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
+                                                        – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
+                                                        sužinosi „kas ir kur tai?“.
                                                     </p>
-
-                                                </div><!-- /End gfort Block Content -->
-
-
-                                            </div><!-- /End gfort Block Body -->
-
-
-                                        </div><!-- /End gfort Block Container -->
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div><!-- /End Icon Block -->
                                 </div><!-- /End col-md-4 -->
 
@@ -297,7 +172,7 @@
                                                 <div class="gfort-block-content">
 
                                                     <p>
-                                                        Savo paskyroje gali matyti konkrečios „Secret box“ statusą, likusį laiką atskleisti paslapčiai ir draugų, kuriems dobanojai „Secret box“ progresą iki paslapties atskleidimo.
+                                                        Savo paskyroje gali matyti konkrečios „Secret box“ statusą, likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai „Secret box“ progresą iki paslapties atskleidimo.
                                                     </p>
 
                                                 </div><!-- /End gfort Block Content -->
@@ -429,6 +304,9 @@
                     </div>
                 </div>
 
+
+
+
                 <!-- gfort Section -->
                 <div class="gfort-section fullwidth-section pt-0 pb-0">
                     <!-- Section Container -->
@@ -442,8 +320,9 @@
                                 <!-- col-md-12 -->
                                 <div class="col-md-12">
                                     <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-camera"></i>
+                                        <i class="fa fa-check-square-o"></i>
                                     </div>
+                                    {#<div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>#}
                                 </div><!-- /End col-md-12 -->
 
 
@@ -453,6 +332,102 @@
                 </div><!-- /End gfort Section -->
 
 
+
+                <!-- gfort Section -->
+                <div class="gfort-section pb-0" id="section-begin-adventure">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- Section Title -->
+                                    <div class="section-title text-center">
+
+                                        <h2 class="section-main-title">PRADĖK SAVO NUOTYKĮ DABAR</h2>
+
+                                        <div class="hr-divider hr-divider-style-1"></div>
+
+                                    </div><!-- /End Section Title -->
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12" style="padding-bottom: 500px;">
+                                    {{ include('@App/Order/order.section.html.twig') }}
+                                </div>
+
+                                {#<div class="col-md-12">#}
+                                {#<!-- Button Block -->#}
+                                {#<div class="gfort-block btn-block text-center">#}
+                                {#<!-- gfort Block Container -->#}
+                                {#<div class="gfort-block-container">#}
+
+
+                                {#<!-- gfort Block Body -->#}
+                                {#<div class="gfort-block-body">#}
+
+
+                                {#<!-- gfort Block Content -->#}
+                                {#<div class="gfort-block-content">#}
+
+                                {#<a href="#" class="btn-image">#}
+                                {#<img src="images/download-buttons/download-buttons-001.jpg" alt="APP Store" />#}
+                                {#</a>#}
+
+                                {#<a href="#" class="btn-image">#}
+                                {#<img src="images/download-buttons/download-buttons-002.jpg" alt="Play Store" />#}
+                                {#</a>#}
+
+                                {#<a href="#" class="btn-image">#}
+                                {#<img src="images/download-buttons/download-buttons-003.jpg" alt="Windows Store" />#}
+                                {#</a>#}
+
+                                {#</div><!-- /End gfort Block Content -->#}
+
+
+                                {#</div><!-- /End gfort Block Body -->#}
+
+
+                                {#</div><!-- /End gfort Block Container -->#}
+                                {#</div><!-- /End Button Block -->#}
+                                {#</div><!-- /End col-md-12 -->#}
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <!-- GAP 30px -->
+                                    <div class="gap gap-30"></div>
+                                </div><!-- /End col-md-12 -->
+
+
+                                <!-- col-md-12 -->
+                                {#<div class="col-md-12">#}
+                                {#<!-- Image Block -->#}
+                                {#<div class="gfort-block image-block gfort-block-style-6 mb-0 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">#}
+                                {#<!-- gfort Block Container -->#}
+                                {#<div class="gfort-block-container">#}
+
+
+                                {#<!-- gfort Block Head -->#}
+                                {#<div class="gfort-block-head">#}
+                                {#<img src="images/index/app/009.png" alt="Intro Image">#}
+                                {#</div><!-- /End gfort Block Head -->#}
+
+
+                                {#</div><!-- /End gfort Block Container -->#}
+                                {#</div><!-- /End Image Block -->#}
+                                {#</div><!-- /End col-md-12 -->#}
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
 
 
                 <!-- gfort Section -->
@@ -892,6 +867,29 @@
                     {#</div><!-- /End Section Container -->#}
                 {#</div><!-- /End gfort Section -->#}
 
+                <!-- gfort Section -->
+                <div class="gfort-section fullwidth-section pt-0 pb-0">
+                    <!-- Section Container -->
+                    <div class="section-container">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+
+                                <!-- col-md-12 -->
+                                <div class="col-md-12">
+                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                                        <i class="fa fa-camera"></i>
+                                    </div>
+                                </div><!-- /End col-md-12 -->
+
+
+                            </div><!-- /End row -->
+                        </div><!-- /End container -->
+                    </div><!-- /End Section Container -->
+                </div><!-- /End gfort Section -->
+
 
                 <!-- gfort Section -->
                 <div class="gfort-section fullwidth-section" id="section-3">
@@ -1057,126 +1055,9 @@
                 </div><!-- /End gfort Section -->
 
 
-                <!-- gfort Section -->
-                <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <!-- Section Container -->
-                    <div class="section-container">
-                        <!-- container -->
-                        <div class="container">
-                            <!-- row -->
-                            <div class="row">
 
 
-                                <!-- col-md-12 -->
-                                <div class="col-md-12">
-                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-check-square-o"></i>
-                                    </div>
-                                    {#<div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide hr-divider-grey-color mt-0 mb-0"></div>#}
-                                </div><!-- /End col-md-12 -->
 
-
-                            </div><!-- /End row -->
-                        </div><!-- /End container -->
-                    </div><!-- /End Section Container -->
-                </div><!-- /End gfort Section -->
-
-
-                <!-- gfort Section -->
-                <div class="gfort-section pb-0" id="begin-adventure">
-                    <!-- Section Container -->
-                    <div class="section-container">
-                        <!-- container -->
-                        <div class="container">
-                            <!-- row -->
-                            <div class="row">
-
-
-                                <!-- col-md-12 -->
-                                <div class="col-md-12">
-                                    <!-- Section Title -->
-                                    <div class="section-title text-center">
-
-                                        <h2 class="section-main-title">PRADĖK SAVO NUOTYKĮ DABAR</h2>
-
-                                        <div class="hr-divider hr-divider-style-1"></div>
-
-                                    </div><!-- /End Section Title -->
-                                </div><!-- /End col-md-12 -->
-
-
-                                <!-- col-md-12 -->
-                                <div class="col-md-12" style="padding-bottom: 500px;">
-                                    {{ include('@App/Order/order.section.html.twig') }}
-                                </div>
-
-                                {#<div class="col-md-12">#}
-                                    {#<!-- Button Block -->#}
-                                    {#<div class="gfort-block btn-block text-center">#}
-                                        {#<!-- gfort Block Container -->#}
-                                        {#<div class="gfort-block-container">#}
-
-
-                                            {#<!-- gfort Block Body -->#}
-                                            {#<div class="gfort-block-body">#}
-
-
-                                                {#<!-- gfort Block Content -->#}
-                                                {#<div class="gfort-block-content">#}
-
-                                                    {#<a href="#" class="btn-image">#}
-                                                        {#<img src="images/download-buttons/download-buttons-001.jpg" alt="APP Store" />#}
-                                                    {#</a>#}
-
-                                                    {#<a href="#" class="btn-image">#}
-                                                        {#<img src="images/download-buttons/download-buttons-002.jpg" alt="Play Store" />#}
-                                                    {#</a>#}
-
-                                                    {#<a href="#" class="btn-image">#}
-                                                        {#<img src="images/download-buttons/download-buttons-003.jpg" alt="Windows Store" />#}
-                                                    {#</a>#}
-
-                                                {#</div><!-- /End gfort Block Content -->#}
-
-
-                                            {#</div><!-- /End gfort Block Body -->#}
-
-
-                                        {#</div><!-- /End gfort Block Container -->#}
-                                    {#</div><!-- /End Button Block -->#}
-                                {#</div><!-- /End col-md-12 -->#}
-
-
-                                <!-- col-md-12 -->
-                                <div class="col-md-12">
-                                    <!-- GAP 30px -->
-                                    <div class="gap gap-30"></div>
-                                </div><!-- /End col-md-12 -->
-
-
-                                <!-- col-md-12 -->
-                                {#<div class="col-md-12">#}
-                                    {#<!-- Image Block -->#}
-                                    {#<div class="gfort-block image-block gfort-block-style-6 mb-0 wow fadeInUp" data-wow-duration="1.5s" data-wow-delay="0.5s">#}
-                                        {#<!-- gfort Block Container -->#}
-                                        {#<div class="gfort-block-container">#}
-
-
-                                            {#<!-- gfort Block Head -->#}
-                                            {#<div class="gfort-block-head">#}
-                                                {#<img src="images/index/app/009.png" alt="Intro Image">#}
-                                            {#</div><!-- /End gfort Block Head -->#}
-
-
-                                        {#</div><!-- /End gfort Block Container -->#}
-                                    {#</div><!-- /End Image Block -->#}
-                                {#</div><!-- /End col-md-12 -->#}
-
-
-                            </div><!-- /End row -->
-                        </div><!-- /End container -->
-                    </div><!-- /End Section Container -->
-                </div><!-- /End gfort Section -->
 
 
             </div><!-- /End Main Content Container -->

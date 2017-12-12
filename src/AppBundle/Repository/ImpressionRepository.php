@@ -50,12 +50,12 @@ class ImpressionRepository extends EntityRepository
 //        $queryBuilder
 //            ->select('i')
 //            ->from(Impression::class, 'i')
-////            ->innerJoin(
-////                User::class,
-////                'u',
-////                \Doctrine\ORM\Query\Expr\Join::WITH,
-////                'i.user = u.id'
-////            )
+        ////            ->innerJoin(
+        ////                User::class,
+        ////                'u',
+        ////                \Doctrine\ORM\Query\Expr\Join::WITH,
+        ////                'i.user = u.id'
+        ////            )
 //            ->where('i.isApproved = :isApproved')
 //            ->orderBy('i.createdAt', 'DESC')
 //            ->setParameter('isApproved', true)

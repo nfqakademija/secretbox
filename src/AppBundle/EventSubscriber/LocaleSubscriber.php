@@ -45,5 +45,4 @@ class LocaleSubscriber implements EventSubscriberInterface
             KernelEvents::REQUEST => [['onKernelRequest', 15]],
         );
     }
-
 }

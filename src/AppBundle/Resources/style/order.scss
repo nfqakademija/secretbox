@@ -1,7 +1,7 @@
-.order-btn span.glyphicon, .delivery-btn span.glyphicon  {
+.order-btn span.glyphicon, .delivery-btn span.glyphicon, .payment-btn span.glyphicon {
   opacity: 0 !important;
 }
-.order-btn.active span.glyphicon, .delivery-btn.active span.glyphicon {
+.order-btn.active span.glyphicon, .delivery-btn.active span.glyphicon, .payment-btn.active span.glyphicon {
   opacity: 1 !important;
 }
 

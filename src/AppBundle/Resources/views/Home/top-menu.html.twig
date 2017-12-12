@@ -1,24 +1,11 @@
 <header class="header-section fixed-header">
-    <!-- Header Section Container -->
     <div class="header-section-container">
-
-
-        <!-- Header Menu -->
         <div class="header-menu">
-            <!-- Header Menu Container -->
             <div class="header-menu-container">
-
-
-                <!-- Navbar -->
                 <nav class="navbar">
-                    <!-- container -->
                     <div class="container">
-                        <!-- row -->
                         <div class="row">
-                            <!-- col-md-12 -->
                             <div class="col-md-12">
-
-
                                 <!-- Navbar Header / Logo -->
                                 <div class="navbar-header">
                                     <a href="{{ path('app.homepage') }}" class="navbar-brand" title="SECRET BOX">
@@ -63,7 +50,7 @@
 
 
                                         <li>
-                                            <a href="#section-1" data-scroll>Apie</a>
+                                            <a href="#section-about" data-scroll>{{ 'menu.about'|trans }}</a>
                                         </li>
 
                                         <li>
@@ -82,7 +69,7 @@
 
 
                                         <li class="btn-header-menu">
-                                            <a href="#begin-adventure" data-scroll>{{ 'product.order'|trans }}</a>
+                                            <a href="#section-begin-adventure" data-scroll>{{ 'product.order'|trans }}</a>
                                         </li>
 
 

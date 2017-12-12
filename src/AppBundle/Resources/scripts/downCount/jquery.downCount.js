@@ -7,8 +7,8 @@
 
     $.fn.downCount = function (options, callback) {
         var settings = $.extend({
-                date: null,
-                offset: null
+            date: null,
+            offset: null
             }, options);
 
         // Throw error if date is not set
@@ -44,7 +44,8 @@
         /**
          * Main downCount function that calculates everything
          */
-        function countdown () {
+        function countdown()
+        {
             var target_date = new Date(settings.date), // set target date
                 current_date = currentDate(); // get fixed current date
 
@@ -56,7 +57,9 @@
                 // stop timer
                 clearInterval(interval);
 
-                if (callback && typeof callback === 'function') callback();
+                if (callback && typeof callback === 'function') {
+                    callback();
+                }
 
                 return;
             }
