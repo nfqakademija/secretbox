@@ -60,12 +60,25 @@ input[type="text"], input[type="email"] {
   color:  red;
 }
 
-#detect-parcel {
+#btn-detect-parcel {
   width: 220px;
   margin-top: 3px;
   font-size: 16px;
   color: black;
 }
+
+.parcel-loading {
+  display: none;
+}
+
+.parcel-loading img {
+  display: inline-block;
+}
+
+.parcel-loading-text {
+  display: inline-block;
+}
+
 
 
 #home-delivery, #parcel-delivery {
@@ -86,6 +99,10 @@ input[type="text"], input[type="email"] {
 .payment-btn img {
   display: block;
   width: 200px;
+}
+
+.parcel-loading img {
+  width: 50px;
 }
 
 

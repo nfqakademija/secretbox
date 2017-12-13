@@ -184,10 +184,19 @@ class OrderController extends Controller
             $itsXML = 'yes, its XML';
             $customerCoordinateX = $request->get('coordinateX');
             $customerCoordinateY = $request->get('coordinateY');
+            $customerAddress = $request->get('address');
         } else {
+//            http://localhost:8000/order/locations?coordinateX=54.923094799999994&coordinateY=23.8207859&address=false
+            ////            http://localhost:8000/order/locations?data=54.923111723.8207956&coordinateX=54.9231117&coordinateY=23.8207956&address=false&coordinates=iksas+ir+ygrikas
+
+
             $itsXML = 'i will return you to NEW ORDER!!!!!';
-            $customerCoordinateX = 54.9231038;
-            $customerCoordinateY = 23.8208222;
+//            $customerCoordinateX = false;
+            $customerCoordinateX = 54.923094799999994;
+//            $customerCoordinateY = false;
+            $customerCoordinateY = 23.8207859;
+//            $customerAddress = "Biržiškų g 3-34, Kaunas";
+            $customerAddress = "";
         }
 
         $parcelMachines = $session->get('parcelMachines');
@@ -196,7 +205,8 @@ class OrderController extends Controller
         $parcelMachines = $this->get(GeolocationService::class)->addDistanceToMachines(
             $parcelMachines,
             $customerCoordinateX,
-            $customerCoordinateY
+            $customerCoordinateY,
+            $customerAddress
         );
 
         /**

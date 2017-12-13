@@ -34,6 +34,8 @@ class HomeController extends Controller
         $session->set('content', '');
 
         $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($request->getLocale());
+        $session->set('parcelMachines', $parcelMachines);
+
         $prices = $this->get(OrderPriceService::class)->getAllPrices();
 
 //        var_dump($prices);die;

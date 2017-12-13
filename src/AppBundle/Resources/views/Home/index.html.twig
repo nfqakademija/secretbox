@@ -514,7 +514,6 @@
 
         var paymentTypeSelected = false;
 
-//    todo: jeigu pazymi parcel masine ir nepasirenki pastomato, raudonai pazymi pastomato pasirinkimo selection
 //    todo kai paspaudi apmoketi, turi kazkoks divas islyst, kad palaukite ar pan
 
 
@@ -563,88 +562,165 @@
                 .css('display', 'block');
         }
 
+        $("#select-parcelMachine").on('change', function() {
+            $("#label-parcel-select").css('display', 'none');
+            $(".chosen-container-single")
+                .css('border', '1px solid #4cae4c');
+        });
+
+
+        /* gelolocations reikalai */
+        $("#btn-detect-parcel").on('click', function() {
+            $(this).css('display', 'none');
+            $("#parcel-loading").css('display', 'block');
+            $("#parcel-loading-img").css('display', 'inline-block');
+            var typed = new Typed('.parcel-loading-text', {
+                strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
+                typeSpeed: 30
+            });
+            setTimeout(function () {
+                typed.destroy();
+                getClientLocation();
+            }, 4000);
+        });
+
+        function getClientLocation(){
+//            var geo = false;
+            var geo = navigator.geolocation;
+            if(geo){
+                geo.getCurrentPosition(displayLocation);
+            }
+            else {
+
+                var typed = new Typed('.parcel-loading-text', {
+                    strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
+                    typeSpeed: 30
+                });
+                setTimeout(function () {
+                    typed.destroy();
+                    var address = $("#home-address").val();
+                    if(address.length > 12){
+                        var typed2 = new Typed('.parcel-loading-text', {
+                            strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
+                            typeSpeed: 30
+                        });
+                        setTimeout(function () {
+                            sendData("", "", address);
+                        }, 4000);
+                    } else {
+                        var typed3 = new Typed('.parcel-loading-text', {
+                            strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
+                            typeSpeed: 30
+                        });
+                        $("#parcel-loading-img").css('display', 'none')
+                        $("#btn-detect-parcel").css('display', 'inline-block')
+                    }
+                }, 6000);
+
+            }
+        }
+
+
+
+
+
+        function displayLocation(position){
+            var x = position.coords.latitude;
+            var y = position.coords.longitude;
+
+            sendData(x, y, "");
+//
+        }
+
+        function sendData(x, y, address){
+//            var datasend = x + "" + y;
+            jQuery.ajax({
+                url: "{{ path('app.order.locations') }}",
+                type: "GET",
+                data: {
+//                    "data": datasend,
+                    "coordinateX": x,
+                    "coordinateY": y,
+                    "address": address
+//                    "coordinates": "iksas ir ygrikas"
+                },
+                success: function(data){
+
+                    createParcelMachinesList(data.parcelMachines);
+//                    displayMap(position.coords, data.parcelMachines);
+                },
+                error: function() {
+                    alert('Error found :(');
+                }
+
+            })
+        }
+
+        function createParcelMachinesList(parcelMachines){
+
+            $('#select-parcelMachine').find('option').remove().end();
+            parcelMachines.forEach(function (entry) {
+                $('#select-parcelMachine').append($('<option></option>').val(entry['address']).html(
+                    entry['distanceText'] + ' | '  + entry['name']
+                ));
+            });
+            $('#select-parcelMachine').trigger("chosen:updated");
+            $('#parcel-loading').find('img').remove();
+            $('.parcel-loading-text').html('');
+            var typed4 = new Typed('.parcel-loading-text', {
+                strings: ["Sėkmingai rasti artimiausi paštomatai"],
+                typeSpeed: 30
+            });
+
+        }
+
+        var map;
+        function displayMap(coords, parcelMachines) {
+            var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
+
+            var mapOptions = {
+                zoom: 15,
+                center: googleLatAndLong,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var mapDiv = document.getElementById('map');
+            map = new google.maps.Map(mapDiv, mapOptions);
+
+            var title = 'Your Location';
+            var content = 'You are here: ' + coords.latitude + ', ' + coords.longitude;
+            addMarker(map, googleLatAndLong, title, content, null);
+
+            var image = 'https://www.omniva.lt/theme/post24/img/logo.png';
+            parcelMachines.forEach(function (entry) {
+                googleLatAndLong = new google.maps.LatLng(entry['y'], entry['x']);
+                addMarker(map, googleLatAndLong, 'test', 'content', image);
+            });
+        }
+
+        function addMarker (map, latlong, title, content, image) {
+            var markerOptions = {
+                position: latlong,
+                map: map,
+                title: title,
+                clickable: true,
+                icon: image
+            };
+
+            var marker = new google.maps.Marker(markerOptions);
+
+            var infoWindowOptions = {
+                content: content,
+                position: latlong
+            };
+
+            var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
+
+            google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open(map);
+            });
+        }
+
+
     </script>
-
-<script language="JavaScript">
-
-    /* Float Label Pattern Plugin for Bootstrap 3.1.0 by Travis Wilson
-**************************************************/
-
-//    (function ($) {
-//        $.fn.floatLabels = function (options) {
-//
-//            // Settings
-//            var self = this;
-//            var settings = $.extend({}, options);
-//
-//
-//            // Event Handlers
-//            function registerEventHandlers() {
-//                self.on('input keyup change', 'input, textarea', function () {
-//                    actions.swapLabels(this);
-//                });
-//            }
-//
-//
-//            // Actions
-//            var actions = {
-//                initialize: function() {
-//                    self.each(function () {
-//                        var $this = $(this);
-//                        var $label = $this.children('label');
-//                        var $field = $this.find('input,textarea').first();
-//
-//                        if ($this.children().first().is('label')) {
-//                            $this.children().first().remove();
-//                            $this.append($label);
-//                        }
-//
-//                        var placeholderText = ($field.attr('placeholder') && $field.attr('placeholder') != $label.text()) ? $field.attr('placeholder') : $label.text();
-//
-//                        $label.data('placeholder-text', placeholderText);
-//                        $label.data('original-text', $label.text());
-//
-//                        if ($field.val() == '') {
-//                            $field.addClass('empty')
-//                        }
-//                    });
-//                },
-//                swapLabels: function (field) {
-//                    var $field = $(field);
-//                    var $label = $(field).siblings('label').first();
-//                    var isEmpty = Boolean($field.val());
-//
-//                    if (isEmpty) {
-//                        $field.removeClass('empty');
-//                        $label.text($label.data('original-text'));
-//                    }
-//                    else {
-//                        $field.addClass('empty');
-//                        $label.text($label.data('placeholder-text'));
-//                    }
-//                }
-//            }
-//
-//
-//            // Initialization
-//            function init() {
-//                registerEventHandlers();
-//
-//                actions.initialize();
-//                self.each(function () {
-//                    actions.swapLabels($(this).find('input,textarea').first());
-//                });
-//            }
-//            init();
-//
-//
-//            return this;
-//        };
-//
-//        $(function () {
-//            $('.float-label-control').floatLabels();
-//        });
-//    })(jQuery);
-</script>
-
 {% endblock %}

@@ -11,6 +11,7 @@ namespace AppBundle\Service;
 
 use GuzzleHttp\Client;
 use Ivory\GoogleMap\Base\Coordinate;
+use Ivory\GoogleMap\Service\Base\Location\AddressLocation;
 use Ivory\GoogleMap\Service\Base\Location\CoordinateLocation;
 use Ivory\GoogleMap\Service\DistanceMatrix\Request\DistanceMatrixRequest;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -74,15 +75,24 @@ class GeolocationService
 
     /**
      * @param array ParcelMachine $parcelMachines
-     * @param float               $customerCoordinateX
-     * @param float               $customerCoordinateY
+     * @param float $customerCoordinateX
+     * @param float $customerCoordinateY
+     * @param string $customerAddress
      *
      * @return array ParcelMachine
      */
-    public function addDistanceToMachines($parcelMachines, $customerCoordinateX, $customerCoordinateY)
+    public function addDistanceToMachines($parcelMachines, $customerCoordinateX, $customerCoordinateY, $customerAddress)
     {
-        //todo padaryti, kad origin imtu ir adresa
-        $origin = [new CoordinateLocation(new Coordinate((float) $customerCoordinateX, (float) $customerCoordinateY))];
+        if ($customerAddress == "") {
+            $origin = [
+                new CoordinateLocation(new Coordinate((float) $customerCoordinateX, (float) $customerCoordinateY))
+            ];
+        } else {
+            $origin = [new AddressLocation($customerAddress)];
+        }
+
+//        var_dump($parcelMachines, $customerCoordinateX, $customerCoordinateY, $customerAddress);die;
+
         $destinations = $this->getCoordinatesLocations($parcelMachines);
 
         $request = new DistanceMatrixRequest(
@@ -131,8 +141,8 @@ class GeolocationService
         $locations = [];
 
         /**
- * @var ParcelMachine $machine
-*/
+        * @var ParcelMachine $machine
+        */
         foreach ($parcelMachines as $machine) {
             $coordinateLocation = new CoordinateLocation(
                 new Coordinate(
