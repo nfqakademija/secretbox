@@ -139,4 +139,4 @@ gulp.task('watch', function () {
 });
 
 
-gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images']);
+gulp.task('default', ['sass', 'admin-sass', 'scripts', 'fonts', 'images', 'watch']);

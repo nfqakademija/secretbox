@@ -21,6 +21,11 @@
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   font-weight: 600;
 }
+
+.gallery-item img {
+  object-fit: cover;
+  height: 30vh;
+}
 //body {
 //  background: url("../images/bg.jpg") no-repeat center center fixed;
 //  -webkit-background-size: cover;

@@ -133,7 +133,7 @@ class OrderController extends Controller
         $deliveryType = $request->get('deliveryType');
         $boxSize = $request->get('secretBoxSize');
         $lastName = $request->get('lastName');
-        $price = $this->get(OrderPriceService::class)->getCurrentPrices($boxSize);
+        $price = $this->get(OrderPriceService::class)->getCurrentPrice($boxSize);
 
         $address = $deliveryType == "parcel_machine" ? $request->get('parcelMachine') : $request->get('address');
 

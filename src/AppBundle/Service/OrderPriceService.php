@@ -30,7 +30,7 @@ class OrderPriceService
      *
      * @return float
      */
-    public function getCurrentPrices($boxSize)
+    public function getCurrentPrice($boxSize)
     {
         $prices = $this->em->getRepository('AppBundle:Price')->getCurrentPrices();
         $orderPrice = 0;
@@ -42,5 +42,10 @@ class OrderPriceService
         }
 
         return (float) $orderPrice;
+    }
+
+    public function getAllPrices()
+    {
+        return $this->em->getRepository('AppBundle:Price')->getCurrentPrices();
     }
 }

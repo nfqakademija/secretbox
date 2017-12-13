@@ -59,7 +59,9 @@ order.countdown: atskleisti paslapčiai turite
 order.begin.first.message: pradėkite unikalų SECRET BOX nuotykį, kurį įveikę tikrai mėgausitės rezultatu...
 order.begin.second.message: paštu Jums pristatysime paslaptį su Jums skirtomis užuominomis
 order.begin.third.message: įveikite užduotį ir mėgaukitės puikiu atlygiu
-
+small: mažas
+medium: vidutinis
+big: didelis
 
 content.years: metai
 content.months: mėnesiai

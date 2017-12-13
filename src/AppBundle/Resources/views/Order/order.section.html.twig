@@ -1,34 +1,28 @@
 <form action="{{ path('app.order.new') }}" method="post" id="order-form">
-    {#<div class="form-group">#}
 
+    <!-- secret box selection block -->
     <div class="well well-sm text-center">
         <h3>Pasirinkite <strong>Secret box</strong> dydį</h3>
 
         <div class="btn-group " data-toggle="buttons" >
+            {% set fadeEffect = ['fadeInLeft', 'fadeInUp', 'fadeInRight'] %}
+            {% set number = 0 %}
+            {% for price in prices %}
 
-            <label class="btn btn-default order-btn wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.5s">
-                <input type="radio" name="secretBoxSize" id="small-box" value="small" autocomplete="off">
+            <label class="btn btn-default order-btn wow {{ fadeEffect[number] }}" data-wow-duration="2s" data-wow-delay="0.5s">
+                <input type="radio" name="secretBoxSize" id="small-box" value="{{ price.box_size }}" autocomplete="off">
                 <span class="glyphicon glyphicon-ok"></span>
-                <span class="order-title">Mažas</span>
-                <span class="order-price">19.99 €</span>
+                <span class="order-title">{{ price.box_size|trans|capitalize }}</span>
+                <span class="order-price">{{ price.price }}</span>
             </label>
 
-            <label class="btn btn-default order-btn wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.5s">
-                <input type="radio" name="secretBoxSize" id="medium-box" value="medium" autocomplete="off">
-                <span class="glyphicon glyphicon-ok"></span>
-                <span class="order-title">Vidutinis</span>
-                <span class="order-price">29.99 €</span>
-            </label>
+                {% set number = number + 1 %}
+            {% endfor %}
 
-            <label class="btn btn-default order-btn wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.5s">
-                <input type="radio" name="secretBoxSize" id="big-box" value="big" autocomplete="off">
-                <span class="glyphicon glyphicon-ok"></span>
-                <span class="order-title">Didelis</span>
-                <span class="order-price">49.99 €</span>
-            </label>
         </div>
-    </div>
+    </div><!-- end block -->
 
+    <!-- contact info block -->
     <div class="well well-sm text-center order-contact" id="order-contact">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <h3>Patikrinkite savo kontaktinius duomenis</h3>
@@ -58,14 +52,18 @@
                     </div>
                 </div>
             </div>
+
+            <!-- button to address block -->
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;">
                         <span class="fa fa-address-book-o"></span> Pristatymo adresas
                     </a>
                 </div>
-            </div>
+            </div><!-- end button -->
         {% else %}
+
+            <!-- facebook login button -->
             <div class="row">
                 <div class="col-sm-12 text-center" style="padding: 30px;">
                     <a id="btn-facebook-login" href="{{ path('app.order.now') ~ '?content=section-begin-adventure' }}" class="btn btn-lg btn-social btn-facebook" style="width: 300px;">
@@ -74,34 +72,36 @@
 
                     </a>
                 </div>
-            </div>
+            </div><!-- end button -->
 
         {% endif %}
     </div>
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+    <!-- order address block -->
     <div class="well well-sm text-center order-address" id="order-address">
-            <h3>Pasirinkite pristatymo būdą</h3>
-            <div class="btn-group" data-toggle="buttons" >
+        <h3>Pasirinkite pristatymo būdą</h3>
 
-                <label class="btn btn-default delivery-btn" id="btn-delivery-home">
-                    <input type="radio" name="deliveryType" value="home" autocomplete="off">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    <span class="order-title">Kurjeriu į namus</span>
-                    {#<span class="order-price">19.99 €</span>#}
-                </label>
+        <!-- delivery selection -->
+        <div class="btn-group" data-toggle="buttons" >
 
-                <label class="btn btn-default delivery-btn" id="btn-delivery-parcel">
-                    <input type="radio" name="deliveryType" value="parcel_machine" autocomplete="off">
-                    <span class="glyphicon glyphicon-ok"></span>
-                    <span class="order-title">Atsiimsiu paštomate</span>
-                    {#<span class="order-price">29.99 €</span>#}
-                </label>
+            <label class="btn btn-default delivery-btn" id="btn-delivery-home">
+                <input type="radio" name="deliveryType" value="home" autocomplete="off">
+                <span class="glyphicon glyphicon-ok"></span>
+                <span class="order-title">Kurjeriu į namus</span>
+            </label>
 
+            <label class="btn btn-default delivery-btn" id="btn-delivery-parcel">
+                <input type="radio" name="deliveryType" value="parcel_machine" autocomplete="off">
+                <span class="glyphicon glyphicon-ok"></span>
+                <span class="order-title">Atsiimsiu paštomate</span>
+            </label>
+        </div><!-- end selection -->
 
-
-        </div>
-
+        <!-- delivery info -->
         <div id="delivery-display">
+
+            <!-- home delivery -->
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="well well-sm text-center" id="home-delivery">
@@ -111,20 +111,18 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><!-- end home delivery -->
 
+            <!-- parcel machine delivery -->
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="well well-sm text-center" id="parcel-delivery">
                         <div class="col-sm-6">
                             <a href="#" class="btn btn-lg btn-warning" style="width: 300px;">
                                 Padėti nustatyti artimiausią
-
                             </a>
-                            </div>
-
+                        </div>
                         <div class="col-sm-6">
-
                             <label for="parcelMachine">Paštomatų sąrašas</label>
                             <select title="Parcel Machines" style="display: none" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="Pasirinkite paštomatą...">
                                 <option></option>
@@ -135,10 +133,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><!-- end pacrel machine delivery -->
+        </div><!-- end delivery info -->
 
-        </div>
-
+        <!-- navigation buttons -->
         <div class="well well-sm text-center ">
             <div class="row">
                 <div class="col-sm-6 text-center">
@@ -152,15 +150,15 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </div>
+        </div><!-- end navigation buttons -->
+    </div><!-- end order address block -->
 
-
-
+    <!-- payment type block -->
     <div class="well well-sm text-center payment-type" id="payment-type">
         <h3>Pasirinkite apmokėjimo būdą</h3>
-        <div class="btn-group " data-toggle="buttons" >
 
+        <!-- payment selection buttons -->
+        <div class="btn-group " data-toggle="buttons" >
             <label class="btn btn-default payment-btn">
                 <input type="radio" name="paymentType" value="0" autocomplete="off">
                 <span class="glyphicon glyphicon-ok"></span>
@@ -178,9 +176,9 @@
                 <span class="glyphicon glyphicon-ok"></span>
                 <img src="{{ asset('images/payment/paysera_logo.png') }}">
             </label>
-        </div>
+        </div><!-- end payment selection buttons -->
 
-
+        <!-- navigation buttons -->
         <div class="well well-sm text-center ">
             <div class="row">
                 <div class="col-sm-6 text-center">
@@ -195,14 +193,10 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div><!-- end navigation buttons -->
 
-    </div>
+    </div><!-- end payment type block -->
+
     {% endif %}
-
-
-
-
-    {#</div>#}
 </form>
 

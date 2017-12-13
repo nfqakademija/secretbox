@@ -60,6 +60,9 @@ order.countdown: Time to reveal secret
 order.begin.first.message: TRANSLATION NOT READY
 order.begin.second.message: TRANSLATION NOT READY
 order.begin.third.message: TRANSLATION NOT READY
+small: small
+medium: medium
+big: big
 
 content.years: years
 content.months: months
