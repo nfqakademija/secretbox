@@ -26,29 +26,34 @@
     <div class="well well-sm text-center order-contact" id="order-contact">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <h3>Patikrinkite savo kontaktinius duomenis</h3>
+
             <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group float-label-control">
-                        <label for="firstName">Vardas</label>
-                        <input type="text" name="firstName" value="{{ app.user.firstName }}" class="form-control" placeholder="Vardas">
+                <div class="col-md-3 text-left">
+                    <div class="has-float-label">
+                        <input type="text" class="order-text-input" name="firstName" value="{{ app.user.firstName }}" placeholder="Vardas">
+                        <span>Vardas</span>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group float-label-control">
-                        <label for="lastName">Pavardė</label>
-                        <input type="text" name="lastName" value="{{ app.user.lastName }}" class="form-control" placeholder="Pavardė">
+                <div class="col-md-3 text-left">
+                    <div class="has-float-label">
+                        <input type="text" class="order-text-input" name="lastName" value="{{ app.user.lastName }}" placeholder="Pavardė">
+                        <span>Pavardė</span>
                     </div>
                 </div>
-                <div class="col-md-5 col-sm-6">
-                    <div class="form-group float-label-control">
-                        <label for="email">El. paštas</label>
-                        <input type="email" name="email" value="{{ app.user.email }}" class="form-control" placeholder="El. paštas">
+
+                <div class="col-md-5 col-sm-6 text-left">
+                    <div class="has-float-label">
+                        <input type="email" class="order-text-input" name="email" value="{{ app.user.email }}" placeholder="El. paštas">
+                        <span>El. paštas</span>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group float-label-control">
-                        <label for="phoneNo">Telefonas</label>
-                        <input type="text" name="phoneNo" value="" class="form-control" placeholder="Telefono numeris">
+            </div>
+
+            <div class="row" style="padding-top: 20px;">
+                <div class="col-md-3 text-left">
+                    <div class="has-float-label">
+                        <input type="text" class="order-text-input" name="phoneNo" value="" class="form-control" placeholder="Telefono numeris">
+                        <span for="phoneNo">Telefonas</span>
                     </div>
                 </div>
             </div>
@@ -105,10 +110,14 @@
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="well well-sm text-center" id="home-delivery">
-                        <div class="col-sm-8 col-sm-offset-2">
-                            <label for="address">Namų adresas</label><br>
-                            <input type="text" name="address" placeholder="Adresas" value="{{ app.user.address }}">
+
+                        <div class="col-sm-8 col-sm-offset-2 text-left">
+                            <div class="has-float-label ">
+                                <input type="text" class="order-text-input" name="address" placeholder="Adresas" value="{{ app.user.address }}">
+                                <span>Namų adresas</span>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div><!-- end home delivery -->
@@ -117,19 +126,21 @@
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="well well-sm text-center" id="parcel-delivery">
-                        <div class="col-sm-6">
-                            <a href="#" class="btn btn-lg btn-warning" style="width: 300px;">
-                                Padėti nustatyti artimiausią
+                        <div class="col-sm-6 text-right">
+                            <a href="#" class="btn btn-lg btn-warning" id="detect-parcel">
+                                Nustatyti artimiausią
                             </a>
                         </div>
                         <div class="col-sm-6">
-                            <label for="parcelMachine">Paštomatų sąrašas</label>
-                            <select title="Parcel Machines" style="display: none" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="Pasirinkite paštomatą...">
-                                <option></option>
-                                {% for parcelMachine in parcelMachines %}
-                                    <option value="{{ parcelMachine.address }}">{{ parcelMachine.name }}</option>
-                                {% endfor %}
-                            </select>
+                            <div class="">
+                                <label class="label-hidden" id="label-parcel-select" for="parcelMachine">Pasirinkite tinkamą paštomatą</label>
+                                <select title="Parcel Machines" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="Pasirinkite paštomatą..." style="font-size: 19px;">
+                                    <option></option>
+                                    {% for parcelMachine in parcelMachines %}
+                                        <option value="{{ parcelMachine.address }}">{{ parcelMachine.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

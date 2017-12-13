@@ -24,6 +24,7 @@ gulp.task('sass', function() {
         dir.npm + 'fancybox/dist/css/jquery.fancybox.css',
         dir.npm + 'owl.carousel/dist/assets/owl.carousel.css',
         dir.npm + 'owl.carousel/dist/assets/owl.theme.default.css',
+        dir.npm + 'float-label-css/dist/float-label.css',
         dir.assets + 'style/user-profile.scss',
         dir.assets + 'style/main.scss',
         dir.assets + 'style/menu.scss',
