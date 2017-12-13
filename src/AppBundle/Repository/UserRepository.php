@@ -21,4 +21,16 @@ class UserRepository extends EntityRepository
         $this->_em->persist($user);
         $this->_em->flush();
     }
+
+    /**
+     * @return array
+     */
+    public function countAllUsers()
+    {
+        $result = $this->_em->getConnection()->executeQuery('
+            SELECT COUNT(id) as customers FROM users
+        ')->fetchAll();
+
+        return $result[0];
+    }
 }

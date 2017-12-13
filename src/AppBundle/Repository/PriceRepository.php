@@ -2,9 +2,7 @@
 
 namespace AppBundle\Repository;
 
-use AppBundle\Entity\Price;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
  * PriceRepository
@@ -19,8 +17,7 @@ class PriceRepository extends EntityRepository
      */
     public function getCurrentPrices()
     {
-        $result = $this->_em->getConnection()->executeQuery
-        ('
+        $result = $this->_em->getConnection()->executeQuery('
             SELECT p1.box_size, p1.price FROM prices AS p1
             WHERE valid_from IN 
             (

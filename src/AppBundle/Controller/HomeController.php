@@ -3,8 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Impression;
-use AppBundle\Entity\Order;
-use AppBundle\Form\OrderType;
+use AppBundle\Service\EventsAndCustomersCountService;
 use AppBundle\Service\GeolocationService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,7 +34,9 @@ class HomeController extends Controller
 
         $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($request->getLocale());
 
-        $parcelMachineNames = $this->get(GeolocationService::class)->getOnlyNames($request->getLocale());
+
+        $eventsAndCustomers = $this->get(EventsAndCustomersCountService::class)->getEventsAndCustomers();
+//        $parcelMachineNames = $this->get(GeolocationService::class)->getOnlyNames($request->getLocale());
 
 //        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
@@ -57,7 +58,8 @@ class HomeController extends Controller
             'contentLink' => $contentLink,
             'impressions' => $impressions,
             'parcelMachines' => $parcelMachines,
-//            'orderForm' => $orderForm->createView()
+            'eventsAndCustomers' => $eventsAndCustomers
+            //            'orderForm' => $orderForm->createView()
             ]
         );
     }

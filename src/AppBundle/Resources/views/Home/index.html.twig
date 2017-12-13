@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- end section -->
 
                 <!-- about section -->
                 <div class="gfort-section" id="section-about">
@@ -115,7 +115,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end block -->
 
                                 <!-- 2nd about block -->
                                 <div class="col-md-3">
@@ -140,7 +140,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end block -->
 
                                 <!-- 3rd about block -->
                                 <div class="col-md-3">
@@ -164,122 +164,79 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div><!-- end block -->
 
-                                <!-- col-md-4 -->
+                                <!-- 4th about block -->
                                 <div class="col-md-3">
-                                    <!-- Icon Block -->
                                     <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <!-- gfort Block Container -->
                                         <div class="gfort-block-container">
-
-
-                                            <!-- gfort Block Head -->
                                             <div class="gfort-block-head">
                                                 <i class="fa fa-commenting-o"></i>
                                                 <i class="fa fa-commenting-o"></i>
-                                            </div><!-- /End gfort Block Head -->
-
-
-                                            <!-- gfort Block Body -->
+                                            </div>
                                             <div class="gfort-block-body">
-
-
-                                                <!-- gfort Block Title -->
                                                 <div class="gfort-block-title">
                                                     <h4>Dalinkis įspūdžiais</h4>
-                                                </div><!-- /End gfort Block Title -->
-
-
-                                                <!-- gfort Block Content -->
+                                                </div>
                                                 <div class="gfort-block-content">
-
                                                     <p>
-                                                        Mums ir visiems, dalyvaujantiems „Secret box“ atradimuose, svarbūs Tavo atradimų akimirkos ir atsiliepimai – dalinkis džaugsmo akimirkų nuotraukomis ir komentuok, patark, siūlyk.
+                                                        Mums ir visiems, dalyvaujantiems „Secret box“ atradimuose,
+                                                        svarbūs Tavo atradimų akimirkos ir atsiliepimai – dalinkis
+                                                        džaugsmo akimirkų nuotraukomis ir komentuok, patark, siūlyk.
                                                     </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- end block -->
 
-                                                </div><!-- /End gfort Block Content -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end section -->
 
-
-                                            </div><!-- /End gfort Block Body -->
-
-
-                                        </div><!-- /End gfort Block Container -->
-                                    </div><!-- /End Icon Block -->
-                                </div><!-- /End col-md-4 -->
-
-
-                            </div><!-- /End row -->
-                        </div><!-- /End container -->
-                    </div><!-- /End Section Container -->
-                </div><!-- /End gfort Section -->
-
-
-
-
-                <!-- gfort Section -->
+                <!-- divider Section -->
                 <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <!-- Section Container -->
                     <div class="section-container">
-                        <!-- container -->
                         <div class="container">
-                            <!-- row -->
                             <div class="row">
-
-
-                                <!-- col-md-12 -->
                                 <div class="col-md-12">
                                     <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
                                         <i class="fa fa-signal"></i>
                                     </div>
-                                </div><!-- /End col-md-12 -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end section -->
 
-
-                            </div><!-- /End row -->
-                        </div><!-- /End container -->
-                    </div><!-- /End Section Container -->
-                </div><!-- /End gfort Section -->
-
-
+                <!-- numbers Section -->
                 <div class="gfort-section">
-
                     <div class="section-container">
-{#todo duomenis is DB#}
                         <div class="container">
-
                             <div class="row">
-
+                                <!-- ongoing secrets -->
                                 <div class="col-sm-4 col-xs-6">
-
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="214" data-speed="5000" data-refresh-interval="7">214</span>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="7">{{ eventsAndCustomers.ongoing }}</span>
                                         <p><i class="fa fa-diamond"></i> Vykstančių nuotykių</p>
                                     </div>
                                 </div>
-
+                                <!-- customers -->
                                 <div class="col-sm-4 col-xs-6">
 
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="170" data-speed="5000" data-refresh-interval="5" style="color: #16a085;">170</span>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="5" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
                                         <p><i class="fa fa-thumbs-up"></i> Klientų</p>
                                     </div>
                                 </div>
-
+                                <!-- revealed secrets -->
                                 <div class="col-sm-4 col-xs-6">
-
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="88" data-speed="5000" data-refresh-interval="4" style="color: #e74c3c;">88</span>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="4" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
                                         <p><i class="fa fa-gift"></i> Laimėjimų</p>
                                     </div>
                                 </div>
-
-                                {#<div class="col-sm-3 col-xs-6">#}
-
-                                    {#<div class="counter-block">#}
-                                        {#<span class="number-block" data-to="11653" data-speed="5000" data-refresh-interval="50" style="color: #8e44ad;">11653</span>#}
-                                        {#<p><i class="fa fa-code"></i> Lines of code</p>#}
-                                    {#</div>#}
-                                {#</div>#}
                             </div>
                         </div>
                     </div>

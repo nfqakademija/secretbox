@@ -95,4 +95,30 @@ class OrderRepository extends EntityRepository
 
         return $userSecrets;
     }
+
+    /**
+     * @return array
+     */
+    public function getCountCurrentSecrets()
+    {
+        $result = $this->_em->getConnection()->executeQuery('
+            SELECT COUNT(id) as ongoing FROM orders
+            WHERE status IN ("new", "delivered")
+        ')->fetchAll();
+
+        return $result[0];
+    }
+
+    /**
+     * @return array
+     */
+    public function getCountRevealedSecrets()
+    {
+        $result = $this->_em->getConnection()->executeQuery('
+            SELECT COUNT(id) as revealed FROM orders
+            WHERE status IN ("revealed")
+        ')->fetchAll();
+
+        return $result[0];
+    }
 }

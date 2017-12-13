@@ -15,6 +15,11 @@ class OrderPriceService
 {
     private $em;
 
+    /**
+     * OrderPriceService constructor.
+     *
+     * @param EntityManager $em
+     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;
@@ -30,8 +35,8 @@ class OrderPriceService
         $prices = $this->em->getRepository('AppBundle:Price')->getCurrentPrices();
         $orderPrice = 0;
 
-        foreach ($prices as $price){
-            if($price['box_size'] === $boxSize){
+        foreach ($prices as $price) {
+            if ($price['box_size'] === $boxSize) {
                 $orderPrice = $price['price'];
             }
         }

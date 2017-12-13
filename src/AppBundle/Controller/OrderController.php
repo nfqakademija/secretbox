@@ -4,7 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Order;
 use AppBundle\Entity\User;
-use AppBundle\Form\OrderType;
 use AppBundle\Service\GeolocationService;
 use AppBundle\Service\OrderPriceService;
 use AppBundle\Service\ParcelMachine;
@@ -125,7 +124,8 @@ class OrderController extends Controller
     /**
      * @Route("/new", name="app.order.new")
      */
-    public function newOrderAction(Request $request){
+    public function newOrderAction(Request $request)
+    {
 
         /** @var User $user */
         $user = $this->getUser();
@@ -148,7 +148,7 @@ class OrderController extends Controller
             ->setPhoneNo($request->get('phoneNo'));
 
         //todo reikia call i User service ir ten atnaujint ir issaugot useri returninti erroru lista
-        if($user->getLastName() != $lastName){
+        if ($user->getLastName() != $lastName) {
             $user->setPictureUrl($lastName);
         }
 
