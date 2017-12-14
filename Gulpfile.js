@@ -58,10 +58,10 @@ gulp.task('admin-sass', function () {
 gulp.task('scripts', function() {
     gulp.src([
             //Third party assets
-            dir.npm + 'jquery/dist/jquery.min.js',
+            dir.npm + 'jquery/dist/jquery.js',
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
-            dir.npm + 'parsleyjs/dist/parsley.js',
+            // dir.npm + 'parsleyjs/dist/parsley.js',
             dir.npm + 'typed.js/lib/typed.js',
             dir.npm + 'flipclock/compiled/flipclock.js',
             dir.npm + 'animsition/dist/js/animsition.js',
@@ -86,7 +86,7 @@ gulp.task('scripts', function() {
             dir.assets + 'scripts/main.js'
         ])
         .pipe(concat('script.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js'));
 
     // parsleyjs validation locales LT and EN
@@ -105,12 +105,12 @@ gulp.task('scripts', function() {
 
     gulp.src(dir.assets + 'scripts/template-scripts.js')
         .pipe(concat('template-scripts.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js/'));
 
     gulp.src(dir.assets + 'scripts/modernizr-custom.js')
         .pipe(concat('modernizr-custom.js'))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(gulp.dest(dir.dist + 'js/'));
 
 });

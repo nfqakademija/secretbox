@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\DBAL\EnumBoxSize;
 use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -96,6 +97,13 @@ class Product
      * @ORM\Column(name="market_value", type="decimal", precision=10, scale=2)
      */
     private $marketValue;
+
+    /**
+     * @var EnumBoxSize
+     *
+     * @ORM\Column(name="box_size", type="enum_box_size")
+     */
+    private $boxSize;
 
     /**
      * Get id
@@ -328,6 +336,25 @@ class Product
     public function setAgeMax(int $ageMax): Product
     {
         $this->ageMax = $ageMax;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBoxSize()
+    {
+        return $this->boxSize;
+    }
+
+    /**
+     * @param string $boxSize
+     *
+     * @return Product
+     */
+    public function setBoxSize($boxSize)
+    {
+        $this->boxSize = $boxSize;
         return $this;
     }
 

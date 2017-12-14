@@ -1,5 +1,5 @@
 /*global jQuery, document, window, Waypoint, videojs, YT, grecaptcha, google, InfoBox, prettyPrint, Cookies, WOW*/
-
+var websiteLink = document.location.origin + '/';
 
 /* =============================================================================
 Ajax
@@ -342,8 +342,8 @@ jQuery(document).ready(function () {
     ------------------------------------------------------------------------- */
     if (jQuery('.fixed-header').length) {
         if (!jQuery('.header-section').hasClass('sidebar-header')) {
-            jQuery.getScript('js/plugins/waypoint/jquery.waypoints.min.js', function () {
-                jQuery.getScript('js/plugins/waypoint/sticky.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/waypoint/jquery.waypoints.min.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/waypoint/sticky.min.js', function () {
                     gfortFixedHeaderfn();
                 });
             });
@@ -446,7 +446,7 @@ jQuery(document).ready(function () {
                 jQuery(this).find('.notification-block-wrapper').addClass('notification-block-overlay');
             });
         }
-        jQuery.getScript('js/plugins/cookie/js.cookie.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/cookie/js.cookie.min.js', function () {
             gfortNBCookiefn();
         });
     }
@@ -494,7 +494,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('[data-scroll]').length) {
-        jQuery.getScript('js/plugins/scrollto/jquery.scrollTo.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/scrollto/jquery.scrollTo.min.js', function () {
             gfortScrollTofn();
         });
     }
@@ -844,7 +844,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.form-block').length) {
-        jQuery.getScript('js/plugins/validation/jquery.validate.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/validation/jquery.validate.min.js', function () {
             gfortFormValidationfn();
         });
     }
@@ -1216,14 +1216,14 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.gfort-owl-slider').length) {
-        if (!jQuery('link[href="js/plugins/owl-carousel/assets/owl.carousel.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/owl-carousel/assets/owl.carousel.min.css">');
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/owl-carousel/assets/owl.theme.default.min.css">');
-            jQuery.getScript('js/plugins/owl-carousel/owl.carousel.min.js', function () {
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.carousel.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.carousel.min.css">');
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.theme.default.min.css">');
+            jQuery.getScript(websiteLink + 'js/plugins/owl-carousel/owl.carousel.min.js', function () {
                 gfortOWLSliderinitfn();
             });
         } else {
-            jQuery.getScript('js/plugins/owl-carousel/owl.carousel.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/owl-carousel/owl.carousel.min.js', function () {
                 gfortOWLSliderinitfn();
             });
         }
@@ -1253,7 +1253,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.instagram-feed-block').length) {
-        jQuery.getScript('js/plugins/gfortinsta/gfortInsta.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/gfortinsta/gfortInsta.min.js', function () {
             gfortInstafn();
         });
     }
@@ -1288,7 +1288,7 @@ jQuery(document).ready(function () {
                 loadingText: '<i class="fa fa-spinner fa-pulse fa-fw fa-2x"></i>',
                 count: jQuery(this).attr('data-twitter-feed-count'),
                 username: jQuery(this).attr('data-twitter-username'),
-                apiPath: 'js/plugins/tweetie/api/tweet.php',
+                apiPath: websiteLink + 'js/plugins/tweetie/api/tweet.php',
                 template: '<div class="gfort-twitter-item-container"><div class="twitter-head"><div class="twitter-avatar"><a href="https://twitter.com/intent/follow?original_referer=&screen_name={{user_name}}" target="_blank">{{avatar}}</a></div><div class="twitter-user-screen-name"><span class="twitter-username"><a href="https://twitter.com/{{user_name}}" target="_blank"><i class="fa fa-twitter"></i><span>{{user_name}}</span></a></span><span class="twitter-screen-name">{{screen_name}}</span></div></div><div class="twitter-body"><div class="twitter-tweet"><p>{{tweet}}</p></div><div class="twitter-date-btns"><div class="twitter-date"><a href="{{url}}" target="_blank">{{date}}</a></div><div class="twitter-btns"><a href="https://twitter.com/intent/tweet?in_reply_to={{tweet_id}}" title="Reply" target="_blank" data-toggle="tooltip" data-placement="top"><i class="fa fa-reply"></i></a><a href="https://twitter.com/intent/retweet?tweet_id={{tweet_id}}" title="Retweet" target="_blank" data-toggle="tooltip" data-placement="top"><i class="fa fa-retweet"></i></a><a href="https://twitter.com/intent/favorite?tweet_id={{tweet_id}}" title="Favorite" target="_blank" data-toggle="tooltip" data-placement="top"><i class="fa fa-star"></i></a></div></div></div></div>'
             }, function () {
 
@@ -1363,16 +1363,16 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.twitter-feed-block').length) {
-        jQuery.getScript('js/plugins/tweetie/tweetie.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/tweetie/tweetie.min.js', function () {
             if (jQuery('.twitter-feed-block').hasClass('twitter-slider')) {
-                if (!jQuery('link[href="js/plugins/owl-carousel/assets/owl.carousel.min.css"]').length) {
-                    jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/owl-carousel/assets/owl.carousel.min.css">');
-                    jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/owl-carousel/assets/owl.theme.default.min.css">');
-                    jQuery.getScript('js/plugins/owl-carousel/owl.carousel.min.js', function () {
+                if (!jQuery('link[href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.carousel.min.css"]').length) {
+                    jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.carousel.min.css">');
+                    jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/owl-carousel/assets/owl.theme.default.min.css">');
+                    jQuery.getScript(websiteLink + 'js/plugins/owl-carousel/owl.carousel.min.js', function () {
                         gfortTwitterfn();
                     });
                 } else {
-                    jQuery.getScript('js/plugins/owl-carousel/owl.carousel.min.js', function () {
+                    jQuery.getScript(websiteLink + 'js/plugins/owl-carousel/owl.carousel.min.js', function () {
                         gfortTwitterfn();
                     });
                 }
@@ -1503,7 +1503,7 @@ jQuery(document).ready(function () {
                     this.title = '<span>' + '(' + (this.index + 1) + ' of ' + this.group.length + ')' + ' - ' + '</span>' + this.title;
                 }
 
-                jQuery.getScript('js/plugins/videojs/videojs.min.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/videojs/videojs.min.js', function () {
                     videojs('html5ElementPlay', {
                         loop: true,
                         controls: true
@@ -1522,16 +1522,16 @@ jQuery(document).ready(function () {
     ------------------------------------------------------------------------- */
     // Normal
     if (jQuery('[data-gfort-lightbox]').length) {
-        if (!jQuery('link[href="js/plugins/fancybox/jquery.fancybox.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/fancybox/jquery.fancybox.min.css">');
-            jQuery.getScript('js/plugins/fancybox/jquery.fancybox.pack.js', function () {
-                jQuery.getScript('js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/fancybox/jquery.fancybox.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/fancybox/jquery.fancybox.min.css">');
+            jQuery.getScript(websiteLink + 'js/plugins/fancybox/jquery.fancybox.pack.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
                     gfortFancyBoxfn();
                 });
             });
         } else {
-            jQuery.getScript('js/plugins/fancybox/jquery.fancybox.pack.js', function () {
-                jQuery.getScript('js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/fancybox/jquery.fancybox.pack.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
                     gfortFancyBoxfn();
                 });
             });
@@ -1540,8 +1540,8 @@ jQuery(document).ready(function () {
 
     // HTML5 Elements (Video / Audio)
     if (jQuery('[data-gfort-lightbox-html5]').length) {
-        if (!jQuery('link[href="js/plugins/videojs/videojs.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/videojs/videojs.min.css">');
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/videojs/videojs.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/videojs/videojs.min.css">');
         }
     }
 
@@ -1579,20 +1579,20 @@ jQuery(document).ready(function () {
     ------------------------------------------------------------------------- */
     // FitVid
     if (jQuery('iframe').length) {
-        jQuery.getScript('js/plugins/fitvids/jquery.fitvids.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/fitvids/jquery.fitvids.min.js', function () {
             gfortFitVidfn();
         });
     }
 
     // HTML5 Video
     if (jQuery('video').length) {
-        if (!jQuery('link[href="js/plugins/videojs/videojs.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/videojs/videojs.min.css">');
-            jQuery.getScript('js/plugins/videojs/videojs.min.js', function () {
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/videojs/videojs.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/videojs/videojs.min.css">');
+            jQuery.getScript(websiteLink + 'js/plugins/videojs/videojs.min.js', function () {
                 gfortHTML5Videofn();
             });
         } else {
-            jQuery.getScript('js/plugins/videojs/videojs.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/videojs/videojs.min.js', function () {
                 gfortHTML5Videofn();
             });
         }
@@ -1679,17 +1679,17 @@ jQuery(document).ready(function () {
 
         /* Load lightbox if not loaded (Mobile Purpose)
         --------------------------------------------------------------------- */
-        if (!jQuery('link[href="js/plugins/fancybox/jquery.fancybox.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/fancybox/jquery.fancybox.min.css">');
-            jQuery.getScript('js/plugins/fancybox/jquery.fancybox.pack.js', function () {
-                jQuery.getScript('js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/fancybox/jquery.fancybox.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/fancybox/jquery.fancybox.min.css">');
+            jQuery.getScript(websiteLink + 'js/plugins/fancybox/jquery.fancybox.pack.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/fancybox/helpers/jquery.fancybox-media.min.js', function () {
                     gfortFancyBoxfn();
                 });
             });
         }
 
-        if (!jQuery('link[href="js/plugins/videojs/videojs.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/videojs/videojs.min.css">');
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/videojs/videojs.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/videojs/videojs.min.css">');
         }
 
         /* Create iframe, overlay BG, Play btn on Mobile and Control btns
@@ -1810,7 +1810,7 @@ jQuery(document).ready(function () {
 
     /* Youtube Video */
     if (jQuery('.background-video-block div[data-youtube-video-url]').length) {
-        jQuery.getScript('js/plugins/gfortytplayer/ytplayer.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/gfortytplayer/ytplayer.js', function () {
             gfortYouTubeVideofn();
         });
     }
@@ -1857,13 +1857,13 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('audio').length) {
-        if (!jQuery('link[href="js/plugins/videojs/videojs.min.css"]').length) {
-            jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/videojs/videojs.min.css">');
-            jQuery.getScript('js/plugins/videojs/videojs.min.js', function () {
+        if (!jQuery('link[href="' + websiteLink + 'js/plugins/videojs/videojs.min.css"]').length) {
+            jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/videojs/videojs.min.css">');
+            jQuery.getScript(websiteLink + 'js/plugins/videojs/videojs.min.js', function () {
                 gfortHTML5Audiofn();
             });
         } else {
-            jQuery.getScript('js/plugins/videojs/videojs.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/videojs/videojs.min.js', function () {
                 gfortHTML5Audiofn();
             });
         }
@@ -2132,7 +2132,7 @@ jQuery(document).ready(function () {
                 boxClass: 'infoWindow-block',
                 pixelOffset: new google.maps.Size(-140, 0),
                 infoBoxClearance: new google.maps.Size(1, 1),
-                closeBoxURL: "js/plugins/infobox/close.png"
+                closeBoxURL: "' + websiteLink + 'js/plugins/infobox/close.png"
             };
 
             infoWindowBox[index] = new InfoBox(infoWindowOptions);
@@ -2165,7 +2165,7 @@ jQuery(document).ready(function () {
             if (el.hasClass('google-map-block-collapsed')) {
                 if (parallaxEffect === true) {
                     el.addClass('parallax-section');
-                    jQuery.getScript('js/plugins/parallax/jquery.parallax-1.1.3.min.js', function () {
+                    jQuery.getScript(websiteLink + 'js/plugins/parallax/jquery.parallax-1.1.3.min.js', function () {
                         gfortParallaxfn();
                     });
                 }
@@ -2196,7 +2196,7 @@ jQuery(document).ready(function () {
     if (jQuery('.google-map-block').length) {
         var googleMapAPIKey = jQuery('.google-map-block').attr('data-api-key');
         jQuery.getScript('https://maps.googleapis.com/maps/api/js?key=' + googleMapAPIKey, function () {
-            jQuery.getScript('js/plugins/infobox/infobox_packed.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/infobox/infobox_packed.js', function () {
                 gfortGoogleMapfn();
             });
         });
@@ -2243,7 +2243,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.text-animation').length) {
-        jQuery.getScript('js/plugins/typed/typed.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/typed/typed.min.js', function () {
             gfortTextAnumationfn();
         });
     }
@@ -2265,7 +2265,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.prettyprint').length) {
-        jQuery.getScript('js/plugins/prettify/prettify.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/prettify/prettify.min.js', function () {
             gfortPrettyPrintfn();
         });
     }
@@ -2358,7 +2358,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.downtime-counter-block').length) {
-        jQuery.getScript('js/plugins/downCount/jquery.downCount.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/downCount/jquery.downCount.min.js', function () {
             gfortDowntimeCounterfn();
         });
     }
@@ -2421,8 +2421,8 @@ jQuery(document).ready(function () {
         jQuery('.pie-block-circle').each(function () {
             jQuery(this).prepend('<div class="gfort-pie-block-circle"></div>');
         });
-        jQuery.getScript('js/plugins/easypiechart/jquery.easypiechart.min.js', function () {
-            jQuery.getScript('js/plugins/waypoint/jquery.waypoints.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/easypiechart/jquery.easypiechart.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/waypoint/jquery.waypoints.min.js', function () {
                 var elAnimation = true;
                 gfortPieBlockfn(elAnimation);
             });
@@ -2464,7 +2464,7 @@ jQuery(document).ready(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.progress-block').length) {
-        jQuery.getScript('js/plugins/waypoint/jquery.waypoints.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/waypoint/jquery.waypoints.min.js', function () {
             gfortProgressBlockfn();
         });
     }
@@ -2487,7 +2487,7 @@ jQuery(document).ready(function () {
     ------------------------------------------------------------------------- */
     if (jQuery('.wow').length) {
         if (enableAnimation === true) {
-            jQuery.getScript('js/plugins/wow/wow.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/wow/wow.min.js', function () {
                 gfortAnimationfn();
             });
         }
@@ -2516,7 +2516,7 @@ jQuery(document).ready(function () {
         ===================================================================== */
         if (jQuery('.parallax-section').length) {
             if (parallaxEffect === true) {
-                jQuery.getScript('js/plugins/parallax/jquery.parallax-1.1.3.min.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/parallax/jquery.parallax-1.1.3.min.js', function () {
                     gfortParallaxfn();
                 });
             }
@@ -2526,13 +2526,13 @@ jQuery(document).ready(function () {
         Select Box
         ===================================================================== */
         if (jQuery('select').length) {
-            if (!jQuery('link[href="js/plugins/chosen/chosen.min.css"]').length) {
-                jQuery('head').prepend('<link rel="stylesheet" href="js/plugins/chosen/chosen.min.css">');
-                jQuery.getScript('js/plugins/chosen/chosen.jquery.min.js', function () {
+            if (!jQuery('link[href="' + websiteLink + 'js/plugins/chosen/chosen.min.css"]').length) {
+                jQuery('head').prepend('<link rel="stylesheet" href="' + websiteLink + 'js/plugins/chosen/chosen.min.css">');
+                jQuery.getScript(websiteLink + 'js/plugins/chosen/chosen.jquery.min.js', function () {
                     gfortSelectfn();
                 });
             } else {
-                jQuery.getScript('js/plugins/chosen/chosen.jquery.min.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/chosen/chosen.jquery.min.js', function () {
                     gfortSelectfn();
                 });
             }
@@ -2542,8 +2542,8 @@ jQuery(document).ready(function () {
         Counter Block
         ===================================================================== */
         if (jQuery('.counter-block').length) {
-            jQuery.getScript('js/plugins/waypoint/jquery.waypoints.min.js', function () {
-                jQuery.getScript('js/plugins/countto/jquery.countTo.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/waypoint/jquery.waypoints.min.js', function () {
+                jQuery.getScript(websiteLink + 'js/plugins/countto/jquery.countTo.min.js', function () {
                     gfortCounterfn();
                 });
             });
@@ -2692,8 +2692,8 @@ jQuery(window).load(function () {
     /* Condition
     ------------------------------------------------------------------------- */
     if (jQuery('.isotope-masonry').length) {
-        jQuery.getScript('js/plugins/isotope/isotope.pkgd.min.js', function () {
-            jQuery.getScript('js/plugins/isotope/packery-mode.pkgd.min.js', function () {
+        jQuery.getScript(websiteLink + 'js/plugins/isotope/isotope.pkgd.min.js', function () {
+            jQuery.getScript(websiteLink + 'js/plugins/isotope/packery-mode.pkgd.min.js', function () {
                 gfortisotopefn();
             });
         });

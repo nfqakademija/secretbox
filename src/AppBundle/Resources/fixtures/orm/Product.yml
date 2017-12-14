@@ -9,6 +9,10 @@ parameters:
         - 'unisex'
         - 'male'
         - 'female'
+    boxSizes:
+        - 'small'
+        - 'medium'
+        - 'big'
 
 AppBundle\Entity\Product:
     product{1..500}:
@@ -23,3 +27,4 @@ AppBundle\Entity\Product:
         validTo: '<dateTimeBetween($validFrom, "+3 months")>'
         supplierPrice: '<randomFloat(2,10,15)>'
         marketValue: '<randomFloat(2,30,50)>'
+        boxSize: '<randomElement($boxSizes)>'

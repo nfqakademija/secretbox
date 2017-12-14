@@ -58,22 +58,26 @@
                 </div>
             </div>
 
+
             <!-- button to address block -->
-            <div class="row">
-                <div class="col-sm-12 text-right">
-                    <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;">
-                        <span class="fa fa-address-book-o"></span> Pristatymo adresas
-                    </a>
+            <div class="well well-sm text-center " style="margin-top: 50px">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-6 text-left">
+                        <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;">
+                            <span class="fa fa-address-book-o"></span> Pristatymo adresas
+                        </a>
+                    </div>
                 </div>
             </div><!-- end button -->
+
         {% else %}
 
             <!-- facebook login button -->
             <div class="row">
                 <div class="col-sm-12 text-center" style="padding: 30px;">
-                    <a id="btn-facebook-login" href="{{ path('app.order.now') ~ '?content=section-begin-adventure' }}" class="btn btn-lg btn-social btn-facebook" style="width: 300px;">
+                    <a href="{{ path('app.order.now') ~ '?content=section-begin-adventure' }}" class="btn btn-lg btn-social btn-facebook btn-facebook-login" style="width: 300px;">
                         <span class="fa fa-facebook"></span>
-                        <span id="login-text">Prisijungti su Facebook</span>
+                        <span class="login-text">Prisijungti su Facebook</span>
 
                     </a>
                 </div>
@@ -132,7 +136,7 @@
                             </a>
                             <div class="parcel-loading" id="parcel-loading">
                                 <div>
-                                    <img id="parcel-loading-img" src="{{ asset('images/payment/processing.webp') }}">
+                                    <img id="parcel-loading-img" src="{{ asset('images/payment/processing.webp') }}" alt="O">
                                 </div>
                                 <div class="parcel-loading-text"></div>
 

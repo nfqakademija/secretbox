@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\DBAL\EnumBoxSize;
+use AppBundle\DBAL\EnumGenderType;
 use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,7 +39,9 @@ class Price
     private $vatRate;
 
     /**
-     * @ORM\Column(name="box_size", type="enum_price_box_size")
+     * @var EnumBoxSize
+     *
+     * @ORM\Column(name="box_size", type="enum_box_size")
      */
     private $boxSize;
 

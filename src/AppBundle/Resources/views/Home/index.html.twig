@@ -1,4 +1,4 @@
-{% extends "::base.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block title %}
     Pradžia - {{ parent() }}
@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block body %}
-    <div class="page-body">
+    {#<div class="page-body">#}
 
-        <div class="main-content">
-            <div class="main-content-container">
+        {#<div class="main-content">#}
+            {#<div class="main-content-container">#}
 
                 <!-- homepage section -->
                 <div id="section-main" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px">
@@ -64,6 +64,21 @@
                         </div>
                     </div>
                 </div><!-- end section -->
+
+    {% if test is defined %}
+        <div class="gfort-section" id="section-about" style="height: 100vh;">
+            <div class="section-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>{{ test }}</h1>
+                            <h2>{{ test2 }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 
                 <!-- about section -->
                 <div class="gfort-section" id="section-about">
@@ -407,10 +422,10 @@
                     </div>
                 </div><!-- end section -->
 
-            </div>
-        </div>
+            {#</div>#}
+        {#</div>#}
 
-    </div>
+    {#</div>#}
     {#//todo sutvarkyti, kad pastomatu pasirinkime butu paieska#}
 {% endblock %}
 
@@ -443,10 +458,15 @@
         }
 
 
-        $("#btn-facebook-login").on('click', function () {
+        $(".btn-facebook-login").on('click', function () {
             $(this).addClass('disabled');
-            $("#login-text").html(userWaiting);
+            $(".login-text").html(userWaiting);
         });
+
+//        $("#btn-facebook-login").on('click', function () {
+//            $(this).addClass('disabled');
+//            $("#login-text").html(userWaiting);
+//        });
 
         /*order control*/
 
@@ -471,17 +491,17 @@
         });
 
         $("#btn-delivery-address").on('click', function () {
-            $(this).addClass('disabled');
+//            $(this).addClass('disabled');
             animateEffect($("#order-address"), "fadeInRight");
             animateEffect($("#order-contact"), "fadeOutLeft");
-            $("#btn-contacts").removeClass('disabled');
+//            $("#btn-contacts").removeClass('disabled');
         });
 
         $("#btn-contacts").on('click', function () {
-            $(this).addClass('disabled');
+//            $(this).addClass('disabled');
             animateEffect($("#order-address"), "fadeOutRight");
             animateEffect($("#order-contact"), "fadeInLeft");
-            $("#btn-delivery-address").removeClass('disabled');
+//            $("#btn-delivery-address").removeClass('disabled');
         });
 
         var deliveryTypeSelected = false;
@@ -519,12 +539,12 @@
 
         $("#btn-payment-type").on('click', function () {
             if ($("#select-parcelMachine").val() || ($("[name='deliveryType']:checked").val() == "home")){
-                $(this).addClass('disabled');
+//                $(this).addClass('disabled');
                 animateEffect($("#order-address"), "fadeOutLeft");
                 animateEffect($("#payment-type"), "fadeInRight");
                 var value = $("[name='secretBoxSize']:checked").val();
                 $("#btn-proceed-payment").html('Apmokėti <strong>' + prices[value] + ' EUR</strong>');
-                $("#btn-back-delivery-address").removeClass('disabled');
+//                $("#btn-back-delivery-address").removeClass('disabled');
             } else {
                 $(".parcel-select")
                     .removeClass('parcel-select')
@@ -535,10 +555,10 @@
         });
 
         $("#btn-back-delivery-address").on('click', function () {
-            $(this).addClass('disabled');
+//            $(this).addClass('disabled');
             animateEffect($("#payment-type"), "fadeOutRight");
             animateEffect($("#order-address"), "fadeInLeft");
-            $("#btn-payment-type").removeClass('disabled');
+//            $("#btn-payment-type").removeClass('disabled');
         });
 
         $(".payment-btn").on('click', function () {
@@ -570,6 +590,32 @@
 
 
         /* gelolocations reikalai */
+
+
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+
+        function success(pos) {
+            var crd = pos.coords;
+
+            console.log('Your current position is:');
+            console.log('Latitude : ' + crd.latitude);
+            console.log('Longitude: ' + crd.longitude);
+            console.log('More or less ' + crd.accuracy + ' meters.');
+        };
+
+        function error(err) {
+            console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+
+
+
+
         $("#btn-detect-parcel").on('click', function() {
             $(this).css('display', 'none');
             $("#parcel-loading").css('display', 'block');
@@ -627,8 +673,8 @@
         function displayLocation(position){
             var x = position.coords.latitude;
             var y = position.coords.longitude;
-
-            sendData(x, y, "");
+            alert(x + '}}}' + y)
+//            sendData(x, y, "");
 //
         }
 

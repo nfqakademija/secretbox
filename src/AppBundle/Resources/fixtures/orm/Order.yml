@@ -12,7 +12,7 @@ AppBundle\Entity\Order:
         user: '90%? @user* : @admin'
         product: '@product*'
         orderedAt: '<dateTimeBetween("-1 month", "now")>'
-        orderRevealUntil: '<dateTimeBetween($orderedAt, "+336 hours")>'
+        orderRevealUntil: '<dateTimeBetween($orderedAt, "+14 days")>'
         sellingPrice: '$price'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'

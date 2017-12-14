@@ -9,8 +9,8 @@
 
 namespace AppBundle\DBAL;
 
-class EnumPriceBoxSize extends EnumType
+class EnumBoxSize extends EnumType
 {
-    protected $name = 'enum_price_box_size';
+    protected $name = 'enum_box_size';
     protected $values = array('small', 'medium', 'big');
 }

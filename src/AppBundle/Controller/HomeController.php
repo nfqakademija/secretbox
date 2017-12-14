@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class HomeController extends Controller
 {
     /**
+//     * @Route("/{test}/{test2}", defaults={"test":"", "test2":""}, name="app.homepage")
      * @Route("/", name="app.homepage")
      *
      * @param Request $request
@@ -64,7 +65,9 @@ class HomeController extends Controller
             'impressions' => $impressions,
             'parcelMachines' => $parcelMachines,
             'eventsAndCustomers' => $eventsAndCustomers,
-            'prices' => $prices
+            'prices' => $prices,
+            //            'test'=> $test,
+            //            'test2'=> $test2
             //            'orderForm' => $orderForm->createView()
             ]
         );

@@ -32,9 +32,13 @@
         {% block header %}
             {% include "::inc/header.html.twig" %}
         {% endblock %}
-        {#<div class="body-content">#}
-            {% block body %}{% endblock %}
-        {#</div>#}
+        <div class="page-body">
+            <div class="main-content">
+                <div class="main-content-container">
+                {% block body %}{% endblock %}
+                </div>
+            </div>
+        </div>
 
     {% endblock %}
 

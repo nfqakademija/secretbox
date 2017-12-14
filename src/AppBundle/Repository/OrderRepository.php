@@ -85,15 +85,24 @@ class OrderRepository extends EntityRepository
      */
     public function getUserSecrets($userId)
     {
-        $userSecrets = $this->findBy(
-            [
-            'user' =>  $userId,
-            'status' => 'new'
-            ],
-            ['orderedAt' => 'DESC']
-        );
+        $result = $this->_em->createQueryBuilder()
+            ->select('orders')
+            ->from('AppBundle:Order', 'orders')
+            ->where('orders.user = :user')
+            ->andWhere('orders.status = :status')
+            ->setParameter('user', $userId)
+            ->setParameter('status', 'new')
+            ->orderBy('orders.orderRevealUntil', 'DESC')
+            ->getQuery()
+            ->getResult();
+//            [
+//            'user' =>  $userId,
+//            'status' => 'new'
+//            ],
+//            ['Order' => 'orderedAt DESC']
 
-        return $userSecrets;
+
+        return $result;
     }
 
     /**
