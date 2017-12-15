@@ -157,12 +157,17 @@ class OrderController extends Controller
         //todo errorus sujungt ir rodyt jei tokiu yra
         $validator = $this->get('validator');
         $errors = $validator->validate($order);
+        if($errors){
+            var_dump($errors);die;
+        } else {
+            $this->getDoctrine()->getManager()->getRepository(Order::class)->saveOrder($order);
+
+
+            return $this->redirectToRoute('app.order.payment');
+        }
         //todo validacijos
 
-        $this->getDoctrine()->getManager()->getRepository(Order::class)->saveOrder($order);
 
-
-        return $this->redirectToRoute('app.order.payment');
     }
 
     /**

@@ -1,7 +1,8 @@
-#AppBundle\Entity\Order:
-#    properties:
-#        deliveryAddress:
-#            - NotBlank: ~
+AppBundle\Entity\Order:
+    properties:
+        deliveryAddress:
+            - NotBlank: ~
+#            - message: message.no.new.secrets
 #        product:
 #            - NotNull:
 #                message: message.no.new.secrets

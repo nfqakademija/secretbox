@@ -47,6 +47,9 @@ class HomeController extends Controller
 //        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
+
+        //todo useris gali buti ir draugas
+        $user = $this->getUser();
 //        $order = new Order();
 //        $orderForm = $this->createForm(
 //            OrderType::class,
@@ -66,6 +69,7 @@ class HomeController extends Controller
             'parcelMachines' => $parcelMachines,
             'eventsAndCustomers' => $eventsAndCustomers,
             'prices' => $prices,
+            'user' => $user,
             //            'test'=> $test,
             //            'test2'=> $test2
             //            'orderForm' => $orderForm->createView()

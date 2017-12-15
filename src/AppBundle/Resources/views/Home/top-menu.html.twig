@@ -1,3 +1,4 @@
+{% set pageRoute = app.request.attributes.get('_route') %}
 <header class="header-section fixed-header">
     <div class="header-section-container">
         <div class="header-menu">
@@ -8,7 +9,7 @@
                             <div class="col-md-12">
                                 <!-- navbar header / logo -->
                                 <div class="navbar-header">
-                                    <a href="{{ path('app.homepage') }}" class="navbar-brand" title="SECRET BOX">
+                                    <a href="{{ pageRoute == 'app.homepage' ? '#section-homepage' : path('app.homepage')~'?content=section-homepage' }}" class="navbar-brand" title="SECRET BOX">
                                         <span class="secretbox-logo">SECRET BOX</span>
                                     </a>
                                     <ul class="header-btns">
@@ -23,7 +24,7 @@
                                                             <span class="lang-sm" lang="lt"></span> Lt
                                                         </a>
                                                     </li>
-                                                    <div class="hr-divider hr-divider-thin hr-divider-style-3 text-center" style="margin: 10px auto;"></div>
+                                                    <i class="hr-divider hr-divider-thin hr-divider-style-3 text-center" style="margin: 10px auto;"></i>
                                                     <li>
                                                         <a href="{{ path('app.change.locale', { 'locale' : 'en' }) }}" title="English">
                                                             <span class="lang-sm" lang="en"></span> En
@@ -47,21 +48,21 @@
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
                                         <li>
-                                            <a href="#section-about" data-scroll>{{ 'menu.about'|trans }}</a>
+                                            <a href="{{ pageRoute == 'app.homepage' ? '#section-about' : path('app.homepage')~'?content=section-about' }}" data-scroll>{{ 'menu.about'|trans }}</a>
                                         </li>
                                         <li>
                                             <a href="#">{{ 'content.impresions'|trans }}</a>
                                             <ul class="submenu">
                                                 <li>
-                                                    <a href="#section-adventure-moments" data-scroll>{{ 'content.adventure.moments'|trans }}</a>
+                                                    <a href="{{ pageRoute == 'app.homepage' ? '#section-adventure-moments' : path('app.homepage')~'?content=section-adventure-moments' }}" data-scroll>{{ 'menu.adventure.moments'|trans }}</a>
                                                 </li>
                                                 <li>
-                                                    <a href="#section-comments" data-scroll>{{ 'content.customers.review'|trans }}</a>
+                                                    <a href="{{ pageRoute == 'app.homepage' ? '#section-comments' : path('app.homepage')~'?content=section-comments' }}" data-scroll>{{ 'menu.comments'|trans }}</a>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li class="btn-header-menu">
-                                            <a href="#section-begin-adventure" data-scroll>{{ 'product.order'|trans }}</a>
+                                            <a href="{{ pageRoute == 'app.homepage' ? '#section-begin-adventure' : path('app.homepage')~'?content=section-begin-adventure' }}" data-scroll>{{ 'product.order'|trans }}</a>
                                         </li>
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
@@ -79,12 +80,11 @@
                                                             <div class="small">{{ app.user.username }}</div>
                                                         </div>
                                                 </li>
-                                                <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide submenu-divider"></div>
+                                                <i class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide submenu-divider"></i>
                                                 <li >
                                                     <a href="{{ path('app.user.profile') }}" class="btn btn-primary btn-gfort" >{{ 'user.page'|trans }}</a>
                                                 </li>
-                                                <div class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide submenu-divider"></div>
-
+                                                <i class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide submenu-divider"></i>
                                                 <li >
                                                     <a href="{{ logout_path() }}" class="btn btn-danger btn-gfort btn-gfort">{{ 'menu.logout'|trans }}</a>
                                                 </li>
@@ -94,9 +94,9 @@
                                         {% else %}
 
                                         <li >
-                                            <a href="{{ path('app.login.facebook') }}" class="fa-login" id="btn-facebook-login">
+                                            <a href="{{ path('app.login.facebook') }}" class="fa-login btn-facebook-login" id="btn-facebook-login">
                                                 <i class="fa fa-facebook-square"></i>
-                                                <span id="login-text">{{ 'menu.login'|trans }}</span>
+                                                <span class="login-text">{{ 'menu.login'|trans }}</span>
                                             </a>
                                         </li>
 
@@ -108,9 +108,7 @@
                         </div>
                     </div>
                 </nav>
-
             </div>
         </div>
-
     </div>
 </header>

@@ -1,8 +1,8 @@
 <form action="{{ path('app.order.new') }}" method="post" id="order-form">
-
+{#todo pakeisti mygtuku spalvas#}
     <!-- secret box selection block -->
     <div class="well well-sm text-center">
-        <h3>Pasirinkite <strong>Secret box</strong> dydį</h3>
+        <h3>{{ 'order.choose.box'|trans|raw }}</h3>
 
         <div class="btn-group " data-toggle="buttons" >
             {% set fadeEffect = ['fadeInLeft', 'fadeInUp', 'fadeInRight'] %}
@@ -22,29 +22,30 @@
         </div>
     </div><!-- end block -->
 
+
     <!-- contact info block -->
     <div class="well well-sm text-center order-contact" id="order-contact">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <h3>Patikrinkite savo kontaktinius duomenis</h3>
+            <h3>{{ 'order.check.contacts'|trans }}</h3>
 
             <div class="row">
                 <div class="col-md-3 text-left">
                     <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="firstName" value="{{ app.user.firstName }}" placeholder="Vardas">
-                        <span>Vardas</span>
+                        <input type="text" class="order-text-input" name="firstName" value="{{ app.user.firstName }}" placeholder="{{ 'user.name'|trans }}">
+                        <span>{{ 'user.name'|trans }}</span>
                     </div>
                 </div>
                 <div class="col-md-3 text-left">
                     <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="lastName" value="{{ app.user.lastName }}" placeholder="Pavardė">
-                        <span>Pavardė</span>
+                        <input type="text" class="order-text-input" name="lastName" value="{{ app.user.lastName }}" placeholder="{{ 'user.surname'|trans }}">
+                        <span>{{ 'user.surname'|trans }}</span>
                     </div>
                 </div>
 
                 <div class="col-md-5 col-sm-6 text-left">
                     <div class="has-float-label">
-                        <input type="email" class="order-text-input" name="email" value="{{ app.user.email }}" placeholder="El. paštas">
-                        <span>El. paštas</span>
+                        <input type="email" class="order-text-input" name="email" value="{{ app.user.email }}" placeholder="{{ 'user.email'|trans }}">
+                        <span>{{ 'user.email'|trans }}</span>
                     </div>
                 </div>
             </div>
@@ -52,19 +53,18 @@
             <div class="row" style="padding-top: 20px;">
                 <div class="col-md-3 text-left">
                     <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="phoneNo" value="" class="form-control" placeholder="Telefono numeris">
-                        <span for="phoneNo">Telefonas</span>
+                        <input type="text" class="order-text-input" name="phoneNo" value="" class="form-control" placeholder="{{ 'user.phone'|trans }}">
+                        <span for="phoneNo">{{ 'user.phone'|trans }}</span>
                     </div>
                 </div>
             </div>
-
 
             <!-- button to address block -->
             <div class="well well-sm text-center " style="margin-top: 50px">
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-6 text-left">
                         <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;">
-                            <span class="fa fa-address-book-o"></span> Pristatymo adresas
+                            <span class="fa fa-address-book-o"></span> {{ 'order.delivery.address'|trans }}
                         </a>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="col-sm-12 text-center" style="padding: 30px;">
                     <a href="{{ path('app.order.now') ~ '?content=section-begin-adventure' }}" class="btn btn-lg btn-social btn-facebook btn-facebook-login" style="width: 300px;">
                         <span class="fa fa-facebook"></span>
-                        <span class="login-text">Prisijungti su Facebook</span>
+                        <span class="login-text">{{ 'user.login.with.facebook'|trans }}</span>
 
                     </a>
                 </div>
@@ -89,7 +89,7 @@
 
     <!-- order address block -->
     <div class="well well-sm text-center order-address" id="order-address">
-        <h3>Pasirinkite pristatymo būdą</h3>
+        <h3>{{ 'order.choose.delivery.type'|trans }}</h3>
 
         <!-- delivery selection -->
         <div class="btn-group" data-toggle="buttons" >
@@ -97,13 +97,13 @@
             <label class="btn btn-default delivery-btn" id="btn-delivery-home">
                 <input type="radio" name="deliveryType" value="home" autocomplete="off">
                 <span class="glyphicon glyphicon-ok"></span>
-                <span class="order-title">Kurjeriu į namus</span>
+                <span class="order-title">{{ 'order.delivery.home'|trans }}</span>
             </label>
 
             <label class="btn btn-default delivery-btn" id="btn-delivery-parcel">
                 <input type="radio" name="deliveryType" value="parcel_machine" autocomplete="off">
                 <span class="glyphicon glyphicon-ok"></span>
-                <span class="order-title">Atsiimsiu paštomate</span>
+                <span class="order-title">{{ 'order.delivery.parcel'|trans }}</span>
             </label>
         </div><!-- end selection -->
 
@@ -117,8 +117,8 @@
 
                         <div class="col-sm-8 col-sm-offset-2 text-left">
                             <div class="has-float-label ">
-                                <input type="text" class="order-text-input" name="address" id="home-address" placeholder="Adresas" value="{{ app.user.address }}">
-                                <span>Namų adresas</span>
+                                <input type="text" class="order-text-input" name="address" id="home-address" placeholder="{{ 'user.home.address'|trans }}" value="{{ user.address }}">
+                                <span>{{ 'user.home.address'|trans }}</span>
                             </div>
                         </div>
 
@@ -132,10 +132,11 @@
                     <div class="well well-sm text-center" id="parcel-delivery">
                         <div class="col-sm-6 text-right">
                             <a class="btn btn-lg btn-warning" id="btn-detect-parcel">
-                                Nustatyti artimiausią
+                                {{ 'order.find.nearest.parcel'|trans }}
                             </a>
                             <div class="parcel-loading" id="parcel-loading">
                                 <div>
+                                    {#todo pakeisti ikona, nes tik chrome palaiko webp IMG formata#}
                                     <img id="parcel-loading-img" src="{{ asset('images/payment/processing.webp') }}" alt="O">
                                 </div>
                                 <div class="parcel-loading-text"></div>
@@ -145,8 +146,10 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="">
-                                <label class="label-hidden" id="label-parcel-select" for="parcelMachine">Pasirinkite tinkamą paštomatą</label>
-                                <select title="Parcel Machines" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="Pasirinkite paštomatą..." style="font-size: 19px;">
+                                <label class="label-hidden" id="label-parcel-select" for="parcelMachine">
+                                    {{ 'order.choose.correct.parcel'|trans }}
+                                </label>
+                                <select title="{{ 'content.parcel'|trans }}" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="{{ 'order.choose.parcel'|trans }}..." style="font-size: 19px;">
                                     <option></option>
                                     {% for parcelMachine in parcelMachines %}
                                         <option value="{{ parcelMachine.address }}">{{ parcelMachine.name }}</option>
@@ -156,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- end pacrel machine delivery -->
+            </div><!-- end parcel machine delivery -->
         </div><!-- end delivery info -->
 
         <!-- navigation buttons -->
@@ -164,12 +167,12 @@
             <div class="row">
                 <div class="col-sm-6 text-center">
                     <a id="btn-contacts" class="btn btn-lg btn-primary" style="width: 300px;">
-                        <span class="fa fa-address-book-o"></span> Grįžti prie kontaktų
+                        <span class="fa fa-address-book-o"></span> {{ 'order.return.to.contacts'|trans }}
                     </a>
                 </div>
                 <div class="col-sm-6 text-center">
                     <a id="btn-payment-type" class="btn btn-lg btn-success" style="width: 300px; display: none">
-                        <span class="fa fa-money"></span> Apmokėjimo būdas
+                        <span class="fa fa-money"></span> {{ 'order.payment.type'|trans }}
                     </a>
                 </div>
             </div>
@@ -178,7 +181,7 @@
 
     <!-- payment type block -->
     <div class="well well-sm text-center payment-type" id="payment-type">
-        <h3>Pasirinkite apmokėjimo būdą</h3>
+        <h3>{{ 'order.choose.payment.type'|trans }}</h3>
 
         <!-- payment selection buttons -->
         <div class="btn-group " data-toggle="buttons" >
@@ -206,12 +209,12 @@
             <div class="row">
                 <div class="col-sm-6 text-center">
                     <a id="btn-back-delivery-address" class="btn btn-lg btn-primary" style="width: 300px;">
-                        <span class="fa fa-address-book-o"></span> Grįžti prie pristatymo adreso
+                        <span class="fa fa-address-book-o"></span> {{ 'order.return.to.delivery.address'|trans }}
                     </a>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <a onclick="document.forms['order-form'].submit()" href="#begin-adventure" data-scrol  id="btn-proceed-payment" class="btn btn-lg btn-success" style="width: 300px; display: none;">
-                        <span class="fa fa-money"></span> Apmokėti
+                    <a onclick="document.forms['order-form'].submit()" href="#" data-scrol id="btn-proceed-payment" class="btn btn-lg btn-success" style="width: 300px; display: none;">
+                        <span class="fa fa-money"></span> {{ 'order.pay'|trans }}
                         <span id="price-info"></span>
                     </a>
                 </div>

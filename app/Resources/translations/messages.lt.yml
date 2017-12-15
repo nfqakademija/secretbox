@@ -1,16 +1,19 @@
 intro.first: paslaptys. ar žinojai, kiek jų daug aplink Tave?
 intro.second: daug ir užuominų, kurios padės viską atskleisti
 intro.third: su SECRET BOX prasideda Tavo nuotykis. pradėk nuo to, ką rasi viduje
-content.about: apie projektą SECRET BOX
+
 content.404: Paslapčių dėžutė slepiasi ne čia :)
 content.address: adresas
-content.email.address: el. pašto adresas
+
 
 menu.about: apie
 menu.login: prisijungti
 menu.logout: atsijungti
 menu.get.news: gauti naujienas
+menu.adventure.moments: nuotykių akimirkos
+menu.comments: klientų atsiliepimai
 
+user.home.address: Namų adresas
 user.page: mano paskyra
 user.profile: mano profilis
 user.orders: atskleistos paslaptys
@@ -19,9 +22,12 @@ user.access.denied: Šio puslapio negalite peržiūrėti, prašome iš pradžių
 user.wait: prašome palaukti...
 user.registration.date: registracijos data
 user.lastlogin.date: paskutinis prisijungimas
+user.login.with.facebook: Prisijungti su Facebook
 user.secrets: mano paslaptys
-user.name: vardas
-user.surname: pavardė
+user.email: El. paštas
+user.phone: Telefono numeris
+user.name: Vardas
+user.surname: Pavardė
 user.share.impression: dalintis įspūdžiu
 user.friends.secrets: draugų paslaptys
 user.no.address: adresas neįvestas
@@ -45,14 +51,85 @@ friend.no.impressions: draugas nepasidalino jokiu įspūdžių
 friend.no.completed.orders: draugas neturi atskleitstų paslapčių
 
 
+section.homepage.text.1: tavo atradimai prasideda su
+section.homepage.text.intro.1: >
+    <span class="accent">Ar</span> tikrai viską <span class="accent">paragavai</span>, <span class="accent">įsigijai
+    </span> ir <span class="accent">aplankei</span> geriausio?
+section.homepage.text.intro.2: Ar tikrai kur leidi laiką su draugais yra šauniausia vieta ir pramoga?
+section.homepage.text.intro.3: >
+    Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į
+    <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų,
+    smalsumo ir išradingumo.
+
+section.about: apie projektą SECRET BOX
+section.about.paragraph: >
+    “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo
+    Tau ir Tavo draugams. Kas slepiasi projekte „Secret box“? – tai mūsų kartu
+    su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam
+    asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir
+    atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo
+    degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių,
+    nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame
+    netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį
+    žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
+section.about.block.title.1: Registracija ir užsakymas
+section.about.block.body.1: >
+    Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
+    „Secret box“ verčių, pasirink pristatymo adresą ir įvykdyk mokėjimą.
+section.about.block.title.2: Tavo "Secret box"
+section.about.block.body.2: >
+    Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
+    pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
+    – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
+    sužinosi „kas ir kur tai?“.
+section.about.block.title.3: Tavo paskyra
+section.about.block.body.3: >
+    Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
+    likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
+    „Secret box“ progresą iki paslapties atskleidimo.
+section.about.block.title.4: Dalinkis įspūdžiais
+section.about.block.body.4: >
+    Mums ir visiems, dalyvaujantiems „Secret box“ atradimuose,
+    svarbūs Tavo atradimų akimirkos ir atsiliepimai – dalinkis
+    džaugsmo akimirkų nuotraukomis ir komentuok, patark, siūlyk.
+
+section.numbers.1: Vykstančių nuotykių
+section.numbers.2: Klientų
+section.numbers.3: Laimėjimų
+
+section.begin.adventure: pradėk savo nuotykį dabar
+
+section.adventure.moments.title: nuotykių akimirkos
+section.adventure.moments.body: >
+    Capitalise on low hanging fruit to identify a ballpark value added activity
+    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+
+section.comments.title: ką sako klientai
+section.comments.body: >
+    Capitalise on low hanging fruit to identify a ballpark value added activity
+    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+
 product.order: pradėti
 
 project.name: secret box
 
+order.choose.box: Pasirink <strong>Secret box</strong> dydį
+order.check.contacts: Patikrinkite savo kontaktinius duomenis
+order.choose.delivery.type: Pasirinkite pristatymo būdą
+order.choose.correct.parcel: Pasirinkite tinkamą paštomatą
+order.choose.payment.type: Pasirinkite apmokėjimo būdą
+order.choose.parcel: Pasirinkite paštomatą
 order.delivery.address: pristatymo adresas
+order.delivery.home: Pristatyti į namus
+order.delivery.parcel: Atsiimsiu paštomate
+order.find.nearest.parcel: Nustatyti artimiausią
 order.secretbox: užsisakykite SECRET BOX
 order.date: užsakyta
+order.pay: Apmokėti
+order.payment.type: Apmokėjimo būdas
 order.revealed: atskleista
+order.return.to.contacts: Grįžti prie kontaktų
+order.return.to.delivery.address: Grįžti prie pristatymo adreso
 order.delivery.address: pristatymas į
 order.no.completed.orders: neturite atskleistų paslapčių
 order.countdown: atskleisti paslapčiai turite
@@ -62,6 +139,7 @@ order.begin.third.message: įveikite užduotį ir mėgaukitės puikiu atlygiu
 small: mažas
 medium: vidutinis
 big: didelis
+
 
 content.years: metai
 content.months: mėnesiai
@@ -74,10 +152,10 @@ content.save: išsaugoti
 content.impresions: įspūdžiai
 content.change: keisti
 content.unsubscribe: atsisakyti
+content.more: daugiau
 content.subscribe: užsakyti
-content.adventure.moments: nuotykių akimirkos
-content.customers.review: klientų atsiliepimai
-content.what.customers.say: ką sako klientai
+
+content.parcel: Parcel machine
 
 page.menu: Meniu
 

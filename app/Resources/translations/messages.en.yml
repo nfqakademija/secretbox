@@ -2,16 +2,19 @@ intro.first: everywhere arround there are many secrets
 intro.second: and there are many clues to find them out
 intro.third: take Your secret SECRET BOX and start Your adventure
 
-content.about: about project SECRET BOX
+
 content.404: Secret box isn't here :)
 content.address: address
-content.email.address: email address
+
 
 menu.about: about
 menu.login: login
 menu.logout: logout
 menu.get.news: get latest news
+menu.adventure.moments: adventure moments
+menu.comments: customers reviews
 
+user.home.address: Home address
 user.page: my account
 user.profile: my profile
 user.orders: secrets revealed
@@ -19,10 +22,13 @@ user.impressions: my impressions
 user.access.denied: access denied, please login first...
 user.wait: please wait...
 user.registration.date: registration date
+user.login.with.facebook: Login with Facebook
 user.lastlogin.date: last login
 user.secrets: my secrets
-user.name: name
-user.surname: surname
+user.email: Email
+user.phone: Phone number
+user.name: First name
+user.surname: Last name
 user.share.impression: share impression
 user.friends.secrets: friends secretes
 user.no.address: no address info
@@ -45,16 +51,71 @@ friend.product.order: begin adventure for your friend
 friend.no.impressions: friend did not share any impression
 friend.no.completed.orders: friend has no revealed secrets
 
+section.homepage.text.1: your discovery begins with
+section.homepage.text.intro.1: <span class="accent">Ar</span> tikrai viską <span class="accent">paragavai</span>, <span class="accent">įsigijai</span> ir <span class="accent">aplankei</span> geriausio?
+section.homepage.text.intro.2: Ar tikrai kur leidi laiką su draugais yra šauniausia vieta ir pramoga?
+section.homepage.text.intro.3: Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.
+
+section.about: about project SECRET BOX
+section.about.paragraph: >
+    NO TEXT
+    NO TRANSLATIONS
+section.about.block.title.1: NNEEED TRANS
+section.about.block.body.1: >
+    Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
+    „Secret box“ verčių, pasirink pristatymo adresą ir įvykdyk mokėjimą.
+section.about.block.title.2: Tavo "Secret box"
+section.about.block.body.2: >
+    Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
+    pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
+    – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
+section.about.block.title.3: Tavo paskyra
+section.about.block.body.3: >
+    Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
+    likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
+    „Secret box“ progresą iki paslapties atskleidimo.
+section.about.block.title.4: Tavo paskyra
+section.about.block.body.4: >
+    Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
+    likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
+    „Secret box“ progresą iki paslapties atskleidimo.
+
+
+section.numbers.1: Ongoing adventures
+section.numbers.2: Clients
+section.numbers.3: Achievments
+
+section.begin.adventure: pradėk savo nuotykį dabar
+
+section.adventure.moments.title: adventure moments
+section.adventure.moments.body: >
+    Capitalise on low hanging fruit to identify a ballpark value added activity
+    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+
+section.comments.title: what customers say
+
 product.order: begin
 
 project.name: secret box
 
-order.delivery.address: delivery address
+order.choose.box: Chose <strong>Secret box</strong> size
+order.check.contacts: Check you contact information
+order.choose.delivery.type: Choose delivery type
+order.choose.correct.parcel: Choose correct parcel machine
+order.choose.payment.type: Choose payment type
+order.choose.parcel: Choose parcel
+order.delivery.address: Delivery address
+order.find.nearest.parcel: Find the nearest one
 order.secretbox: order Secret box
 order.date: ordered
+order.pay: Pay
+order.payment.type: Payment type
 order.revealed: revealed
+order.return.to.contacts: Return to contacts
+order.return.to.delivery.address: Return to delivery address
 order.delivery.address: devliver to
-
+order.delivery.home: Courier to the house
+order.delivery.parcel: Parcel shipment
 order.no.completed.orders: you have no revealed secrets
 order.countdown: Time to reveal secret
 order.begin.first.message: TRANSLATION NOT READY
@@ -63,6 +124,7 @@ order.begin.third.message: TRANSLATION NOT READY
 small: small
 medium: medium
 big: big
+
 
 content.years: years
 content.months: months
@@ -75,10 +137,11 @@ content.save: save
 content.impresions: impressions
 content.change: change
 content.unsubscribe: unsubscribe
+content.more: more
 content.subscribe: subscribe
+content.parcel: Parcel machine
 
-content.adventure.moments: adventure moments
-content.customers.review: customers review
+
 content.what.customers.say: what customers say
 
 page.menu: Menu

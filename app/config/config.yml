@@ -60,7 +60,7 @@ doctrine:
             enum_order_status: AppBundle\DBAL\EnumOrderStatusType
             enum_delivery_type: AppBundle\DBAL\EnumDeliveryType
             enum_box_size: AppBundle\DBAL\EnumBoxSize
-            #todo kurioje vietoje likes sitas?
+            #todo kur naudojamas
             enum_price_box_size: AppBundle\DBAL\EnumBoxSize
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml

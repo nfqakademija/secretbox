@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block title %}
-    Pradžia - {{ parent() }}
+    {{ parent() }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -9,62 +9,56 @@
 {% endblock %}
 
 {% block body %}
-    {#<div class="page-body">#}
 
-        {#<div class="main-content">#}
-            {#<div class="main-content-container">#}
-
-                <!-- homepage section -->
-                <div id="section-main" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-5">
-                                    <!-- GAP 100px -->
-                                    <div class="gap gap-100 hidden-sm hidden-xs"></div>
-                                    <div class="section-title intro-section-title light-color text-center">
-                                        <h2 class="section-main-title border-text">TAVO ATRADIMAI PRASIDEDA SU <br>SECRET BOX</h2>
-                                        <p class="section-subtitle"></p>
-                                    </div>
-                                    <!-- GAP 30px -->
-                                    <div class="gap gap-30"></div>
-                                </div>
-                                <div class="col-lg-6 col-md-7">
-                                    <div class="gfort-block text-block gfort-block-style-1" >
-                                        <div class="gfort-block-container" style="background-color: rgba(227,227,227,0.6)">
-                                            <div class="gfort-block-body">
-                                                <div class="gfort-block-content">
-                                                    <h4>
-                                                        <span class="accent">Ar</span> tikrai viską <span class="accent">
-                                                            paragavai</span>, <span class="accent">įsigijai</span> ir
-                                                        <span class="accent">aplankei</span> geriausio?
-                                                    </h4>
-                                                    <h4>
-                                                        Ar tikrai kur leidi laiką su draugais yra šauniausia
-                                                        vieta ir pramoga?
-                                                    </h4>
-                                                    <h4>
-                                                        Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span>
-                                                        leistis į <span class="accent">žaismingą atradimų kelionę</span>,
-                                                        kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų,
-                                                        smalsumo ir išradingumo.
-                                                    </h4>
-                                                    <div class="section-button">
-                                                        <a href="#section-begin-adventure" class="btn btn-gfort-o" data-scroll>
-                                                            {{ 'product.order'|trans }}
-                                                        </a>
-                                                        <a href="#section-about" class="btn btn-gfort-o" data-scroll>Daugiau</a>
-                                                    </div>
-                                                </div>
-                                            </div>
+    <!-- homepage section -->
+    <div id="section-homepage" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-5">
+                        <!-- GAP 100px -->
+                        <div class="gap gap-100 hidden-sm hidden-xs"></div>
+                        <div class="section-title intro-section-title light-color text-center">
+                            <h2 class="section-main-title border-text">{{ 'section.homepage.text.1'|trans|upper }}<br>SECRET BOX</h2>
+                            {#todo vertimas#}
+                            <p class="section-subtitle">3 adventure types</p>
+                        </div>
+                        <!-- GAP 30px -->
+                        <div class="gap gap-30"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-7">
+                        <div class="gfort-block text-block gfort-block-style-1" >
+                            <div class="gfort-block-container" style="background-color: rgba(227,227,227,0.6)">
+                                <div class="gfort-block-body">
+                                    <div class="gfort-block-content">
+                                        <h4>
+                                            {{ 'section.homepage.text.intro.1'|trans|raw }}
+                                        </h4>
+                                        <h4>
+                                            {{ 'section.homepage.text.intro.2'|trans|raw }}
+                                        </h4>
+                                        <h4>
+                                            {{ 'section.homepage.text.intro.3'|trans|raw }}
+                                        </h4>
+                                        <div class="section-button">
+                                            <a href="#section-begin-adventure" class="btn btn-gfort-o" data-scroll>
+                                                {{ 'product.order'|trans }}
+                                            </a>
+                                            <a href="#section-about" class="btn btn-gfort-o" data-scroll>
+                                                {{ 'content.more'|trans }}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><!-- end section -->
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
 
+    {#todo remove test, add erros jei orderis failina#}
     {% if test is defined %}
         <div class="gfort-section" id="section-about" style="height: 100vh;">
             <div class="section-container">
@@ -80,137 +74,123 @@
         </div>
     {% endif %}
 
-                <!-- about section -->
-                <div class="gfort-section" id="section-about">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section-title text-center">
-                                        <h2 class="section-main-title">APIE</h2>
-                                        <p class="section-subtitle">
-                                            “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo
-                                            Tau ir Tavo draugams. Kas slepiasi projekte „Secret box“? – tai mūsų kartu
-                                            su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam
-                                            asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir
-                                            atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo
-                                            degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių,
-                                            nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame
-                                            netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį
-                                            žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
-                                        </p>
-                                        <div class="hr-divider hr-divider-style-1"></div>
-                                    </div>
-                                </div>
-
-                                <!-- 4 about blocks section -->
-                                <div class="col-md-12">
-                                    <!-- GAP 30px -->
-                                    <div class="gap gap-30"></div>
-                                </div>
-
-                                <!-- 1st about block -->
-                                <div class="col-md-3">
-                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <div class="gfort-block-container">
-                                            <div class="gfort-block-head">
-                                                <i class="fa fa-check-square-o "></i>
-                                                <i class="fa fa-check-square-o "></i>
-                                            </div>
-                                            <div class="gfort-block-body">
-                                                <div class="gfort-block-title">
-                                                    <h4>Registracija ir užsakymas</h4>
-                                                </div>
-                                                <div class="gfort-block-content">
-                                                    <p>
-                                                        Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
-                                                        „Secret box“ verčių, pasirink pristatymo adresą ir įvykdyk mokėjimą.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- end block -->
-
-                                <!-- 2nd about block -->
-                                <div class="col-md-3">
-                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <div class="gfort-block-container">
-                                            <div class="gfort-block-head">
-                                                <i class="fa fa-gift"></i>
-                                                <i class="fa fa-gift"></i>
-                                            </div>
-                                            <div class="gfort-block-body">
-                                                <div class="gfort-block-title">
-                                                    <h4>Tavo "Secret box"</h4>
-                                                </div>
-                                                <div class="gfort-block-content">
-                                                    <p>
-                                                        Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
-                                                        pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
-                                                        – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
-                                                        sužinosi „kas ir kur tai?“.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- end block -->
-
-                                <!-- 3rd about block -->
-                                <div class="col-md-3">
-                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <div class="gfort-block-container">
-                                            <div class="gfort-block-head">
-                                                <i class="fa fa-binoculars"></i>
-                                                <i class="fa fa-binoculars"></i>
-                                            </div>
-                                            <div class="gfort-block-body">
-                                                <div class="gfort-block-title">
-                                                    <h4>Tavo paskyra</h4>
-                                                </div>
-                                                <div class="gfort-block-content">
-                                                    <p>
-                                                        Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
-                                                        likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
-                                                        „Secret box“ progresą iki paslapties atskleidimo.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- end block -->
-
-                                <!-- 4th about block -->
-                                <div class="col-md-3">
-                                    <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
-                                        <div class="gfort-block-container">
-                                            <div class="gfort-block-head">
-                                                <i class="fa fa-commenting-o"></i>
-                                                <i class="fa fa-commenting-o"></i>
-                                            </div>
-                                            <div class="gfort-block-body">
-                                                <div class="gfort-block-title">
-                                                    <h4>Dalinkis įspūdžiais</h4>
-                                                </div>
-                                                <div class="gfort-block-content">
-                                                    <p>
-                                                        Mums ir visiems, dalyvaujantiems „Secret box“ atradimuose,
-                                                        svarbūs Tavo atradimų akimirkos ir atsiliepimai – dalinkis
-                                                        džaugsmo akimirkų nuotraukomis ir komentuok, patark, siūlyk.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- end block -->
-
-                            </div>
+    <!-- about section -->
+    <div class="gfort-section" id="section-about">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h2 class="section-main-title">
+                                {{ 'section.about'|trans|upper }}
+                            </h2>
+                            <p class="section-subtitle">
+                                {{ 'section.about.paragraph'|trans }}
+                            </p>
+                            <div class="hr-divider hr-divider-style-1"></div>
                         </div>
                     </div>
-                </div><!-- end section -->
 
-                <!-- divider Section -->
+                    <!-- 4 about blocks section -->
+                    <div class="col-md-12">
+                        <!-- GAP 30px -->
+                        <div class="gap gap-30"></div>
+                    </div>
+
+                    <!-- 1st about block -->
+                    <div class="col-md-3">
+                        <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                            <div class="gfort-block-container">
+                                <div class="gfort-block-head">
+                                    <i class="fa fa-check-square-o "></i>
+                                    <i class="fa fa-check-square-o "></i>
+                                </div>
+                                <div class="gfort-block-body">
+                                    <div class="gfort-block-title">
+                                        <h4>{{ 'section.about.block.title.1'|trans }}</h4>
+                                    </div>
+                                    <div class="gfort-block-content">
+                                        <p>
+                                            {{ 'section.about.block.body.1'|trans }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end block -->
+
+                    <!-- 2nd about block -->
+                    <div class="col-md-3">
+                        <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                            <div class="gfort-block-container">
+                                <div class="gfort-block-head">
+                                    <i class="fa fa-gift"></i>
+                                    <i class="fa fa-gift"></i>
+                                </div>
+                                <div class="gfort-block-body">
+                                    <div class="gfort-block-title">
+                                        <h4>{{ 'section.about.block.title.2'|trans }}</h4>
+                                    </div>
+                                    <div class="gfort-block-content">
+                                        <p>
+                                            {{ 'section.about.block.body.2'|trans }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end block -->
+
+                    <!-- 3rd about block -->
+                    <div class="col-md-3">
+                        <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                            <div class="gfort-block-container">
+                                <div class="gfort-block-head">
+                                    <i class="fa fa-binoculars"></i>
+                                    <i class="fa fa-binoculars"></i>
+                                </div>
+                                <div class="gfort-block-body">
+                                    <div class="gfort-block-title">
+                                        <h4>{{ 'section.about.block.title.3'|trans }}</h4>
+                                    </div>
+                                    <div class="gfort-block-content">
+                                        <p>
+                                            {{ 'section.about.block.body.3'|trans }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end block -->
+
+                    <!-- 4th about block -->
+                    <div class="col-md-3">
+                        <div class="gfort-block icon-block icon-block-main gfort-block-style-5">
+                            <div class="gfort-block-container">
+                                <div class="gfort-block-head">
+                                    <i class="fa fa-commenting-o"></i>
+                                    <i class="fa fa-commenting-o"></i>
+                                </div>
+                                <div class="gfort-block-body">
+                                    <div class="gfort-block-title">
+                                        <h4>{{ 'section.about.block.title.4'|trans }}</h4>
+                                    </div>
+                                    <div class="gfort-block-content">
+                                        <p>
+                                            {{ 'section.about.block.body.4'|trans }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- end block -->
+
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
+
+                <!-- divider section -->
                 <div class="gfort-section fullwidth-section pt-0 pb-0">
                     <div class="section-container">
                         <div class="container">
@@ -225,7 +205,7 @@
                     </div>
                 </div><!-- end section -->
 
-                <!-- numbers Section -->
+                <!-- numbers section -->
                 <div class="gfort-section">
                     <div class="section-container">
                         <div class="container">
@@ -233,23 +213,23 @@
                                 <!-- ongoing secrets -->
                                 <div class="col-sm-4 col-xs-6">
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="7">{{ eventsAndCustomers.ongoing }}</span>
-                                        <p><i class="fa fa-diamond"></i> Vykstančių nuotykių</p>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="5">{{ eventsAndCustomers.ongoing }}</span>
+                                        <p><i class="fa fa-diamond"></i> {{ 'section.numbers.1'|trans }}</p>
                                     </div>
                                 </div>
                                 <!-- customers -->
                                 <div class="col-sm-4 col-xs-6">
 
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="5" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
-                                        <p><i class="fa fa-thumbs-up"></i> Klientų</p>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="7" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
+                                        <p><i class="fa fa-thumbs-up"></i> {{ 'section.numbers.2'|trans }}</p>
                                     </div>
                                 </div>
                                 <!-- revealed secrets -->
                                 <div class="col-sm-4 col-xs-6">
                                     <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="4" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
-                                        <p><i class="fa fa-gift"></i> Laimėjimų</p>
+                                        <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="5" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
+                                        <p><i class="fa fa-gift"></i> {{ 'section.numbers.3'|trans }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +259,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="section-title text-center">
-                                        <h2 class="section-main-title">PRADĖK SAVO NUOTYKĮ DABAR</h2>
+                                        <h2 class="section-main-title">{{ 'section.begin.adventure'|trans }}</h2>
                                         <div class="hr-divider hr-divider-style-1"></div>
                                     </div>
                                 </div>
@@ -304,7 +284,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><!-- end section -->
 
                 <!-- adventure moments section -->
                 <div class="gfort-section fullwidth-section" id="section-adventure-moments">
@@ -313,11 +293,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="section-title text-center">
-                                        <h2 class="section-main-title">{{ 'content.adventure.moments'|trans|upper }}</h2>
+                                        <h2 class="section-main-title">{{ 'section.adventure.moments.title'|trans|upper }}</h2>
                                         <p class="section-subtitle">
-                                            Capitalise on low hanging fruit to identify a ballpark value added activity
-                                            to beta test. Override the digital divide with additional clickthroughs
-                                            from DevOps.
+                                            {{ 'section.adventure.moments.body'|trans }}
                                         </p>
                                         <div class="hr-divider hr-divider-style-1"></div>
                                     </div>
@@ -377,11 +355,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="section-title text-center">
-                                        <h2 class="section-main-title">{{ 'content.what.customers.say'|trans|upper }}</h2>
+                                        <h2 class="section-main-title">{{ 'section.comments.title'|trans|upper }}</h2>
                                         <p class="section-subtitle">
-                                            Capitalise on low hanging fruit to identify a ballpark value added activity
-                                            to beta test. Override the digital divide with additional clickthroughs from
-                                            DevOps.
+                                            {{ 'section.comments.body'|trans }}
                                         </p>
                                         <div class="hr-divider hr-divider-style-1"></div>
                                     </div>
@@ -592,26 +568,26 @@
         /* gelolocations reikalai */
 
 //todo naujas scriptas, pakeisti vietoje seno nustatymo, veikia visuose browseriuose
-//        var options = {
-//            enableHighAccuracy: true,
-//            timeout: 5000,
-//            maximumAge: 0
-//        };
-//
-//        function success(pos) {
-//            var crd = pos.coords;
-//
-//            console.log('Your current position is:');
-//            console.log('Latitude : ' + crd.latitude);
-//            console.log('Longitude: ' + crd.longitude);
-//            console.log('More or less ' + crd.accuracy + ' meters.');
-//        };
-//
-//        function error(err) {
-//            console.warn('ERROR(' + err.code + '): ' + err.message);
-//        };
-//
-//        navigator.geolocation.getCurrentPosition(success, error, options);
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
+
+        function success(pos) {
+            var crd = pos.coords;
+
+            console.log('Your current position is:');
+            console.log('Latitude : ' + crd.latitude);
+            console.log('Longitude: ' + crd.longitude);
+            console.log('More or less ' + crd.accuracy + ' meters.');
+        };
+
+        function error(err) {
+            console.warn('ERROR(' + err.code + '): ' + err.message);
+        };
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
 
 
 
@@ -673,7 +649,6 @@
         function displayLocation(position){
             var x = position.coords.latitude;
             var y = position.coords.longitude;
-            alert(x + '}}}' + y)
             sendData(x, y, "");
 //
         }

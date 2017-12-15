@@ -66,11 +66,6 @@ class Order
      */
     private $deliveryAddress;
 
-//    /**
-//     * @ORM\Column(name="parcel_machine_delivery_address", type="string")
-//     */
-//    private $parcelMachineDeliveryAddress;
-
     /**
      * @ORM\Column(name="delivery_type", type="enum_delivery_type")
      */
@@ -213,25 +208,6 @@ class Order
         return $this;
     }
 
-//    /**
-//     * @return mixed
-//     */
-//    public function getParcelMachineDeliveryAddress()
-//    {
-//        return $this->parcelMachineDeliveryAddress;
-//    }
-//
-//    /**
-//     * @param mixed $parcelMachineDeliveryAddress
-//     *
-//     * @return Order
-//     */
-//    public function setParcelMachineDeliveryAddress($parcelMachineDeliveryAddress)
-//    {
-//        $this->parcelMachineDeliveryAddress = $parcelMachineDeliveryAddress;
-//        return $this;
-//    }
-
     /**
      * @return \DateTime
      */
@@ -269,8 +245,6 @@ class Order
         $this->deliveryType = $deliveryType;
         return $this;
     }
-
-
 
     /**
      * @return string
