@@ -7,6 +7,7 @@ use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Faker\Factory;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -34,7 +35,7 @@ class AppFakerCommand extends ContainerAwareCommand
     {
         parent::__construct($name);
         $this->em = $em;
-        $this->faker = \Faker\Factory::create('lt_LT');
+        $this->faker = Factory::create('lt_LT');
     }
 
     protected function configure()

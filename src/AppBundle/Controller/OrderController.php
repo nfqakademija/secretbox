@@ -12,6 +12,7 @@ use AppBundle\Service\ProductSelectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -114,6 +115,10 @@ class OrderController extends Controller
     //todo user profili PABAIGT
     /**
      * @Route("/new", name="app.order.new")
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
      */
     public function newOrderAction(Request $request)
     {
@@ -194,6 +199,11 @@ class OrderController extends Controller
 
     /**
      * @Route("/locations", name="app.order.locations")
+     *
+     * @param Request $request
+     * @param Session $session
+     *
+     * @return JsonResponse
      */
     public function locationsAction(Request $request, Session $session)
     {

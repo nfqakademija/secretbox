@@ -5,6 +5,7 @@ namespace AppBundle\Repository;
 use AppBundle\Entity\Order;
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\ORM\Query\ResultSetMapping;
 
 /**
@@ -68,7 +69,7 @@ class OrderRepository extends EntityRepository
             ->innerJoin(
                 'AppBundle:Product',
                 'products',
-                \Doctrine\ORM\Query\Expr\Join::WITH,
+                Join::WITH,
                 'orders.product = products.id'
             )
             ->where('orders.user = :user')

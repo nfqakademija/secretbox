@@ -10,7 +10,9 @@ use AppBundle\Form\UserAddressType;
 use AppBundle\Service\FacebookInfoService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class UserController
@@ -23,6 +25,10 @@ class UserController extends Controller
 {
     /**
      * @Route("/profile", name="app.user.profile")
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
      */
     public function userPageAction(Request $request)
     {
@@ -101,6 +107,10 @@ class UserController extends Controller
 
     /**
      * @Route("/friend/{facebookId}", defaults={"facebookId"=0}, name="app.user.friend")
+     *
+     * @param $facebookId
+     *
+     * @return RedirectResponse|Response
      */
     public function getUserFriendAction($facebookId)
     {
