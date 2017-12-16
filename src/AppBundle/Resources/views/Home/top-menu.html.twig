@@ -9,7 +9,7 @@
                             <div class="col-md-12">
                                 <!-- navbar header / logo -->
                                 <div class="navbar-header">
-                                    <a href="{{ pageRoute == 'app.homepage' ? '#section-homepage' : path('app.homepage')~'?content=section-homepage' }}" class="navbar-brand" title="SECRET BOX">
+                                    <a href="{{ pageRoute == 'app.homepage' ? '#section-homepage' : path('app.homepage')~'?content=section-homepage' }}" class="navbar-brand" title="SECRET BOX" data-scrol>
                                         <span class="secretbox-logo">SECRET BOX</span>
                                     </a>
                                     <ul class="header-btns">
@@ -77,7 +77,7 @@
                                                         </div>
                                                         <div class="text-center">
                                                             <div><strong>{{ app.user.firstName }} {{ app.user.lastName }}</strong></div>
-                                                            <div class="small">{{ app.user.username }}</div>
+                                                            <div class="small">{{ app.user.email }}</div>
                                                         </div>
                                                 </li>
                                                 <i class="hr-divider hr-divider-thin hr-divider-style-3 hr-divider-wide submenu-divider"></i>

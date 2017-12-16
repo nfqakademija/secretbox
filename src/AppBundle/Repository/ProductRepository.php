@@ -13,13 +13,14 @@ use AppBundle\Entity\Product;
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
-     * @param array     $usedProducts
-     *
-     * @param /Datetime $validDate
+     * @param array $usedProducts
+     * @param \DateTime $validDate
+     * @param string $boxSize
      *
      * @return array
+     * @internal param $ /Datetime $validDate
      */
-    public function getUniqueProducts($usedProducts, $validDate)
+    public function getUniqueProducts($usedProducts, $validDate, $boxSize)
     {
         if (empty($usedProducts)) {
             array_push($usedProducts, 0);
@@ -31,8 +32,10 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
             ->from(Product::class, 'product')
             ->where('product.id NOT IN (:usedProducts)')
             ->andWhere('product.validTo > :validDate')
+            ->andWhere('product.boxSize = :boxSize')
             ->setParameter('usedProducts', $usedProducts)
-            ->setParameter('validDate', $validDate);
+            ->setParameter('validDate', $validDate)
+            ->setParameter('boxSize', $boxSize);
         $products = $queryBuilder->getQuery()->getResult();
 
         return $products;

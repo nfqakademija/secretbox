@@ -77,6 +77,8 @@ gulp.task('scripts', function() {
             dir.npm + 'jquery-validation/dist/jquery.validate.js',
             dir.npm + 'waypoints/lib/jquery.waypoints.js',
             dir.npm + 'waypoints/lib/shortcuts/sticky.js',
+            dir.npm + 'gasparesganga-jquery-loading-overlay/src/loadingoverlay.js',
+            dir.npm + 'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.js',
             //plugins
             dir.assets + 'scripts/downCount/jquery.downCount.js',
             dir.assets + 'scripts/pace/pace.min.js',

@@ -16,28 +16,30 @@ use Doctrine\ORM\Query\ResultSetMapping;
 class OrderRepository extends EntityRepository
 {
     /**
-     * @param int       $userId
+     * @param int $userId
      *
      * @param \DateTime $validDate
      *
+     * @param string $boxSize
+     *
      * @return Product[]
      */
-    public function getUserRevealedProducts($userId, $validDate)
+    public function getUserRevealedProducts($userId, $validDate, $boxSize)
     {
         $rsm = new ResultSetMapping();
-        //        todo pakeisti NEW i DELIVERED ar panasiai
         $query = $this->_em->createQuery(
             "SELECT p.id FROM AppBundle:Order AS o
                   LEFT JOIN AppBundle:Product AS p
                   WITH o.product = p.id
-                  WHERE o.user=:userId AND
+                  WHERE (o.user=:userId AND p.boxSize=:boxSize) AND
 	                (o.status='revealed' OR 
                     (o.status='new' AND o.orderedAt > :validDate))",
             $rsm
         );
         $query
             ->setParameter('userId', $userId)
-            ->setParameter('validDate', $validDate);
+            ->setParameter('validDate', $validDate)
+            ->setParameter('boxSize', $boxSize);
         $products = $query->getResult();
 
         return $products;

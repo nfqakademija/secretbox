@@ -9,409 +9,395 @@
 {% endblock %}
 
 {% block body %}
-{#todo nuorodos su content linku i pagrindini puslapi#}
-    {#todo profile ne facebook ID o pasta#}
-    {#todo produkta turi parinkti pagal boxsize dydi!!!!!!!!!!!!!!!#}
-    {#<div class="gfort-section" id="section-about" style="height: 100vh;">#}
-        {#<div class="section-container">#}
-            {#<div class="container">#}
-                {#<div class="row">#}
-                    {#<div class="col-md-12">#}
-                    {#</div>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-    {#</div>#}
+
+    <div class="gfort-section" id="section-user-profile">
+    {#<div class="well well-sm text-center">#}
+        <div class="section-container">
+        {#<div class="">#}
+            <div class="row">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="col-lg-8 col-sm-12 col-lg-offset-2 content-bg">
+                    <!-- user profile container -->
+                    <div class="content-container">
+                        <div id="fancyTabWidget" class="tabs t-tabs">
+                            <ul class="nav nav-tabs fancyTabs" role="tablist">
+
+                                <li class="tab fancyTab active">
+                                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                    <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0">
+                                        <span class="fa fa-user-secret"></span>
+                                        <span class="hidden-xs">
+                                            {{ isUserProfile ? 'user.secrets'|trans : 'friend.secrets'|trans }}
+                                        </span>
+                                    </a>
+                                    <div class="whiteBlock"></div>
+                                </li>
+
+                                {% if friends is defined %}
+                                <li class="tab fancyTab">
+                                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                    <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0">
+                                        <span class="fa fa-users"></span>
+                                        <span class="hidden-xs">
+                                            {{ 'user.friends'|trans }}
+                                        </span>
+                                    </a>
+                                    <div class="whiteBlock"></div>
+                                </li>
+                                {% endif %}
+
+                                <li class="tab fancyTab">
+                                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                    <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0">
+                                        <span class="fa fa-user-circle"></span>
+                                        <span class="hidden-xs">
+                                            {{ isUserProfile ? 'user.profile'|trans : 'friend.profile'|trans }}
+                                        </span>
+                                    </a>
+                                    <div class="whiteBlock"></div>
+                                </li>
+
+                                <li class="tab fancyTab">
+                                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                    <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0">
+                                        <span class="fa fa-trophy"></span>
+                                        <span class="hidden-xs">
+                                            {{ isUserProfile ? 'user.orders'|trans : 'friend.orders' | trans }}
+                                        </span>
+                                    </a>
+                                    <div class="whiteBlock"></div>
+                                </li>
+
+                                <li class="tab fancyTab">
+                                    <div class="arrow-down"><div class="arrow-down-inner"></div></div>
+                                    <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0">
+                                        <span class="fa fa-commenting-o"></span>
+                                        <span class="hidden-xs">
+                                            {{ isUserProfile ? 'user.impressions'|trans : 'friend.impressions'|trans }}
+                                        </span>
+                                    </a>
+                                    <div class="whiteBlock"></div>
+                                </li>
+
+                            </ul>
+                            <div id="myTabContent" class="tab-content fancyTabContent" aria-live="polite">
+
+                                <!-- ongoing secrets tab -->
+                                <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {% if secrets == null %}
+                                                <h3>{{ isUserProfile ? 'user.no.secrets'|trans : 'friend.no.secrets'|trans }}</h3>
+                                            {% else %}
+
+                                                {#cia timeline#}
+                                                <div class="timeline-block">
+                                                    <!-- Timeline Block Container -->
+                                                    <div class="timeline-block-container">
+
+                                                        {% for secret in secrets %}
+
+                                                        <!-- Timeline Block item -->
+                                                        <div class="timeline-block-item" style="margin-top: 50px;">
 
 
+                                                            <div class="row">
+                                                                <div class="col-lg-3 text-right">
+                                                                    <h4>Atskleisti paslapčiai liko:</h4>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-left">
+                                                                    <!-- Timeline Block Head -->
+                                                                    <div class="timeline-block-head">
+                                                                        <!-- Timeline Block Head Container -->
+                                                                        <div class="timeline-block-head-container">
+                                                                            <div class="downtime-counter-block"
+                                                                                 data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"
+                                                                                 data-downtime-month="{{ secret.orderRevealUntil | date('m') }}"
+                                                                                 data-downtime-day="{{ secret.orderRevealUntil | date('d') }}"
+                                                                                 data-downtime-hour="{{ secret.orderRevealUntil | date('H') }}"
+                                                                                 data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"
+                                                                                 data-downtime-UTC-offset="2"
+                                                                                 data-downtime-message="laikas pasibaige">
+                                                                                <!-- downTime Counter Block Container -->
+                                                                                <div class="downtime-counter-block-container">
 
-<div class="gfort-section" id="section-user-profile">
-{#<div class="well well-sm text-center">#}
-    <div class="section-container">
-    {#<div class="">#}
-        <div class="row">
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <div class="col-lg-8 col-sm-12 col-lg-offset-2 content-bg">
-                <!-- user profile container -->
-                <div class="content-container">
-                    <div id="fancyTabWidget" class="tabs t-tabs">
-                        <ul class="nav nav-tabs fancyTabs" role="tablist">
+                                                                                    <!-- days -->
+                                                                                    <div class="downtime-col">
+                                                                                        <span class="days">00</span>
+                                                                                        <p>DIENOS</p>
+                                                                                    </div><!-- /days -->
 
-                            <li class="tab fancyTab active">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab0" href="#tabBody0" role="tab" aria-controls="tabBody0" aria-selected="true" data-toggle="tab" tabindex="0">
-                                    <span class="fa fa-user-secret"></span>
-                                    <span class="hidden-xs">
-                                        {{ isUserProfile ? 'user.secrets'|trans : 'friend.secrets'|trans }}
-                                    </span>
-                                </a>
-                                <div class="whiteBlock"></div>
-                            </li>
+                                                                                    <!-- hours -->
+                                                                                    <div class="downtime-col">
+                                                                                        <span class="hours">00</span>
+                                                                                        <p>VALANDOS</p>
+                                                                                    </div><!-- /hours -->
 
-                            {% if friends is defined %}
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab1" href="#tabBody1" role="tab" aria-controls="tabBody1" aria-selected="true" data-toggle="tab" tabindex="0">
-                                    <span class="fa fa-users"></span>
-                                    <span class="hidden-xs">
-                                        {{ 'user.friends'|trans }}
-                                    </span>
-                                </a>
-                                <div class="whiteBlock"></div>
-                            </li>
-                            {% endif %}
+                                                                                    <!-- minutes -->
+                                                                                    <div class="downtime-col">
+                                                                                        <span class="minutes">00</span>
+                                                                                        <p>MINUTĖS</p>
+                                                                                    </div><!-- /minutes -->
 
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab2" href="#tabBody2" role="tab" aria-controls="tabBody2" aria-selected="true" data-toggle="tab" tabindex="0">
-                                    <span class="fa fa-user-circle"></span>
-                                    <span class="hidden-xs">
-                                        {{ isUserProfile ? 'user.profile'|trans : 'friend.profile'|trans }}
-                                    </span>
-                                </a>
-                                <div class="whiteBlock"></div>
-                            </li>
+                                                                                    <!-- seconds -->
+                                                                                    <div class="downtime-col">
+                                                                                        <span class="seconds">00</span>
+                                                                                        <p>SEKUNDĖS</p>
+                                                                                    </div><!-- /seconds -->
 
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab3" href="#tabBody3" role="tab" aria-controls="tabBody3" aria-selected="true" data-toggle="tab" tabindex="0">
-                                    <span class="fa fa-trophy"></span>
-                                    <span class="hidden-xs">
-                                        {{ isUserProfile ? 'user.orders'|trans : 'friend.orders' | trans }}
-                                    </span>
-                                </a>
-                                <div class="whiteBlock"></div>
-                            </li>
-
-                            <li class="tab fancyTab">
-                                <div class="arrow-down"><div class="arrow-down-inner"></div></div>
-                                <a id="tab4" href="#tabBody4" role="tab" aria-controls="tabBody4" aria-selected="true" data-toggle="tab" tabindex="0">
-                                    <span class="fa fa-commenting-o"></span>
-                                    <span class="hidden-xs">
-                                        {{ isUserProfile ? 'user.impressions'|trans : 'friend.impressions'|trans }}
-                                    </span>
-                                </a>
-                                <div class="whiteBlock"></div>
-                            </li>
-
-                        </ul>
-                        <div id="myTabContent" class="tab-content fancyTabContent" aria-live="polite">
-
-                            <!-- ongoing secrets tab -->
-                            <div class="tab-pane  fade active in" id="tabBody0" role="tabpanel" aria-labelledby="tab0" aria-hidden="false" tabindex="0">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {% if secrets == null %}
-                                            <h3>{{ isUserProfile ? 'user.no.secrets'|trans : 'friend.no.secrets'|trans }}</h3>
-                                        {% else %}
-
-                                            {#cia timeline#}
-                                            <div class="timeline-block">
-                                                <!-- Timeline Block Container -->
-                                                <div class="timeline-block-container">
-
-                                                    {% for secret in secrets %}
-
-                                                    <!-- Timeline Block item -->
-                                                    <div class="timeline-block-item" style="margin-top: 50px;">
+                                                                                </div><!-- /End downTime Counter Block Container -->
+                                                                            </div><!-- /End downTime Counter Block -->
 
 
-                                                        <div class="row">
-                                                            <div class="col-lg-3 text-right">
-                                                                <h4>Atskleisti paslapčiai liko:</h4>
+                                                                            {#<!-- Timeline Block Date From -->#}
+                                                                            {#<div class="timeline-block-date-from">#}
+                                                                            {#<span class="timeline-block-date-month">SEPT</span>#}
+                                                                            {#<h2 class="timeline-block-date-year">1991</h2>#}
+                                                                            {#</div><!-- /End Timeline Block Date From -->#}
+
+                                                                            {#<!-- Timeline Block Date To -->#}
+                                                                            {#<div class="timeline-block-date-to">#}
+                                                                            {#<span class="timeline-block-date-month">JUNE</span>#}
+                                                                            {#<h2 class="timeline-block-date-year">1995</h2>#}
+                                                                            {#</div><!-- /End Timeline Block Date To -->#}
+
+                                                                        </div><!-- Timeline Block Head Container -->
+                                                                    </div><!-- /End Timeline Block Head -->
+
+                                                                </div>
+                                                                <div class="col-lg-3 text-right">
+                                                                    {#todo paimti kiek zmoniu jau atskleide sia paslapti#}
+                                                                    <h4>Šią paslaptį jau atskleidė: <strong>14</strong> laimingų žmonių</h4>
+                                                                </div>
                                                             </div>
-                                                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-left">
-                                                                <!-- Timeline Block Head -->
-                                                                <div class="timeline-block-head">
-                                                                    <!-- Timeline Block Head Container -->
-                                                                    <div class="timeline-block-head-container">
-                                                                        <div class="downtime-counter-block"
-                                                                             data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"
-                                                                             data-downtime-month="{{ secret.orderRevealUntil | date('m') }}"
-                                                                             data-downtime-day="{{ secret.orderRevealUntil | date('d') }}"
-                                                                             data-downtime-hour="{{ secret.orderRevealUntil | date('h') }}"
-                                                                             data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"
-                                                                             data-downtime-UTC-offset="2"
-                                                                             data-downtime-message="laikas pasibaige">
-                                                                            <!-- downTime Counter Block Container -->
-                                                                            <div class="downtime-counter-block-container">
-
-                                                                                <!-- days -->
-                                                                                <div class="downtime-col">
-                                                                                    <span class="days">00</span>
-                                                                                    <p>DIENOS</p>
-                                                                                </div><!-- /days -->
-
-                                                                                <!-- hours -->
-                                                                                <div class="downtime-col">
-                                                                                    <span class="hours">00</span>
-                                                                                    <p>VALANDOS</p>
-                                                                                </div><!-- /hours -->
-
-                                                                                <!-- minutes -->
-                                                                                <div class="downtime-col">
-                                                                                    <span class="minutes">00</span>
-                                                                                    <p>MINUTĖS</p>
-                                                                                </div><!-- /minutes -->
-
-                                                                                <!-- seconds -->
-                                                                                <div class="downtime-col">
-                                                                                    <span class="seconds">00</span>
-                                                                                    <p>SEKUNDĖS</p>
-                                                                                </div><!-- /seconds -->
-
-                                                                            </div><!-- /End downTime Counter Block Container -->
-                                                                        </div><!-- /End downTime Counter Block -->
 
 
-                                                                        {#<!-- Timeline Block Date From -->#}
-                                                                        {#<div class="timeline-block-date-from">#}
-                                                                        {#<span class="timeline-block-date-month">SEPT</span>#}
-                                                                        {#<h2 class="timeline-block-date-year">1991</h2>#}
-                                                                        {#</div><!-- /End Timeline Block Date From -->#}
+                                                            <!-- Timeline Block Body -->
+                                                            <div class="timeline-block-body">
+                                                                <!-- Timeline Block Body Container -->
+                                                                <div class="timeline-block-body-container">
 
-                                                                        {#<!-- Timeline Block Date To -->#}
-                                                                        {#<div class="timeline-block-date-to">#}
-                                                                        {#<span class="timeline-block-date-month">JUNE</span>#}
-                                                                        {#<h2 class="timeline-block-date-year">1995</h2>#}
-                                                                        {#</div><!-- /End Timeline Block Date To -->#}
+                                                                    <!-- Timeline Block Title -->
+                                                                    <div class="timeline-block-title">
+                                                                        <h4>Secret box dydis: <strong>{{ secret.product.boxSize|upper }}</strong></h4>
+                                                                    </div><!-- /End Timeline Block Title -->
 
-                                                                    </div><!-- Timeline Block Head Container -->
-                                                                </div><!-- /End Timeline Block Head -->
-
-                                                            </div>
-                                                            <div class="col-lg-3 text-right">
-                                                                {#todo paimti kiek zmoniu jau atskleide sia paslapti#}
-                                                                <h4>Šią paslaptį jau atskleidė: <strong>14</strong> laimingų žmonių</h4>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <!-- Timeline Block Body -->
-                                                        <div class="timeline-block-body">
-                                                            <!-- Timeline Block Body Container -->
-                                                            <div class="timeline-block-body-container">
-
-                                                                <!-- Timeline Block Title -->
-                                                                <div class="timeline-block-title">
-                                                                    <h4>Secret box dydis: <strong>{{ secret.product.boxSize|upper }}</strong></h4>
-                                                                </div><!-- /End Timeline Block Title -->
-
-                                                                <!-- Timeline Block Content -->
-                                                                <div class="timeline-block-content">
-                                                                    <div class="row">
-                                                                        <div class="col-lg-4">Uzsakymo data {{ secret.orderedAt|date('Y-m-d h:i:s') }}</div>
-                                                                        <div class="col-lg-2">Kaina {{ secret.sellingPrice }}</div>
-                                                                        <div class="col-lg-6">
-                                                                            Adresas: {{ secret.deliveryAddress }}<br>
-                                                                            Pristatymo budas: {{ secret.deliveryType }}
+                                                                    <!-- Timeline Block Content -->
+                                                                    <div class="timeline-block-content">
+                                                                        <div class="row">
+                                                                            <div class="col-lg-4">Uzsakymo data {{ secret.orderedAt|date('Y-m-d H:i:s') }}</div>
+                                                                            <div class="col-lg-2">Kaina {{ secret.sellingPrice }}</div>
+                                                                            <div class="col-lg-6">
+                                                                                Adresas: {{ secret.deliveryAddress }}<br>
+                                                                                Pristatymo budas: {{ secret.deliveryType }}
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div><!-- /End Timeline Block Content -->
+                                                                    </div><!-- /End Timeline Block Content -->
 
-                                                            </div><!-- /End Timeline Block Body Container -->
-                                                        </div><!-- /End Timeline Block Body -->
+                                                                </div><!-- /End Timeline Block Body Container -->
+                                                            </div><!-- /End Timeline Block Body -->
 
 
-                                                    </div><!-- /End Timeline Block item -->
+                                                        </div><!-- /End Timeline Block item -->
 
-                                                                                                              <!-- divider Section -->
-                                                        <div class="gfort-section fullwidth-section pt-0 pb-0">
-                                                            <div class="section-container">
-                                                                <div class="container">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12">
-                                                                            <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                                                                <i class="fa fa-heart"></i>
+                                                                                                                  <!-- divider Section -->
+                                                            <div class="gfort-section fullwidth-section pt-0 pb-0">
+                                                                <div class="section-container">
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                                                                                    <i class="fa fa-heart"></i>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        </div><!-- end section -->
+                                                            </div><!-- end section -->
 
-                                                    {% endfor %}
+                                                        {% endfor %}
 
-                                                </div><!-- /End Timeline Block Container -->
-                                            </div><!-- /End Timeline Block -->
-
-
-                                            {#timeline baigesi#}
+                                                    </div><!-- /End Timeline Block Container -->
+                                                </div><!-- /End Timeline Block -->
 
 
-
-                                            {#{% for secret in secrets %}#}
-
-                                            {#<div class="row">#}
-                                                {#<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">#}
-                                                    {#<h3>timer {{ secret.orderRevealUntil | date('Y') }}</h3>#}
-                                                    {#<!-- downTime Counter Block -->#}
-                                                    {#<div class="downtime-counter-block"#}
-                                                         {#data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"#}
-                                                         {#data-downtime-month="{{ secret.orderRevealUntil | date('m') }}"#}
-                                                         {#data-downtime-day="{{ secret.orderRevealUntil | date('d') }}"#}
-                                                         {#data-downtime-hour="{{ secret.orderRevealUntil | date('h') }}"#}
-                                                         {#data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"#}
-                                                         {#data-downtime-UTC-offset="2"#}
-                                                         {#data-downtime-message="Secret box not revealed? :(">#}
-                                                        {#<!-- downTime Counter Block Container -->#}
-                                                        {#<div class="downtime-counter-block-container">#}
-
-                                                            {#<!-- days -->#}
-                                                            {#<div class="downtime-col">#}
-                                                                {#<span class="days">00</span>#}
-                                                                {#<p>DAYS</p>#}
-                                                            {#</div><!-- /days -->#}
-
-                                                            {#<!-- hours -->#}
-                                                            {#<div class="downtime-col">#}
-                                                                {#<span class="hours">00</span>#}
-                                                                {#<p>HOURS</p>#}
-                                                            {#</div><!-- /hours -->#}
-
-                                                            {#<!-- minutes -->#}
-                                                            {#<div class="downtime-col">#}
-                                                                {#<span class="minutes">00</span>#}
-                                                                {#<p>MINUTES</p>#}
-                                                            {#</div><!-- /minutes -->#}
-
-                                                            {#<!-- seconds -->#}
-                                                            {#<div class="downtime-col">#}
-                                                                {#<span class="seconds">00</span>#}
-                                                                {#<p>SECONDS</p>#}
-                                                            {#</div><!-- /seconds -->#}
-
-                                                        {#</div><!-- /End downTime Counter Block Container -->#}
-                                                    {#</div><!-- /End downTime Counter Block -->#}
+                                                {#timeline baigesi#}
 
 
-                                                {#</div>#}
-                                            {#</div>#}
 
-                                            {#{% endfor %}#}
-
-                                            {#<table class="table table-striped table-hover">#}
-                                                {#<thead>#}
-                                                {#<th>{{ 'order.date' | trans }}</th>#}
-                                                {#<th class="text-center">{{ 'order.countdown' | trans }}</th>#}
-                                                {#<th class="text-center">{{ 'order.delivery.address' | trans }}</th>#}
-                                                {#</thead>#}
-                                                {#<tbody>#}
                                                 {#{% for secret in secrets %}#}
-                                                    {#<tr>#}
-                                                        {#<td>{{ secret.orderedAt | date('Y-m-d h:m:s') }}</td>#}
-                                                        {#<td class="text-center">#}
-                                                            {#<div class="countdown-clock"#}
-                                                                 {#data-countdown="{{ secret.orderRevealUntil | date('Y-m-d h:m:s') }}"></div>#}
-                                                        {#</td>#}
-                                                        {#<td class="text-center">#}
-                                                            {#<button type="button" class="btn" data-toggle="popover"#}
-                                                                    {#data-placement="left" title="Adresas"#}
-                                                                    {#data-content="{{ secret.deliveryAddress }}">#}
-                                                                {#<i class="fa fa-home icon-address"></i>#}
-                                                            {#</button>#}
-                                                        {#</td>#}
-                                                    {#</tr>#}
+
+                                                {#<div class="row">#}
+                                                    {#<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">#}
+                                                        {#<h3>timer {{ secret.orderRevealUntil | date('Y') }}</h3>#}
+                                                        {#<!-- downTime Counter Block -->#}
+                                                        {#<div class="downtime-counter-block"#}
+                                                             {#data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"#}
+                                                             {#data-downtime-month="{{ secret.orderRevealUntil | date('m') }}"#}
+                                                             {#data-downtime-day="{{ secret.orderRevealUntil | date('d') }}"#}
+                                                             {#data-downtime-hour="{{ secret.orderRevealUntil | date('h') }}"#}
+                                                             {#data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"#}
+                                                             {#data-downtime-UTC-offset="2"#}
+                                                             {#data-downtime-message="Secret box not revealed? :(">#}
+                                                            {#<!-- downTime Counter Block Container -->#}
+                                                            {#<div class="downtime-counter-block-container">#}
+
+                                                                {#<!-- days -->#}
+                                                                {#<div class="downtime-col">#}
+                                                                    {#<span class="days">00</span>#}
+                                                                    {#<p>DAYS</p>#}
+                                                                {#</div><!-- /days -->#}
+
+                                                                {#<!-- hours -->#}
+                                                                {#<div class="downtime-col">#}
+                                                                    {#<span class="hours">00</span>#}
+                                                                    {#<p>HOURS</p>#}
+                                                                {#</div><!-- /hours -->#}
+
+                                                                {#<!-- minutes -->#}
+                                                                {#<div class="downtime-col">#}
+                                                                    {#<span class="minutes">00</span>#}
+                                                                    {#<p>MINUTES</p>#}
+                                                                {#</div><!-- /minutes -->#}
+
+                                                                {#<!-- seconds -->#}
+                                                                {#<div class="downtime-col">#}
+                                                                    {#<span class="seconds">00</span>#}
+                                                                    {#<p>SECONDS</p>#}
+                                                                {#</div><!-- /seconds -->#}
+
+                                                            {#</div><!-- /End downTime Counter Block Container -->#}
+                                                        {#</div><!-- /End downTime Counter Block -->#}
+
+
+                                                    {#</div>#}
+                                                {#</div>#}
+
                                                 {#{% endfor %}#}
-                                                {#</tbody>#}
-                                            {#</table>#}
-                                        {% endif %}
+
+                                                {#<table class="table table-striped table-hover">#}
+                                                    {#<thead>#}
+                                                    {#<th>{{ 'order.date' | trans }}</th>#}
+                                                    {#<th class="text-center">{{ 'order.countdown' | trans }}</th>#}
+                                                    {#<th class="text-center">{{ 'order.delivery.address' | trans }}</th>#}
+                                                    {#</thead>#}
+                                                    {#<tbody>#}
+                                                    {#{% for secret in secrets %}#}
+                                                        {#<tr>#}
+                                                            {#<td>{{ secret.orderedAt | date('Y-m-d h:m:s') }}</td>#}
+                                                            {#<td class="text-center">#}
+                                                                {#<div class="countdown-clock"#}
+                                                                     {#data-countdown="{{ secret.orderRevealUntil | date('Y-m-d h:m:s') }}"></div>#}
+                                                            {#</td>#}
+                                                            {#<td class="text-center">#}
+                                                                {#<button type="button" class="btn" data-toggle="popover"#}
+                                                                        {#data-placement="left" title="Adresas"#}
+                                                                        {#data-content="{{ secret.deliveryAddress }}">#}
+                                                                    {#<i class="fa fa-home icon-address"></i>#}
+                                                                {#</button>#}
+                                                            {#</td>#}
+                                                        {#</tr>#}
+                                                    {#{% endfor %}#}
+                                                    {#</tbody>#}
+                                                {#</table>#}
+                                            {% endif %}
+                                            {#<div class="col-md-12">#}
+                                                {#<a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.for.friend', {'friendFacebookId' : user.facebookId}) }}">#}
+                                                    {#<span id="order-button-text">#}
+                                                        {#{{ isUserProfile ? 'product.order'|trans : 'friend.product.order'|trans  }}#}
+                                                    {#</span>#}
+                                                {#</a>#}
+                                            {#</div>#}
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if friends is defined %}
+
+                                <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
+                                    <div class="row">
                                         <div class="col-md-12">
-                                            <a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.for.friend', {'friendFacebookId' : user.facebookId}) }}">
-                                                <span id="order-button-text">
-                                                    {{ isUserProfile ? 'product.order'|trans : 'friend.product.order'|trans  }}
-                                                </span>
-                                            </a>
+                                            <a href="#" class="btn btn-primary btn-default btn-lg" onclick="sendRequestViaMultiFriendSelector(); return false;">{{ 'user.invite.friend' | trans }}</a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            {% if friends is defined %}
+                                    <div class="row">
 
-                            <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a href="#" class="btn btn-primary btn-default btn-lg" onclick="sendRequestViaMultiFriendSelector(); return false;">{{ 'user.invite.friend' | trans }}</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                    {% for friend in friends %}
-                                        <div class="row">
-                                            <div class="col-lg-4 col-lg-offset-4">
-                                                <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
-                                                    <img class="img-circle" src="{{ friend.picture.url }}"/>
-                                                    <span class="friend-line">
-                                                        {{ friend.name }}
-                                                    </span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-
-                            {% endif %}
-
-                            <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="container">
+                                        {% for friend in friends %}
                                             <div class="row">
-                                                <div class="col-xs-12 col-sm-12">
-                                                    <div class="well well-sm">
-                                                        <div class="row">
-                                                            <div class="col-sm-6 col-md-3">
-                                                                <img src="{{ asset(user.pictureUrl) }}" alt="" class="img-rounded img-responsive" />
-                                                            </div>
-                                                            <div class="col-sm-6 col-md-7">
-                                                                <h3 class="font-weight-bold">{{ user.firstName }} {{ user.lastName }}</h3>
-                                                                {% if  user.address  %}
-                                                                    {% set address = user.address %}
-                                                                {% else %}
-                                                                    {% set address = 'user.no.address' | trans %}
-                                                                {% endif %}
-                                                                <div class="user-info">
-                                                                        <p title="{{ 'content.email.address' | trans }}">
-                                                                            <i class="glyphicon glyphicon-envelope"></i>{{ user.email }}
-                                                                        </p>
-                                                                        <p class="newsletter">
-                                                                            {% if user.newsletter %}
-                                                                                <span>{{ 'user.newsletter' | trans }} {{ 'user.subscribed' | trans }}</span>
-                                                                                {% if isUserProfile %}
-                                                                                    <a href="{{ path('app.user.subscription') }}" class="color-red">
-                                                                                        <i class="glyphicon glyphicon-remove-circle">{{ 'content.unsubscribe' | trans }}</i>
-                                                                                    </a>
-                                                                                {% endif %}
-                                                                            {% else %}
-                                                                                <span>{{ 'user.newsletter' | trans }} {{ 'user.unsubscribed' | trans }}</span>
-                                                                                {% if isUserProfile %}
-                                                                                    <a href="{{ path('app.user.subscription') }}" class="color-green">
-                                                                                        <i class="glyphicon glyphicon-ok-circle">{{ 'content.subscribe' | trans }}</i>
-                                                                                    </a>
-                                                                                {% endif %}
-                                                                            {% endif %}
-                                                                        </p>
+                                                <div class="col-lg-4 col-lg-offset-4">
+                                                    <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
+                                                        <img class="img-circle" src="{{ friend.picture.url }}"/>
+                                                        <span class="friend-line">
+                                                            {{ friend.name }}
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
 
-                                                                    <p title="{{ 'user.lastlogin.date' | trans }}">
-                                                                        <i class="glyphicon glyphicon-log-in"></i>
-                                                                        <i class="glyphicon glyphicon-user"></i>
-                                                                        {{ user.loggedDate | date('Y-m-d') }}
-                                                                    </p>
-                                                                    <p title="{{ 'user.registration.date' | trans }}">
-                                                                        <i class="glyphicon glyphicon-registration-mark"></i>
-                                                                        <i class="glyphicon glyphicon-user"></i>
-                                                                        {{ user.registeredDate | date('Y-m-d') }}
-                                                                    </p>
-                                                                    <span title="{{ 'content.address' | trans }}">{{ address }}
-                                                                        <i class="glyphicon glyphicon-map-marker"></i>
-                                                                    </span>
-                                                                    {% if isUserProfile %}
-                                                                        <a href="#" data-toggle="modal" data-target="#edit-address">
-                                                                            <i class="glyphicon glyphicon-edit">{{ 'content.change' | trans }}</i>
-                                                                        </a>
+                                    </div>
+                                </div>
+
+                                {% endif %}
+
+                                <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-12">
+                                                        <div class="well well-sm">
+                                                            <div class="row">
+                                                                <div class="col-sm-6 col-md-3">
+                                                                    <img src="{{ asset(user.pictureUrl) }}" alt="" class="img-rounded img-responsive" />
+                                                                </div>
+                                                                <div class="col-sm-6 col-md-7">
+                                                                    <h3 class="font-weight-bold">{{ user.firstName }} {{ user.lastName }}</h3>
+                                                                    {% if  user.address  %}
+                                                                        {% set address = user.address %}
+                                                                    {% else %}
+                                                                        {% set address = 'user.no.address' | trans %}
                                                                     {% endif %}
+                                                                    <div class="user-info">
+                                                                            <p title="{{ 'content.email.address' | trans }}">
+                                                                                <i class="glyphicon glyphicon-envelope"></i>{{ user.email }}
+                                                                            </p>
+                                                                            <p class="newsletter">
+                                                                                {% if user.newsletter %}
+                                                                                    <span>{{ 'user.newsletter' | trans }} {{ 'user.subscribed' | trans }}</span>
+                                                                                    {% if isUserProfile %}
+                                                                                        <a href="{{ path('app.user.subscription') }}" class="color-red">
+                                                                                            <i class="glyphicon glyphicon-remove-circle">{{ 'content.unsubscribe' | trans }}</i>
+                                                                                        </a>
+                                                                                    {% endif %}
+                                                                                {% else %}
+                                                                                    <span>{{ 'user.newsletter' | trans }} {{ 'user.unsubscribed' | trans }}</span>
+                                                                                    {% if isUserProfile %}
+                                                                                        <a href="{{ path('app.user.subscription') }}" class="color-green">
+                                                                                            <i class="glyphicon glyphicon-ok-circle">{{ 'content.subscribe' | trans }}</i>
+                                                                                        </a>
+                                                                                    {% endif %}
+                                                                                {% endif %}
+                                                                            </p>
+
+                                                                        <p title="{{ 'user.lastlogin.date' | trans }}">
+                                                                            <i class="glyphicon glyphicon-log-in"></i>
+                                                                            <i class="glyphicon glyphicon-user"></i>
+                                                                            {{ user.loggedDate | date('Y-m-d') }}
+                                                                        </p>
+                                                                        <p title="{{ 'user.registration.date' | trans }}">
+                                                                            <i class="glyphicon glyphicon-registration-mark"></i>
+                                                                            <i class="glyphicon glyphicon-user"></i>
+                                                                            {{ user.registeredDate | date('Y-m-d') }}
+                                                                        </p>
+                                                                        <span title="{{ 'content.address' | trans }}">{{ address }}
+                                                                            <i class="glyphicon glyphicon-map-marker"></i>
+                                                                        </span>
+                                                                        {% if isUserProfile %}
+                                                                            <a href="#" data-toggle="modal" data-target="#edit-address">
+                                                                                <i class="glyphicon glyphicon-edit">{{ 'content.change' | trans }}</i>
+                                                                            </a>
+                                                                        {% endif %}
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -421,144 +407,144 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {% if orders|length == 0 %}
-                                            <h3>{{ isUserProfile ? 'order.no.completed.orders'|trans : 'friend.no.completed.orders'|trans }}</h3>
-                                        {% else %}
-                                            <table class="table small">
-                                                <thead>
-                                                <th>{{ 'order.date' | trans }}</th>
-                                                <th>{{ 'order.revealed' | trans }}</th>
-                                                <th><i class="fa fa-glass"></i></th>
-                                                <th></th>
-                                                <th></th>
-                                                </thead>
-                                                <tbody>
-                                                {% for order in orders %}
-                                                    <tr>
-                                                        todo pakeisti i order.product.[value] po to, kai pakeisiu repositorijoje
-                                                        <td>{{ order.orderedAt | date('Y-m-d') }}</td>
-                                                        <td></td>
-                                                        <td>{{ order.title }}</td>
-                                                        <td>{{ order.description }}</td>
-                                                        <td>{{ order.supplier }}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        {% endif %}
+                                <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {% if orders|length == 0 %}
+                                                <h3>{{ isUserProfile ? 'order.no.completed.orders'|trans : 'friend.no.completed.orders'|trans }}</h3>
+                                            {% else %}
+                                                <table class="table small">
+                                                    <thead>
+                                                    <th>{{ 'order.date' | trans }}</th>
+                                                    <th>{{ 'order.revealed' | trans }}</th>
+                                                    <th><i class="fa fa-glass"></i></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for order in orders %}
+                                                        <tr>
+                                                            todo pakeisti i order.product.[value] po to, kai pakeisiu repositorijoje
+                                                            <td>{{ order.orderedAt | date('Y-m-d') }}</td>
+                                                            <td></td>
+                                                            <td>{{ order.title }}</td>
+                                                            <td>{{ order.description }}</td>
+                                                            <td>{{ order.supplier }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        {% if isUserProfile %}
-                                            <button style="margin-bottom: 50px;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
-                                        {% endif %}
-                                    </div>
-                                    <div class="col-md-12">
-                                        {% if impressions|length == 0 %}
-                                            <h3>{{ isUserProfile ? 'user.no.impressions'|trans : 'friend.no.impressions'|trans }}</h3>
-                                        {% else %}
-                                            {% for impression in impressions %}
-                                                <div class="col-lg-6 impression">
-                                                    <div class="impression-box">
-                                                        <img class="img-circle2" src="{{ asset(user.pictureUrl) }}"/>
-                                                        <div class="impression-title">{{ impression.createdAt | date('Y-m-d h:m:s') }}</div>
-                                                        {{ impression.impression }}
+                                <div class="tab-pane  fade" id="tabBody4" role="tabpanel" aria-labelledby="tab4" aria-hidden="true" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            {% if isUserProfile %}
+                                                <button style="margin-bottom: 50px;" type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#new-impression"> {{ 'user.share.impression' | trans }} </button>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-12">
+                                            {% if impressions|length == 0 %}
+                                                <h3>{{ isUserProfile ? 'user.no.impressions'|trans : 'friend.no.impressions'|trans }}</h3>
+                                            {% else %}
+                                                {% for impression in impressions %}
+                                                    <div class="col-lg-6 impression">
+                                                        <div class="impression-box">
+                                                            <img class="img-circle2" src="{{ asset(user.pictureUrl) }}"/>
+                                                            <div class="impression-title">{{ impression.createdAt | date('Y-m-d h:m:s') }}</div>
+                                                            {{ impression.impression }}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            {% endfor %}
+                                                {% endfor %}
 
-                                        {% endif %}
+                                            {% endif %}
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
+
+
+
+
                 </div>
 
-
-
-
-            </div>
-
-            {% if formImpression is defined %}
-            {#modals:#}
-            <div class="modal fade" id="new-impression" tabindex="-1" role="dialog" aria-labelledby="new-impressionLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        {{ form_start(formImpression) }}
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="gridSystemModalLabel">
-                                {{ form_label(formImpression.impression, 'user.share.impression' | trans) }}
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    {{ form_row(formImpression.impression, {'attr': {'id': 'impression-input'}}) }}
-                                </div>
+                {% if formImpression is defined %}
+                {#modals:#}
+                <div class="modal fade" id="new-impression" tabindex="-1" role="dialog" aria-labelledby="new-impressionLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            {{ form_start(formImpression) }}
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">
+                                    {{ form_label(formImpression.impression, 'user.share.impression' | trans) }}
+                                </h4>
                             </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        {{ form_row(formImpression.impression, {'attr': {'id': 'impression-input'}}) }}
+                                    </div>
+                                </div>
 
-                        </div>
-                        <div class="modal-footer">
-                            {{ form_widget(formImpression.save) }}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
-                        </div>
-                        {{ form_end(formImpression) }}
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                            </div>
+                            <div class="modal-footer">
+                                {{ form_widget(formImpression.save) }}
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
+                            </div>
+                            {{ form_end(formImpression) }}
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+                {% endif %}
+
+            {% if formAddress is defined %}
+                <div class="modal fade" id="edit-address" tabindex="-1" role="dialog" aria-labelledby="edit-addressLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            {{ form_start(formAddress) }}
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="gridSystemModalLabel">
+                                    {{ form_label(formAddress.address, 'content.address' | trans) }}
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        {{ form_row(formAddress.address, {'attr': {'id': 'address-input'}}) }}
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                {{ form_widget(formAddress.save) }}
+                                <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
+                            </div>
+                            {{ form_end(formAddress) }}
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
             {% endif %}
 
-        {% if formAddress is defined %}
-            <div class="modal fade" id="edit-address" tabindex="-1" role="dialog" aria-labelledby="edit-addressLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        {{ form_start(formAddress) }}
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="gridSystemModalLabel">
-                                {{ form_label(formAddress.address, 'content.address' | trans) }}
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    {{ form_row(formAddress.address, {'attr': {'id': 'address-input'}}) }}
-                                </div>
-                            </div>
+            {% else %}
+                <h1>{{ 'user.access.denied' | trans }}</h1>
 
-                        </div>
-                        <div class="modal-footer">
-                            {{ form_widget(formAddress.save) }}
-                            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
-                        </div>
-                        {{ form_end(formAddress) }}
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-        {% endif %}
-
-        {% else %}
-            <h1>{{ 'user.access.denied' | trans }}</h1>
-
-        {% endif %}
+            {% endif %}
+        </div>
+    {#</div>#}
+        </div>
+    {#</div>#}
     </div>
-{#</div>#}
-    </div>
-{#</div>#}
-</div>
+
 {% endblock %}
-
+{#//todo pakeisti APP is parameters#}
 {% block javascripts %}
     {{ parent() }}
 
@@ -566,7 +552,7 @@
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <script>
         FB.init({
-//            todo pakeisti APP is parameters
+//todo pakeisti APP is parameters
             appId  : '711322222391741',
             frictionlessRequests: true
         });

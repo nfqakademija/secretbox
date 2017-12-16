@@ -28,15 +28,15 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function indexAction(Request $request, Session $session, $friendFacebookId = false, $errors = false, $content = false)
+    public function indexAction(Request $request, Session $session, $errors = false, $content = false)
     {
         if($content){
             $contentLink = $content;
         } else {
             $contentLink = $request->get('content');
-            if (!$contentLink) {
-                $contentLink = $session->get('content');
-            }
+//            if (!$contentLink) {
+//                $contentLink = $session->get('content');
+//            }
         }
         $session->set('content', '');
 
@@ -53,25 +53,19 @@ class HomeController extends Controller
 //        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
-//todo 12 valandu nusprogo\
-        //todo redirektas i profili
-        //todo vienodi tarpai tarp kainu
-        //facebook id panaikint
-        //todo pm am
-        //nerodo komentaru paskutinio
-        //todo useris gali buti ir draugas
 
-        if(!$friendFacebookId == false) {
-            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
-        } elseif($session->get('orderUserId') > 0) {
-            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($session->get('orderUserId'));
-        } else {
-            $user = $this->getUser();
-        }
+//        if(!$friendFacebookId == false) {
+//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
+//        } elseif($session->get('orderUserId') > 0) {
+//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($session->get('orderUserId'));
+//        } else {
+//            $user = $this->getUser();
+//        }
 
+        $user = $this->getUser();
 //        var_dump($user); die;
 
-        $session->set('orderUserId', $user->getId());
+//        $session->set('orderUserId', $user->getId());
 
 //        $order = new Order();
 //        $orderForm = $this->createForm(
@@ -140,23 +134,22 @@ class HomeController extends Controller
         return $this->redirectToRoute('app.homepage');
     }
 
-    /**
-     * @Route("/friendOrder/{friendFacebookId}", name="app.order.for.friend")
-     */
-    public function orderForFriendAction($friendFacebookId, Session $session)
-    {
-        $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($friendFacebookId);
-        if($isMyFriend){
-            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
-            $session->set('orderUserId', $user->getId());
-
-            return $this->forward('AppBundle:Home:index', [
-                'friendFacebookId' => $friendFacebookId,
-                'content' => 'section-begin-adventure'
-            ]);
-        }
-
-        return $this->redirectToRoute('app.homepage');
-    }
+//    /**
+//     * @Route("/friendOrder/{friendFacebookId}", name="app.order.for.friend")
+//     */
+//    public function orderForFriendAction($friendFacebookId, Session $session)
+//    {
+//        $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($friendFacebookId);
+//        if($isMyFriend){
+//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
+//            $session->set('orderUserId', $user->getId());
+//
+//            return $this->forward('AppBundle:Home:index', [
+//                'friendFacebookId' => $friendFacebookId,
+//                'content' => 'section-begin-adventure'
+//            ]);
+//        }
+//
+//        return $this->redirectToRoute('app.homepage');
+//    }
 }
-//todo acc prisijungus rodo ne emaila

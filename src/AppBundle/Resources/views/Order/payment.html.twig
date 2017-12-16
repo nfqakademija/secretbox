@@ -19,7 +19,7 @@
                 count--;
                 document.getElementById('countDown').innerHTML = count;
                 if (count < 1) {
-                    window.location = '{{ path('app.homepage') }}';
+                    window.location = '{{ path('app.user.profile') }}';
                 }
             },1000);
         }, 5000)

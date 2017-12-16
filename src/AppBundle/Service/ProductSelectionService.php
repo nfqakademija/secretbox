@@ -48,14 +48,17 @@ class ProductSelectionService
     /**
      * @param integer $userId
      *
-     * @return null|array
+     * @param string $boxSize
+     *
+     * @return array|null
      */
-    private function getUserUnusedProducts($userId)
+    private function getUserUnusedProducts($userId, $boxSize)
     {
         $validOrderDate = (new \DateTime())->modify('-' . $this->hoursToRevealSecret . ' hours');
         $revealedProducts = $this->em->getRepository(Order::class)->getUserRevealedProducts(
             $userId,
-            $validOrderDate
+            $validOrderDate,
+            $boxSize
         );
 
 
@@ -63,7 +66,7 @@ class ProductSelectionService
         $validProductDate->modify('+' . $this->hoursToRevealSecret . ' hours');
         $newProducts = $this->em
             ->getRepository(Product::class)
-            ->getUniqueProducts($revealedProducts, $validProductDate);
+            ->getUniqueProducts($revealedProducts, $validProductDate, $boxSize);
 
         return !empty($newProducts) ? $newProducts : null;
     }
@@ -71,11 +74,13 @@ class ProductSelectionService
     /**
      * @param integer $userId
      *
-     * @return null|integer
+     * @param string $boxSize
+     *
+     * @return int|null
      */
-    public function selectProperProductId($userId)
+    public function selectProperProductId($userId, $boxSize)
     {
-        $unusedProducts = $this->getUserUnusedProducts($userId);
+        $unusedProducts = $this->getUserUnusedProducts($userId, $boxSize);
 
         if ($unusedProducts) {
             $userLikes = $this->facebook->getUserDataByReference('likes');
@@ -85,7 +90,7 @@ class ProductSelectionService
             $matchInEvents = $this->matchesInArrays($unusedProducts, $userEvents, 'name');
             $productsMatch = array_merge($matchInLikes, $matchInEvents);
 
-            //todo refactor this huge if block
+            //todo JEI BUS LAIKO refactor this huge if block
             if (!empty($productsMatch)) {
                 $personInfo = $this->facebook->getPersonInfo('gender,birthday');
                 $age = $this->getUserAge($personInfo['birthday'])->y;
@@ -148,9 +153,9 @@ class ProductSelectionService
      *
      * @return Product|null|object
      */
-    public function selectProperProduct($userId)
+    public function selectProperProduct($userId, $boxSize)
     {
-        $productId = $this->selectProperProductId($userId);
+        $productId = $this->selectProperProductId($userId, $boxSize);
         $suitableProduct = $this->em->getRepository(Product::class)->findOneBy(['id' => $productId]);
 
         return $suitableProduct;

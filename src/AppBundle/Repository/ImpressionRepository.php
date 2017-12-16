@@ -70,7 +70,7 @@ class ImpressionRepository extends EntityRepository
                   LEFT JOIN AppBundle:User AS u
                   WITH i.user = u.id
                   WHERE i.isApproved = :isApproved
-                  ORDER BY i.createdAt",
+                  ORDER BY i.createdAt DESC",
             $rsm
         );
         $query

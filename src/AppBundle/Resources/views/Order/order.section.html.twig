@@ -10,7 +10,7 @@
             {% for price in prices %}
 
             <label class="btn btn-default order-btn wow {{ fadeEffect[number] }}" data-wow-duration="2s" data-wow-delay="0.5s">
-                <input type="radio" name="secretBoxSize" id="small-box" value="{{ price.box_size }}" autocomplete="off">
+                <input type="radio" name="secretBoxSize" id="box-{{ price.box_size }}" value="{{ price.box_size }}" autocomplete="off">
                 <span class="glyphicon glyphicon-ok"></span>
                 <span class="order-title">{{ price.box_size|trans|capitalize }}</span>
                 <span class="order-price">{{ price.price }}</span>
@@ -154,7 +154,7 @@
                             <div class="parcel-loading" id="parcel-loading">
                                 <div>
                                     {#todo pakeisti ikona, nes tik chrome palaiko webp IMG formata#}
-                                    <img id="parcel-loading-img" src="{{ asset('images/payment/processing.webp') }}" alt="O">
+                                    <img id="parcel-loading-img" src="{{ asset('images/loading.gif') }}" alt="O">
                                 </div>
                                 <div class="parcel-loading-text"></div>
 

@@ -11,23 +11,7 @@
 {% block body %}
 
     <!-- homepage section -->
-    {#todo imest i css#}
-    <div id="section-homepage" class="gfort-section parallax-section" style="
-            {#background-image: url({{ asset('images/parallax/1.jpg') }});#}
-            /*-webkit-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
-            /*-moz-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
-            /*-ms-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
-            /*-o-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
-            /*transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
-
-            /*-webkit-transition: background 1s linear;*/
-            /*-moz-transition: background 1s linear;*/
-            /*-ms-transition: background 1s linear;*/
-            /*transition: background 1s linear;*/
-            /*-o-transition: background 1s linear;*/
-
-            padding-top: 35vh;
-            padding-bottom: 70px">
+    <div id="section-homepage" class="gfort-section parallax-section">
         <div class="section-container">
             <div class="container">
                 <div class="row">
@@ -37,7 +21,10 @@
                         <div class="section-title intro-section-title light-color text-center">
                             <h2 class="section-main-title border-text">{{ 'section.homepage.text.1'|trans|upper }}<br>SECRET BOX</h2>
                             {#todo vertimas#}
-                            <p class="section-subtitle">3 adventure types</p>
+                            {#todo admin panele pabaigt, kad nustatyt kad adminas ir visus vertimus#}
+                            <p class="section-subtitle">
+                                <a href="#section-price" class="btn btn-gfort-o" data-scroll>3 nuotykių tipai</a>
+                            </p>
                         </div>
                         <!-- GAP 30px -->
                         <div class="gap gap-30"></div>
@@ -73,22 +60,6 @@
             </div>
         </div>
     </div><!-- end section -->
-
-    {#todo remove test, add erros jei orderis failina#}
-    {% if test is defined %}
-        <div class="gfort-section" id="section-about" style="height: 100vh;">
-            <div class="section-container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>{{ test }}</h1>
-                            <h2>{{ test2 }}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
 
     <!-- about section -->
     <div class="gfort-section" id="section-about">
@@ -206,86 +177,245 @@
         </div>
     </div><!-- end section -->
 
-                <!-- divider section -->
-                <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-signal"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end section -->
-
-                <!-- numbers section -->
-                <div class="gfort-section">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <!-- ongoing secrets -->
-                                <div class="col-sm-4 col-xs-6">
-                                    <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="5">{{ eventsAndCustomers.ongoing }}</span>
-                                        <p><i class="fa fa-diamond"></i> {{ 'section.numbers.1'|trans }}</p>
-                                    </div>
-                                </div>
-                                <!-- customers -->
-                                <div class="col-sm-4 col-xs-6">
-
-                                    <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="7" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
-                                        <p><i class="fa fa-thumbs-up"></i> {{ 'section.numbers.2'|trans }}</p>
-                                    </div>
-                                </div>
-                                <!-- revealed secrets -->
-                                <div class="col-sm-4 col-xs-6">
-                                    <div class="counter-block">
-                                        <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="5" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
-                                        <p><i class="fa fa-gift"></i> {{ 'section.numbers.3'|trans }}</p>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- divider section -->
+    <div class="gfort-section fullwidth-section pt-0 pb-0">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                            <i class="fa fa-signal"></i>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div><!-- end section -->
 
-                <!-- divider section -->
-                <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-check-square-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- numbers section -->
+    <div class="gfort-section">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <!-- ongoing secrets -->
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="counter-block">
+                            <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="5">{{ eventsAndCustomers.ongoing }}</span>
+                            <p><i class="fa fa-diamond"></i> {{ 'section.numbers.1'|trans }}</p>
                         </div>
                     </div>
-                </div><!-- end section -->
+                    <!-- customers -->
+                    <div class="col-sm-4 col-xs-6">
 
-                <!-- begin-adventure section -->
-                <div class="gfort-section pb-0" id="section-begin-adventure">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="section-title text-center">
-                                        <h2 class="section-main-title">{{ 'section.begin.adventure'|trans }}</h2>
-                                        <div class="hr-divider hr-divider-style-1"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12" style="padding-bottom: 500px;">
-                                    {{ include('@App/Order/order.section.html.twig') }}
-                                </div>
-                            </div>
+                        <div class="counter-block">
+                            <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="7" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
+                            <p><i class="fa fa-thumbs-up"></i> {{ 'section.numbers.2'|trans }}</p>
                         </div>
                     </div>
-                </div><!-- end section -->
+                    <!-- revealed secrets -->
+                    <div class="col-sm-4 col-xs-6">
+                        <div class="counter-block">
+                            <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="5" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
+                            <p><i class="fa fa-gift"></i> {{ 'section.numbers.3'|trans }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- divider section -->
+    <div class="gfort-section fullwidth-section pt-0 pb-0">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                            <i class="fa fa-money"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
+
+    <!-- prices section -->
+    <div class="gfort-section" id="section-price">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+
+
+                    {% set priceTitle = ['retas', 'epinis', 'legendinis']  %}
+                    {% set benefits = [
+                        ['retas nuotykis', 'paprastos užduotys'],
+                        ['epinis nuotykis', 'sudėtingensės užduotys', 'nuostabą sekeliantis rezultatas'],
+                        ['legendinis nuotykis', 'patiems reikliausiems nuotykių ieškotojams', 'prizas pranoks didžiausius Jūsų lūkesčius']
+                        ]
+                    %}
+                    {% set number = 0 %}
+                    {% for price in prices %}
+
+                    <div class="col-md-4">
+                        <div class="pricing-table-block">
+                            <div class="pricing-table-block-container">
+                                <div class="pricing-table-block-head">
+                                    <div class="pricing-table-block-title">
+                                        <h3>{{ priceTitle[number]|capitalize }} nuotykis</h3>
+                                        <p>{{ price.box_size|trans|capitalize }} Secret box</p>
+                                    </div>
+                                    <div class="pricing-table-block-price">
+                                        <h2>
+                                            <span class="price-currency">$</span>
+                                            <span class="price-integer-no">{{ price.price[:2] }}</span>
+                                            <span class="price-decimal-no">{{ price.price[2:] }}</span>
+                                        </h2>
+                                        <p style="font-weight: 500">Nemokamas pristatymas</p>
+                                    </div>
+                                </div>
+                                <div class="pricing-table-block-body">
+                                    <ul>
+                                        {% for benefit in benefits[number]  %}
+                                            <li>{{ benefit }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <div class="pricing-table-block-btn">
+                                    <a href="#section-begin-adventure" onclick="selectBox('{{  price.box_size  }}')" class="btn btn-gfort" data-scrol>Purchase now</a>
+                                </div><!-- /End Pricing Table Block Button -->
+
+
+                            </div><!-- /End Pricing Table Block Container -->
+                        </div><!-- /End Pricing Table Block -->
+                    </div><!-- /End col-md-4 -->
+                        {% set number = number + 1 %}
+
+                    <!-- col-md-4 -->
+                    {#<div class="col-md-4">#}
+                        {#<!-- Pricing Table Block -->#}
+                        {#<div class="pricing-table-block featured-pricing-table-block">#}
+                            {#<!-- Pricing Table Block Container -->#}
+                            {#<div class="pricing-table-block-container">#}
+                                {#<div class="pricing-table-block-head">#}
+                                    {#<div class="pricing-table-block-title">#}
+                                        {#<h3>Epinis nuotykis</h3>#}
+                                        {#<p>Vidutinė Secret box</p>#}
+                                    {#</div>#}
+                                    {#<div class="pricing-table-block-price">#}
+                                        {#<h2>#}
+                                            {#<span class="price-currency">$</span>#}
+                                            {#<span class="price-integer-no">19</span>#}
+                                            {#<span class="price-decimal-no">99</span>#}
+                                        {#</h2>#}
+                                        {#<p style="font-weight: 500">Nemokamas pristatymas</p>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class="pricing-table-block-body">#}
+                                    {#<ul>#}
+                                        {#<li>epinis nuotykis</li>#}
+                                        {#<li>sudėtingesnės užuominos</li>#}
+                                    {#</ul>#}
+                                {#</div>#}
+                                {#<div class="pricing-table-block-btn">#}
+                                    {#<a href="#" class="btn btn-gfort">Purchase now</a>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+
+
+                    {#<!-- col-md-4 -->#}
+                    {#<div class="col-md-4">#}
+                        {#<!-- Pricing Table Block -->#}
+                        {#<div class="pricing-table-block">#}
+                            {#<!-- Pricing Table Block Container -->#}
+                            {#<div class="pricing-table-block-container">#}
+
+
+                                {#<!-- Pricing Table Block Head -->#}
+                                {#<div class="pricing-table-block-head">#}
+
+                                    {#<!-- Pricing Table Block Title -->#}
+                                    {#<div class="pricing-table-block-title">#}
+                                        {#<h3>BUSINESS</h3>#}
+                                        {#<p>For Agency</p>#}
+                                    {#</div><!-- /End Pricing Table Block Title -->#}
+
+                                    {#<!-- Pricing Table Block Price -->#}
+                                    {#<div class="pricing-table-block-price">#}
+                                        {#<h2>#}
+                                            {#<span class="price-currency">$</span>#}
+                                            {#<span class="price-integer-no">39</span>#}
+                                            {#<span class="price-decimal-no">99</span>#}
+                                        {#</h2>#}
+                                        {#<p style="font-weight: 500">PER MONTH</p>#}
+                                    {#</div><!-- /End Pricing Table Block Price -->#}
+
+                                {#</div><!-- /End Pricing Table Block Head -->#}
+
+
+                                {#<!-- Pricing Table Block Body -->#}
+                                {#<div class="pricing-table-block-body">#}
+                                    {#<ul>#}
+                                        {#<li>30 Websites</li>#}
+                                        {#<li>600 Emails</li>#}
+                                        {#<li>30 FTP accounts</li>#}
+                                        {#<li>30 Domain name</li>#}
+                                        {#<li>600GB Disk space</li>#}
+                                    {#</ul>#}
+                                {#</div><!-- /End Pricing Table Block Body -->#}
+
+
+                                {#<!-- Pricing Table Block Button -->#}
+                                {#<div class="pricing-table-block-btn">#}
+                                    {#<a href="#" class="btn btn-gfort">Purchase now</a>#}
+                                {#</div><!-- /End Pricing Table Block Button -->#}
+
+
+                            {#</div><!-- /End Pricing Table Block Container -->#}
+                        {#</div><!-- /End Pricing Table Block -->#}
+                    {#</div><!-- /End col-md-4 -->#}
+
+                    {% endfor %}
+
+                </div><!-- /End row -->
+            </div><!-- /End container -->
+        </div><!-- /End Section Container -->
+    </div><!-- /end section -->
+
+   <!-- divider section -->
+    <div class="gfort-section fullwidth-section pt-0 pb-0">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                            <i class="fa fa-check-square-o"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
+
+    <!-- begin-adventure section -->
+    <div class="gfort-section pb-0" id="section-begin-adventure">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title text-center">
+                            <h2 class="section-main-title">{{ 'section.begin.adventure'|trans }}</h2>
+                            <div class="hr-divider hr-divider-style-1"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="padding-bottom: 500px;">
+                        {{ include('@App/Order/order.section.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
 
                 <!-- divider Section -->
                 <div class="gfort-section fullwidth-section pt-0 pb-0">
@@ -418,7 +548,7 @@
         {#</div>#}
 
     {#</div>#}
-    {#//todo sutvarkyti, kad pastomatu pasirinkime butu paieska#}
+    {#//todo JEI BUS LAIKO sutvarkyti, kad pastomatu pasirinkime butu paieska#}
 {% endblock %}
 
 {% block javascripts %}
@@ -455,12 +585,36 @@
 //        });
 
         /*order control*/
+    function selectBox(box) {
+//        $("#small-box").prop("checked", true);
+//        $("#small-box").is(":checked");
+//        $('#small-box').attr('checked','checked');
+
+        $("#box-" + box).trigger( "click" );
+//        $("#box-label-small").addClass('active focus');
+//        $('#small-box').trigger();
+//        "chosen:updated"
+    }
+
 
         var boxSelected = false;
         var prices = [];
         {% for price in prices %}
         prices['{{ price.box_size }}'] = {{ price.price }};
         {% endfor %}
+
+        {% for price in prices %}
+            $("#box-{{ price.box_size }}").on('click', function() {
+                AAA();
+            });
+        {% endfor %}
+
+
+
+        function AAA(){
+            animateEffect($("#order-contact"), "fadeInLeft");
+        }
+
 
         $(".order-btn").on('click', function() {
             if(!boxSelected) {
@@ -576,6 +730,13 @@
 
         $("#btn-proceed-payment").on('click', function () {
             document.forms['order-form'].submit();
+            // Show full page LoadingOverlay
+            $.LoadingOverlay("show");
+
+// Hide it after 3 seconds
+            setTimeout(function(){
+                $.LoadingOverlay("hide");
+            }, 3000);
         });
 
 
@@ -719,7 +880,6 @@
                     if(data.status > 0){
                         createParcelMachinesList(data.parcelMachines);
                     } else {
-                        alert('ciaaaaaaa');
                         errorFoundParcel()
                     }
 //                    displayMap(position.coords, data.parcelMachines);

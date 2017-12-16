@@ -36,15 +36,8 @@ class OrderController extends Controller
 //     */
 //    public function new2OrderAction($friendId, Request $request, Session $session)
 //    {
-//        //todo perskaityt clean code knygute uncle bob
-//        //todo        tiekejus i atskira lenetele
-//        //todo overflow auto, skrilinamas tekstas
-//        //todo pinterest
-//        //todo dizaino variantai: graphic river
-//        //todo svg iconos
-//        //todo html image map
-//        //todo  frontende: pabandyk pats, draugams, giftas?
-//        //todo paaiskint ka gaus
+//        //todo JEI BUS LAIKO facebook names  i atskira lenetele, nes vienam produktui gali buti daug facebook atitikimu
+
 //        $geoLocationService = $this->get(GeolocationService::class);
 //        $productSelectionService = $this->get(ProductSelectionService::class);
 //
@@ -68,7 +61,6 @@ class OrderController extends Controller
 //            $isUserOrder = false;
 //        }
 //
-//        //todo kai paspaudzia pradeti nuotyki mygtuka, divas per visa ekrana: ieskomas nuotykis
 //        $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
 //        if ($suitableProduct == null) {
 //            return $this->redirectToRoute('app.order.no.orders');
@@ -84,7 +76,6 @@ class OrderController extends Controller
 //            ]
 //        );
 //        $form->handleRequest($request);
-//        //todo kitas action
 //        if ($form->isSubmitted() && $form->isValid()) {
 //            $order->setUser($user);
 //
@@ -107,7 +98,6 @@ class OrderController extends Controller
 //
 //            $orderRepo->saveOrder($order);
 //
-//            //todo jeigu uzsakymas draugui - grazinti i draugo profili
 //            return $this->redirectToRoute('app.user.profile');
 //        }
 //
@@ -121,15 +111,13 @@ class OrderController extends Controller
 //            ]
 //        );
 //    }
-
+//todo user profili PABAIGT
     /**
      * @Route("/new", name="app.order.new")
      */
-    public function newOrderAction(Session $session, Request $request)
+    public function newOrderAction(Request $request)
     {
-
         /** @var User $user */
-        //todo produkta parenka ir pagal box size
         $deliveryType = $request->get('deliveryType');
         $boxSize = $request->get('secretBoxSize');
         $firstName = $request->get('firstName');
@@ -141,12 +129,12 @@ class OrderController extends Controller
 //            $userId = $this->getUser()->getId();
 //        }
 
-        $userId = $session->get('orderUserId');
-        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($userId);
+//        $userId = $session->get('orderUserId');
+//        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($userId);
 //        var_dump($user);die;
+        $user = $this->getUser();
 
-
-        $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId());
+        $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId(), $boxSize);
         $price = $this->get(OrderPriceService::class)->getCurrentPrice($boxSize);
 
 
@@ -166,9 +154,6 @@ class OrderController extends Controller
             ->setEmail($email)
             ->setAddress($address);
 
-//        var_dump( $_POST, $order);die;
-        //todo USERIU ROLES pakeist i ENUM
-        //todo errorus sujungt ir rodyt jei tokiu yra
         $validator = $this->get('validator');
         $orderErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($order));
         $userErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($user));;
@@ -181,7 +166,7 @@ class OrderController extends Controller
             return $this->forward('AppBundle:Home:index',[
                 'errors' => $errors,
                 'content' => 'section-begin-adventure',
-                'user' => $user,
+//                'user' => $user,
 
             ]);
         } else {
@@ -195,15 +180,15 @@ class OrderController extends Controller
 
     }
 
-    /**
-     * @Route("/allDone", name="app.order.no.orders")
-     *
-     * @return Response
-     */
-    public function allDoneAction()
-    {
-        return $this->render('@App/Order/no.orders.html.twig');
-    }
+//    /**
+//     * @Route("/allDone", name="app.order.no.orders")
+//     *
+//     * @return Response
+//     */
+//    public function allDoneAction()
+//    {
+//        return $this->render('@App/Order/no.orders.html.twig');
+//    }
 
     /**
      * @Route("/locations", name="app.order.locations")
