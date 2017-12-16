@@ -36,7 +36,7 @@ class OrderController extends Controller
 //     */
 //    public function new2OrderAction($friendId, Request $request, Session $session)
 //    {
-//        //todo JEI BUS LAIKO facebook names  i atskira lenetele, nes vienam produktui gali buti daug facebook atitikimu
+    //  //todo JEI BUS LAIKO facebook names  i atskira lenetele, nes vienam produktui gali buti daug facebook atitikimu
 
 //        $geoLocationService = $this->get(GeolocationService::class);
 //        $productSelectionService = $this->get(ProductSelectionService::class);
@@ -111,7 +111,7 @@ class OrderController extends Controller
 //            ]
 //        );
 //    }
-//todo user profili PABAIGT
+    //todo user profili PABAIGT
     /**
      * @Route("/new", name="app.order.new")
      */
@@ -136,7 +136,9 @@ class OrderController extends Controller
 
         $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId(), $boxSize);
         $price = $this->get(OrderPriceService::class)->getCurrentPrice($boxSize);
-
+        if ($suitableProduct == null) {
+            return $this->redirectToRoute('app.homepage');
+        }
 
         $address = $deliveryType == "parcel_machine" ? $request->get('parcelMachine') : $request->get('address');
 
@@ -145,6 +147,7 @@ class OrderController extends Controller
             ->setUser($user)
             ->setProduct($suitableProduct)
             ->setSellingPrice(number_format($price, 3))
+            ->setBoxSize($boxSize)
             ->setDeliveryAddress($address);
 
         $user
@@ -156,14 +159,15 @@ class OrderController extends Controller
 
         $validator = $this->get('validator');
         $orderErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($order));
-        $userErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($user));;
-        $errors = array_merge($orderErrors,  $userErrors);
+        $userErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($user));
+        ;
+        $errors = array_merge($orderErrors, $userErrors);
 //        var_dump($errors);die;
 
-        if(count($errors) > 0){
+        if (count($errors) > 0) {
 //            var_dump($errors);die;
 
-            return $this->forward('AppBundle:Home:index',[
+            return $this->forward('AppBundle:Home:index', [
                 'errors' => $errors,
                 'content' => 'section-begin-adventure',
 //                'user' => $user,
@@ -176,8 +180,6 @@ class OrderController extends Controller
             return $this->redirectToRoute('app.order.payment');
         }
         //todo JS validacijos
-
-
     }
 
 //    /**
@@ -230,7 +232,7 @@ class OrderController extends Controller
             $customerAddress
         );
 
-        if(empty($parcelMachines)){
+        if (empty($parcelMachines)) {
             return new JsonResponse(
                 [
                     'status' => 0,
@@ -258,7 +260,6 @@ class OrderController extends Controller
             [
             'status' => 1,
             'parcelMachines' =>  $machinesArray
-//            'coordinates' => $request->get('coordinateX') . ' AND ' . $request->get('coordinateY') . $itsXML,
             ],
             200
         );

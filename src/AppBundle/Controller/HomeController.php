@@ -30,7 +30,7 @@ class HomeController extends Controller
      */
     public function indexAction(Request $request, Session $session, $errors = false, $content = false)
     {
-        if($content){
+        if ($content) {
             $contentLink = $content;
         } else {
             $contentLink = $request->get('content');
@@ -54,13 +54,6 @@ class HomeController extends Controller
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
 
-//        if(!$friendFacebookId == false) {
-//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
-//        } elseif($session->get('orderUserId') > 0) {
-//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($session->get('orderUserId'));
-//        } else {
-//            $user = $this->getUser();
-//        }
 
         $user = $this->getUser();
 //        var_dump($user); die;
@@ -133,23 +126,4 @@ class HomeController extends Controller
 
         return $this->redirectToRoute('app.homepage');
     }
-
-//    /**
-//     * @Route("/friendOrder/{friendFacebookId}", name="app.order.for.friend")
-//     */
-//    public function orderForFriendAction($friendFacebookId, Session $session)
-//    {
-//        $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($friendFacebookId);
-//        if($isMyFriend){
-//            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
-//            $session->set('orderUserId', $user->getId());
-//
-//            return $this->forward('AppBundle:Home:index', [
-//                'friendFacebookId' => $friendFacebookId,
-//                'content' => 'section-begin-adventure'
-//            ]);
-//        }
-//
-//        return $this->redirectToRoute('app.homepage');
-//    }
 }

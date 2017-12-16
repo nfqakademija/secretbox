@@ -9,15 +9,15 @@
 
 namespace AppBundle\Service;
 
-
 use Symfony\Component\Validator\ConstraintViolation;
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class OrderErrorsMessagesService
 {
-    public function getErrorsList(ConstraintViolationListInterface $violations){
+    public function getErrorsList(ConstraintViolationListInterface $violations)
+    {
         $messages = [];
-        foreach ($violations as $violation){
+        foreach ($violations as $violation) {
             /** @var ConstraintViolation $violation */
 //            echo $violation->getMessage();
             array_push($messages, $violation->getMessage());

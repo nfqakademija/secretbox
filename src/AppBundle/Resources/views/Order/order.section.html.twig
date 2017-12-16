@@ -45,47 +45,55 @@
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <h3>{{ 'order.check.contacts'|trans }}</h3>
 
-            <div class="row">
-                <div class="col-md-3 text-left">
-                    <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="firstName" value="{{ user.firstName }}" placeholder="{{ 'user.name'|trans }}">
-                        <span>{{ 'user.name'|trans }}</span>
+            <div class="form-section-1">
+                <div class="row">
+                    <div class="col-md-3 text-left">
+                        <div class="has-float-label">
+                            <input type="text" class="order-text-input" id="firstName" name="firstName" value="{{ user.firstName }}" placeholder="{{ 'user.name'|trans }}" required>
+                            <span>{{ 'user.name'|trans }}</span>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 text-left">
-                    <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="lastName" value="{{ user.lastName }}" placeholder="{{ 'user.surname'|trans }}">
-                        <span>{{ 'user.surname'|trans }}</span>
+                    <div class="col-md-3 text-left">
+                        <div class="has-float-label">
+                            <input type="text" class="order-text-input" name="lastName" value="{{ user.lastName }}" placeholder="{{ 'user.surname'|trans }}" required>
+                            <span>{{ 'user.surname'|trans }}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-6 text-left">
+                        <div class="has-float-label">
+                            <input type="email" class="order-text-input" name="email" value="{{ user.email }}" placeholder="{{ 'user.email'|trans }}" required>
+                            <span>{{ 'user.email'|trans }}</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-md-5 col-sm-6 text-left">
-                    <div class="has-float-label">
-                        <input type="email" class="order-text-input" name="email" value="{{ user.email }}" placeholder="{{ 'user.email'|trans }}">
-                        <span>{{ 'user.email'|trans }}</span>
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-md-3 text-left">
+                        <div class="has-float-label">
+                            <input type="text" class="order-text-input" name="phoneNo" value="" placeholder="{{ 'user.phone'|trans }}" data-parsley-pattern="^[\d\+\-\.\(\)\/\s]*$" data-parsley-minlength="9">
+                            <span>{{ 'user.phone'|trans }}</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row" style="padding-top: 20px;">
-                <div class="col-md-3 text-left">
-                    <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="phoneNo" value="" class="form-control" placeholder="{{ 'user.phone'|trans }}">
-                        <span for="phoneNo">{{ 'user.phone'|trans }}</span>
-                    </div>
-                </div>
-            </div>
+
 
             <!-- button to address block -->
             <div class="well well-sm text-center " style="margin-top: 50px">
                 <div class="row">
                     <div class="col-sm-6 col-sm-offset-6 text-left">
-                        <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;">
+                        <a id="btn-delivery-address" class="btn btn-lg btn-success" style="width: 300px;" >
                             <span class="fa fa-address-book-o"></span> {{ 'order.delivery.address'|trans }}
                         </a>
                     </div>
                 </div>
             </div><!-- end button -->
+
+
+
+
 
         {% else %}
 
@@ -142,7 +150,7 @@
                     </div>
                 </div>
             </div><!-- end home delivery -->
-
+            {# todo reikia kad rodytu homepage ir kiek isviso pas mus unikaliu nuotykiu#}
             <!-- parcel machine delivery -->
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1">
@@ -153,7 +161,6 @@
                             </a>
                             <div class="parcel-loading" id="parcel-loading">
                                 <div>
-                                    {#todo pakeisti ikona, nes tik chrome palaiko webp IMG formata#}
                                     <img id="parcel-loading-img" src="{{ asset('images/loading.gif') }}" alt="O">
                                 </div>
                                 <div class="parcel-loading-text"></div>

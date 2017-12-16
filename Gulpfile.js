@@ -61,7 +61,7 @@ gulp.task('scripts', function() {
             dir.npm + 'jquery/dist/jquery.js',
             dir.npm + 'bootstrap-sass/assets/javascripts/bootstrap.min.js',
             dir.npm + 'jquery-parallax.js/parallax.min.js',
-            // dir.npm + 'parsleyjs/dist/parsley.js',
+            dir.npm + 'parsleyjs/dist/parsley.js',
             dir.npm + 'typed.js/lib/typed.js',
             dir.npm + 'flipclock/compiled/flipclock.js',
             dir.npm + 'animsition/dist/js/animsition.js',

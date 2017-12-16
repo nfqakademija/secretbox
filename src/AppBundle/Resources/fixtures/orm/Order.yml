@@ -1,11 +1,18 @@
 parameters:
-    price: 19.99
+    prices:
+        - 19.99
+        - 34.99
+        - 49.99
     orderStatuses:
         - 'new'
         - 'revealed'
     deliveryTypes:
         - 'home'
         - 'parcel_machine'
+    boxSizes:
+        - 'small'
+        - 'medium'
+        - 'big'
 
 AppBundle\Entity\Order:
     order{1..100}:
@@ -13,8 +20,8 @@ AppBundle\Entity\Order:
         product: '@product*'
         orderedAt: '<dateTimeBetween("-1 month", "now")>'
         orderRevealUntil: '<dateTimeBetween($orderedAt, "+14 days")>'
-        sellingPrice: '$price'
+        sellingPrice: '<randomElement($prices)>'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'
-#        parcelMachineDeliveryAddress: '<lt_LT:address()>'
         deliveryType: '<randomElement($deliveryTypes)>'
+        boxSize: '<randomElement($boxSizes)>'

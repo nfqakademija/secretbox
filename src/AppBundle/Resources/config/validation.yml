@@ -2,6 +2,8 @@ AppBundle\Entity\Order:
     properties:
         deliveryAddress:
             - NotBlank: {message: message.address.blank}
+        boxSize:
+            - Choice: [small, medium, big]
 
 AppBundle\Entity\Impression:
     properties:

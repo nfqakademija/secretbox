@@ -2,6 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\DBAL\EnumBoxSize;
+use AppBundle\DBAL\EnumDeliveryType;
+use AppBundle\DBAL\EnumOrderStatusType;
 use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Index;
@@ -57,19 +60,32 @@ class Order
     private $sellingPrice;
 
     /**
+     * @var EnumOrderStatusType
+     *
      * @ORM\Column(name="status", type="enum_order_status")
      */
     private $status = "new";
 
     /**
+     * @var string
+     *
      * @ORM\Column(name="delivery_address", type="string")
      */
     private $deliveryAddress;
 
     /**
+     * @var EnumDeliveryType
+     *
      * @ORM\Column(name="delivery_type", type="enum_delivery_type")
      */
     private $deliveryType;
+
+    /**
+     * @var EnumBoxSize
+     *
+     * @ORM\Column(name="box_size", type="enum_box_size")
+     */
+    private $boxSize;
 
     /**
      * Order constructor.
@@ -243,6 +259,25 @@ class Order
     public function setDeliveryType($deliveryType)
     {
         $this->deliveryType = $deliveryType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBoxSize()
+    {
+        return $this->boxSize;
+    }
+
+    /**
+     * @param string $boxSize
+     *
+     * @return Order
+     */
+    public function setBoxSize($boxSize)
+    {
+        $this->boxSize = $boxSize;
         return $this;
     }
 
