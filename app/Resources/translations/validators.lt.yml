@@ -1,2 +1,4 @@
-message.no.new.secrets: jūs atskleidėte visas paslaptis, grįžkite neužilgo naujiems nuotykiams!
-message.no.valid.email: įvestas el. pašto adresas netinkamas
+message.email.invalid: įvestas <strong>el. pašto adresas</strong> netinkamas
+message.firstname.blank: <strong>vardas</strong> negali būti tuščias
+message.lastname.blank: <strong>pavardė</strong> negali būti tuščia
+message.address.blank: <strong>pristatymo adresas</strong> negali būti tuščias

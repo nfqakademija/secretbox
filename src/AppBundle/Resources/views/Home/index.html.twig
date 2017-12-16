@@ -11,7 +11,23 @@
 {% block body %}
 
     <!-- homepage section -->
-    <div id="section-homepage" class="gfort-section parallax-section" style="background-image: url({{ asset('images/parallax/1.jpg') }});transition: background 1s linear; padding-top: 35vh; padding-bottom: 70px">
+    {#todo imest i css#}
+    <div id="section-homepage" class="gfort-section parallax-section" style="
+            {#background-image: url({{ asset('images/parallax/1.jpg') }});#}
+            /*-webkit-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
+            /*-moz-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
+            /*-ms-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
+            /*-o-transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
+            /*transition: background-image 0.615s cubic-bezier(0.19, 1, 0.22, 1);*/
+
+            /*-webkit-transition: background 1s linear;*/
+            /*-moz-transition: background 1s linear;*/
+            /*-ms-transition: background 1s linear;*/
+            /*transition: background 1s linear;*/
+            /*-o-transition: background 1s linear;*/
+
+            padding-top: 35vh;
+            padding-bottom: 70px">
         <div class="section-container">
             <div class="container">
                 <div class="row">
@@ -408,13 +424,11 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-
+        var sectionHomepage =  $('#section-homepage');
         $(".no-click").click(false);
 
-        var pictureNo = 1;
 
         $(document).ready(function() {
-            setTimeout(changeParallaxBackground, 5000);
             if("{{ contentLink }}".length > 1){
                 $.scrollTo("#{{ contentLink }}", {
                     duration: 3000
@@ -422,16 +436,12 @@
             }
         });
 
-        function changeParallaxBackground()
-        {
-            pictureNo++;
-            if(pictureNo > 3){
-                pictureNo = 1;
-            }
+        sectionHomepage.bgswitcher({
+            images: ["{{ asset('images/parallax/1.jpg') }}","{{ asset('images/parallax/2.jpg') }}","{{ asset('images/parallax/3.jpg') }}"],
+            effect: "fade",
+            interval: 9000
+        });
 
-            $("#parallax-main").css('background-image', 'url({{ asset('images/parallax/') }}' + pictureNo + '.jpg)');
-            setTimeout(changeParallaxBackground, 9000);
-        }
 
 
         $(".btn-facebook-login").on('click', function () {
@@ -564,6 +574,10 @@
                 .css('border', '1px solid #4cae4c');
         });
 
+        $("#btn-proceed-payment").on('click', function () {
+            document.forms['order-form'].submit();
+        });
+
 
         /* gelolocations reikalai */
 
@@ -576,6 +590,10 @@
 
         function success(pos) {
             var crd = pos.coords;
+            var x = crd.latitude;
+            var y = crd.longitude;
+
+            sendData(x, y, "");
 
             console.log('Your current position is:');
             console.log('Latitude : ' + crd.latitude);
@@ -584,10 +602,39 @@
         };
 
         function error(err) {
-            console.warn('ERROR(' + err.code + '): ' + err.message);
+            var typed = new Typed('.parcel-loading-text', {
+                strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
+                typeSpeed: 30
+            });
+            setTimeout(function () {
+                if(typed != null){
+                    typed.destroy();
+                }
+
+                var address = $("#home-address").val();
+                if(address.length > 12){
+                    var typed = new Typed('.parcel-loading-text', {
+                        strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
+                        typeSpeed: 30
+                    });
+                    setTimeout(function () {
+                        sendData("", "", address);
+                    }, 4000);
+                } else {
+                    if(typed != null){
+                        typed.destroy();
+                    }
+                    var typed = new Typed('.parcel-loading-text', {
+                        strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
+                        typeSpeed: 30
+                    });
+                    $("#parcel-loading-img").css('display', 'none')
+                    $("#btn-detect-parcel").css('display', 'inline-block')
+                }
+            }, 6000);
+
         };
 
-        navigator.geolocation.getCurrentPosition(success, error, options);
 
 
 
@@ -602,7 +649,9 @@
             });
             setTimeout(function () {
                 typed.destroy();
-                getClientLocation();
+                navigator.geolocation.getCurrentPosition(success, error, options);
+
+//                getClientLocation();
             }, 4000);
         });
 
@@ -614,30 +663,30 @@
             }
             else {
 
-                var typed = new Typed('.parcel-loading-text', {
-                    strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
-                    typeSpeed: 30
-                });
-                setTimeout(function () {
-                    typed.destroy();
-                    var address = $("#home-address").val();
-                    if(address.length > 12){
-                        var typed2 = new Typed('.parcel-loading-text', {
-                            strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
-                            typeSpeed: 30
-                        });
-                        setTimeout(function () {
-                            sendData("", "", address);
-                        }, 4000);
-                    } else {
-                        var typed3 = new Typed('.parcel-loading-text', {
-                            strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
-                            typeSpeed: 30
-                        });
-                        $("#parcel-loading-img").css('display', 'none')
-                        $("#btn-detect-parcel").css('display', 'inline-block')
-                    }
-                }, 6000);
+//                var typed = new Typed('.parcel-loading-text', {
+//                    strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
+//                    typeSpeed: 30
+//                });
+//                setTimeout(function () {
+//                    typed.destroy();
+//                    var address = $("#home-address").val();
+//                    if(address.length > 12){
+//                        var typed2 = new Typed('.parcel-loading-text', {
+//                            strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
+//                            typeSpeed: 30
+//                        });
+//                        setTimeout(function () {
+//                            sendData("", "", address);
+//                        }, 4000);
+//                    } else {
+//                        var typed3 = new Typed('.parcel-loading-text', {
+//                            strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
+//                            typeSpeed: 30
+//                        });
+//                        $("#parcel-loading-img").css('display', 'none')
+//                        $("#btn-detect-parcel").css('display', 'inline-block')
+//                    }
+//                }, 6000);
 
             }
         }
@@ -666,16 +715,57 @@
 //                    "coordinates": "iksas ir ygrikas"
                 },
                 success: function(data){
-
-                    createParcelMachinesList(data.parcelMachines);
+                    console.log(data.status);
+                    if(data.status > 0){
+                        createParcelMachinesList(data.parcelMachines);
+                    } else {
+                        alert('ciaaaaaaa');
+                        errorFoundParcel()
+                    }
 //                    displayMap(position.coords, data.parcelMachines);
                 },
                 error: function() {
-                    alert('Error found :(');
+                    errorFoundParcel()
                 }
 
             })
         }
+        function errorFoundParcel(){
+            $('.parcel-loading-text').html('');
+            var typed = new Typed('.parcel-loading-text', {
+                strings: [
+                    'Deja artimiausio paštomato nustatyti nepavyko',
+                    'Patikslinkite adresą ir pabandykite dar kartą'
+                ],
+                typeSpeed: 30
+            });
+            setTimeout(function () {
+                $("#parcel-loading").append(
+                    '<a id="btn-try-again" onclick="tryFindParcelAgain(this)" class="btn btn-default btn-md">Pabandyti dar karą</a>'
+                );
+            }, 5500);
+
+        }
+
+//        $("#btn-try-again").on('click', function () {
+//            $(this).remove();
+//            tryFindParcelAgain();
+//        });
+
+        function tryFindParcelAgain(el) {
+            el.remove();
+            $('.parcel-loading-text').html('');
+            var typed = new Typed('.parcel-loading-text', {
+                strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
+                typeSpeed: 30
+            });
+            var address = $("#home-address").val();
+
+            setTimeout(function () {
+                sendData("", "", address);
+            }, 4000);
+        }
+        
 
         function createParcelMachinesList(parcelMachines){
 

@@ -80,6 +80,7 @@ gulp.task('scripts', function() {
             //plugins
             dir.assets + 'scripts/downCount/jquery.downCount.js',
             dir.assets + 'scripts/pace/pace.min.js',
+            dir.assets + 'scripts/jquery.bgswitcher.js',
 
             // Main JS file
 

@@ -20,6 +20,23 @@
             {% endfor %}
 
         </div>
+
+        {% if errors %}
+        <div class="order-errors row">
+            <div class="col-lg-6 col-lg-offset-3 text-left">
+                <h4 style="color: red;">Įvyko užsakymo klaida, patikrinkite:</h4>
+            </div>
+
+            <div class="col-lg-6 col-lg-offset-3 text-left">
+                <ol>
+                    {% for error in errors %}
+                        <li>{{ error|raw }}</li>
+                    {% endfor %}
+                </ol>
+            </div>
+        </div>
+        {% endif %}
+
     </div><!-- end block -->
 
 
@@ -31,20 +48,20 @@
             <div class="row">
                 <div class="col-md-3 text-left">
                     <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="firstName" value="{{ app.user.firstName }}" placeholder="{{ 'user.name'|trans }}">
+                        <input type="text" class="order-text-input" name="firstName" value="{{ user.firstName }}" placeholder="{{ 'user.name'|trans }}">
                         <span>{{ 'user.name'|trans }}</span>
                     </div>
                 </div>
                 <div class="col-md-3 text-left">
                     <div class="has-float-label">
-                        <input type="text" class="order-text-input" name="lastName" value="{{ app.user.lastName }}" placeholder="{{ 'user.surname'|trans }}">
+                        <input type="text" class="order-text-input" name="lastName" value="{{ user.lastName }}" placeholder="{{ 'user.surname'|trans }}">
                         <span>{{ 'user.surname'|trans }}</span>
                     </div>
                 </div>
 
                 <div class="col-md-5 col-sm-6 text-left">
                     <div class="has-float-label">
-                        <input type="email" class="order-text-input" name="email" value="{{ app.user.email }}" placeholder="{{ 'user.email'|trans }}">
+                        <input type="email" class="order-text-input" name="email" value="{{ user.email }}" placeholder="{{ 'user.email'|trans }}">
                         <span>{{ 'user.email'|trans }}</span>
                     </div>
                 </div>
@@ -213,7 +230,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <a onclick="document.forms['order-form'].submit()" href="#" data-scrol id="btn-proceed-payment" class="btn btn-lg btn-success" style="width: 300px; display: none;">
+                    <a data-scrol id="btn-proceed-payment" class="btn btn-lg btn-success" style="width: 300px; display: none;">
                         <span class="fa fa-money"></span> {{ 'order.pay'|trans }}
                         <span id="price-info"></span>
                     </a>

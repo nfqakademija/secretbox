@@ -10,10 +10,15 @@
 namespace AppBundle\Service;
 
 use GuzzleHttp\Client;
+use Http\Message\MessageFactory\GuzzleMessageFactory;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\Service\Base\Location\AddressLocation;
 use Ivory\GoogleMap\Service\Base\Location\CoordinateLocation;
 use Ivory\GoogleMap\Service\DistanceMatrix\Request\DistanceMatrixRequest;
+use Ivory\GoogleMap\Service\Geocoder\GeocoderService;
+use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderAddressRequest;
+use Ivory\GoogleMap\Service\Geocoder\Request\GeocoderComponentType;
+use Ivory\GoogleMap\Service\Serializer\SerializerBuilder;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -87,9 +92,14 @@ class GeolocationService
             $origin = [
                 new CoordinateLocation(new Coordinate((float) $customerCoordinateX, (float) $customerCoordinateY))
             ];
-        } else {
+        } elseif($this->isAddressCorrect($customerAddress)) {
             $origin = [new AddressLocation($customerAddress)];
+        } else {
+            return [];
         }
+
+
+//        var_dump($a, $test->getResults()[0]->getTypes());die;
 
 //        var_dump($parcelMachines, $customerCoordinateX, $customerCoordinateY, $customerAddress);die;
 
@@ -113,6 +123,21 @@ class GeolocationService
         }
 
         return $parcelMachines;
+    }
+
+    private function isAddressCorrect($address){
+        $addressRequest = new GeocoderAddressRequest($address);
+        $addressRequest->setComponents([
+            GeocoderComponentType::COUNTRY   => 'lt'
+        ]);
+
+//        $test = $geocoder->geocode($a)->getResults();
+
+//        $a = '1600 Amphitheatre Parkway, Mountain View, CA';
+        $type = $this->container->get('ivory.google_map.geocoder')->geocode($addressRequest)->getResults()[0]->getTypes()[0];
+        return $type == "street_address" ? true : false;
+//        var_dump($test);die;
+//        return true;
     }
 
     /**

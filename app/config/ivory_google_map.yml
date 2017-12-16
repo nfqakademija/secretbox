@@ -12,3 +12,9 @@ ivory_google_map:
         message_factory: httplug.message_factory.default
         format: json
         api_key: "%google_api_key%"
+    geocoder:
+#        client: acme
+        client: httplug.client.default
+        message_factory: httplug.message_factory.default
+        format: json
+        api_key: "%google_api_key%"

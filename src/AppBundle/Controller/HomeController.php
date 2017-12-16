@@ -3,7 +3,9 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Impression;
+use AppBundle\Entity\User;
 use AppBundle\Service\EventsAndCustomersCountService;
+use AppBundle\Service\FacebookInfoService;
 use AppBundle\Service\GeolocationService;
 use AppBundle\Service\OrderPriceService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,11 +28,15 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function indexAction(Request $request, Session $session)
+    public function indexAction(Request $request, Session $session, $friendFacebookId = false, $errors = false, $content = false)
     {
-        $contentLink = $request->get('content');
-        if (!$contentLink) {
-            $contentLink = $session->get('content');
+        if($content){
+            $contentLink = $content;
+        } else {
+            $contentLink = $request->get('content');
+            if (!$contentLink) {
+                $contentLink = $session->get('content');
+            }
         }
         $session->set('content', '');
 
@@ -47,9 +53,26 @@ class HomeController extends Controller
 //        var_dump($contentLink);die;
         $impressions = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
 
-
+//todo 12 valandu nusprogo\
+        //todo redirektas i profili
+        //todo vienodi tarpai tarp kainu
+        //facebook id panaikint
+        //todo pm am
+        //nerodo komentaru paskutinio
         //todo useris gali buti ir draugas
-        $user = $this->getUser();
+
+        if(!$friendFacebookId == false) {
+            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
+        } elseif($session->get('orderUserId') > 0) {
+            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($session->get('orderUserId'));
+        } else {
+            $user = $this->getUser();
+        }
+
+//        var_dump($user); die;
+
+        $session->set('orderUserId', $user->getId());
+
 //        $order = new Order();
 //        $orderForm = $this->createForm(
 //            OrderType::class,
@@ -70,6 +93,7 @@ class HomeController extends Controller
             'eventsAndCustomers' => $eventsAndCustomers,
             'prices' => $prices,
             'user' => $user,
+            'errors' => $errors
             //            'test'=> $test,
             //            'test2'=> $test2
             //            'orderForm' => $orderForm->createView()
@@ -117,13 +141,22 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/test")
+     * @Route("/friendOrder/{friendFacebookId}", name="app.order.for.friend")
      */
-    public function testAction()
+    public function orderForFriendAction($friendFacebookId, Session $session)
     {
-        $impression = $this->getDoctrine()->getRepository(Impression::class)->getLastImpressions(4);
-        var_dump($impression);
-        return new Response('test');
+        $isMyFriend = $this->get(FacebookInfoService::class)->isMyFriend($friendFacebookId);
+        if($isMyFriend){
+            $user = $this->getDoctrine()->getManager()->getRepository(User::class)->findOneBy(['facebookId' => $friendFacebookId]);
+            $session->set('orderUserId', $user->getId());
+
+            return $this->forward('AppBundle:Home:index', [
+                'friendFacebookId' => $friendFacebookId,
+                'content' => 'section-begin-adventure'
+            ]);
+        }
+
+        return $this->redirectToRoute('app.homepage');
     }
 }
 //todo acc prisijungus rodo ne emaila

@@ -1,11 +1,7 @@
 AppBundle\Entity\Order:
     properties:
         deliveryAddress:
-            - NotBlank: ~
-#            - message: message.no.new.secrets
-#        product:
-#            - NotNull:
-#                message: message.no.new.secrets
+            - NotBlank: {message: message.address.blank}
 
 AppBundle\Entity\Impression:
     properties:
@@ -14,11 +10,13 @@ AppBundle\Entity\Impression:
 
 AppBundle\Entity\User:
     properties:
-        address:
-            - NotNull: ~
         email:
-            - NotBlank: ~
+            - NotBlank: {message: message.email.invalid}
             - Email:
                 checkHost: true
-                message: message.no.valid.email
-#    todo padaryt validationus visoms reiksmems, uzsakymas draugui
+                message: message.email.invalid
+        firstName:
+            - NotBlank: {message: message.firstname.blank}
+
+        lastName:
+            - NotBlank: {message: message.lastname.blank}

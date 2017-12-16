@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Order;
 use AppBundle\Entity\User;
 use AppBundle\Service\GeolocationService;
+use AppBundle\Service\OrderErrorsMessagesService;
 use AppBundle\Service\OrderPriceService;
 use AppBundle\Service\ParcelMachine;
 use AppBundle\Service\ProductSelectionService;
@@ -124,16 +125,30 @@ class OrderController extends Controller
     /**
      * @Route("/new", name="app.order.new")
      */
-    public function newOrderAction(Request $request)
+    public function newOrderAction(Session $session, Request $request)
     {
 
         /** @var User $user */
-        $user = $this->getUser();
-        $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId());
+        //todo produkta parenka ir pagal box size
         $deliveryType = $request->get('deliveryType');
         $boxSize = $request->get('secretBoxSize');
+        $firstName = $request->get('firstName');
         $lastName = $request->get('lastName');
+        $email = $request->get('email');
+
+//        $me = $this->getUser();
+//        if(!$userId){
+//            $userId = $this->getUser()->getId();
+//        }
+
+        $userId = $session->get('orderUserId');
+        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($userId);
+//        var_dump($user);die;
+
+
+        $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId());
         $price = $this->get(OrderPriceService::class)->getCurrentPrice($boxSize);
+
 
         $address = $deliveryType == "parcel_machine" ? $request->get('parcelMachine') : $request->get('address');
 
@@ -145,27 +160,37 @@ class OrderController extends Controller
             ->setDeliveryAddress($address);
 
         $user
-            ->setPhoneNo($request->get('phoneNo'));
-
-        //todo reikia call i User service ir ten atnaujint ir issaugot useri returninti erroru lista
-        if ($user->getLastName() != $lastName) {
-            $user->setPictureUrl($lastName);
-        }
+            ->setPhoneNo($request->get('phoneNo'))
+            ->setFirstName($firstName)
+            ->setLastName($lastName)
+            ->setEmail($email)
+            ->setAddress($address);
 
 //        var_dump( $_POST, $order);die;
         //todo USERIU ROLES pakeist i ENUM
         //todo errorus sujungt ir rodyt jei tokiu yra
         $validator = $this->get('validator');
-        $errors = $validator->validate($order);
-        if($errors){
-            var_dump($errors);die;
+        $orderErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($order));
+        $userErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($user));;
+        $errors = array_merge($orderErrors,  $userErrors);
+//        var_dump($errors);die;
+
+        if(count($errors) > 0){
+//            var_dump($errors);die;
+
+            return $this->forward('AppBundle:Home:index',[
+                'errors' => $errors,
+                'content' => 'section-begin-adventure',
+                'user' => $user,
+
+            ]);
         } else {
             $this->getDoctrine()->getManager()->getRepository(Order::class)->saveOrder($order);
-
+            $this->getDoctrine()->getManager()->getRepository(User::class)->saveUser($user);
 
             return $this->redirectToRoute('app.order.payment');
         }
-        //todo validacijos
+        //todo JS validacijos
 
 
     }
@@ -196,16 +221,22 @@ class OrderController extends Controller
 
 
             $itsXML = 'i will return you to NEW ORDER!!!!!';
-//            $customerCoordinateX = false;
-            $customerCoordinateX = 54.923094799999994;
-//            $customerCoordinateY = false;
-            $customerCoordinateY = 23.8207859;
-//            $customerAddress = "Biržiškų g 3-34, Kaunas";
-            $customerAddress = "";
+            $customerCoordinateX = "";
+//            $customerCoordinateX = 54.923094799999994;
+            $customerCoordinateY = "";
+//            $customerCoordinateY = 23.8207859;
+//            $customerAddress = "Draugystės g. 11, Laičiai, Ukmergės raj.";
+            $customerAddress = "Medvegalio 9, Kaunas";
+//            $customerAddress = "Saltoniškių prospektas 85-98, Panevėžys";
+//            $customerAddress = "";
         }
 
         $parcelMachines = $session->get('parcelMachines');
-        $machinesArray = [];
+//        var_dump($parcelMachines);die;
+
+
+
+
 
         $parcelMachines = $this->get(GeolocationService::class)->addDistanceToMachines(
             $parcelMachines,
@@ -214,6 +245,17 @@ class OrderController extends Controller
             $customerAddress
         );
 
+        if(empty($parcelMachines)){
+            return new JsonResponse(
+                [
+                    'status' => 0,
+                ],
+                200
+            );
+        }
+
+
+        $machinesArray = [];
         /**
  * @var ParcelMachine $machine
 */
@@ -229,8 +271,9 @@ class OrderController extends Controller
 
         return new JsonResponse(
             [
-            'parcelMachines' =>  $machinesArray,
-            'coordinates' => $request->get('coordinateX') . ' AND ' . $request->get('coordinateY') . $itsXML,
+            'status' => 1,
+            'parcelMachines' =>  $machinesArray
+//            'coordinates' => $request->get('coordinateX') . ' AND ' . $request->get('coordinateY') . $itsXML,
             ],
             200
         );

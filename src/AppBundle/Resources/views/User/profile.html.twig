@@ -317,7 +317,7 @@
                                             {#</table>#}
                                         {% endif %}
                                         <div class="col-md-12">
-                                            <a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.new', {'friendId' : user.facebookId}) }}">
+                                            <a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.for.friend', {'friendFacebookId' : user.facebookId}) }}">
                                                 <span id="order-button-text">
                                                     {{ isUserProfile ? 'product.order'|trans : 'friend.product.order'|trans  }}
                                                 </span>

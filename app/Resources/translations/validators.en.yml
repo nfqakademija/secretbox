@@ -1,2 +1,4 @@
-message.no.new.secrets: you revealed all secrets, come back soon for another!
-message.no.valid.email: you entered invalid email address
+message.email.invalid: <strong>email address</strong> is invalid
+message.firstname.blank: <strong>First name</strong> can not be blank
+message.lastname.blank: <strong>Last name<strong> can not be blank
+message.address.blank: <strong>deivery adresas</strong> can not be blank
