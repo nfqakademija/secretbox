@@ -98,12 +98,6 @@ class OrderRepository extends EntityRepository
             ->orderBy('orders.orderRevealUntil', 'DESC')
             ->getQuery()
             ->getResult();
-//            [
-//            'user' =>  $userId,
-//            'status' => 'new'
-//            ],
-//            ['Order' => 'orderedAt DESC']
-
 
         return $result;
     }

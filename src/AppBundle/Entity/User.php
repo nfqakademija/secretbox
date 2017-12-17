@@ -41,14 +41,14 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=50, nullable=true)
+     * @ORM\Column(name="first_name", type="string", length=50)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=50, nullable=true)
+     * @ORM\Column(name="last_name", type="string", length=50)
      */
     private $lastName;
 

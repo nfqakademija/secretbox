@@ -44,6 +44,9 @@ class OrderPriceService
         return (float) $orderPrice;
     }
 
+    /**
+     * @return array
+     */
     public function getAllPrices()
     {
         return $this->em->getRepository('AppBundle:Price')->getCurrentPrices();

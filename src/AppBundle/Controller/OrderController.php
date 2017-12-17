@@ -26,93 +26,6 @@ use Symfony\Component\HttpFoundation\Session\Session;
  */
 class OrderController extends Controller
 {
-//    /**
-//     * @Route("/new2/{friendId}", defaults={"friendId"=null}, name="app2.order.new")
-//     *
-//     * @param integer $friendId
-//     * @param Request $request
-//     * @param Session $session
-//     *
-//     * @return Response
-//     */
-//    public function new2OrderAction($friendId, Request $request, Session $session)
-//    {
-    //  //todo JEI BUS LAIKO facebook names  i atskira lenetele, nes vienam produktui gali buti daug facebook atitikimu
-
-//        $geoLocationService = $this->get(GeolocationService::class);
-//        $productSelectionService = $this->get(ProductSelectionService::class);
-//
-//        $orderRepo = $this->getDoctrine()->getManager()->getRepository(Order::class);
-//
-//        $locale = $request->getLocale();
-//        $parcelMachines = $this->get(GeolocationService::class)->getParcelMachines($locale);
-//        $session->set('parcelMachines', $parcelMachines);
-//
-//        $parcelMachineNames = $geoLocationService->getOnlyNames($locale);
-//
-//        $order = new Order();
-//
-//
-//        if ($friendId == null) {
-//            $user = $this->getUser();
-//            $isUserOrder = true;
-//        } else {
-//            $userRepo = $this->getDoctrine()->getManager()->getRepository(User::class);
-//            $user = $userRepo->findOneBy(['facebookId' => $friendId]);
-//            $isUserOrder = false;
-//        }
-//
-//        $suitableProduct = $productSelectionService->selectProperProduct($user->getId());
-//        if ($suitableProduct == null) {
-//            return $this->redirectToRoute('app.order.no.orders');
-//        }
-//
-//        $order->setDeliveryAddress($user->getAddress());
-//        $form = $this->createForm(
-//            OrderType::class,
-//            $order,
-//            [
-//            'attr' => ['data-parsley-validate' => ' '],
-//            'parcelMachines' => $parcelMachineNames,
-//            ]
-//        );
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $order->setUser($user);
-//
-//            $price = $this->getDoctrine()->getRepository('AppBundle:Price')->getCurrentPrice();
-//
-//            $order->setSellingPrice($price->getPrice());
-//            $order->setProduct($suitableProduct);
-//
-//            $validator = $this->get('validator');
-//            $errors = $validator->validate($order);
-//
-//            if (count($errors) > 0) {
-//                return $this->render(
-//                    'AppBundle:Order:new.order.html.twig',
-//                    [
-//                    'errors' => $errors
-//                    ]
-//                );
-//            }
-//
-//            $orderRepo->saveOrder($order);
-//
-//            return $this->redirectToRoute('app.user.profile');
-//        }
-//
-//        return $this->render(
-//            'AppBundle:Order:new.order.html.twig',
-//            [
-//            'form' => $form->createView(),
-//            'parcelMachines' => $parcelMachines,
-//            'user' => $user,
-//            'isUserOrder' => $isUserOrder,
-//            ]
-//        );
-//    }
-    //todo user profili PABAIGT
     /**
      * @Route("/new", name="app.order.new")
      *
@@ -122,21 +35,12 @@ class OrderController extends Controller
      */
     public function newOrderAction(Request $request)
     {
-        /** @var User $user */
         $deliveryType = $request->get('deliveryType');
         $boxSize = $request->get('secretBoxSize');
         $firstName = $request->get('firstName');
         $lastName = $request->get('lastName');
         $email = $request->get('email');
-
-//        $me = $this->getUser();
-//        if(!$userId){
-//            $userId = $this->getUser()->getId();
-//        }
-
-//        $userId = $session->get('orderUserId');
-//        $user = $this->getDoctrine()->getManager()->getRepository(User::class)->find($userId);
-//        var_dump($user);die;
+        /** @var User $user */
         $user = $this->getUser();
 
         $suitableProduct = $this->get(ProductSelectionService::class)->selectProperProduct($user->getId(), $boxSize);
@@ -165,18 +69,13 @@ class OrderController extends Controller
         $validator = $this->get('validator');
         $orderErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($order));
         $userErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($user));
-        ;
+
         $errors = array_merge($orderErrors, $userErrors);
-//        var_dump($errors);die;
 
         if (count($errors) > 0) {
-//            var_dump($errors);die;
-
             return $this->forward('AppBundle:Home:index', [
                 'errors' => $errors,
-                'content' => 'section-begin-adventure',
-//                'user' => $user,
-
+                'content' => 'section-begin-adventure'
             ]);
         } else {
             $this->getDoctrine()->getManager()->getRepository(Order::class)->saveOrder($order);
@@ -184,18 +83,7 @@ class OrderController extends Controller
 
             return $this->redirectToRoute('app.order.payment');
         }
-        //todo JS validacijos
     }
-
-//    /**
-//     * @Route("/allDone", name="app.order.no.orders")
-//     *
-//     * @return Response
-//     */
-//    public function allDoneAction()
-//    {
-//        return $this->render('@App/Order/no.orders.html.twig');
-//    }
 
     /**
      * @Route("/locations", name="app.order.locations")
@@ -203,38 +91,20 @@ class OrderController extends Controller
      * @param Request $request
      * @param Session $session
      *
-     * @return JsonResponse
+     * @return JsonResponse|RedirectResponse
      */
     public function locationsAction(Request $request, Session $session)
     {
         if ($request->isXmlHttpRequest()) {
-            $itsXML = 'yes, its XML';
             $customerCoordinateX = $request->get('coordinateX');
             $customerCoordinateY = $request->get('coordinateY');
             $customerAddress = $request->get('address');
         } else {
-//            http://localhost:8000/order/locations?coordinateX=54.923094799999994&coordinateY=23.8207859&address=false
-            ////            http://localhost:8000/order/locations?data=54.923111723.8207956&coordinateX=54.9231117&coordinateY=23.8207956&address=false&coordinates=iksas+ir+ygrikas
-
-
-            $itsXML = 'i will return you to NEW ORDER!!!!!';
-            $customerCoordinateX = "";
-//            $customerCoordinateX = 54.923094799999994;
-            $customerCoordinateY = "";
-//            $customerCoordinateY = 23.8207859;
-//            $customerAddress = "Draugystės g. 11, Laičiai, Ukmergės raj.";
-            $customerAddress = "Medvegalio 9, Kaunas";
-//            $customerAddress = "Saltoniškių prospektas 85-98, Panevėžys";
-//            $customerAddress = "";
+//
+            return $this->redirectToRoute('app.homepage');
         }
 
         $parcelMachines = $session->get('parcelMachines');
-//        var_dump($parcelMachines);die;
-
-
-
-
-
         $parcelMachines = $this->get(GeolocationService::class)->addDistanceToMachines(
             $parcelMachines,
             $customerCoordinateX,
@@ -251,11 +121,10 @@ class OrderController extends Controller
             );
         }
 
-
         $machinesArray = [];
         /**
- * @var ParcelMachine $machine
-*/
+         * @var ParcelMachine $machine
+        */
         foreach ($parcelMachines as $machine) {
             array_push($machinesArray, $machine->getMachineArray());
         }

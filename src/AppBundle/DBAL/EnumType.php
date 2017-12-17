@@ -14,9 +14,16 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class EnumType extends Type
 {
+//    todo phpdocs pataisyt mixed
     protected $name;
     protected $values = [];
 
+    /**
+     * @param array $fieldDeclaration
+     * @param AbstractPlatform $platform
+     *
+     * @return string
+     */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
     {
         $values = array_map(
@@ -29,11 +36,23 @@ abstract class EnumType extends Type
         return "ENUM(".implode(", ", $values).")";
     }
 
+    /**
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     *
+     * @return mixed
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         return $value;
     }
 
+    /**
+     * @param mixed $value
+     * @param AbstractPlatform $platform
+     *
+     * @return mixed
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         if (!in_array($value, $this->values)) {
@@ -43,11 +62,19 @@ abstract class EnumType extends Type
         return $value;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
+    /**
+     * @param AbstractPlatform $platform
+     *
+     * @return bool
+     */
     public function requiresSQLCommentHint(AbstractPlatform $platform)
     {
         return true;

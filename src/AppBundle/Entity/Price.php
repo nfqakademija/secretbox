@@ -3,7 +3,6 @@
 namespace AppBundle\Entity;
 
 use AppBundle\DBAL\EnumBoxSize;
-use AppBundle\DBAL\EnumGenderType;
 use Doctrine\DBAL\Types\DecimalType;
 use Doctrine\ORM\Mapping as ORM;
 

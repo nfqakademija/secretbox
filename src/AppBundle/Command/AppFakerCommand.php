@@ -42,7 +42,7 @@ class AppFakerCommand extends ContainerAwareCommand
     {
         $this
             ->setName('app:faker')
-            ->setDescription('generate random data for secretbox database')
+            ->setDescription('generate random data for secret box database')
             ->addArgument('rowsCount', InputArgument::OPTIONAL, 'Argument description')
             ->addOption('users', null, InputOption::VALUE_NONE, 'Option description')
             ->addOption('orders', null, InputOption::VALUE_NONE, 'Option description')

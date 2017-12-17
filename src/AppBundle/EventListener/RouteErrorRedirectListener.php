@@ -24,14 +24,16 @@ class RouteErrorRedirectListener
     protected $router;
 
     /**
-     * @param Router
+     * @param Router $router
      */
     public function __construct(Router $router)
     {
         $this->router = $router;
     }
 
-
+    /**
+     * @param GetResponseForExceptionEvent $event
+     */
     public function onKernelException(GetResponseForExceptionEvent $event)
     {
         $exception = $event->getException();

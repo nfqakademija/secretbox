@@ -3,7 +3,7 @@ intro.second: and there are many clues to find them out
 intro.third: take Your secret SECRET BOX and start Your adventure
 
 
-content.404: Secret box isn't here :)
+content.404: SECRET BOX isn't here :)
 content.address: address
 
 
@@ -15,118 +15,121 @@ menu.adventure.moments: adventure moments
 menu.comments: customers reviews
 
 user.home.address: Home address
-user.page: my account
-user.profile: my profile
-user.orders: secrets revealed
-user.impressions: my impressions
-user.access.denied: access denied, please login first...
-user.wait: please wait...
-user.registration.date: registration date
+user.page: My account
+user.profile: My profile
+user.orders: SECRET BOXes revealed
+user.impressions: My impressions
+user.access.denied: Access available only for logged in customer. Please login.
+user.wait: Please wait ...
+user.registration.date: Registration date
 user.login.with.facebook: Login with Facebook
-user.lastlogin.date: last login
-user.secrets: my secrets
-user.email: Email
+user.lastlogin.date: Last login
+user.secrets: My secrets
+user.email: E-mail
 user.phone: Phone number
 user.name: First name
 user.surname: Last name
-user.share.impression: share impression
-user.friends.secrets: friends secretes
-user.no.address: no address info
-user.newsletter: newsletter
-user.subscribed: subscribed
-user.unsubscribed: unsubscribed
-user.email.subscription: order newspaper
-user.input.your.email: enter your email address
-user.friends: friends
-user.invite.friend: invite more friends!
-user.no.secrets: you have no secrets
-user.no.impressions: you have no impressions
+user.share.impression: Share my impression
+user.friends.secrets: Friends SECRET BOX
+user.no.address: Address info not entered
+user.newsletter: Newsletter
+user.subscribed: Subscribed
+user.unsubscribed: Not subscribed
+user.email.subscription: Newsletter subsriptiontion
+user.input.your.email: Enter your e-mail address
+user.friends: Friends
+user.invite.friend: Invite more friends!
+user.no.secrets: No SECRET BOX ordered
+user.no.impressions: No impressions shared
 
-friend.secrets: friend secrets
-friend.profile: friend profile
-friend.orders: friend revealed
-friend.impressions: friend impressions
-friend.no.secrets: friend has no secrets
-friend.product.order: begin adventure for your friend
-friend.no.impressions: friend did not share any impression
-friend.no.completed.orders: friend has no revealed secrets
+friend.secrets: Friend's SECRET BOX
+friend.profile: Friend's profile
+friend.orders: Friend revealed
+friend.impressions: Friend's impressions
+friend.no.secrets: Friend has no SECRET BOX
+friend.product.order: Give SECRET BOX for your friend
+friend.no.impressions: Friend haven't shared any impression.
+friend.no.completed.orders: Friend has no revealed SECRET BOXes
 
 section.homepage.text.1: your discovery begins with
-section.homepage.text.intro.1: <span class="accent">Ar</span> tikrai viską <span class="accent">paragavai</span>, <span class="accent">įsigijai</span> ir <span class="accent">aplankei</span> geriausio?
-section.homepage.text.intro.2: Ar tikrai kur leidi laiką su draugais yra šauniausia vieta ir pramoga?
-section.homepage.text.intro.3: Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų, smalsumo ir išradingumo.
+section.homepage.text.intro.1: <span class="accent">Have you tasted, bought and visited the best?
+section.homepage.text.intro.2: Do you go to the coolest entertainment places?
+section.homepage.text.intro.3: We say NO! We invite you to the playful discoveries journey. At the very end a present waits for you. It is worth your efforts, curiosity and creativity.
 
-section.about: about project SECRET BOX
+section.about: About project SECRET BOX
 section.about.paragraph: >
-    NO TEXT
-    NO TRANSLATIONS
-section.about.block.title.1: NNEEED TRANS
+    The idea of SECRET BOX is to give more spontaneity and joy of discovery for you and for your friends.
+    What is inside SECRET BOX? – it is a clue object, prepared by us and our partners, that you can order for youself or for your friends.
+    A clue object will help you to find out a secret - at the end it is always a present, that can vary from
+    a posh degustation or dinner, an exclussive accessory or clothes,
+    practical service or an impressive event. Every time we guarantee an unexpectedness – only when you come up to a place headed by a clue object you will find out
+    a real present that was inside SECRET BOX.
+section.about.block.title.1: Registration and order
 section.about.block.body.1: >
-    Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
-    „Secret box“ verčių, pasirink pristatymo adresą ir įvykdyk mokėjimą.
-section.about.block.title.2: Tavo "Secret box"
+    Login with your Facebook account. Choose one of three available versions of SECRET BOXes.
+    Enter your delivery address and make a payment.
+section.about.block.title.2: Your SECRET BOX
 section.about.block.body.2: >
-    Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
-    pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
-    – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
-section.about.block.title.3: Tavo paskyra
+    Get your SECRET BOX to the address that you entered. Follow the clue object, that you will find inside SECRET BOX.
+    Start you discovery adventure, that lead you to a place to taste something special, to change your image or to
+    visit a special place. Only at the very end you will find out what this present is about.
+section.about.block.title.3: Your account
 section.about.block.body.3: >
-    Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
-    likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
-    „Secret box“ progresą iki paslapties atskleidimo.
-section.about.block.title.4: Tavo paskyra
+    Here you can see the status of your particular SECRET BOX, the time left for revealing a secret. As well you can see the progress
+    of the SECRET BOXes, that you made as a present for your friends.
+section.about.block.title.4: Share your impressions
 section.about.block.body.4: >
-    Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
-    likusį laiką atskleisti paslapčiai ir draugų, kuriems dovanojai
-    „Secret box“ progresą iki paslapties atskleidimo.
+    We are curious about and interested in your discoveries and
+    impressions about SECRET BOX. Share some photos, videos, make comments and give us feedback.
 
 
 section.numbers.1: Ongoing adventures
 section.numbers.2: Clients
-section.numbers.3: Achievments
+section.numbers.3: Discovered SECRET BOXes
 
-section.begin.adventure: pradėk savo nuotykį dabar
+section.begin.adventure: Start your adventure now
 
-section.adventure.moments.title: adventure moments
+section.adventure.moments.title: Moments of adventure
 section.adventure.moments.body: >
-    Capitalise on low hanging fruit to identify a ballpark value added activity
-    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+    Moments experienced with SECRET BOX.
 
 section.comments.title: what customers say
+section.comments.body: >
+   We share SECRET BOX and our customers share reveal secrets.
 
-product.order: begin
+product.order: start
 
 project.name: secret box
 
-order.choose.box: Chose <strong>Secret box</strong> size
+order.choose.box: Choose <strong>Secret box</strong> price
 order.check.contacts: Check you contact information
-order.choose.delivery.type: Choose delivery type
-order.choose.correct.parcel: Choose correct parcel machine
+order.choose.delivery.type: Choose the way of delivery
+order.choose.correct.parcel: Choose parcel machine address
 order.choose.payment.type: Choose payment type
-order.choose.parcel: Choose parcel
+order.choose.parcel: Choose parcel machine address
 order.delivery.address: Delivery address
-order.find.nearest.parcel: Find the nearest one
-order.secretbox: order Secret box
-order.date: ordered
-order.pay: Pay
+order.delivery.home: Deliver to home address
+order.delivery.parcel: Deliver to parcel machine
+order.find.nearest.parcel: Find the nearest
+order.secretbox: Order Secret box
+order.date: Ordered
+order.pay: Proceed the payment
 order.payment.type: Payment type
-order.revealed: revealed
+order.revealed: Revealed
 order.return.to.contacts: Return to contacts
 order.return.to.delivery.address: Return to delivery address
-order.delivery.address: devliver to
-order.delivery.home: Courier to the house
-order.delivery.parcel: Parcel shipment
-order.no.completed.orders: you have no revealed secrets
-order.countdown: Time to reveal secret
-order.begin.first.message: TRANSLATION NOT READY
-order.begin.second.message: TRANSLATION NOT READY
-order.begin.third.message: TRANSLATION NOT READY
+order.delivery.address: Deliver to
+order.no.completed.orders: No revealed SECRET BOXes
+order.countdown: Time left to reveal SECRET BOX
+order.begin.first.message: Start your extraordinary adventure of SECRET BOX, and at the very end you will find an unexpected present.
+order.begin.second.message: We will deliver a SECRET BOX for you. You will find a clue object inside.
+order.begin.third.message: Reveal a secret and enjoy your present.
 small: small
 medium: medium
 big: big
 
 
-content.years: years
+content.years: year
 content.months: months
 content.days: days
 content.hours: hours
@@ -151,6 +154,5 @@ action.new: New
 
 entity.user: Clients
 entity.products: Products | Services
-product.list: Products list
-
+product.list: List of products
 

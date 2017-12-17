@@ -2,7 +2,7 @@ intro.first: paslaptys. ar žinojai, kiek jų daug aplink Tave?
 intro.second: daug ir užuominų, kurios padės viską atskleisti
 intro.third: su SECRET BOX prasideda Tavo nuotykis. pradėk nuo to, ką rasi viduje
 
-content.404: Paslapčių dėžutė slepiasi ne čia :)
+content.404: SECRET BOX slepiasi ne čia :)
 content.address: adresas
 
 
@@ -14,41 +14,41 @@ menu.adventure.moments: nuotykių akimirkos
 menu.comments: klientų atsiliepimai
 
 user.home.address: Namų adresas
-user.page: mano paskyra
-user.profile: mano profilis
-user.orders: atskleistos paslaptys
-user.impressions: mano įspūdžiai
-user.access.denied: Šio puslapio negalite peržiūrėti, prašome iš pradžių prisijunkti
-user.wait: prašome palaukti...
-user.registration.date: registracijos data
-user.lastlogin.date: paskutinis prisijungimas
+user.page: Mano paskyra
+user.profile: Mano profilis
+user.orders: Atskleistos SECRET BOXes
+user.impressions: Mano įspūdžiai
+user.access.denied: Šį puslapį gali peržiūrėti tik prisijungę vartotojai. Prašome iš prisijungti.
+user.wait: Prašome palaukti ...
+user.registration.date: Registracijos data
+user.lastlogin.date: Paskutinis prisijungimas
 user.login.with.facebook: Prisijungti su Facebook
-user.secrets: mano paslaptys
+user.secrets: Mano paslaptys
 user.email: El. paštas
 user.phone: Telefono numeris
 user.name: Vardas
 user.surname: Pavardė
-user.share.impression: dalintis įspūdžiu
-user.friends.secrets: draugų paslaptys
-user.no.address: adresas neįvestas
-user.newsletter: naujienlaiškis
-user.subscribed: užsakytas
-user.unsubscribed: neužsakytas
-user.email.subscription: naujienlaiškio užsakymas
-user.input.your.email: įveskite savo el. pašto adresą
-user.friends: draugai
-user.invite.friend: pakviesti daugiau draugų
-user.no.secrets: neturite užsakytų paslapčių
-user.no.impressions: neturite parašytų įspūdžių
+user.share.impression: Dalintis įspūdžiu
+user.friends.secrets: Draugų SECRET BOX
+user.no.address: Adresas neįvestas
+user.newsletter: Naujienlaiškis
+user.subscribed: Užsakytas
+user.unsubscribed: Neužsakytas
+user.email.subscription: Naujienlaiškio užsakymas
+user.input.your.email: Įveskite savo el. pašto adresą
+user.friends: Draugai
+user.invite.friend: Pakviesti daugiau draugų
+user.no.secrets: Nėra užsakytų SECRET BOX
+user.no.impressions: Nėra pasidalintų įspūdžių
 
-friend.secrets: draugo paslaptys
-friend.profile: draugo profilis
-friend.orders: draugas atskleidė
-friend.impressions: draugo įspūdžiai
-friend.no.secrets: draugas neturi jokių paslapčių
-friend.product.order: pradėti draugui nuotykį
-friend.no.impressions: draugas nepasidalino jokiu įspūdžių
-friend.no.completed.orders: draugas neturi atskleitstų paslapčių
+friend.secrets: Draugo SECRET BOX
+friend.profile: Draugo profilis
+friend.orders: Draugas atskleidė
+friend.impressions: Draugo įspūdžiai
+friend.no.secrets: Draugas neturi SECRET BOX
+friend.product.order: Įtraukti draugą į nuotykį
+friend.no.impressions: Draugas nepasidalino įspūdžiu.
+friend.no.completed.orders: Draugas neturi atskleistų SECRET BOXes
 
 
 section.homepage.text.1: tavo atradimai prasideda su
@@ -61,17 +61,17 @@ section.homepage.text.intro.3: >
     <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų,
     smalsumo ir išradingumo.
 
-section.about: apie projektą SECRET BOX
+section.about: Apie projektą SECRET BOX
 section.about.paragraph: >
-    “Secret box” projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo
-    Tau ir Tavo draugams. Kas slepiasi projekte „Secret box“? – tai mūsų kartu
+    SECRET BOX projekto tikslas - daugiau spontaniškumo ir atradimų džiaugsmo
+    Tau ir Tavo draugams. Kas slepiasi projekte SECRET BOX? – tai mūsų kartu
     su partneriais parengta užuomina dėžutėje, kurią užsisakysi sau ar kitam
     asmeniui kaip dovaną. Užuomina, esanti dėžutėje, tau pagelbės ieškant ir
-    atrandant galutinio tikslo – dovanos, kuri gali būti bet kas: nuo
-    degustacijos ar vakarienės, nuo ekskliuzyvinio brando aksesuarų ar drabužių,
+    atrandant galutinį tikslą – dovaną, kuri gali būti bet kas: nuo
+    degustacijos ar vakarienės, nuo ekskliuzyvinio prekės ženklo aksesuarų ar drabužių,
     nuo praktiškos paslaugos ar įspūdingo renginio. Visada garantuojame
     netikėtumą – nes tik atėjęs į vietą pagal turimą užuominą ir pasakęs kodinį
-    žodį, sužinosi, ką iš tikrųjų tau paslėpėme „Secret box“ viduje.
+    žodį, sužinosi, kas iš tikrųjų paslėpta SECRET BOX viduje.
 section.about.block.title.1: Registracija ir užsakymas
 section.about.block.body.1: >
     Prisijunk su savo Facebook paskyra, pasirink vieną iš trijų
@@ -80,8 +80,8 @@ section.about.block.title.2: Tavo "Secret box"
 section.about.block.body.2: >
     Gauk „Secret box“ pasirinktu adresu ir radęs viduje užuominą,
     pradėk savo atradimų nuotykį, kuris atves Tave į netikėtą vietą
-    – paragauti, pakeisti įvaizdį, aplankyti. Tik paskutinę akimirką
-    sužinosi „kas ir kur tai?“.
+    – paragauti, pakeisti įvaizdį, apsilankyti. Tik paskutinę akimirką
+    sužinosi, kokia dovana tavęs laukia“.
 section.about.block.title.3: Tavo paskyra
 section.about.block.body.3: >
     Savo paskyroje gali matyti konkrečios „Secret box“ statusą,
@@ -95,47 +95,45 @@ section.about.block.body.4: >
 
 section.numbers.1: Vykstančių nuotykių
 section.numbers.2: Klientų
-section.numbers.3: Laimėjimų
+section.numbers.3: Atskleistų SECRET BOX
 
-section.begin.adventure: pradėk savo nuotykį dabar
+section.begin.adventure: Pradėk savo nuotykį dabar
 
-section.adventure.moments.title: nuotykių akimirkos
+section.adventure.moments.title: Nuotykių akimirkos
 section.adventure.moments.body: >
-    Capitalise on low hanging fruit to identify a ballpark value added activity
-    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+    Akimirkos, kurios buvo patirtos kartu su SECRET BOX.
 
 section.comments.title: ką sako klientai
 section.comments.body: >
-    Capitalise on low hanging fruit to identify a ballpark value added activity
-    to beta test. Override the digital divide with additional clickthroughs from DevOps.
+    Mes daliname paslaptis, o mūsų klientai dalinasi, kaip atskleisti paslaptis.
 
 product.order: pradėti
 
 project.name: secret box
 
-order.choose.box: Pasirink <strong>Secret box</strong> dydį
-order.check.contacts: Patikrinkite savo kontaktinius duomenis
-order.choose.delivery.type: Pasirinkite pristatymo būdą
-order.choose.correct.parcel: Pasirinkite tinkamą paštomatą
-order.choose.payment.type: Pasirinkite apmokėjimo būdą
-order.choose.parcel: Pasirinkite paštomatą
-order.delivery.address: pristatymo adresas
+order.choose.box: Pasirink <strong>Secret box</strong> vertę
+order.check.contacts: Patikrink savo kontaktinius duomenis
+order.choose.delivery.type: Pasirink pristatymo būdą
+order.choose.correct.parcel: Pasirink paštomato vietą
+order.choose.payment.type: Pasirink apmokėjimo būdą
+order.choose.parcel: Pasirink paštomatą
+order.delivery.address: Pristatymo adresas
 order.delivery.home: Pristatyti į namus
 order.delivery.parcel: Atsiimsiu paštomate
 order.find.nearest.parcel: Nustatyti artimiausią
-order.secretbox: užsisakykite SECRET BOX
-order.date: užsakyta
+order.secretbox: Užsisakyk SECRET BOX
+order.date: Užsakyta
 order.pay: Apmokėti
 order.payment.type: Apmokėjimo būdas
-order.revealed: atskleista
+order.revealed: Atskleista
 order.return.to.contacts: Grįžti prie kontaktų
 order.return.to.delivery.address: Grįžti prie pristatymo adreso
-order.delivery.address: pristatymas į
-order.no.completed.orders: neturite atskleistų paslapčių
-order.countdown: atskleisti paslapčiai turite
-order.begin.first.message: pradėkite unikalų SECRET BOX nuotykį, kurį įveikę tikrai mėgausitės rezultatu...
-order.begin.second.message: paštu Jums pristatysime paslaptį su Jums skirtomis užuominomis
-order.begin.third.message: įveikite užduotį ir mėgaukitės puikiu atlygiu
+order.delivery.address: Pristatymas į
+order.no.completed.orders: Nėra atskleistų SECRET BOXes
+order.countdown: Atskleisti paslapčiai turi
+order.begin.first.message: Pradėk unikalų SECRET BOX nuotykį, kurio pabaigoje - netikėta dovana.
+order.begin.second.message: Paštu Tau pristatysime SECRET BOX su užuomina viduje.
+order.begin.third.message: Atskleisk ir mėgaukis dovana.
 small: mažas
 medium: vidutinis
 big: didelis

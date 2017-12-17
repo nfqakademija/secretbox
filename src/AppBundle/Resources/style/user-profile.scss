@@ -1,4 +1,4 @@
-///*impressions*/
+/*impressions*/
 
 .impression {
   justify-content: center;
@@ -45,7 +45,7 @@
   border-radius: 50%;
   z-index: 5;
 }
-///*impressions end*/
+/* end impressions */
 
 .user-info {
   font-size: 20px;
@@ -85,7 +85,6 @@
   z-index: 99 !important;
   //background-color: white;
 }
-
 
 //.content-container {
 //  margin-top:30px;
@@ -328,28 +327,28 @@ li.fancyTab.active a {
 
 }
 
-
-/*countdown */
-.countdown-clock{
-  transform: scale(0.6);
-  -webkit-transform: scale(0.6);
-}
-
-
-.flip-clock-divider.seconds .flip-clock-label,
-.flip-clock-divider.days .flip-clock-label,
-.flip-clock-divider.hours .flip-clock-label,
-.flip-clock-divider.minutes .flip-clock-label
-{
-  right: -120px;
-}
-
-.flip-clock-label {
-  font-size: 24px;
-}
-
-
-/*countdown end*/
+//todo clean mess
+///*countdown */
+//.countdown-clock{
+//  transform: scale(0.6);
+//  -webkit-transform: scale(0.6);
+//}
+//
+//
+//.flip-clock-divider.seconds .flip-clock-label,
+//.flip-clock-divider.days .flip-clock-label,
+//.flip-clock-divider.hours .flip-clock-label,
+//.flip-clock-divider.minutes .flip-clock-label
+//{
+//  right: -120px;
+//}
+//
+//.flip-clock-label {
+//  font-size: 24px;
+//}
+//
+//
+///*countdown end*/
 
 .friend-line {
   font-size: 30px;

@@ -34,7 +34,7 @@ class EventsAndCustomersCountService
     {
         $ongoing = $this->countCurrentSecrets();
         $revealed = $this->countRevealedSecrets();
-        $customers = $this->countAllCustmoers();
+        $customers = $this->countAllCustomers();
         $numbers = array_merge($ongoing, $revealed, $customers);
 
         return $numbers;
@@ -59,7 +59,7 @@ class EventsAndCustomersCountService
     /**
      * @return array
      */
-    private function countAllCustmoers()
+    private function countAllCustomers()
     {
         return $this->em->getRepository(User::class)->countAllUsers();
     }

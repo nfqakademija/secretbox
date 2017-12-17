@@ -14,12 +14,16 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 class OrderErrorsMessagesService
 {
+    /**
+     * @param ConstraintViolationListInterface $violations
+     *
+     * @return array
+     */
     public function getErrorsList(ConstraintViolationListInterface $violations)
     {
         $messages = [];
         foreach ($violations as $violation) {
             /** @var ConstraintViolation $violation */
-//            echo $violation->getMessage();
             array_push($messages, $violation->getMessage());
         }
 

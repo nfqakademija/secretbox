@@ -30,8 +30,6 @@ class UserLoginEvent extends Event
      * UserLoginEvent constructor.
      *
      * @param User $user
-     *
-     * @internal param $client
      */
     public function __construct(User $user)
     {
@@ -63,7 +61,7 @@ class UserLoginEvent extends Event
     }
 
     /**
-     * @return integer
+     * @return string
      */
     public function getFacebookId()
     {

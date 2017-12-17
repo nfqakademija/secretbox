@@ -20,7 +20,6 @@ framework:
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-#    validation:      { enable_annotations: true }
     validation:      { enabled: true }
     #serializer:      { enable_annotations: true }
     templating:
@@ -60,12 +59,6 @@ doctrine:
             enum_order_status: AppBundle\DBAL\EnumOrderStatusType
             enum_delivery_type: AppBundle\DBAL\EnumDeliveryType
             enum_box_size: AppBundle\DBAL\EnumBoxSize
-        # if using pdo_sqlite as your database driver:
-        #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        #   2. Uncomment database_path in parameters.yml.dist
-        #   3. Uncomment next line:
-        #     path:     "%database_path%"
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"

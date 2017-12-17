@@ -151,6 +151,8 @@ class ProductSelectionService
     /**
      * @param integer $userId
      *
+     * @param string $boxSize
+     *
      * @return Product|null|object
      */
     public function selectProperProduct($userId, $boxSize)

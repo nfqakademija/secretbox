@@ -95,11 +95,6 @@ class GeolocationService
             return [];
         }
 
-
-//        var_dump($a, $test->getResults()[0]->getTypes());die;
-
-//        var_dump($parcelMachines, $customerCoordinateX, $customerCoordinateY, $customerAddress);die;
-
         $destinations = $this->getCoordinatesLocations($parcelMachines);
 
         $request = new DistanceMatrixRequest(
@@ -122,6 +117,11 @@ class GeolocationService
         return $parcelMachines;
     }
 
+    /**
+     * @param string $address
+     *
+     * @return bool
+     */
     private function isAddressCorrect($address)
     {
         $addressRequest = new GeocoderAddressRequest($address);
@@ -129,15 +129,11 @@ class GeolocationService
             GeocoderComponentType::COUNTRY   => 'lt'
         ]);
 
-//        $test = $geocoder->geocode($a)->getResults();
-
-//        $a = '1600 Amphitheatre Parkway, Mountain View, CA';
         $type = $this->container
             ->get('ivory.google_map.geocoder')
             ->geocode($addressRequest)->getResults()[0]->getTypes()[0];
+
         return $type == "street_address" ? true : false;
-//        var_dump($test);die;
-//        return true;
     }
 
     /**

@@ -245,7 +245,6 @@
             <div class="container">
                 <div class="row">
 
-
                     {% set priceTitle = ['retas', 'epinis', 'legendinis']  %}
                     {% set benefits = [
                         ['retas nuotykis', 'paprastos užduotys'],
@@ -266,7 +265,7 @@
                                     </div>
                                     <div class="pricing-table-block-price">
                                         <h2>
-                                            <span class="price-currency">$</span>
+                                            <span class="price-currency">€</span>
                                             <span class="price-integer-no">{{ price.price[:2] }}</span>
                                             <span class="price-decimal-no">{{ price.price[2:] }}</span>
                                         </h2>
@@ -282,105 +281,17 @@
                                 </div>
                                 <div class="pricing-table-block-btn">
                                     <a href="#section-begin-adventure" onclick="selectBox('{{  price.box_size  }}')" class="btn btn-gfort" data-scrol>Purchase now</a>
-                                </div><!-- /End Pricing Table Block Button -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-                            </div><!-- /End Pricing Table Block Container -->
-                        </div><!-- /End Pricing Table Block -->
-                    </div><!-- /End col-md-4 -->
                         {% set number = number + 1 %}
-
-                    <!-- col-md-4 -->
-                    {#<div class="col-md-4">#}
-                        {#<!-- Pricing Table Block -->#}
-                        {#<div class="pricing-table-block featured-pricing-table-block">#}
-                            {#<!-- Pricing Table Block Container -->#}
-                            {#<div class="pricing-table-block-container">#}
-                                {#<div class="pricing-table-block-head">#}
-                                    {#<div class="pricing-table-block-title">#}
-                                        {#<h3>Epinis nuotykis</h3>#}
-                                        {#<p>Vidutinė Secret box</p>#}
-                                    {#</div>#}
-                                    {#<div class="pricing-table-block-price">#}
-                                        {#<h2>#}
-                                            {#<span class="price-currency">$</span>#}
-                                            {#<span class="price-integer-no">19</span>#}
-                                            {#<span class="price-decimal-no">99</span>#}
-                                        {#</h2>#}
-                                        {#<p style="font-weight: 500">Nemokamas pristatymas</p>#}
-                                    {#</div>#}
-                                {#</div>#}
-                                {#<div class="pricing-table-block-body">#}
-                                    {#<ul>#}
-                                        {#<li>epinis nuotykis</li>#}
-                                        {#<li>sudėtingesnės užuominos</li>#}
-                                    {#</ul>#}
-                                {#</div>#}
-                                {#<div class="pricing-table-block-btn">#}
-                                    {#<a href="#" class="btn btn-gfort">Purchase now</a>#}
-                                {#</div>#}
-                            {#</div>#}
-                        {#</div>#}
-                    {#</div>#}
-
-
-                    {#<!-- col-md-4 -->#}
-                    {#<div class="col-md-4">#}
-                        {#<!-- Pricing Table Block -->#}
-                        {#<div class="pricing-table-block">#}
-                            {#<!-- Pricing Table Block Container -->#}
-                            {#<div class="pricing-table-block-container">#}
-
-
-                                {#<!-- Pricing Table Block Head -->#}
-                                {#<div class="pricing-table-block-head">#}
-
-                                    {#<!-- Pricing Table Block Title -->#}
-                                    {#<div class="pricing-table-block-title">#}
-                                        {#<h3>BUSINESS</h3>#}
-                                        {#<p>For Agency</p>#}
-                                    {#</div><!-- /End Pricing Table Block Title -->#}
-
-                                    {#<!-- Pricing Table Block Price -->#}
-                                    {#<div class="pricing-table-block-price">#}
-                                        {#<h2>#}
-                                            {#<span class="price-currency">$</span>#}
-                                            {#<span class="price-integer-no">39</span>#}
-                                            {#<span class="price-decimal-no">99</span>#}
-                                        {#</h2>#}
-                                        {#<p style="font-weight: 500">PER MONTH</p>#}
-                                    {#</div><!-- /End Pricing Table Block Price -->#}
-
-                                {#</div><!-- /End Pricing Table Block Head -->#}
-
-
-                                {#<!-- Pricing Table Block Body -->#}
-                                {#<div class="pricing-table-block-body">#}
-                                    {#<ul>#}
-                                        {#<li>30 Websites</li>#}
-                                        {#<li>600 Emails</li>#}
-                                        {#<li>30 FTP accounts</li>#}
-                                        {#<li>30 Domain name</li>#}
-                                        {#<li>600GB Disk space</li>#}
-                                    {#</ul>#}
-                                {#</div><!-- /End Pricing Table Block Body -->#}
-
-
-                                {#<!-- Pricing Table Block Button -->#}
-                                {#<div class="pricing-table-block-btn">#}
-                                    {#<a href="#" class="btn btn-gfort">Purchase now</a>#}
-                                {#</div><!-- /End Pricing Table Block Button -->#}
-
-
-                            {#</div><!-- /End Pricing Table Block Container -->#}
-                        {#</div><!-- /End Pricing Table Block -->#}
-                    {#</div><!-- /End col-md-4 -->#}
-
                     {% endfor %}
 
-                </div><!-- /End row -->
-            </div><!-- /End container -->
-        </div><!-- /End Section Container -->
+                </div>
+            </div>
+        </div>
     </div><!-- /end section -->
 
    <!-- divider section -->
@@ -417,23 +328,23 @@
         </div>
     </div><!-- end section -->
 
-                <!-- divider Section -->
-                <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-camera"></i>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- divider Section -->
+    <div class="gfort-section fullwidth-section pt-0 pb-0">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                            <i class="fa fa-camera"></i>
                         </div>
                     </div>
-                </div><!-- end section -->
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
 
-                <!-- adventure moments section -->
-                <div class="gfort-section fullwidth-section" id="section-adventure-moments">
+    <!-- adventure moments section -->
+    <div class="gfort-section fullwidth-section" id="section-adventure-moments">
                     <div class="section-container">
                         <div class="container">
                             <div class="row">
@@ -479,23 +390,23 @@
                     </div>
                 </div><!-- end section -->
 
-                <!-- divider section -->
-                <div class="gfort-section fullwidth-section pt-0 pb-0">
-                    <div class="section-container">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                        <i class="fa fa-commenting-o"></i>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- divider section -->
+    <div class="gfort-section fullwidth-section pt-0 pb-0">
+        <div class="section-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                            <i class="fa fa-commenting-o"></i>
                         </div>
                     </div>
-                </div><!-- end section -->
+                </div>
+            </div>
+        </div>
+    </div><!-- end section -->
 
-                <!-- comments section -->
-                <div class="gfort-section" id="section-comments">
+    <!-- comments section -->
+    <div class="gfort-section" id="section-comments">
                     <div class="section-container">
                         <div class="container">
                             <div class="row">
@@ -544,11 +455,6 @@
                     </div>
                 </div><!-- end section -->
 
-            {#</div>#}
-        {#</div>#}
-
-    {#</div>#}
-    {#//todo JEI BUS LAIKO sutvarkyti, kad pastomatu pasirinkime butu paieska#}
 {% endblock %}
 
 {% block javascripts %}
@@ -556,7 +462,6 @@
     <script type="text/javascript">
         var sectionHomepage =  $('#section-homepage');
         $(".no-click").click(false);
-
 
         $(document).ready(function() {
             if("{{ contentLink }}".length > 1){
@@ -572,199 +477,146 @@
             interval: 9000
         });
 
-
-
         $(".btn-facebook-login").on('click', function () {
             $(this).addClass('disabled');
             $(".login-text").html(userWaiting);
         });
 
-//        $("#btn-facebook-login").on('click', function () {
-//            $(this).addClass('disabled');
-//            $("#login-text").html(userWaiting);
-//        });
 
         /*order control*/
-    function selectBox(box) {
-//        $("#small-box").prop("checked", true);
-//        $("#small-box").is(":checked");
-//        $('#small-box').attr('checked','checked');
-
-        $("#box-" + box).trigger( "click" );
-//        $("#box-label-small").addClass('active focus');
-//        $('#small-box').trigger();
-//        "chosen:updated"
-    }
-
+        function selectBox(box) {
+            $("#box-" + box).trigger( "click" );
+        }
 
         var boxSelected = false;
         var prices = [];
+
+        var orderForm = $('#order-form');
+        var displayOrderContact = $("#order-contact");
+        var displayOrderAddress = $("#order-address");
+        var displayDelivery = $("#delivery-display");
+        var displayHomeDelivery = $("#home-delivery");
+        var displayParcelDelivery = $("#parcel-delivery");
+        var displayPaymentType = $("#payment-type");
+
+        var inputHomeAddress = $("#home-address");
+        var inputSelectParcelMachine = $("#select-parcelMachine");
+
+        var buttonProceedPayment = $("#btn-proceed-payment");
+        var buttonDeliveryAddress = $("#btn-delivery-address");
+        var buttonContacts = $("#btn-contacts");
+        var buttonDeliveryHome = $("#btn-delivery-home");
+        var buttonPaymentType = $("#btn-payment-type");
+        var buttonDeliveryParcel = $("#btn-delivery-parcel");
+        var buttonBackToDeliveryAddress =  $("#btn-back-delivery-address");
+
+        var imageLoading = $("#parcel-loading-img");
+
         {% for price in prices %}
         prices['{{ price.box_size }}'] = {{ price.price }};
         {% endfor %}
 
         {% for price in prices %}
             $("#box-{{ price.box_size }}").on('click', function() {
-                AAA();
+                animateEffect(displayOrderContact, "fadeInLeft");
             });
         {% endfor %}
 
-
-
-        function AAA(){
-            animateEffect($("#order-contact"), "fadeInLeft");
-        }
-
-
         $(".order-btn").on('click', function() {
             if(!boxSelected) {
-                animateEffect($("#order-contact"), "fadeInLeft");
+                animateEffect(displayOrderContact, "fadeInLeft");
                 boxSelected = true;
             }
         });
 
         $("input:radio[name='secretBoxSize']").change( function () {
             if ($(this).is(':checked')){
-                var value = $("[name='secretBoxSize']:checked").val();
-                $("#btn-proceed-payment").html('Apmokėti <strong>' + prices[value] + ' EUR</strong>');
+                var boxValue = $("[name='secretBoxSize']:checked").val();
+                buttonProceedPayment.html('{{ 'order.pay'|trans }} <strong>' + prices[boxValue] + ' €</strong>');
             }
         });
 
-//        $( "#order-form" ).validate({
-//            rules: {
-//                firstName: {
-//                    required: true
-//                }
-//            }
-//        });
-
-
-        $("#btn-delivery-address").on('click', function () {
-//            $(this).addClass('disabled');
-
-//            var validator = $( "#order-form" ).validate();
-//            validator.element( "#firstName" );
-            $('#order-form').parsley().validate();
-            if($('#order-form').parsley().isValid()){
-                animateEffect($("#order-address"), "fadeInRight");
-                animateEffect($("#order-contact"), "fadeOutLeft");
-
+        buttonDeliveryAddress.on('click', function () {
+            orderForm.parsley().validate();
+            if(orderForm.parsley().isValid()){
+                animateEffect(displayOrderAddress, "fadeInRight");
+                animateEffect(displayOrderContact, "fadeOutLeft");
+                if($("[name='deliveryType']:checked").val() == "home"){
+                    inputHomeAddress.prop('required', true);
+                }
+                if($("[name='deliveryType']:checked").val() == "parcel_machine"){
+                    inputSelectParcelMachine.prop('required', true);
+                }
             }
-//            if ($('#form').parsley().isValid()) {
-//                console.log('valid');
-//            } else {
-//                console.log('not valid');
-//            }
-//            $('#order-form').parsley().whenValidate({
-////                group: 'block-' + curIndex()
-//            }).done(function() {
-//                alert('aaaaa');
-//            });
-
-
-//            $("#btn-contacts").removeClass('disabled');
         });
 
-        $("#btn-contacts").on('click', function () {
-//            $(this).addClass('disabled');
-            animateEffect($("#order-address"), "fadeOutRight");
-            animateEffect($("#order-contact"), "fadeInLeft");
-//            $("#btn-delivery-address").removeClass('disabled');
+        buttonContacts.on('click', function () {
+            inputHomeAddress.removeAttr('required');
+            inputSelectParcelMachine.removeAttr('required');
+            animateEffect(displayOrderAddress, "fadeOutRight");
+            animateEffect(displayOrderContact, "fadeInLeft");
         });
 
         var deliveryTypeSelected = false;
 
-        $("#btn-delivery-home").on('click', function () {
-            $("#delivery-display").css('height', '130px');
-            animateEffect($("#home-delivery"), "fadeInLeft");
-            $("#home-address").prop('required', true);
-            $("#select-parcelMachine").removeAttr('required');
+        buttonDeliveryHome.on('click', function () {
+            displayDelivery.css('height', '130px');
+            animateEffect(displayHomeDelivery, "fadeInLeft");
+            inputHomeAddress.prop('required', true);
+            inputSelectParcelMachine.removeAttr('required');
             if(deliveryTypeSelected){
-                animateEffect($("#parcel-delivery"), "fadeOutRight");
+                animateEffect(displayParcelDelivery, "fadeOutRight");
             } else {
-                $("#btn-payment-type").css('display', 'block');
-                animateEffect($("#btn-payment-type"), 'fadeInUp');
+                buttonPaymentType.css('display', 'block');
+                animateEffect(buttonPaymentType, 'fadeInUp');
             }
             deliveryTypeSelected = true;
         });
 
-        $("#btn-delivery-parcel").on('click', function () {
-            $("#delivery-display").css('height', '130px');
-            animateEffect($("#parcel-delivery"), "fadeInRight");
-            $("#btn-payment-type").css('display', 'block');
-            $("#home-address").removeAttr('required');
-            $("#select-parcelMachine").prop('required', true);
-            animateEffect($("#btn-payment-type"), 'fadeInUp');
+        buttonDeliveryParcel.on('click', function () {
+            displayDelivery.css('height', '130px');
+            animateEffect(displayParcelDelivery, "fadeInRight");
+            buttonPaymentType.css('display', 'block');
+            inputHomeAddress.removeAttr('required');
+            inputSelectParcelMachine.prop('required', true);
+            animateEffect(buttonPaymentType, 'fadeInUp');
             if(deliveryTypeSelected){
-                animateEffect($("#home-delivery"), "fadeOutLeft");
+                animateEffect(displayHomeDelivery, "fadeOutLeft");
             } else {
-                $("#btn-payment-type").css('display', 'block');
-                animateEffect($("#btn-payment-type"), 'fadeInUp');
+                buttonPaymentType.css('display', 'block');
+                animateEffect(buttonPaymentType, 'fadeInUp');
             }
             deliveryTypeSelected = true;
         });
 
-        var paymentTypeSelected = false;
-
-
-
-        $("#btn-payment-type").on('click', function () {
-
+        buttonPaymentType.on('click', function () {
             if($("[name='deliveryType']:checked").val() == "home"){
-
-                $('#order-form').parsley().validate();
-                if($('#order-form').parsley().isValid()){
-                    animateEffect($("#order-address"), "fadeOutLeft");
-                    animateEffect($("#payment-type"), "fadeInRight");
-                    $("#btn-proceed-payment").html('Apmokėti <strong>' + prices[value] + ' EUR</strong>');
-                } else {
-                    alert('not valid? wtf');
+                orderForm.parsley().validate();
+                if(orderForm.parsley().isValid()){
+                    animateEffect(displayOrderAddress, "fadeOutLeft");
+                    animateEffect(displayPaymentType, "fadeInRight");
                 }
             }
-
             if($("[name='deliveryType']:checked").val() == "parcel_machine"){
-                alert('baaaam');
-                $('#order-form').parsley().validate();
-                if($('#order-form').parsley().isValid()){
-
-                    alert('valiiiiiiiiiiiiiiiiiiiiiiiid');
-                    animateEffect($("#order-address"), "fadeOutLeft");
-                    animateEffect($("#payment-type"), "fadeInRight");
-                    $("#btn-proceed-payment").html('Apmokėti <strong>' + prices[value] + ' EUR</strong>');
+                orderForm.parsley().validate();
+                if(orderForm.parsley().isValid()){
+                    animateEffect(displayOrderAddress, "fadeOutLeft");
+                    animateEffect(displayPaymentType, "fadeInRight");
+                    buttonProceedPayment.html('Apmokėti <strong>' + prices[value] + ' €</strong>');
                 } else {
                     $(".parcel-select")
-//                    .removeClass('parcel-select')
                     .css('border', '2px solid red');
-                    alert('not valid? wtf');
                 }
             }
-
-
-//            if ($("#select-parcelMachine").val() || ($("[name='deliveryType']:checked").val() == "home")){
-////                $(this).addClass('disabled');
-//                animateEffect($("#order-address"), "fadeOutLeft");
-//                animateEffect($("#payment-type"), "fadeInRight");
-//                var value = $("[name='secretBoxSize']:checked").val();
-//                $("#btn-proceed-payment").html('Apmokėti <strong>' + prices[value] + ' EUR</strong>');
-////                $("#btn-back-delivery-address").removeClass('disabled');
-//            } else {
-//                $(".parcel-select")
-//                    .removeClass('parcel-select')
-//                    .css('border', '2px solid red');
-//                $("#label-parcel-select").css('display', 'block');
-//
-//            }
         });
 
-        $("#btn-back-delivery-address").on('click', function () {
-//            $(this).addClass('disabled');
-            animateEffect($("#payment-type"), "fadeOutRight");
-            animateEffect($("#order-address"), "fadeInLeft");
-//            $("#btn-payment-type").removeClass('disabled');
+        buttonBackToDeliveryAddress.on('click', function () {
+            animateEffect(displayPaymentType, "fadeOutRight");
+            animateEffect(displayOrderAddress, "fadeInLeft");
         });
 
         $(".payment-btn").on('click', function () {
-            animateEffect($("#btn-proceed-payment"), 'fadeInUp');
+            animateEffect(buttonProceedPayment, 'fadeInUp');
         });
 
         function animateEffect(element, fadeEffect){
@@ -784,27 +636,21 @@
                 .css('display', 'block');
         }
 
-        $("#select-parcelMachine").on('change', function() {
+        inputSelectParcelMachine.on('change', function() {
             $("#label-parcel-select").css('display', 'none');
             $(".chosen-container-single")
                 .css('border', '1px solid #4cae4c');
         });
 
-        $("#btn-proceed-payment").on('click', function () {
+        buttonProceedPayment.on('click', function () {
             document.forms['order-form'].submit();
-            // Show full page LoadingOverlay
             $.LoadingOverlay("show");
-
-// Hide it after 3 seconds
             setTimeout(function(){
                 $.LoadingOverlay("hide");
             }, 3000);
         });
+        /* gelolocations */
 
-
-        /* gelolocations reikalai */
-
-//todo naujas scriptas, pakeisti vietoje seno nustatymo, veikia visuose browseriuose
         var options = {
             enableHighAccuracy: true,
             timeout: 5000,
@@ -817,13 +663,9 @@
             var y = crd.longitude;
 
             sendData(x, y, "");
-
-            console.log('Your current position is:');
-            console.log('Latitude : ' + crd.latitude);
-            console.log('Longitude: ' + crd.longitude);
-            console.log('More or less ' + crd.accuracy + ' meters.');
         };
 
+//todo vertimai pranesimu
         function error(err) {
             var typed = new Typed('.parcel-loading-text', {
                 strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
@@ -834,7 +676,7 @@
                     typed.destroy();
                 }
 
-                var address = $("#home-address").val();
+                var address = inputHomeAddress.val();
                 if(address.length > 12){
                     var typed = new Typed('.parcel-loading-text', {
                         strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
@@ -851,21 +693,16 @@
                         strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
                         typeSpeed: 30
                     });
-                    $("#parcel-loading-img").css('display', 'none')
+                    imageLoading.css('display', 'none')
                     $("#btn-detect-parcel").css('display', 'inline-block')
                 }
             }, 6000);
-
-        };
-
-
-
-
+        }
 
         $("#btn-detect-parcel").on('click', function() {
             $(this).css('display', 'none');
             $("#parcel-loading").css('display', 'block');
-            $("#parcel-loading-img").css('display', 'inline-block');
+            imageLoading.css('display', 'inline-block');
             var typed = new Typed('.parcel-loading-text', {
                 strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
                 typeSpeed: 30
@@ -873,78 +710,43 @@
             setTimeout(function () {
                 typed.destroy();
                 navigator.geolocation.getCurrentPosition(success, error, options);
-
-//                getClientLocation();
             }, 4000);
         });
 
-        function getClientLocation(){
-//            var geo = false;
-            var geo = navigator.geolocation;
-            if(geo){
-                geo.getCurrentPosition(displayLocation);
-            }
-            else {
-
-//                var typed = new Typed('.parcel-loading-text', {
-//                    strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
-//                    typeSpeed: 30
-//                });
-//                setTimeout(function () {
-//                    typed.destroy();
-//                    var address = $("#home-address").val();
-//                    if(address.length > 12){
-//                        var typed2 = new Typed('.parcel-loading-text', {
-//                            strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
-//                            typeSpeed: 30
-//                        });
-//                        setTimeout(function () {
-//                            sendData("", "", address);
-//                        }, 4000);
-//                    } else {
-//                        var typed3 = new Typed('.parcel-loading-text', {
-//                            strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
-//                            typeSpeed: 30
-//                        });
-//                        $("#parcel-loading-img").css('display', 'none')
-//                        $("#btn-detect-parcel").css('display', 'inline-block')
-//                    }
-//                }, 6000);
-
-            }
-        }
-
-
-
-
-
-        function displayLocation(position){
-            var x = position.coords.latitude;
-            var y = position.coords.longitude;
-            sendData(x, y, "");
+//        function getClientLocation(){
+////            var geo = false;
+//            var geo = navigator.geolocation;
+//            if(geo){
+//                geo.getCurrentPosition(displayLocation);
+//            }
+//            else {
 //
-        }
+//
+//            }
+//        }
+//
+//        function displayLocation(position){
+//            var x = position.coords.latitude;
+//            var y = position.coords.longitude;
+//            sendData(x, y, "");
+////
+//        }
 
         function sendData(x, y, address){
-//            var datasend = x + "" + y;
             jQuery.ajax({
                 url: "{{ path('app.order.locations') }}",
                 type: "GET",
                 data: {
-//                    "data": datasend,
                     "coordinateX": x,
                     "coordinateY": y,
                     "address": address
-//                    "coordinates": "iksas ir ygrikas"
                 },
                 success: function(data){
-                    console.log(data.status);
                     if(data.status > 0){
                         createParcelMachinesList(data.parcelMachines);
                     } else {
                         errorFoundParcel()
                     }
-//                    displayMap(position.coords, data.parcelMachines);
                 },
                 error: function() {
                     errorFoundParcel()
@@ -969,11 +771,6 @@
 
         }
 
-//        $("#btn-try-again").on('click', function () {
-//            $(this).remove();
-//            tryFindParcelAgain();
-//        });
-
         function tryFindParcelAgain(el) {
             el.remove();
             $('.parcel-loading-text').html('');
@@ -981,23 +778,21 @@
                 strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
                 typeSpeed: 30
             });
-            var address = $("#home-address").val();
-
+            var address = inputHomeAddress.val();
             setTimeout(function () {
                 sendData("", "", address);
             }, 4000);
         }
-        
 
         function createParcelMachinesList(parcelMachines){
 
-            $('#select-parcelMachine').find('option').remove().end();
+            inputSelectParcelMachine.find('option').remove().end();
             parcelMachines.forEach(function (entry) {
-                $('#select-parcelMachine').append($('<option></option>').val(entry['address']).html(
+                inputSelectParcelMachine.append($('<option></option>').val(entry['address']).html(
                     entry['distanceText'] + ' | '  + entry['name']
                 ));
             });
-            $('#select-parcelMachine').trigger("chosen:updated");
+            inputSelectParcelMachine.trigger("chosen:updated");
             $('#parcel-loading').find('img').remove();
             $('.parcel-loading-text').html('');
             var typed4 = new Typed('.parcel-loading-text', {
@@ -1007,6 +802,7 @@
 
         }
 
+        /* google map disabled
         var map;
         function displayMap(coords, parcelMachines) {
             var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
@@ -1053,56 +849,9 @@
                 infoWindow.open(map);
             });
         }
-/* form validation */
-
-
-
+        end disable */
 
     </script>
 
 
-
-    <script type="text/javascript">
-//        $(function () {
-//            var $sections = $('.form-section');
-//
-//            function navigateTo(index) {
-//                // Mark the current section with the class 'current'
-//                $sections
-//                    .removeClass('current')
-//                    .eq(index)
-//                    .addClass('current');
-//                // Show only the navigation buttons that make sense for the current section:
-//                $('.form-navigation .previous').toggle(index > 0);
-//                var atTheEnd = index >= $sections.length - 1;
-//                $('.form-navigation .next').toggle(!atTheEnd);
-//                $('.form-navigation [type=submit]').toggle(atTheEnd);
-//            }
-//
-//            function curIndex() {
-//                // Return the current index by looking at which section has the class 'current'
-//                return $sections.index($sections.filter('.current'));
-//            }
-//
-//            // Previous button is easy, just go back
-//            $('.form-navigation .previous').click(function() {
-//                navigateTo(curIndex() - 1);
-//            });
-//
-//            // Next button goes forward iff current block validates
-//            $('.form-navigation .next').click(function() {
-//                $('#order-form').parsley().whenValidate({
-//                    group: 'block-' + curIndex()
-//                }).done(function() {
-//                    navigateTo(curIndex() + 1);
-//                });
-//            });
-//
-//            // Prepare sections by setting the `data-parsley-group` attribute to 'block-0', 'block-1', etc.
-//            $sections.each(function(index, section) {
-//                $(section).find(':input').attr('data-parsley-group', 'block-' + index);
-//            });
-//            navigateTo(0); // Start at the beginning
-//        });
-    </script>
 {% endblock %}

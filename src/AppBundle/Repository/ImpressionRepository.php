@@ -3,7 +3,6 @@
 namespace AppBundle\Repository;
 
 use AppBundle\Entity\Impression;
-use AppBundle\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query\ResultSetMapping;
 
@@ -43,27 +42,6 @@ class ImpressionRepository extends EntityRepository
      */
     public function getLastImpressions($limit)
     {
-
-
-//
-//        $queryBuilder = $this->_em->createQueryBuilder();
-//        $queryBuilder
-//            ->select('i')
-//            ->from(Impression::class, 'i')
-        ////            ->innerJoin(
-        ////                User::class,
-        ////                'u',
-        ////                \Doctrine\ORM\Query\Expr\Join::WITH,
-        ////                'i.user = u.id'
-        ////            )
-//            ->where('i.isApproved = :isApproved')
-//            ->orderBy('i.createdAt', 'DESC')
-//            ->setParameter('isApproved', true)
-//            ->setMaxResults($limit);
-//        $impressions = $queryBuilder->getQuery()->execute();
-
-
-
         $rsm = new ResultSetMapping();
         $query = $this->_em->createQuery(
             "SELECT i.id, i.impression, u.firstName, u.lastName, u.pictureUrl FROM AppBundle:Impression AS i
@@ -78,8 +56,6 @@ class ImpressionRepository extends EntityRepository
             ->setMaxResults($limit);
         $impressions = $query->getResult();
 
-
-//        $impressions = $this->findBy(['id' => 1701]);
         return $impressions;
     }
 }
