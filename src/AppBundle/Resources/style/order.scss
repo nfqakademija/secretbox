@@ -16,10 +16,14 @@
 }
 
 .order-btn.active, .delivery-btn.active, .payment-btn.active {
-  background-color: #4cae4c !important;
+  background-color: #aa4545 !important;
   border: 2px solid darkred !important;
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   font-weight: bolder !important;
+}
+
+.btn-gfort-grey:hover {
+  color: white !important;
 }
 
 .order-title {

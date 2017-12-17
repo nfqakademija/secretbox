@@ -20,6 +20,7 @@ AppBundle\Entity\Order:
         product: '@product*'
         orderedAt: '<dateTimeBetween("-1 month", "now")>'
         orderRevealUntil: '<dateTimeBetween($orderedAt, "+14 days")>'
+        orderRevealed: '<dateTimeBetween($orderedAt, $orderRevealUntil)>'
         sellingPrice: '<randomElement($prices)>'
         status: '<randomElement($orderStatuses)>'
         deliveryAddress: '<lt_LT:address()>'

@@ -11,9 +11,7 @@
 {% block body %}
 
     <div class="gfort-section" id="section-user-profile">
-    {#<div class="well well-sm text-center">#}
         <div class="section-container">
-        {#<div class="">#}
             <div class="row">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div class="col-lg-8 col-sm-12 col-lg-offset-2 content-bg">
@@ -90,25 +88,19 @@
                                                 <h3>{{ isUserProfile ? 'user.no.secrets'|trans : 'friend.no.secrets'|trans }}</h3>
                                             {% else %}
 
-                                                {#cia timeline#}
+                                                <!-- timeline -->
                                                 <div class="timeline-block">
-                                                    <!-- Timeline Block Container -->
                                                     <div class="timeline-block-container">
 
                                                         {% for secret in secrets %}
 
-                                                        <!-- Timeline Block item -->
                                                         <div class="timeline-block-item" style="margin-top: 50px;">
-
-
                                                             <div class="row">
                                                                 <div class="col-lg-3 text-right">
-                                                                    <h4>Atskleisti paslapčiai liko:</h4>
+                                                                    <h4>{{ 'order.countdown'|trans }}</h4>
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-left">
-                                                                    <!-- Timeline Block Head -->
                                                                     <div class="timeline-block-head">
-                                                                        <!-- Timeline Block Head Container -->
                                                                         <div class="timeline-block-head-container">
                                                                             <div class="downtime-counter-block"
                                                                                  data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"
@@ -118,96 +110,63 @@
                                                                                  data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"
                                                                                  data-downtime-UTC-offset="2"
                                                                                  data-downtime-message="laikas pasibaige">
-                                                                                <!-- downTime Counter Block Container -->
                                                                                 <div class="downtime-counter-block-container">
-
-                                                                                    <!-- days -->
                                                                                     <div class="downtime-col">
                                                                                         <span class="days">00</span>
-                                                                                        <p>DIENOS</p>
-                                                                                    </div><!-- /days -->
-
-                                                                                    <!-- hours -->
+                                                                                        <p>{{ 'content.days'|trans|upper }}</p>
+                                                                                    </div>
                                                                                     <div class="downtime-col">
                                                                                         <span class="hours">00</span>
-                                                                                        <p>VALANDOS</p>
-                                                                                    </div><!-- /hours -->
-
-                                                                                    <!-- minutes -->
+                                                                                        <p>{{ 'content.hours'|trans|upper }}</p>
+                                                                                    </div>
                                                                                     <div class="downtime-col">
                                                                                         <span class="minutes">00</span>
-                                                                                        <p>MINUTĖS</p>
-                                                                                    </div><!-- /minutes -->
-
-                                                                                    <!-- seconds -->
+                                                                                        <p>{{ 'content.minutes'|trans|upper }}</p>
+                                                                                    </div>
                                                                                     <div class="downtime-col">
                                                                                         <span class="seconds">00</span>
-                                                                                        <p>SEKUNDĖS</p>
-                                                                                    </div><!-- /seconds -->
-
-                                                                                </div><!-- /End downTime Counter Block Container -->
-                                                                            </div><!-- /End downTime Counter Block -->
-
-
-                                                                            {#<!-- Timeline Block Date From -->#}
-                                                                            {#<div class="timeline-block-date-from">#}
-                                                                            {#<span class="timeline-block-date-month">SEPT</span>#}
-                                                                            {#<h2 class="timeline-block-date-year">1991</h2>#}
-                                                                            {#</div><!-- /End Timeline Block Date From -->#}
-
-                                                                            {#<!-- Timeline Block Date To -->#}
-                                                                            {#<div class="timeline-block-date-to">#}
-                                                                            {#<span class="timeline-block-date-month">JUNE</span>#}
-                                                                            {#<h2 class="timeline-block-date-year">1995</h2>#}
-                                                                            {#</div><!-- /End Timeline Block Date To -->#}
-
-                                                                        </div><!-- Timeline Block Head Container -->
-                                                                    </div><!-- /End Timeline Block Head -->
+                                                                                        <p>{{ 'content.seconds'|trans|upper }}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
 
                                                                 </div>
-                                                                <div class="col-lg-3 text-right">
-                                                                    {#todo paimti kiek zmoniu jau atskleide sia paslapti#}
-                                                                    <h4>Šią paslaptį jau atskleidė: <strong>14</strong> laimingų žmonių</h4>
+                                                                <div class="col-lg-5 text-right">
+                                                                    {#todo duomenys iš DB#}
+                                                                    <h4>{{ 'users.revealed.this'|trans }} <strong>{{ random(7) }}</strong> {{ 'users.happy'|trans }}</h4>
                                                                 </div>
                                                             </div>
 
 
-                                                            <!-- Timeline Block Body -->
                                                             <div class="timeline-block-body">
-                                                                <!-- Timeline Block Body Container -->
                                                                 <div class="timeline-block-body-container">
-
-                                                                    <!-- Timeline Block Title -->
                                                                     <div class="timeline-block-title">
-                                                                        <h4>Secret box dydis: <strong>{{ secret.product.boxSize|upper }}</strong></h4>
-                                                                    </div><!-- /End Timeline Block Title -->
-
-                                                                    <!-- Timeline Block Content -->
+                                                                        <h4>Secret box {{ 'content.size'|trans }}: <strong>{{ secret.product.boxSize|upper }}</strong></h4>
+                                                                    </div>
                                                                     <div class="timeline-block-content">
                                                                         <div class="row">
-                                                                            <div class="col-lg-4">Uzsakymo data {{ secret.orderedAt|date('Y-m-d H:i:s') }}</div>
-                                                                            <div class="col-lg-2">Kaina {{ secret.sellingPrice }}</div>
+                                                                            <div class="col-lg-4"><strong>{{ 'order.date'|trans }}</strong> {{ secret.orderedAt|date('Y-m-d H:i:s') }}</div>
+                                                                            <div class="col-lg-2"><strong>{{ 'order.price'|trans }}</strong> {{ secret.sellingPrice }} €</div>
                                                                             <div class="col-lg-6">
-                                                                                Adresas: {{ secret.deliveryAddress }}<br>
-                                                                                Pristatymo budas: {{ secret.deliveryType }}
+                                                                                <strong>{{ 'order.delivery.address'|trans }}:</strong> {{ secret.deliveryAddress }}<br>
+                                                                                <strong>{{ 'order.delivery.type'|trans }}:</strong> {{ secret.deliveryType == 'home' ? 'order.delivery.home'|trans : 'order.delivery.parcel'|trans }}
                                                                             </div>
                                                                         </div>
-                                                                    </div><!-- /End Timeline Block Content -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                                                                </div><!-- /End Timeline Block Body Container -->
-                                                            </div><!-- /End Timeline Block Body -->
-
-
-                                                        </div><!-- /End Timeline Block item -->
-
-                                                                                                                  <!-- divider Section -->
+                                                          <!-- divider Section -->
                                                             <div class="gfort-section fullwidth-section pt-0 pb-0">
                                                                 <div class="section-container">
                                                                     <div class="container">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
-                                                                                    <i class="fa fa-heart"></i>
+                                                                                    <i class="fa fa-superpowers"></i>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -217,111 +176,21 @@
 
                                                         {% endfor %}
 
-                                                    </div><!-- /End Timeline Block Container -->
-                                                </div><!-- /End Timeline Block -->
+                                                    </div>
+                                                </div><!-- end timeline block -->
 
-
-                                                {#timeline baigesi#}
-
-
-
-                                                {#{% for secret in secrets %}#}
-
-                                                {#<div class="row">#}
-                                                    {#<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">#}
-                                                        {#<h3>timer {{ secret.orderRevealUntil | date('Y') }}</h3>#}
-                                                        {#<!-- downTime Counter Block -->#}
-                                                        {#<div class="downtime-counter-block"#}
-                                                             {#data-downtime-year="{{ secret.orderRevealUntil | date('Y') }}"#}
-                                                             {#data-downtime-month="{{ secret.orderRevealUntil | date('m') }}"#}
-                                                             {#data-downtime-day="{{ secret.orderRevealUntil | date('d') }}"#}
-                                                             {#data-downtime-hour="{{ secret.orderRevealUntil | date('h') }}"#}
-                                                             {#data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"#}
-                                                             {#data-downtime-UTC-offset="2"#}
-                                                             {#data-downtime-message="Secret box not revealed? :(">#}
-                                                            {#<!-- downTime Counter Block Container -->#}
-                                                            {#<div class="downtime-counter-block-container">#}
-
-                                                                {#<!-- days -->#}
-                                                                {#<div class="downtime-col">#}
-                                                                    {#<span class="days">00</span>#}
-                                                                    {#<p>DAYS</p>#}
-                                                                {#</div><!-- /days -->#}
-
-                                                                {#<!-- hours -->#}
-                                                                {#<div class="downtime-col">#}
-                                                                    {#<span class="hours">00</span>#}
-                                                                    {#<p>HOURS</p>#}
-                                                                {#</div><!-- /hours -->#}
-
-                                                                {#<!-- minutes -->#}
-                                                                {#<div class="downtime-col">#}
-                                                                    {#<span class="minutes">00</span>#}
-                                                                    {#<p>MINUTES</p>#}
-                                                                {#</div><!-- /minutes -->#}
-
-                                                                {#<!-- seconds -->#}
-                                                                {#<div class="downtime-col">#}
-                                                                    {#<span class="seconds">00</span>#}
-                                                                    {#<p>SECONDS</p>#}
-                                                                {#</div><!-- /seconds -->#}
-
-                                                            {#</div><!-- /End downTime Counter Block Container -->#}
-                                                        {#</div><!-- /End downTime Counter Block -->#}
-
-
-                                                    {#</div>#}
-                                                {#</div>#}
-
-                                                {#{% endfor %}#}
-
-                                                {#<table class="table table-striped table-hover">#}
-                                                    {#<thead>#}
-                                                    {#<th>{{ 'order.date' | trans }}</th>#}
-                                                    {#<th class="text-center">{{ 'order.countdown' | trans }}</th>#}
-                                                    {#<th class="text-center">{{ 'order.delivery.address' | trans }}</th>#}
-                                                    {#</thead>#}
-                                                    {#<tbody>#}
-                                                    {#{% for secret in secrets %}#}
-                                                        {#<tr>#}
-                                                            {#<td>{{ secret.orderedAt | date('Y-m-d h:m:s') }}</td>#}
-                                                            {#<td class="text-center">#}
-                                                                {#<div class="countdown-clock"#}
-                                                                     {#data-countdown="{{ secret.orderRevealUntil | date('Y-m-d h:m:s') }}"></div>#}
-                                                            {#</td>#}
-                                                            {#<td class="text-center">#}
-                                                                {#<button type="button" class="btn" data-toggle="popover"#}
-                                                                        {#data-placement="left" title="Adresas"#}
-                                                                        {#data-content="{{ secret.deliveryAddress }}">#}
-                                                                    {#<i class="fa fa-home icon-address"></i>#}
-                                                                {#</button>#}
-                                                            {#</td>#}
-                                                        {#</tr>#}
-                                                    {#{% endfor %}#}
-                                                    {#</tbody>#}
-                                                {#</table>#}
                                             {% endif %}
-                                            {#<div class="col-md-12">#}
-                                                {#<a id="order-button" class="btn btn-primary btn-lg btn-default" href="{{ path('app.order.for.friend', {'friendFacebookId' : user.facebookId}) }}">#}
-                                                    {#<span id="order-button-text">#}
-                                                        {#{{ isUserProfile ? 'product.order'|trans : 'friend.product.order'|trans  }}#}
-                                                    {#</span>#}
-                                                {#</a>#}
-                                            {#</div>#}
                                         </div>
                                     </div>
                                 </div>
                                 {% if friends is defined %}
 
+                                <!-- friends tab -->
                                 <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <a href="#" class="btn btn-primary btn-default btn-lg" onclick="sendRequestViaMultiFriendSelector(); return false;">{{ 'user.invite.friend' | trans }}</a>
-                                        </div>
-                                    </div>
                                     <div class="row">
 
                                         {% for friend in friends %}
+
                                             <div class="row">
                                                 <div class="col-lg-4 col-lg-offset-4">
                                                     <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
@@ -332,6 +201,7 @@
                                                     </a>
                                                 </div>
                                             </div>
+
                                         {% endfor %}
 
                                     </div>
@@ -339,6 +209,7 @@
 
                                 {% endif %}
 
+                                <!-- user profile tab -->
                                 <div class="tab-pane  fade" id="tabBody2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true" tabindex="0">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -358,7 +229,7 @@
                                                                         {% set address = 'user.no.address' | trans %}
                                                                     {% endif %}
                                                                     <div class="user-info">
-                                                                            <p title="{{ 'content.email.address' | trans }}">
+                                                                            <p title="{{ 'content.email.address'|trans }}">
                                                                                 <i class="glyphicon glyphicon-envelope"></i>{{ user.email }}
                                                                             </p>
                                                                             <p class="newsletter">
@@ -407,12 +278,88 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- user revealed products tab -->
                                 <div class="tab-pane  fade" id="tabBody3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true" tabindex="0">
                                     <div class="row">
                                         <div class="col-md-12">
                                             {% if orders|length == 0 %}
                                                 <h3>{{ isUserProfile ? 'order.no.completed.orders'|trans : 'friend.no.completed.orders'|trans }}</h3>
                                             {% else %}
+
+
+
+                                                <!-- timeline -->
+                                                <div class="timeline-block">
+                                                    <div class="timeline-block-container">
+
+                                                        {% for order in orders %}
+
+                                                            <div class="timeline-block-item" style="margin-top: 50px;">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6 text-right">
+                                                                        <h4>{{ order.product.title }}</h4>
+                                                                    </div>
+                                                                    <div class="col-lg-6 text-right">
+                                                                        <h3><strong>{{ order.boxSize|trans|upper }}</strong> SECRET BOX </h3>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="timeline-block-body">
+                                                                    <div class="timeline-block-body-container">
+                                                                        <div class="timeline-block-title">
+                                                                            <h4><strong>{{ 'content.about.winning'|trans }}:</strong> {{ order.product.description }}</h4>
+                                                                        </div>
+                                                                        <div class="timeline-block-content">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-4">
+                                                                                    {{ 'content.gift.presented.by'|trans }} <br><strong><h4>{{ order.product.supplier }}</h4></strong>
+                                                                                </div>
+                                                                                <div class="col-lg-3 text-right">
+                                                                                    {{ 'user.order.revealed'|trans }} <br><strong><h4>{{ order.orderRevealed|date('Y-m-d H:i') }}</h4></strong>
+                                                                                </div>
+                                                                                <div class="col-lg-3 text-left">
+                                                                                    {{ 'user.order.started'|trans }} <br><strong><h4>{{ order.orderedAt|date('Y-m-d H:i') }}</h4></strong>
+                                                                                </div>
+                                                                                <div class="col-lg-2">
+                                                                                    Užtrukote:<br>
+                                                                                    {% set difference = date(order.orderRevealed).diff(date(order.orderedAt)) %}
+                                                                                    {% set days = difference.days %}
+                                                                                    {% if days > 0 %}
+                                                                                        Dienų: {{ days }}<br>
+                                                                                    {% endif %}
+                                                                                        Valandų: {{ difference.h }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- divider Section -->
+                                                            <div class="gfort-section fullwidth-section pt-0 pb-0">
+                                                                <div class="section-container">
+                                                                    <div class="container">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="hr-divider hr-divider-style-6 hr-divider-wide text-center hr-divider-grey-color mt-0 mb-0">
+                                                                                    <i class="fa fa-superpowers"></i>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div><!-- end section -->
+
+                                                        {% endfor %}
+
+                                                    </div>
+                                                </div><!-- end timeline block -->
+
+
+
+
                                                 <table class="table small">
                                                     <thead>
                                                     <th>{{ 'order.date' | trans }}</th>
@@ -427,9 +374,9 @@
                                                             todo pakeisti i order.product.[value] po to, kai pakeisiu repositorijoje
                                                             <td>{{ order.orderedAt | date('Y-m-d') }}</td>
                                                             <td></td>
-                                                            <td>{{ order.title }}</td>
-                                                            <td>{{ order.description }}</td>
-                                                            <td>{{ order.supplier }}</td>
+                                                            <td>{{ order.product.description }}</td>
+                                                            <td>{{ order.product.boxSize }}</td>
+                                                            <td>{{ order.product.supplier }}</td>
                                                         </tr>
                                                     {% endfor %}
                                                     </tbody>
@@ -499,9 +446,9 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
                             </div>
                             {{ form_end(formImpression) }}
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                        </div>
+                    </div>
+                </div><!-- end modal -->
                 {% endif %}
 
             {% if formAddress is defined %}
@@ -528,9 +475,9 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'content.close' | trans }}</button>
                             </div>
                             {{ form_end(formAddress) }}
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
-                </div><!-- /.modal -->
+                        </div>
+                    </div>
+                </div>
             {% endif %}
 
             {% else %}
@@ -538,54 +485,12 @@
 
             {% endif %}
         </div>
-    {#</div>#}
-        </div>
-    {#</div>#}
     </div>
+</div>
 
 {% endblock %}
-{#//todo pakeisti APP is parameters#}
 {% block javascripts %}
     {{ parent() }}
-
-    {#facebook API#}
-    <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <script>
-        FB.init({
-//todo pakeisti APP is parameters
-            appId  : '711322222391741',
-            frictionlessRequests: true
-        });
-
-
-
-
-        function sendRequestToRecipients() {
-            var user_ids = document.getElementsByName("user_ids")[0].value;
-            FB.ui({method: 'apprequests',
-                message: 'Awesome Application try it once',
-                to: user_ids
-            }, requestCallback);
-        }
-
-        function sendRequestViaMultiFriendSelector() {
-            FB.ui({method: 'apprequests',
-                message: 'Awesome application try it once'
-            }, requestCallback);
-        }
-
-        function requestCallback(response) {
-            // Handle callback here
-        }
-
-
-
-        FB.api(
-            "/me/apprequests"
-        );
-
-    </script>
-
     <script type="text/javascript">
 
 
@@ -596,33 +501,9 @@
             $('#appbundle_user_address').focus()
         });
 
-        var clocks = [];
-
-
-        FlipClock.Lang.Mixed = {
-
-            'years': '{{ 'content.years' | trans }}',
-            'months': '{{ 'content.months' | trans }}',
-            'days': '{{ 'content.days' | trans }}',
-            'hours': '{{ 'content.hours' | trans }}',
-            'minutes': '{{ 'content.minutes' | trans }}',
-            'seconds': '{{ 'content.seconds' | trans }}'
-
-        };
-
-
-        FlipClock.Lang['mix'] = FlipClock.Lang.Mixed;
 
         $(document).ready(function () {
-
-//            fancy tabs
             $("li.fancyTab").width('20%');
-
-            //end fancy tabs
-
-
-
-
             $('[data-toggle="popover"]').popover();
 
             var currentDate = new Date();
@@ -665,11 +546,5 @@
             });
         });
         //end fancy tabs
-
-
     </script>
-
-
-
-
 {% endblock %}

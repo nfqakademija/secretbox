@@ -78,17 +78,10 @@
 
 .downtime-col p {
   font-size: 13px !important;
-  //margin: 0 0 0 -10px !important;
 }
 .downtime-counter-block-container {
-  //border: 1px solid #efefef !important;
   z-index: 99 !important;
-  //background-color: white;
 }
-
-//.content-container {
-//  margin-top:30px;
-//}
 
 .timeline-block-body-container {
   margin-left: 30px !important;
@@ -286,7 +279,6 @@ li.fancyTab.active a {
 
 }
 
-
 @media (max-width: 992px) {
 
   .fancyTab .fa {
@@ -299,7 +291,6 @@ li.fancyTab.active a {
   }
 
 }
-
 
 @media (max-width: 768px) {
 
@@ -326,29 +317,6 @@ li.fancyTab.active a {
   }
 
 }
-
-//todo clean mess
-///*countdown */
-//.countdown-clock{
-//  transform: scale(0.6);
-//  -webkit-transform: scale(0.6);
-//}
-//
-//
-//.flip-clock-divider.seconds .flip-clock-label,
-//.flip-clock-divider.days .flip-clock-label,
-//.flip-clock-divider.hours .flip-clock-label,
-//.flip-clock-divider.minutes .flip-clock-label
-//{
-//  right: -120px;
-//}
-//
-//.flip-clock-label {
-//  font-size: 24px;
-//}
-//
-//
-///*countdown end*/
 
 .friend-line {
   font-size: 30px;

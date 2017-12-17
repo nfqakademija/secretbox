@@ -53,6 +53,13 @@ class Order
     private $orderRevealUntil;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="order_revealed", type="datetime", nullable=true)
+     */
+    private $orderRevealed;
+
+    /**
      * @var DecimalType
      *
      * @ORM\Column(name="selling_price", type="decimal", precision=10, scale=2)
@@ -280,6 +287,27 @@ class Order
         $this->boxSize = $boxSize;
         return $this;
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getOrderRevealed()
+    {
+        return $this->orderRevealed;
+    }
+
+    /**
+     * @param \DateTime $orderRevealed
+     *
+     * @return Order
+     */
+    public function setOrderRevealed($orderRevealed)
+    {
+        $this->orderRevealed = $orderRevealed;
+        return $this;
+    }
+
+
 
     /**
      * @return string

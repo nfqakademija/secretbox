@@ -52,14 +52,9 @@
     <script language="JavaScript">
         var userWaiting = "{{ 'user.wait' | trans }}";
     </script>
-    {#todo sciptus sudet i viena faila#}
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset( 'js/pasleyjs-locale/' ~ app.request.locale ~ '.js' ) }}"></script>
-    <script type="text/javascript" src="{{ asset('js/plugins/wow/wow.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/template-scripts.js') }}"></script>
-    {#<script type="text/javascript" src="{{ asset('js/plugins/isotope/isotope.pkgd.js') }}"></script>#}
-    <script type="text/javascript" src="{{ asset('js/plugins/isotope/packery-mode.pkgd.min.js') }}"></script>
-
+    <script src="{{ asset('js/template-scripts.js') }}"></script>
 {% endblock %}
 </body>
 </html>

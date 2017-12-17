@@ -90,7 +90,6 @@ class ProductSelectionService
             $matchInEvents = $this->matchesInArrays($unusedProducts, $userEvents, 'name');
             $productsMatch = array_merge($matchInLikes, $matchInEvents);
 
-            //todo JEI BUS LAIKO refactor this huge if block
             if (!empty($productsMatch)) {
                 $personInfo = $this->facebook->getPersonInfo('gender,birthday');
                 $age = $this->getUserAge($personInfo['birthday'])->y;

@@ -16,9 +16,9 @@ parameters:
 
 AppBundle\Entity\Product:
     product{1..500}:
-        title: '<sentence(2)>'
+        title: '<lt_LT:realtext(50)>'
         facebookName: '50%? <text(20)> : <randomElement($facebookRealNames)>'
-        description: '<sentences(3, true)>'
+        description: '<lt_LT:realtext(200)>'
         gender: '<randomElement($genders)>'
         ageMin: '<numberBetween(10, 17)>'
         ageMax: '<numberBetween(18,90)>'

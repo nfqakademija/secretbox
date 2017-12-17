@@ -14,7 +14,6 @@ use Doctrine\DBAL\Platforms\AbstractPlatform;
 
 abstract class EnumType extends Type
 {
-//    todo phpdocs pataisyt mixed
     protected $name;
     protected $values = [];
 

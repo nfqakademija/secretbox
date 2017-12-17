@@ -40,6 +40,10 @@ user.friends: Draugai
 user.invite.friend: Pakviesti daugiau draugų
 user.no.secrets: Nėra užsakytų SECRET BOX
 user.no.impressions: Nėra pasidalintų įspūdžių
+users.revealed.this: Šią paslaptį jau atskleidė
+users.happy: laimingų žmonių
+user.order.revealed: Paslaptis atskleista
+user.order.started: Nuotykis pradėtas
 
 friend.secrets: Draugo SECRET BOX
 friend.profile: Draugo profilis
@@ -60,6 +64,7 @@ section.homepage.text.intro.3: >
     Mes sakome – tikrai dar ne – ir <span class="accent">siūlome</span> leistis į
     <span class="accent">žaismingą atradimų kelionę</span>, kurios pabaigoje – dovana, kuri verta tavo įdėtų pastangų,
     smalsumo ir išradingumo.
+section.homepage.adventure.types: nuotykių tipai
 
 section.about: Apie projektą SECRET BOX
 section.about.paragraph: >
@@ -122,7 +127,7 @@ order.delivery.home: Pristatyti į namus
 order.delivery.parcel: Atsiimsiu paštomate
 order.find.nearest.parcel: Nustatyti artimiausią
 order.secretbox: Užsisakyk SECRET BOX
-order.date: Užsakyta
+order.date: Užsakymo data
 order.pay: Apmokėti
 order.payment.type: Apmokėjimo būdas
 order.revealed: Atskleista
@@ -134,11 +139,24 @@ order.countdown: Atskleisti paslapčiai turi
 order.begin.first.message: Pradėk unikalų SECRET BOX nuotykį, kurio pabaigoje - netikėta dovana.
 order.begin.second.message: Paštu Tau pristatysime SECRET BOX su užuomina viduje.
 order.begin.third.message: Atskleisk ir mėgaukis dovana.
+order.try.again.parcel: Pabandyti dar karą
+#typed
+order.typed.no.user.coordinates: Jūsų koordinačių nustatyti nepavyko
+order.typed.identify.home: Tikrinamas namų adresas
+order.typed.search.by.home: Ieškoma pagal namų adresą
+order.typed.please.wait: Prašome palaukti
+order.typed.incorrect.home.address: Neteisingai įvestas namų adresas
+order.typed.clarify.address: Patikslinkite namų adresą ir pabandykite dar kartą
+order.typed.searching.nearest.parcel: Ieškomas artimiausias paštomatas
+order.typed.cant.find.parcel: Deja artimiausio paštomato nustatyti nepavyko
+order.typed.success.parcel: Sėkmingai rasti artimiausi paštomatai
+order.delivery.type: Pristatymo būdas
+order.price: Kaina
 small: mažas
 medium: vidutinis
 big: didelis
 
-
+content.adventure: nuotykis
 content.years: metai
 content.months: mėnesiai
 content.days: dienos
@@ -152,6 +170,22 @@ content.change: keisti
 content.unsubscribe: atsisakyti
 content.more: daugiau
 content.subscribe: užsakyti
+content.parcel: Paštomatas
+content.size: dydis
+content.email.address: El. pašto adresas
+content.about.winning: Dovanos aprašymas
+content.gift.presented.by: Dovana pasirūpino
+
+content.rare: Retas nuotykis
+content.epic: Epinis nuotykis
+content.legendary: Legendinis nuotykis
+content.free.delivery: Nemokamas pristatymas
+content.purchase.now: Įsigyti dabar
+content.price.benefits.simple: paprastos užduotys
+content.price.benefits.harder: sudėtingensės užduotys
+content.price.benefits.hardest: patiems reikliausiems nuotykių ieškotojams
+content.price.benefits.gift.2: nuostabą sekelianti dovana
+content.price.benefits.gift.2: prizas pranoks didžiausius jūsų lūkesčius
 
 content.parcel: Parcel machine
 

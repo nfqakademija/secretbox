@@ -20,10 +20,9 @@
                         <div class="gap gap-100 hidden-sm hidden-xs"></div>
                         <div class="section-title intro-section-title light-color text-center">
                             <h2 class="section-main-title border-text">{{ 'section.homepage.text.1'|trans|upper }}<br>SECRET BOX</h2>
-                            {#todo vertimas#}
                             {#todo admin panele pabaigt, kad nustatyt kad adminas ir visus vertimus#}
                             <p class="section-subtitle">
-                                <a href="#section-price" class="btn btn-gfort-o" data-scroll>3 nuotykių tipai</a>
+                                <a href="#section-price" class="btn btn-gfort-o" data-scroll>3 {{ 'section.homepage.adventure.types'|trans }}</a>
                             </p>
                         </div>
                         <!-- GAP 30px -->
@@ -200,7 +199,7 @@
                     <!-- ongoing secrets -->
                     <div class="col-sm-4 col-xs-6">
                         <div class="counter-block">
-                            <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="5">{{ eventsAndCustomers.ongoing }}</span>
+                            <span class="number-block" data-to="{{ eventsAndCustomers.ongoing }}" data-speed="5000" data-refresh-interval="5" style="color: darkred;">{{ eventsAndCustomers.ongoing }}</span>
                             <p><i class="fa fa-diamond"></i> {{ 'section.numbers.1'|trans }}</p>
                         </div>
                     </div>
@@ -208,14 +207,14 @@
                     <div class="col-sm-4 col-xs-6">
 
                         <div class="counter-block">
-                            <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="7" style="color: #16a085;">{{ eventsAndCustomers.customers }}</span>
+                            <span class="number-block" data-to="{{ eventsAndCustomers.customers }}" data-speed="5000" data-refresh-interval="7" style="color: #a02e2e;">{{ eventsAndCustomers.customers }}</span>
                             <p><i class="fa fa-thumbs-up"></i> {{ 'section.numbers.2'|trans }}</p>
                         </div>
                     </div>
                     <!-- revealed secrets -->
                     <div class="col-sm-4 col-xs-6">
                         <div class="counter-block">
-                            <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="5" style="color: #e74c3c;">{{ eventsAndCustomers.revealed }}</span>
+                            <span class="number-block" data-to="{{ eventsAndCustomers.revealed }}" data-speed="5000" data-refresh-interval="5" style="color: #b55c5c;">{{ eventsAndCustomers.revealed }}</span>
                             <p><i class="fa fa-gift"></i> {{ 'section.numbers.3'|trans }}</p>
                         </div>
                     </div>
@@ -245,11 +244,11 @@
             <div class="container">
                 <div class="row">
 
-                    {% set priceTitle = ['retas', 'epinis', 'legendinis']  %}
+                    {% set priceTitle = ['content.rare', 'content.epic', 'content.legendary']  %}
                     {% set benefits = [
-                        ['retas nuotykis', 'paprastos užduotys'],
-                        ['epinis nuotykis', 'sudėtingensės užduotys', 'nuostabą sekeliantis rezultatas'],
-                        ['legendinis nuotykis', 'patiems reikliausiems nuotykių ieškotojams', 'prizas pranoks didžiausius Jūsų lūkesčius']
+                        ['content.rare', 'content.price.benefits.simple'],
+                        ['content.epic', 'content.price.benefits.harder', 'content.price.benefits.gift.2'],
+                        ['content.legendary', 'content.price.benefits.hardest', 'content.price.benefits.gift.3']
                         ]
                     %}
                     {% set number = 0 %}
@@ -260,7 +259,7 @@
                             <div class="pricing-table-block-container">
                                 <div class="pricing-table-block-head">
                                     <div class="pricing-table-block-title">
-                                        <h3>{{ priceTitle[number]|capitalize }} nuotykis</h3>
+                                        <h3>{{ priceTitle[number]|trans|capitalize }}</h3>
                                         <p>{{ price.box_size|trans|capitalize }} Secret box</p>
                                     </div>
                                     <div class="pricing-table-block-price">
@@ -269,18 +268,18 @@
                                             <span class="price-integer-no">{{ price.price[:2] }}</span>
                                             <span class="price-decimal-no">{{ price.price[2:] }}</span>
                                         </h2>
-                                        <p style="font-weight: 500">Nemokamas pristatymas</p>
+                                        <p style="font-weight: 500">{{ 'content.free.delivery'|trans }}</p>
                                     </div>
                                 </div>
                                 <div class="pricing-table-block-body">
                                     <ul>
                                         {% for benefit in benefits[number]  %}
-                                            <li>{{ benefit }}</li>
+                                            <li>{{ benefit|trans|lower }}</li>
                                         {% endfor %}
                                     </ul>
                                 </div>
                                 <div class="pricing-table-block-btn">
-                                    <a href="#section-begin-adventure" onclick="selectBox('{{  price.box_size  }}')" class="btn btn-gfort" data-scrol>Purchase now</a>
+                                    <a href="#section-begin-adventure" onclick="selectBox('{{  price.box_size  }}')" class="btn btn-gfort" data-scrol>{{ 'content.purchase.now'|trans }}</a>
                                 </div>
                             </div>
                         </div>
@@ -665,10 +664,9 @@
             sendData(x, y, "");
         };
 
-//todo vertimai pranesimu
         function error(err) {
             var typed = new Typed('.parcel-loading-text', {
-                strings: ["Jūsų koordinačių nustatyti nepavyko", "Tikrinamas namų adresas"],
+                strings: ["{{ 'order.typed.no.user.coordinates'|trans }}", "{{ 'order.typed.identify.home'|trans }}"],
                 typeSpeed: 30
             });
             setTimeout(function () {
@@ -679,7 +677,7 @@
                 var address = inputHomeAddress.val();
                 if(address.length > 12){
                     var typed = new Typed('.parcel-loading-text', {
-                        strings: ["Ieškoma pagal namų adresą", "Prašome palaukti"],
+                        strings: ["{{ 'order.typed.search.by.home'|trans }}", "{{ 'order.typed.please.wait'|trans }}"],
                         typeSpeed: 30
                     });
                     setTimeout(function () {
@@ -690,7 +688,7 @@
                         typed.destroy();
                     }
                     var typed = new Typed('.parcel-loading-text', {
-                        strings: ["Neteisingai įvestas namų adresas", "Patikslinkite namų adresą ir pakartokite"],
+                        strings: ["{{ 'order.typed.incorrect.home.address'|trans }}", "{{ 'order.typed.clarify.address'|trans }}"],
                         typeSpeed: 30
                     });
                     imageLoading.css('display', 'none')
@@ -704,7 +702,7 @@
             $("#parcel-loading").css('display', 'block');
             imageLoading.css('display', 'inline-block');
             var typed = new Typed('.parcel-loading-text', {
-                strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
+                strings: ["{{ 'order.typed.searching.nearest.parcel'|trans }}", "{{ 'order.typed.please.wait'|trans }}"],
                 typeSpeed: 30
             });
             setTimeout(function () {
@@ -712,25 +710,6 @@
                 navigator.geolocation.getCurrentPosition(success, error, options);
             }, 4000);
         });
-
-//        function getClientLocation(){
-////            var geo = false;
-//            var geo = navigator.geolocation;
-//            if(geo){
-//                geo.getCurrentPosition(displayLocation);
-//            }
-//            else {
-//
-//
-//            }
-//        }
-//
-//        function displayLocation(position){
-//            var x = position.coords.latitude;
-//            var y = position.coords.longitude;
-//            sendData(x, y, "");
-////
-//        }
 
         function sendData(x, y, address){
             jQuery.ajax({
@@ -758,14 +737,14 @@
             $('.parcel-loading-text').html('');
             var typed = new Typed('.parcel-loading-text', {
                 strings: [
-                    'Deja artimiausio paštomato nustatyti nepavyko',
-                    'Patikslinkite adresą ir pabandykite dar kartą'
+                    '{{ 'order.typed.cant.find.parcel'|trans }}',
+                    '{{ 'order.typed.clarify.address'|trans }}'
                 ],
                 typeSpeed: 30
             });
             setTimeout(function () {
                 $("#parcel-loading").append(
-                    '<a id="btn-try-again" onclick="tryFindParcelAgain(this)" class="btn btn-default btn-md">Pabandyti dar karą</a>'
+                    '<a id="btn-try-again" onclick="tryFindParcelAgain(this)" class="btn btn-default btn-md">{{ 'order.try.again.parcel'|trans }}</a>'
                 );
             }, 5500);
 
@@ -775,7 +754,7 @@
             el.remove();
             $('.parcel-loading-text').html('');
             var typed = new Typed('.parcel-loading-text', {
-                strings: ["Ieškomas artimiausias paštomatas", "Prašome palaukti"],
+                strings: ["{{ 'order.typed.searching.nearest.parcel'|trans }}", "{{ 'order.typed.please.wait'|trans }}"],
                 typeSpeed: 30
             });
             var address = inputHomeAddress.val();
@@ -796,60 +775,11 @@
             $('#parcel-loading').find('img').remove();
             $('.parcel-loading-text').html('');
             var typed4 = new Typed('.parcel-loading-text', {
-                strings: ["Sėkmingai rasti artimiausi paštomatai"],
+                strings: ["{{ 'order.typed.success.parcel'|trans }}"],
                 typeSpeed: 30
             });
 
         }
-
-        /* google map disabled
-        var map;
-        function displayMap(coords, parcelMachines) {
-            var googleLatAndLong = new google.maps.LatLng(coords.latitude, coords.longitude);
-
-            var mapOptions = {
-                zoom: 15,
-                center: googleLatAndLong,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            var mapDiv = document.getElementById('map');
-            map = new google.maps.Map(mapDiv, mapOptions);
-
-            var title = 'Your Location';
-            var content = 'You are here: ' + coords.latitude + ', ' + coords.longitude;
-            addMarker(map, googleLatAndLong, title, content, null);
-
-            var image = 'https://www.omniva.lt/theme/post24/img/logo.png';
-            parcelMachines.forEach(function (entry) {
-                googleLatAndLong = new google.maps.LatLng(entry['y'], entry['x']);
-                addMarker(map, googleLatAndLong, 'test', 'content', image);
-            });
-        }
-
-        function addMarker (map, latlong, title, content, image) {
-            var markerOptions = {
-                position: latlong,
-                map: map,
-                title: title,
-                clickable: true,
-                icon: image
-            };
-
-            var marker = new google.maps.Marker(markerOptions);
-
-            var infoWindowOptions = {
-                content: content,
-                position: latlong
-            };
-
-            var infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infoWindow.open(map);
-            });
-        }
-        end disable */
 
     </script>
 

@@ -23,7 +23,6 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class UserController extends Controller
 {
-    //todo user profili PABAIGT
     /**
      * @Route("/profile", name="app.user.profile")
      *

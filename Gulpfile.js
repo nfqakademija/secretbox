@@ -79,6 +79,8 @@ gulp.task('scripts', function() {
             dir.npm + 'gasparesganga-jquery-loading-overlay/src/loadingoverlay.js',
             dir.npm + 'gasparesganga-jquery-loading-overlay/extras/loadingoverlay_progress/loadingoverlay_progress.js',
             //plugins
+            dir.assets + 'scripts/plugins/wow/wow.js',
+            dir.assets + 'scripts/plugins/isotope/packery-mode.pkgd.min.js',
             dir.assets + 'scripts/downCount/jquery.downCount.js',
             dir.assets + 'scripts/pace/pace.min.js',
             dir.assets + 'scripts/jquery.bgswitcher.js',

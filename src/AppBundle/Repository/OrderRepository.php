@@ -64,18 +64,13 @@ class OrderRepository extends EntityRepository
     {
         $queryBuilder = $this->_em->createQueryBuilder();
         $queryBuilder
-            ->select('orders.orderedAt', 'products.title', 'products.description', 'products.supplier')
+            ->select('orders')
             ->from('AppBundle:Order', 'orders')
-            ->innerJoin(
-                'AppBundle:Product',
-                'products',
-                Join::WITH,
-                'orders.product = products.id'
-            )
             ->where('orders.user = :user')
             ->andWhere('orders.status = :status')
             ->setParameter('user', $userId)
-            ->setParameter('status', 'revealed');
+            ->setParameter('status', 'revealed')
+            ->orderBy('orders.orderRevealUntil', 'DESC');
         $orders = $queryBuilder->getQuery()->getResult();
 
         return $orders;
