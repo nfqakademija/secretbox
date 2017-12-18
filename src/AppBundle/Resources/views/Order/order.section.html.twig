@@ -171,7 +171,7 @@
                                 <label class="label-hidden" id="label-parcel-select" for="parcelMachine">
                                     {{ 'order.choose.correct.parcel'|trans }}
                                 </label>
-                                <select title="{{ 'content.parcel'|trans }}" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="{{ 'order.choose.parcel'|trans }}..." style="font-size: 19px;">
+                                <select title="{{ 'content.parcel'|trans }}" class="parcel-select" name="parcelMachine" id="select-parcelMachine" data-placeholder="{{ 'order.choose.parcel'|trans }}..." style="font-size: 19px; z-index: 2;">
                                     <option></option>
                                     {% for parcelMachine in parcelMachines %}
                                         <option value="{{ parcelMachine.address }}">{{ parcelMachine.name }}</option>
@@ -193,7 +193,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 text-center">
-                    <a id="btn-payment-type" class="btn btn-lg btn-gfort" style="width: 300px; display: none">
+                    <a id="btn-payment-type" class="btn btn-lg btn-gfort" style="width: 300px; display: none; z-index: 2;">
                         <span class="fa fa-money"></span> {{ 'order.payment.type'|trans }}
                     </a>
                 </div>
