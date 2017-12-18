@@ -16,14 +16,14 @@ menu.comments: klientų atsiliepimai
 user.home.address: Namų adresas
 user.page: Mano paskyra
 user.profile: Mano profilis
-user.orders: Atskleistos SECRET BOXes
+user.orders: Atskleistos SECRET BOX
 user.impressions: Mano įspūdžiai
 user.access.denied: Šį puslapį gali peržiūrėti tik prisijungę vartotojai. Prašome iš prisijungti.
 user.wait: Prašome palaukti ...
 user.registration.date: Registracijos data
 user.lastlogin.date: Paskutinis prisijungimas
 user.login.with.facebook: Prisijungti su Facebook
-user.secrets: Mano paslaptys
+user.secrets: Mano SECRET BOX
 user.email: El. paštas
 user.phone: Telefono numeris
 user.name: Vardas
@@ -134,7 +134,7 @@ order.revealed: Atskleista
 order.return.to.contacts: Grįžti prie kontaktų
 order.return.to.delivery.address: Grįžti prie pristatymo adreso
 order.delivery.address: Pristatymas į
-order.no.completed.orders: Nėra atskleistų SECRET BOXes
+order.no.completed.orders: Nėra atskleistų SECRET BOX
 order.countdown: Atskleisti paslapčiai turi
 order.begin.first.message: Pradėk unikalų SECRET BOX nuotykį, kurio pabaigoje - netikėta dovana.
 order.begin.second.message: Paštu Tau pristatysime SECRET BOX su užuomina viduje.
@@ -152,6 +152,7 @@ order.typed.cant.find.parcel: Deja artimiausio paštomato nustatyti nepavyko
 order.typed.success.parcel: Sėkmingai rasti artimiausi paštomatai
 order.delivery.type: Pristatymo būdas
 order.price: Kaina
+order.reveal.time.over: Laikas baigėsi
 small: mažas
 medium: vidutinis
 big: didelis

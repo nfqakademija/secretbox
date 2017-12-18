@@ -24,7 +24,7 @@ user.wait: Please wait ...
 user.registration.date: Registration date
 user.login.with.facebook: Login with Facebook
 user.lastlogin.date: Last login
-user.secrets: My secrets
+user.secrets: My SECRET BOXes
 user.email: E-mail
 user.phone: Phone number
 user.name: First name
@@ -144,6 +144,7 @@ order.typed.cant.find.parcel: Unfortunately, we did not succeed to find nearest 
 order.typed.success.parcel: Succeeded to find nearest parcel machine
 order.delivery.type: Delivery type
 order.price: Price
+order.reveal.time.over: Reveal time over
 small: small
 medium: medium
 big: big
