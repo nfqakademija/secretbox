@@ -109,7 +109,7 @@
                                                                                  data-downtime-hour="{{ secret.orderRevealUntil | date('H') }}"
                                                                                  data-downtime-min="{{ secret.orderRevealUntil | date('i') }}"
                                                                                  data-downtime-UTC-offset="2"
-                                                                                 data-downtime-message="{{ 'order.reveal.time.over'|trans }}">
+                                                                                 data-downtime-message="laikas pasibaige">
                                                                                 <div class="downtime-counter-block-container">
                                                                                     <div class="downtime-col">
                                                                                         <span class="days">00</span>
@@ -188,31 +188,23 @@
                                 <!-- friends tab -->
                                 <div class="tab-pane  fade" id="tabBody1" role="tabpanel" aria-labelledby="tab1" aria-hidden="true" tabindex="0">
                                     <div class="row">
-                                        <div class="col-lg-12 text-center">
-                                            <h3>Draugai, kurie prisijungę prie SECRET BOX</h3>
-                                        </div>
-                                    </div>
-                                        {% if friends is defined %}
-                                            {% for friend in friends %}
 
-                                                <div class="row">
-                                                    <div class="col-lg-4 col-lg-offset-4">
-                                                        <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
-                                                            <img class="img-circle" src="{{ friend.picture.url }}"/>
-                                                            <span class="friend-line">
-                                                                {{ friend.name }}
-                                                            </span>
-                                                        </a>
-                                                    </div>
+                                        {% for friend in friends %}
+
+                                            <div class="row">
+                                                <div class="col-lg-4 col-lg-offset-4">
+                                                    <a href="{{ path('app.user.friend', {'facebookId' : friend.id}) }}">
+                                                        <img class="img-circle" src="{{ friend.picture.url }}"/>
+                                                        <span class="friend-line">
+                                                            {{ friend.name }}
+                                                        </span>
+                                                    </a>
                                                 </div>
-
-                                            {% endfor %}
-                                        {% else %}
-                                            <div class="col-lg-12 text-center">
-                                                <h3>Jūsų draugai nežino apie SECRET BOX, pakvieskite juos!</h3>
                                             </div>
-                                        {%  endif %}
 
+                                        {% endfor %}
+
+                                    </div>
                                 </div>
 
                                 {% endif %}
@@ -514,25 +506,25 @@
             $("li.fancyTab").width('20%');
             $('[data-toggle="popover"]').popover();
 
-            {#var currentDate = new Date();#}
-            {#$('[data-countdown]').each(function () {#}
-                {#var finalDate = Date.parse($(this).data('countdown'));#}
-                {#console.log('this is final:' + finalDate);#}
+            var currentDate = new Date();
+            $('[data-countdown]').each(function () {
+                var finalDate = Date.parse($(this).data('countdown'));
+                console.log('this is final:' + finalDate);
 
-                {#var diff = finalDate / 1000 - currentDate.getTime() / 1000;#}
-                {#console.log(diff);#}
+                var diff = finalDate / 1000 - currentDate.getTime() / 1000;
+                console.log(diff);
 
-                {#if (diff > 0) {#}
-                    {#clocks.push($($(this)).FlipClock(diff, {#}
-                        {#clockFace: 'DailyCounter',#}
-                        {#countdown: true,#}
-                        {#language: 'mix'#}
-                    {#}));#}
-                {#} else {#}
-                    {#$(this).html("{{ 'order.reveal.time.over'|trans }}");#}
-                {#}#}
+                if (diff > 0) {
+                    clocks.push($($(this)).FlipClock(diff, {
+                        clockFace: 'DailyCounter',
+                        countdown: true,
+                        language: 'mix'
+                    }));
+                } else {
+                    $(this).html('laikas pasibaiges');
+                }
 
-            {#});#}
+            });
 
 
         });
