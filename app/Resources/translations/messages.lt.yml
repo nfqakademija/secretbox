@@ -196,4 +196,6 @@ action.new: Naujas
 
 entity.user: Klientai
 entity.product: Produktai | Paslaugos
+
+user.firstName: Vardas
 product.list: Produktų sarašas

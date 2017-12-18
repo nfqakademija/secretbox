@@ -8,7 +8,8 @@ easy_admin:
             - Product
             - Order
             - Impression
-            - { label: 'menu.public', route: 'app.homepage' }
+            - Price
+            - { label: 'Pagrindinis puslapis', route: 'app.homepage' }
         brand_color: '#81b9ba'
         color_scheme: 'light'
         assets:
@@ -24,30 +25,78 @@ easy_admin:
             class: AppBundle\Entity\User
             list:
                 fields:
-                    - { property: 'firstName', label: 'users.firstName' }
-                    - { property: 'lastName', label: 'users.lastName' }
+                    - { property: 'id', label: 'Id' }
+                    - { property: 'firstName', label: 'user.firstName' }
+                    - { property: 'lastName', label: 'Pavardė' }
+                    - { property: 'email', label: 'El. paštas' }
+                    - { property: 'registeredDate', label: 'Registracijos data' }
+                    - { property: 'loggedDate', label: 'Paskutnis prisijungimas' }
             label: 'entity.user'
+            form:
+                fields:
+                - { property: 'id', type_options: { disabled: true }}
+                - { property: 'firstName', label: 'Vardas', type_options: { disabled: true }}
+                - { property: 'lastName', label: 'Pavardė', type_options: { disabled: true }}
+                - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+                - { property: 'registeredDate', label: 'Užsiregistravo', type_options: { disabled: true }}
+                - { property: 'loggedDate', label: 'Paskutinis prisijungimas', type_options: { disabled: true }}
+                - { property: 'loginCount', label: 'Prisijungimų skaičius', type_options: { disabled: true }}
+                - { property: 'address', label: 'Adresas', type_options: { disabled: true }}
+                - { property: 'phoneNo', label: 'Telefono numeris', type_options: { disabled: true }}
+                - { property: 'impressions', label: 'Įspūdžiai', type_options: { disabled: false }}
+                - { property: 'orders', label: 'Užsakymai', type_options: { disabled: false }}
         Product:
             class: AppBundle\Entity\Product
             label: 'entity.product'
             list:
                 title: 'product.list'
                 actions: ['show', '-edit', '-delete']
+            form:
+                fields:
+                - { property: 'id', label: 'Id', type_options: { disabled: true }}
+                - { property: 'title', label: 'Pavadinimas', type_options: { disabled: false }}
+                - { property: 'description', label: 'Aprašymas', type_options: { disabled: false }}
+                - { property: 'gender', label: 'Lytis', type: 'choice', type_options: { multiple: false, choices: { 'unisex': 'unisex', 'male': 'male', 'female': 'female' } } }
+                - { property: 'ageMin', label: 'Min amžius',  type: 'integer' }
+                - { property: 'ageMax', label: 'Max amžius',  type: 'integer' }
+                - { property: 'supplier', label: 'Tiekėjas'}
+                - { property: 'validFrom', label: 'Pasiūlymas galioja nuo', type: 'date'}
+                - { property: 'validTo', label: 'Pasiūlymas galioja iki', type: 'date'}
+                - { property: 'supplierPrice', label: 'Tiekėjo siūloma kaina'}
+                - { property: 'marketValue', label: 'Rinkos kaina'}
+                - { property: 'boxSize', label: 'Secret Box dydis', type: 'choice', type_options: { multiple: false, choices: { 'small': 'small', 'medium': 'medium', 'big': 'big' } } }
             help: 'test'
         Order:
             class: AppBundle\Entity\Order
+            label: 'Užsakymai'
         Impression:
             class: AppBundle\Entity\Impression
+            label: 'Įspūdžiai'
             list:
                 actions: ['-show', 'edit', '-delete']
                 fields:
                     - id
-                    - { property: createdAt, format: 'Y-m-d h:m'}
+                    - { property: createdAt, format: 'Y-m-d H:m'}
                     - impression
                     - user
                     - isApproved
                 sort: ['createdAt', 'DESC']
+            form:
+                fields:
+                - { property: 'id', type_options: { disabled: true }}
+                - { property: 'createdAt', label: 'Sukurta', type_options: { disabled: true }}
+                - { property: 'impression', label: 'Įspūdis'}
+                - { property: 'isApproved', label: 'Patvirtinta'}
 #            disabled_actions: ['show']
+        Price:
+            class: AppBundle\Entity\Price
+            label: 'Kainos'
+            form:
+                fields:
+                - { property: 'price', label: 'kaina'}
+                - { property: 'vatrate', label: 'PVM'}
+                - { property: 'boxSize', label: 'SecretBox dydis', type: 'choice', type_options: { multiple: false, choices: { 'small': 'small', 'medium': 'medium', 'big': 'big' } } }
+                - { property: 'validFrom', label: 'Kaina galioja nuo' }
 
 
 

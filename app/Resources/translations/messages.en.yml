@@ -189,5 +189,7 @@ action.new: New
 
 entity.user: Clients
 entity.products: Products | Services
+
+user.firstName: First name
 product.list: List of products
 
