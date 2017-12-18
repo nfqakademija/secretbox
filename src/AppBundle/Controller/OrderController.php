@@ -64,7 +64,7 @@ class OrderController extends Controller
             ->setFirstName($firstName)
             ->setLastName($lastName)
             ->setEmail($email)
-            ->setAddress($address);
+            ->setAddress($request->get('address'));
 
         $validator = $this->get('validator');
         $orderErrors = $this->get(OrderErrorsMessagesService::class)->getErrorsList($validator->validate($order));
